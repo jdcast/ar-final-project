@@ -6,18 +6,28 @@ ScriptsOnlyBuild:
     - MRTK.Tutorials.GettingStarted.PartAssemblyController
     - MRTK.Tutorials.GettingStarted.PlacementHintsController
     - MRTK.Tutorials.MultiUserCapabilities.GenericNetSync
-    - MRTK.Tutorials.MultiUserCapabilities.GenericNetworkManager
     - MRTK.Tutorials.MultiUserCapabilities.OwnershipHandler
-    - MRTK.Tutorials.MultiUserCapabilities.PhotonLobby
     - MRTK.Tutorials.MultiUserCapabilities.PhotonRoom
     - MRTK.Tutorials.MultiUserCapabilities.PhotonUser
     - MRTK.Tutorials.MultiUserCapabilities.PunExplodeViewController
     - MRTK.Tutorials.MultiUserCapabilities.PunPartAssemblyController
     - MRTK.Tutorials.MultiUserCapabilities.PunPlacementHintsController
     - MRTK.Tutorials.MultiUserCapabilities.TableAnchorAsParent
+    - MultiUserCapabilities.FrameVisual
+    - MultiUserCapabilities.GenericNetSync
+    - MultiUserCapabilities.GenericNetworkManager
+    - MultiUserCapabilities.PhotonLobby
+    - MultiUserCapabilities.PhotonRoom
+    - MultiUserCapabilities.PhotonUser
     - OwnershipHandler
+    - Resources.Scripts.WorldLocking.Startup
+    - Scripts.WorldLocking.ActionPublish
+    - Scripts.WorldLocking.SpacePinASAInit
+    - Scripts.WorldLocking.SpacePinBinder
+    - SharedCursorFocus
     AzureSpatialAnchors.SDK.Core.Runtime.dll:
     - Microsoft.Azure.SpatialAnchors.Unity.SpatialAnchorConfig
+    - Microsoft.Azure.SpatialAnchors.Unity.SpatialAnchorManager
     FigmaToolkit.dll:
     - Microsoft.MixedReality.Toolkit.Utilities.FigmaImporter.FigmaToolkitCustomMap
     Microsoft.MixedReality.OpenXR.dll:
@@ -28,9 +38,16 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.OpenXR.Remoting.AppRemotingPlugin
     - Microsoft.MixedReality.OpenXR.Remoting.PlayModeRemotingPlugin
     Microsoft.MixedReality.Toolkit.Editor.Inspectors.dll:
+    - Microsoft.MixedReality.Toolkit.Diagnostics.Editor.MixedRealityDiagnosticsSystemProfileInspector
     - Microsoft.MixedReality.Toolkit.Editor.MixedRealityToolkitConfigurationProfileInspector
+    - Microsoft.MixedReality.Toolkit.SpatialAwareness.Editor.MixedRealitySpatialAwarenessSystemProfileInspector
     Microsoft.MixedReality.Toolkit.Editor.Utilities.dll:
     - Microsoft.MixedReality.Toolkit.Utilities.Editor.ProjectPreferences
+    Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.dll:
+    - Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.HandPhysicsServiceProfile
+    - Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.JointKinematicBody
+    Microsoft.MixedReality.Toolkit.Providers.LeapMotion.dll:
+    - Microsoft.MixedReality.Toolkit.LeapMotion.Input.LeapMotionDeviceManagerProfile
     Microsoft.MixedReality.Toolkit.Providers.OpenXR.dll:
     - Microsoft.MixedReality.Toolkit.XRSDK.OpenXR.OpenXRCameraSettingsProfile
     Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Shared.dll:
@@ -105,6 +122,7 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.Toolkit.Utilities.Solvers.Follow
     - Microsoft.MixedReality.Toolkit.Utilities.Solvers.RadialView
     - Microsoft.MixedReality.Toolkit.Utilities.Solvers.SolverHandler
+    - Microsoft.MixedReality.Toolkit.Utilities.Solvers.SurfaceMagnetism
     - Microsoft.MixedReality.Toolkit.Utilities.Solvers.TapToPlace
     Microsoft.MixedReality.Toolkit.Services.InputAnimation.dll:
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityInputRecordingProfile
@@ -123,6 +141,7 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.Toolkit.Input.BaseHandVisualizer
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerMappingProfile
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizationProfile
+    - Microsoft.MixedReality.Toolkit.Input.MixedRealityEyeTrackingProfile
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityGesturesProfile
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityHandTrackingProfile
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityInputActionRulesProfile
@@ -142,6 +161,7 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.Toolkit.SpatialAwareness.MixedRealitySpatialAwarenessSystemProfile
     - Microsoft.MixedReality.Toolkit.Utilities.BezierDataProvider
     - Microsoft.MixedReality.Toolkit.Utilities.BezierInertia
+    - Microsoft.MixedReality.Toolkit.Utilities.CameraEventRouter
     - Microsoft.MixedReality.Toolkit.Utilities.HoverLight
     - Microsoft.MixedReality.Toolkit.Utilities.MaintainBorderLightWidth
     - Microsoft.MixedReality.Toolkit.Utilities.MixedRealityLineRenderer
@@ -150,8 +170,15 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.Toolkit.Utilities.RectangleLineDataProvider
     - Microsoft.MixedReality.Toolkit.Utilities.SimpleLineDataProvider
     - Microsoft.MixedReality.Toolkit.Utilities.SplineDataProvider
+    Microsoft.MixedReality.WorldLocking.ASA.dll:
+    - Microsoft.MixedReality.WorldLocking.ASA.PublisherASA
+    - Microsoft.MixedReality.WorldLocking.ASA.SpacePinBinderFile
     Microsoft.MixedReality.WorldLocking.Core.dll:
+    - Microsoft.MixedReality.WorldLocking.Core.Orienter
     - Microsoft.MixedReality.WorldLocking.Core.WorldLockingContext
+    Microsoft.MixedReality.WorldLocking.Tools.dll:
+    - Microsoft.MixedReality.WorldLocking.Tools.FrameVisual
+    - Microsoft.MixedReality.WorldLocking.Tools.SimpleSprite
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -177,7 +204,6 @@ ScriptsOnlyBuild:
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
-    - TMPro.TMP_ColorGradient
     - TMPro.TMP_Dropdown
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
@@ -185,6 +211,11 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshPro
     - TMPro.TextMeshProUGUI
+    Unity.XR.ARFoundation.dll:
+    - UnityEngine.XR.ARFoundation.ARAnchorManager
+    - UnityEngine.XR.ARFoundation.ARCameraManager
+    - UnityEngine.XR.ARFoundation.ARSession
+    - UnityEngine.XR.ARFoundation.ARSessionOrigin
     Unity.XR.Management.Editor.dll:
     - UnityEditor.XR.Management.XRGeneralSettingsPerBuildTarget
     Unity.XR.Management.dll:
@@ -213,6 +244,8 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.SpatialTracking.dll:
+    - UnityEngine.SpatialTracking.TrackedPoseDriver
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.EventTrigger
@@ -231,7 +264,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/main.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -279,339 +312,381 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1630}
+      Script: {instanceID: 1656}
     - Class: 114
-      Script: {instanceID: 1632}
+      Script: {instanceID: 1658}
     - Class: 114
-      Script: {instanceID: 1634}
+      Script: {instanceID: 1660}
     - Class: 114
-      Script: {instanceID: 1638}
+      Script: {instanceID: 1664}
     - Class: 114
-      Script: {instanceID: 1666}
+      Script: {instanceID: 1692}
     - Class: 114
-      Script: {instanceID: 1700}
+      Script: {instanceID: 1726}
     - Class: 114
-      Script: {instanceID: 1702}
+      Script: {instanceID: 1728}
     - Class: 114
-      Script: {instanceID: 1730}
+      Script: {instanceID: 1756}
     - Class: 114
-      Script: {instanceID: 1740}
+      Script: {instanceID: 1766}
     - Class: 114
-      Script: {instanceID: 1848}
+      Script: {instanceID: 1774}
     - Class: 114
-      Script: {instanceID: 1934}
+      Script: {instanceID: 1878}
     - Class: 114
-      Script: {instanceID: 1992}
+      Script: {instanceID: 1964}
     - Class: 114
-      Script: {instanceID: 1998}
+      Script: {instanceID: 2022}
     - Class: 114
-      Script: {instanceID: 2166}
+      Script: {instanceID: 2030}
     - Class: 114
-      Script: {instanceID: 2402}
+      Script: {instanceID: 2198}
     - Class: 114
-      Script: {instanceID: 2432}
+      Script: {instanceID: 2260}
     - Class: 114
-      Script: {instanceID: 2514}
+      Script: {instanceID: 2434}
     - Class: 114
-      Script: {instanceID: 2530}
+      Script: {instanceID: 2464}
     - Class: 114
       Script: {instanceID: 2546}
     - Class: 114
-      Script: {instanceID: 2672}
+      Script: {instanceID: 2562}
     - Class: 114
-      Script: {instanceID: 2676}
+      Script: {instanceID: 2578}
     - Class: 114
-      Script: {instanceID: 2750}
+      Script: {instanceID: 2704}
     - Class: 114
-      Script: {instanceID: 2808}
+      Script: {instanceID: 2708}
     - Class: 114
-      Script: {instanceID: 2928}
+      Script: {instanceID: 2782}
     - Class: 114
-      Script: {instanceID: 2966}
+      Script: {instanceID: 2840}
     - Class: 114
-      Script: {instanceID: 2974}
+      Script: {instanceID: 2962}
     - Class: 114
-      Script: {instanceID: 3064}
+      Script: {instanceID: 3000}
     - Class: 114
-      Script: {instanceID: 3096}
+      Script: {instanceID: 3008}
     - Class: 114
-      Script: {instanceID: 3106}
+      Script: {instanceID: 3098}
     - Class: 114
-      Script: {instanceID: 3170}
+      Script: {instanceID: 3130}
     - Class: 114
-      Script: {instanceID: 3176}
+      Script: {instanceID: 3140}
     - Class: 114
-      Script: {instanceID: 3234}
+      Script: {instanceID: 3206}
     - Class: 114
-      Script: {instanceID: 3250}
+      Script: {instanceID: 3212}
     - Class: 114
-      Script: {instanceID: 3346}
+      Script: {instanceID: 3272}
     - Class: 114
-      Script: {instanceID: 3388}
+      Script: {instanceID: 3288}
     - Class: 114
-      Script: {instanceID: 3396}
+      Script: {instanceID: 3382}
     - Class: 114
-      Script: {instanceID: 3450}
+      Script: {instanceID: 3386}
     - Class: 114
-      Script: {instanceID: 3522}
+      Script: {instanceID: 3428}
     - Class: 114
-      Script: {instanceID: 3570}
+      Script: {instanceID: 3436}
     - Class: 114
-      Script: {instanceID: 3582}
+      Script: {instanceID: 3490}
     - Class: 114
-      Script: {instanceID: 3590}
+      Script: {instanceID: 3498}
     - Class: 114
-      Script: {instanceID: 3622}
+      Script: {instanceID: 3564}
     - Class: 114
-      Script: {instanceID: 3718}
+      Script: {instanceID: 3612}
     - Class: 114
-      Script: {instanceID: 3746}
+      Script: {instanceID: 3626}
     - Class: 114
-      Script: {instanceID: 3758}
+      Script: {instanceID: 3634}
     - Class: 114
-      Script: {instanceID: 3786}
+      Script: {instanceID: 3666}
     - Class: 114
-      Script: {instanceID: 3816}
+      Script: {instanceID: 3762}
     - Class: 114
-      Script: {instanceID: 3914}
+      Script: {instanceID: 3790}
     - Class: 114
-      Script: {instanceID: 3994}
+      Script: {instanceID: 3802}
     - Class: 114
-      Script: {instanceID: 4042}
+      Script: {instanceID: 3860}
     - Class: 114
-      Script: {instanceID: 4104}
+      Script: {instanceID: 3882}
     - Class: 114
-      Script: {instanceID: 4116}
+      Script: {instanceID: 3962}
     - Class: 114
-      Script: {instanceID: 4132}
+      Script: {instanceID: 4044}
     - Class: 114
-      Script: {instanceID: 4134}
+      Script: {instanceID: 4092}
     - Class: 114
-      Script: {instanceID: 4344}
+      Script: {instanceID: 4154}
     - Class: 114
-      Script: {instanceID: 4376}
+      Script: {instanceID: 4166}
     - Class: 114
-      Script: {instanceID: 4388}
+      Script: {instanceID: 4182}
     - Class: 114
-      Script: {instanceID: 4552}
+      Script: {instanceID: 4184}
     - Class: 114
-      Script: {instanceID: 4586}
+      Script: {instanceID: 4276}
     - Class: 114
-      Script: {instanceID: 4600}
+      Script: {instanceID: 4328}
     - Class: 114
-      Script: {instanceID: 4606}
+      Script: {instanceID: 4394}
     - Class: 114
-      Script: {instanceID: 4624}
+      Script: {instanceID: 4426}
     - Class: 114
-      Script: {instanceID: 4646}
+      Script: {instanceID: 4438}
     - Class: 114
-      Script: {instanceID: 4688}
+      Script: {instanceID: 4526}
     - Class: 114
-      Script: {instanceID: 4744}
+      Script: {instanceID: 4604}
     - Class: 114
-      Script: {instanceID: 4762}
+      Script: {instanceID: 4638}
     - Class: 114
-      Script: {instanceID: 4774}
+      Script: {instanceID: 4652}
     - Class: 114
-      Script: {instanceID: 4816}
+      Script: {instanceID: 4658}
     - Class: 114
-      Script: {instanceID: 4830}
+      Script: {instanceID: 4676}
+    - Class: 114
+      Script: {instanceID: 4740}
+    - Class: 114
+      Script: {instanceID: 4772}
+    - Class: 114
+      Script: {instanceID: 4800}
+    - Class: 114
+      Script: {instanceID: 4818}
+    - Class: 114
+      Script: {instanceID: 4832}
+    - Class: 114
+      Script: {instanceID: 4874}
     - Class: 114
       Script: {instanceID: 4888}
     - Class: 114
-      Script: {instanceID: 4892}
+      Script: {instanceID: 4948}
     - Class: 114
-      Script: {instanceID: 4906}
+      Script: {instanceID: 4952}
     - Class: 114
-      Script: {instanceID: 4934}
+      Script: {instanceID: 4968}
     - Class: 114
-      Script: {instanceID: 4992}
+      Script: {instanceID: 4996}
     - Class: 114
-      Script: {instanceID: 5032}
+      Script: {instanceID: 5002}
     - Class: 114
-      Script: {instanceID: 5092}
+      Script: {instanceID: 5056}
     - Class: 114
-      Script: {instanceID: 5098}
+      Script: {instanceID: 5096}
     - Class: 114
-      Script: {instanceID: 5122}
+      Script: {instanceID: 5156}
     - Class: 114
-      Script: {instanceID: 5268}
+      Script: {instanceID: 5162}
     - Class: 114
-      Script: {instanceID: 5274}
+      Script: {instanceID: 5186}
     - Class: 114
-      Script: {instanceID: 5284}
+      Script: {instanceID: 5288}
     - Class: 114
-      Script: {instanceID: 5346}
+      Script: {instanceID: 5332}
     - Class: 114
-      Script: {instanceID: 5512}
+      Script: {instanceID: 5338}
     - Class: 114
-      Script: {instanceID: 5630}
+      Script: {instanceID: 5348}
     - Class: 114
-      Script: {instanceID: 5668}
+      Script: {instanceID: 5410}
     - Class: 114
-      Script: {instanceID: 5734}
+      Script: {instanceID: 5510}
     - Class: 114
-      Script: {instanceID: 5744}
+      Script: {instanceID: 5576}
     - Class: 114
-      Script: {instanceID: 5756}
+      Script: {instanceID: 5604}
     - Class: 114
-      Script: {instanceID: 5870}
+      Script: {instanceID: 5698}
     - Class: 114
-      Script: {instanceID: 5882}
+      Script: {instanceID: 5736}
     - Class: 114
-      Script: {instanceID: 5898}
+      Script: {instanceID: 5802}
     - Class: 114
-      Script: {instanceID: 5920}
+      Script: {instanceID: 5812}
     - Class: 114
-      Script: {instanceID: 5956}
+      Script: {instanceID: 5824}
     - Class: 114
-      Script: {instanceID: 5988}
+      Script: {instanceID: 5884}
     - Class: 114
-      Script: {instanceID: 5996}
+      Script: {instanceID: 5914}
     - Class: 114
-      Script: {instanceID: 6170}
+      Script: {instanceID: 5940}
     - Class: 114
-      Script: {instanceID: 6176}
+      Script: {instanceID: 5952}
     - Class: 114
-      Script: {instanceID: 6194}
+      Script: {instanceID: 5968}
+    - Class: 114
+      Script: {instanceID: 5986}
+    - Class: 114
+      Script: {instanceID: 5990}
+    - Class: 114
+      Script: {instanceID: 6028}
+    - Class: 114
+      Script: {instanceID: 6060}
+    - Class: 114
+      Script: {instanceID: 6068}
+    - Class: 114
+      Script: {instanceID: 6242}
+    - Class: 114
+      Script: {instanceID: 6248}
     - Class: 114
       Script: {instanceID: 6266}
     - Class: 114
-      Script: {instanceID: 6280}
+      Script: {instanceID: 6322}
     - Class: 114
-      Script: {instanceID: 6282}
+      Script: {instanceID: 6340}
     - Class: 114
-      Script: {instanceID: 6418}
+      Script: {instanceID: 6354}
     - Class: 114
-      Script: {instanceID: 6420}
+      Script: {instanceID: 6356}
     - Class: 114
-      Script: {instanceID: 6474}
+      Script: {instanceID: 6492}
     - Class: 114
-      Script: {instanceID: 6480}
+      Script: {instanceID: 6494}
     - Class: 114
-      Script: {instanceID: 6486}
+      Script: {instanceID: 6548}
     - Class: 114
-      Script: {instanceID: 6718}
+      Script: {instanceID: 6554}
     - Class: 114
-      Script: {instanceID: 6720}
+      Script: {instanceID: 6560}
     - Class: 114
-      Script: {instanceID: 6740}
+      Script: {instanceID: 6796}
     - Class: 114
-      Script: {instanceID: 6776}
+      Script: {instanceID: 6798}
     - Class: 114
-      Script: {instanceID: 6808}
+      Script: {instanceID: 6818}
     - Class: 114
-      Script: {instanceID: 6842}
+      Script: {instanceID: 6836}
     - Class: 114
-      Script: {instanceID: 6878}
+      Script: {instanceID: 6856}
     - Class: 114
-      Script: {instanceID: 6894}
+      Script: {instanceID: 6888}
     - Class: 114
-      Script: {instanceID: 7036}
+      Script: {instanceID: 6922}
     - Class: 114
-      Script: {instanceID: 7128}
+      Script: {instanceID: 6958}
     - Class: 114
-      Script: {instanceID: 7258}
+      Script: {instanceID: 6976}
     - Class: 114
-      Script: {instanceID: 7260}
+      Script: {instanceID: 7118}
     - Class: 114
-      Script: {instanceID: 7288}
+      Script: {instanceID: 7198}
     - Class: 114
-      Script: {instanceID: 7392}
+      Script: {instanceID: 7212}
     - Class: 114
-      Script: {instanceID: 7550}
+      Script: {instanceID: 7342}
     - Class: 114
-      Script: {instanceID: 7556}
+      Script: {instanceID: 7344}
     - Class: 114
-      Script: {instanceID: 7618}
+      Script: {instanceID: 7374}
+    - Class: 114
+      Script: {instanceID: 7418}
+    - Class: 114
+      Script: {instanceID: 7482}
+    - Class: 114
+      Script: {instanceID: 7640}
+    - Class: 114
+      Script: {instanceID: 7646}
     - Class: 114
       Script: {instanceID: 7684}
     - Class: 114
-      Script: {instanceID: 7722}
+      Script: {instanceID: 7708}
     - Class: 114
-      Script: {instanceID: 7730}
+      Script: {instanceID: 7778}
     - Class: 114
-      Script: {instanceID: 7774}
+      Script: {instanceID: 7816}
     - Class: 114
-      Script: {instanceID: 7802}
+      Script: {instanceID: 7824}
     - Class: 114
-      Script: {instanceID: 7806}
+      Script: {instanceID: 7868}
     - Class: 114
-      Script: {instanceID: 7840}
+      Script: {instanceID: 7896}
     - Class: 114
-      Script: {instanceID: 7852}
+      Script: {instanceID: 7900}
     - Class: 114
-      Script: {instanceID: 7942}
+      Script: {instanceID: 7904}
     - Class: 114
-      Script: {instanceID: 8124}
+      Script: {instanceID: 7934}
     - Class: 114
-      Script: {instanceID: 8148}
+      Script: {instanceID: 7946}
     - Class: 114
-      Script: {instanceID: 8176}
+      Script: {instanceID: 8036}
     - Class: 114
-      Script: {instanceID: 8202}
+      Script: {instanceID: 8170}
     - Class: 114
-      Script: {instanceID: 8262}
+      Script: {instanceID: 8222}
     - Class: 114
-      Script: {instanceID: 8284}
+      Script: {instanceID: 8246}
     - Class: 114
-      Script: {instanceID: 8308}
+      Script: {instanceID: 8274}
     - Class: 114
-      Script: {instanceID: 8332}
+      Script: {instanceID: 8300}
     - Class: 114
-      Script: {instanceID: 8416}
+      Script: {instanceID: 8360}
     - Class: 114
-      Script: {instanceID: 8466}
+      Script: {instanceID: 8364}
     - Class: 114
-      Script: {instanceID: 8476}
+      Script: {instanceID: 8386}
     - Class: 114
-      Script: {instanceID: 8480}
+      Script: {instanceID: 8410}
     - Class: 114
-      Script: {instanceID: 8496}
+      Script: {instanceID: 8434}
     - Class: 114
-      Script: {instanceID: 8562}
+      Script: {instanceID: 8518}
     - Class: 114
       Script: {instanceID: 8566}
     - Class: 114
-      Script: {instanceID: 8722}
+      Script: {instanceID: 8570}
     - Class: 114
-      Script: {instanceID: 8752}
+      Script: {instanceID: 8580}
     - Class: 114
-      Script: {instanceID: 8796}
+      Script: {instanceID: 8584}
     - Class: 114
-      Script: {instanceID: 8994}
+      Script: {instanceID: 8600}
     - Class: 114
-      Script: {instanceID: 9006}
+      Script: {instanceID: 8666}
     - Class: 114
-      Script: {instanceID: 9074}
+      Script: {instanceID: 8670}
     - Class: 114
-      Script: {instanceID: 9092}
+      Script: {instanceID: 8828}
     - Class: 114
-      Script: {instanceID: 9150}
+      Script: {instanceID: 8858}
     - Class: 114
-      Script: {instanceID: 9168}
+      Script: {instanceID: 8902}
     - Class: 114
-      Script: {instanceID: 9192}
+      Script: {instanceID: 9100}
     - Class: 114
-      Script: {instanceID: 9284}
+      Script: {instanceID: 9112}
     - Class: 114
-      Script: {instanceID: 9288}
+      Script: {instanceID: 9180}
     - Class: 114
-      Script: {instanceID: 9310}
+      Script: {instanceID: 9198}
     - Class: 114
-      Script: {instanceID: 9346}
+      Script: {instanceID: 9256}
     - Class: 114
-      Script: {instanceID: 9354}
+      Script: {instanceID: 9274}
     - Class: 114
-      Script: {instanceID: 9360}
+      Script: {instanceID: 9298}
     - Class: 114
-      Script: {instanceID: 9388}
+      Script: {instanceID: 9390}
     - Class: 114
-      Script: {instanceID: 9538}
+      Script: {instanceID: 9394}
     - Class: 114
-      Script: {instanceID: 50322}
+      Script: {instanceID: 9416}
     - Class: 114
-      Script: {instanceID: 68160}
+      Script: {instanceID: 9452}
+    - Class: 114
+      Script: {instanceID: 9460}
+    - Class: 114
+      Script: {instanceID: 9468}
+    - Class: 114
+      Script: {instanceID: 9498}
+    - Class: 114
+      Script: {instanceID: 9650}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -745,10 +820,22 @@ ScriptsOnlyBuild:
     className: PlayerUI
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OwnershipHandler
+  - hash:
+      serializedVersion: 2
       Hash: af155502e2c8f39d71a568725f3da35c
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Input
     className: InteractiveMeshCursor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScrollRouteMenuInit
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -869,6 +956,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.UI
     className: AppBarButton
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: ChildOwnershipHandler
   - hash:
       serializedVersion: 2
       Hash: a65ddc0f7111baa5d923e4580ff49ebc
@@ -1177,6 +1270,12 @@ ScriptsOnlyBuild:
     className: CurrentRoomPropertiesListedInLobbyProperty
   - hash:
       serializedVersion: 2
+      Hash: 410b20da19f29af1ebb0195ca3b1c402
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GlobalHoldParent
+  - hash:
+      serializedVersion: 2
       Hash: 290afc8da8e459e0b8dc7444bfaf5e35
     assemblyName: Unity.XR.ARFoundation.dll
     namespaceName: UnityEngine.XR.ARFoundation
@@ -1297,6 +1396,12 @@ ScriptsOnlyBuild:
     className: OnEscapeQuit
   - hash:
       serializedVersion: 2
+      Hash: d660938061d2023d238feee261aa0e06
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AnchorFeedbackScript
+  - hash:
+      serializedVersion: 2
       Hash: 0c5108545fb925730d4d5887ebcdd20c
     assemblyName: Unity.XR.ARSubsystems.dll
     namespaceName: UnityEngine.XR.ARSubsystems
@@ -1339,6 +1444,12 @@ ScriptsOnlyBuild:
     className: MicrosoftHandInteraction
   - hash:
       serializedVersion: 2
+      Hash: 8561e96ea604ab5a565e23f7f2b0e63e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScrollHoldMenuInit
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -1355,6 +1466,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Utilities
     className: RectangleLineDataProvider
+  - hash:
+      serializedVersion: 2
+      Hash: 14a51dd9ef0ea80683e2ad1a6f05fb7d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: HoldData
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1501,6 +1618,12 @@ ScriptsOnlyBuild:
     className: GazeProvider
   - hash:
       serializedVersion: 2
+      Hash: 6be8085def4318d9f646aee749264875
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Scripts.WorldLocking
+    className: SpacePinASAInit
+  - hash:
+      serializedVersion: 2
       Hash: 5905a68595be1441f5fbbfef02d20611
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.UI
@@ -1559,6 +1682,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.UI
     className: ConstraintManager
+  - hash:
+      serializedVersion: 2
+      Hash: a806c759cf1e4f95196a70790cfd9230
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: HoldInit
   - hash:
       serializedVersion: 2
       Hash: 352cc732e1d64cac627b0dda94442d91
@@ -1693,6 +1822,18 @@ ScriptsOnlyBuild:
     className: CurrentRoomPlayerCountProperty
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SharedCursorFocus
+  - hash:
+      serializedVersion: 2
+      Hash: 122ef40a77a9ca3a719ba16e2b108de6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: OnHoldHover
+  - hash:
+      serializedVersion: 2
       Hash: b787e6a2c7e7e6ff79732a9055a718a4
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Audio
@@ -1757,6 +1898,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
     className: BoolInputField
+  - hash:
+      serializedVersion: 2
+      Hash: c677a7e9a19a8480f11c40cde2697dad
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AnchorModuleScript
   - hash:
       serializedVersion: 2
       Hash: 0e65845dc5a77219527fa80a7c3f4344
@@ -2005,6 +2152,12 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
+      Hash: 22429cc6839727c283a282a7549e2284
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InstructionsHideShow
+  - hash:
+      serializedVersion: 2
       Hash: c03819a53c1609aec5276e3f3bd7c621
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.UI
@@ -2179,6 +2332,12 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Scripts.WorldLocking
+    className: ActionCube
+  - hash:
+      serializedVersion: 2
       Hash: 5a310ca58879836f931041e3dd9f22ae
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.UI
@@ -2189,6 +2348,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 0b84cfd6d31ee54569eb82fbffbebb0a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: PhotonUser
   - hash:
       serializedVersion: 2
       Hash: 984b8e5de45c7babb87e178a03421117
@@ -2219,6 +2384,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Settings
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TargetInstructions
   - hash:
       serializedVersion: 2
       Hash: 290afc8da8e459e0b8dc7444bfaf5e35
@@ -2264,6 +2435,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: OwnershipHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.XR.ARFoundation.dll
     namespaceName: UnityEngine.XR.ARFoundation
     className: ARPointCloudParticleVisualizer
@@ -2293,6 +2470,12 @@ ScriptsOnlyBuild:
     className: TeleportCursor
   - hash:
       serializedVersion: 2
+      Hash: 9027a8e9922a66033d825eb7201f822c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: RouteParent
+  - hash:
+      serializedVersion: 2
       Hash: 352b1e7882a0f6bbdd6acd44da3e50ed
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.UI
@@ -2303,6 +2486,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Experimental.UI
     className: MRTKUGUIInputField
+  - hash:
+      serializedVersion: 2
+      Hash: 030171e5dbb514fe91f841796837b97d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Scripts.WorldLocking
+    className: ActionPublish
   - hash:
       serializedVersion: 2
       Hash: 01473135d671a71d740e507b04eb93da
@@ -2581,6 +2770,18 @@ ScriptsOnlyBuild:
     className: RemoteInputPlayerConnection
   - hash:
       serializedVersion: 2
+      Hash: 352562fd641bd8bf793aa5b24fda9265
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MRTK.Tutorials.AzureSpatialAnchors
+    className: DebugWindow
+  - hash:
+      serializedVersion: 2
+      Hash: e0aab1c6d887026b1fa42456c175d49b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Scripts
+    className: ScrollRouteMenuPopulator
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Procedural
@@ -2707,6 +2908,12 @@ ScriptsOnlyBuild:
     className: FrozenTapToAdd
   - hash:
       serializedVersion: 2
+      Hash: 352fe41484f5b92936014615cf45ce28
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: GenericNetSync
+  - hash:
+      serializedVersion: 2
       Hash: e80cf4684910fdd7f091d85a19a93603
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.SlotRacer
@@ -2771,6 +2978,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Experimental.Physics
     className: ElasticsManager
+  - hash:
+      serializedVersion: 2
+      Hash: 122ef40a77a9ca3a719ba16e2b108de6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: OnHoldMove
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -2891,6 +3104,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Input
     className: ControllerPoseSynchronizer
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Resources.Scripts.WorldLocking
+    className: Startup
   - hash:
       serializedVersion: 2
       Hash: e779c980c14c2899fb0e40e342de293e
@@ -3067,6 +3286,12 @@ ScriptsOnlyBuild:
     className: TeleportSystemManager
   - hash:
       serializedVersion: 2
+      Hash: 27a8a51474249d296ebcfb4131366706
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Scripts
+    className: TCPClient
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Microsoft.MixedReality.WorldLocking.Core.dll
     namespaceName: Microsoft.MixedReality.WorldLocking.Core
@@ -3089,6 +3314,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.WorldLocking.Core.dll
     namespaceName: Microsoft.MixedReality.WorldLocking.Core
     className: SpacePinOrientable
+  - hash:
+      serializedVersion: 2
+      Hash: 8830f4435562886a7d68180ea1717efc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.WorldLocking.ASA
+    className: SpacePinPublisherASA
   - hash:
       serializedVersion: 2
       Hash: 4dd2133de94ad312da64aef070c85386
@@ -3149,6 +3380,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.ARFoundation.dll
     namespaceName: UnityEngine.XR.ARFoundation
     className: ARCameraManager
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: PlayerNameInputField
   - hash:
       serializedVersion: 2
       Hash: de133f360f12587ef0d9c7727019eda1
@@ -3221,6 +3458,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.UI
     className: InteractableHighlight
+  - hash:
+      serializedVersion: 2
+      Hash: e4fc600abf2ebf863830251b5e0b006d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Scripts
+    className: RouteManipulator
   - hash:
       serializedVersion: 2
       Hash: 85f0579639f71c6ea8c09a9c35c2c65c
@@ -3301,6 +3544,12 @@ ScriptsOnlyBuild:
     className: SupportLogger
   - hash:
       serializedVersion: 2
+      Hash: 97ec330e47e6d576e89b991ca60a616e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Scripts.WorldLocking
+    className: SpacePinBinder
+  - hash:
+      serializedVersion: 2
       Hash: 8bb99954ad60ced3debe38a0801108b2
     assemblyName: Microsoft.MixedReality.Toolkit.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Utilities
@@ -3337,6 +3586,12 @@ ScriptsOnlyBuild:
     className: PhotonAnimatorView
   - hash:
       serializedVersion: 2
+      Hash: b0504ca67ffe9021514dcaffcf4be719
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScrollHoldMenuHideShow
+  - hash:
+      serializedVersion: 2
       Hash: 5dea360fb0b147724ac344e6f399c2f3
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -3367,6 +3622,12 @@ ScriptsOnlyBuild:
     className: AlignSubtree
   - hash:
       serializedVersion: 2
+      Hash: 498fc13f55a876c44326f76f5a9419be
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: PhotonRoom
+  - hash:
+      serializedVersion: 2
       Hash: c830298313325817e63856692edb07e9
     assemblyName: Microsoft.MixedReality.WorldLocking.Tools.dll
     namespaceName: Microsoft.MixedReality.WorldLocking.Tools
@@ -3395,6 +3656,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.ARFoundation.dll
     namespaceName: UnityEngine.XR.ARFoundation
     className: ARPointCloudManager
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: SurfaceMagnetismHelpers
   - hash:
       serializedVersion: 2
       Hash: 3e4b9af7f8913b46ffaf397e1dc6657b
@@ -3529,10 +3796,22 @@ ScriptsOnlyBuild:
     className: SliderSounds
   - hash:
       serializedVersion: 2
+      Hash: 69209b026d2e83e575451e205911d42c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GlobalRouteParent
+  - hash:
+      serializedVersion: 2
       Hash: 3fdcbc807216464c7e20ef4ea44c75b6
     assemblyName: Microsoft.MixedReality.Toolkit.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Utilities
     className: ClippingSphere
+  - hash:
+      serializedVersion: 2
+      Hash: bf7eb1b330de549005f0442c6ba87b80
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MenuHideShow
   - hash:
       serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
@@ -3739,10 +4018,22 @@ ScriptsOnlyBuild:
     className: AudioPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: ab06f9a5a46f975f8a14e6800a766ff7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CustomTag
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Hub
     className: ToDemoHubButton
+  - hash:
+      serializedVersion: 2
+      Hash: 3dc6c887038c2968e27c5bcb45f19b28
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: FrameVisual
   - hash:
       serializedVersion: 2
       Hash: 88571ec7fccb00b41eb3574cfd660a9a
@@ -3854,9 +4145,21 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MeshControls
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
     className: AutoSyncSceneToggle
+  - hash:
+      serializedVersion: 2
+      Hash: 88ea438f479cfea6df8e2e7d9add1143
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: GenericNetworkManager
   - hash:
       serializedVersion: 2
       Hash: e570052b21f077fcf1509590022416b4
@@ -3953,6 +4256,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
     className: CurrentRoomExpectedUsersProperty
+  - hash:
+      serializedVersion: 2
+      Hash: ea044a3d31038457e6a214dae270881d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Scripts
+    className: HoldManipulator
   - hash:
       serializedVersion: 2
       Hash: e1c35cdce946e9da77fe80a39c261608
@@ -4079,6 +4388,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: MRTK.Tutorials.MultiUserCapabilities
     className: SharingModuleScript
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MRTK.Tutorials.AzureSpatialAnchors
+    className: DisableDiagnosticsSystem
   - hash:
       serializedVersion: 2
       Hash: 6d6d79f338a6fcb215fd4fda00d7c769
@@ -4429,6 +4744,12 @@ ScriptsOnlyBuild:
     className: AppVersionProperty
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: PhotonLobby
+  - hash:
+      serializedVersion: 2
       Hash: 88ea438f479cfea6df8e2e7d9add1143
     assemblyName: Assembly-CSharp.dll
     namespaceName: MRTK.Tutorials.MultiUserCapabilities
@@ -4439,6 +4760,12 @@ ScriptsOnlyBuild:
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.Utilities.Solvers
     className: Follow
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: RouteParentName
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -4507,6 +4834,12 @@ ScriptsOnlyBuild:
     className: SendRateField
   - hash:
       serializedVersion: 2
+      Hash: 122ef40a77a9ca3a719ba16e2b108de6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: MultiUserCapabilities
+    className: OnRouteParentHover
+  - hash:
+      serializedVersion: 2
       Hash: 42ed513ee08336d160b311a052287515
     assemblyName: Microsoft.MixedReality.Toolkit.SDK.dll
     namespaceName: Microsoft.MixedReality.Toolkit.UI
@@ -4547,241 +4880,7 @@ ScriptsOnlyBuild:
     assemblyName: AzureSpatialAnchors.SDK.Core.Runtime.dll
     namespaceName: Microsoft.Azure.SpatialAnchors.Unity
     className: CloudNativeAnchor
-  - hash:
-      serializedVersion: 2
-      Hash: c677a7e9a19a8480f11c40cde2697dad
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: AnchorModuleScript
-  - hash:
-      serializedVersion: 2
-      Hash: 352562fd641bd8bf793aa5b24fda9265
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: MRTK.Tutorials.AzureSpatialAnchors
-    className: DebugWindow
-  - hash:
-      serializedVersion: 2
-      Hash: d660938061d2023d238feee261aa0e06
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: AnchorFeedbackScript
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: MRTK.Tutorials.AzureSpatialAnchors
-    className: DisableDiagnosticsSystem
-  - hash:
-      serializedVersion: 2
-      Hash: 47930f3b40e24ef5b3b5e3d9ada7097a
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: Benchmark01
-  - hash:
-      serializedVersion: 2
-      Hash: fe1fdeffc2067077b2f1a90b210c2532
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DropdownSample
-  - hash:
-      serializedVersion: 2
-      Hash: e63944317d2f5958e31963668bb29158
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: VertexShakeB
-  - hash:
-      serializedVersion: 2
-      Hash: 62fef86270a167c41a606cfca1ecc156
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: ShaderPropAnimator
-  - hash:
-      serializedVersion: 2
-      Hash: 8b1fe5dfdcf943fb3b72506b9f19335f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: EnvMapAnimator
-  - hash:
-      serializedVersion: 2
-      Hash: 0784d4fd5b93bd75440d01eb2fac4233
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: VertexShakeA
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro
-    className: TMP_DigitValidator
-  - hash:
-      serializedVersion: 2
-      Hash: b6514f552bd2ee9e736a5678aa7f7de3
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TMP_TextInfoDebugTool
-  - hash:
-      serializedVersion: 2
-      Hash: 8a874a8207a7664bdf44e61f28717254
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: SkewTextExample
-  - hash:
-      serializedVersion: 2
-      Hash: 3375c3d749f8f4cad889721b431bdc27
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: CameraController
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TeleType
-  - hash:
-      serializedVersion: 2
-      Hash: e244702e0dc05782229aa524e4d757f5
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TMP_ExampleScript_01
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro
-    className: TMP_PhoneNumberValidator
-  - hash:
-      serializedVersion: 2
-      Hash: bd3f0ca738703903e759f77536ed74fd
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TMP_FrameRateCounter
-  - hash:
-      serializedVersion: 2
-      Hash: 2c0a467ee7950c941c2dd8ef6b974a7e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ChatController
-  - hash:
-      serializedVersion: 2
-      Hash: dd7520b7d4e690e8c593273e7b9fbe80
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TMP_TextEventCheck
-  - hash:
-      serializedVersion: 2
-      Hash: bd3f0ca738703903e759f77536ed74fd
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TMP_UiFrameRateCounter
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TMP_TextSelector_A
-  - hash:
-      serializedVersion: 2
-      Hash: e6f0efd0e20669d577e9d21526b3d3f9
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: WarpTextExample
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TextConsoleSimulator
-  - hash:
-      serializedVersion: 2
-      Hash: 27e5341178f188b89bdc6495710b590c
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: Benchmark01_UGUI
-  - hash:
-      serializedVersion: 2
-      Hash: a1ca1237bad0f30ea5ba8f4060929114
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TMP_TextSelector_B
-  - hash:
-      serializedVersion: 2
-      Hash: 6663435805926faf16934aed992cd26b
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: Benchmark03
-  - hash:
-      serializedVersion: 2
-      Hash: e80c1450883443c68d6c2dade213536f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TMPro_InstructionOverlay
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: VertexColorCycler
-  - hash:
-      serializedVersion: 2
-      Hash: e63944317d2f5958e31963668bb29158
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: VertexJitter
-  - hash:
-      serializedVersion: 2
-      Hash: fe2d355deb0ca31d59a0a7cf4d141fc3
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: Benchmark04
-  - hash:
-      serializedVersion: 2
-      Hash: 7536c3aaa3b668b80f1580147a12d30d
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TextMeshProFloatingText
-  - hash:
-      serializedVersion: 2
-      Hash: 4d16cfbaa8e821a2b370e80844a0e9bc
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: TextMeshSpawner
-  - hash:
-      serializedVersion: 2
-      Hash: 4e516d6d64d44446989426b8f725c6f8
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro
-    className: TMP_TextEventHandler
-  - hash:
-      serializedVersion: 2
-      Hash: 4f60ff347d4efee4ef8cc7f627735018
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: Benchmark02
-  - hash:
-      serializedVersion: 2
-      Hash: 11319334e5365797f8056694f9b5dae4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: ObjectSpin
-  - hash:
-      serializedVersion: 2
-      Hash: e63944317d2f5958e31963668bb29158
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: VertexZoom
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: TMPro.Examples
-    className: SimpleScript
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: OwnershipHandler
   platform: 21
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
+  - Assets/Scenes/main.unity
   playerPath: C:/Users/johnd/ar_final_project/Builds

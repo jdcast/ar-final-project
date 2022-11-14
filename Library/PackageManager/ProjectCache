@@ -4636,6 +4636,7 @@ m_PackageAssets:
         - 4.1.9
         - 4.1.10
         - 4.1.12
+        - 4.1.13
         - 4.2.0-pre.2
         - 4.2.0-pre.3
         - 4.2.0-pre.4
@@ -4650,6 +4651,7 @@ m_PackageAssets:
         - 4.2.2
         - 4.2.3
         - 4.2.6
+        - 4.2.7
         - 5.0.0-pre.5
         - 5.0.0-pre.6
         - 5.0.0-pre.7
@@ -4659,6 +4661,7 @@ m_PackageAssets:
         - 5.0.0-pre.13
         - 5.0.2
         - 5.1.0-pre.1
+        - 5.1.0-pre.2
         compatible:
         - 1.0.0-preview.12
         - 1.0.0-preview.13
@@ -4729,6 +4732,7 @@ m_PackageAssets:
         - 4.1.9
         - 4.1.10
         - 4.1.12
+        - 4.1.13
         - 4.2.0-pre.2
         - 4.2.0-pre.3
         - 4.2.0-pre.4
@@ -4743,7 +4747,8 @@ m_PackageAssets:
         - 4.2.2
         - 4.2.3
         - 4.2.6
-        verified: 4.1.12
+        - 4.2.7
+        verified: 4.1.13
       dependencies:
       - name: com.unity.xr.arsubsystems
         version: 4.1.7
@@ -4948,7 +4953,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 
-      type: 
+      type: asset
       description: Contains definitions for AR Subsystems. This package is a dependency
         of provider packages, as well as AR Foundation.
       status: 4
@@ -5010,6 +5015,7 @@ m_PackageAssets:
         - 4.1.9
         - 4.1.10
         - 4.1.12
+        - 4.1.13
         - 4.2.0-pre.2
         - 4.2.0-pre.3
         - 4.2.0-pre.4
@@ -5024,6 +5030,7 @@ m_PackageAssets:
         - 4.2.2
         - 4.2.3
         - 4.2.6
+        - 4.2.7
         - 5.0.0-pre.5
         - 5.0.0-pre.6
         - 5.0.0-pre.7
@@ -5035,6 +5042,7 @@ m_PackageAssets:
         compatible:
         - 4.1.10
         - 4.1.12
+        - 4.1.13
         - 4.2.0-pre.2
         - 4.2.0-pre.3
         - 4.2.0-pre.4
@@ -5049,7 +5057,8 @@ m_PackageAssets:
         - 4.2.2
         - 4.2.3
         - 4.2.6
-        verified: 4.1.12
+        - 4.2.7
+        verified: 4.1.13
       dependencies:
       - name: com.unity.subsystemregistration
         version: 1.1.0
@@ -5072,7 +5081,7 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0

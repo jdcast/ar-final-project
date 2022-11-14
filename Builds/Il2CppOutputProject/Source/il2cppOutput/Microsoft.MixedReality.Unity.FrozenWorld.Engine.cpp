@@ -825,6 +825,44 @@ public:
 	}
 };
 
+
+// Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Support
+struct FrozenWorld_Support_t642466214BF4D10189050DC50AC2087FC15DD86E 
+{
+public:
+	// Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_AttachmentPoint Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Support::attachmentPoint
+	FrozenWorld_AttachmentPoint_t9CFC25078C6DC48E1E0B632B7D2F754B23B7A057  ___attachmentPoint_0;
+	// System.Single Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Support::relevance
+	float ___relevance_1;
+	// System.Single Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Support::tightness
+	float ___tightness_2;
+
+public:
+	inline static int32_t get_offset_of_attachmentPoint_0() { return static_cast<int32_t>(offsetof(FrozenWorld_Support_t642466214BF4D10189050DC50AC2087FC15DD86E, ___attachmentPoint_0)); }
+	inline FrozenWorld_AttachmentPoint_t9CFC25078C6DC48E1E0B632B7D2F754B23B7A057  get_attachmentPoint_0() const { return ___attachmentPoint_0; }
+	inline FrozenWorld_AttachmentPoint_t9CFC25078C6DC48E1E0B632B7D2F754B23B7A057 * get_address_of_attachmentPoint_0() { return &___attachmentPoint_0; }
+	inline void set_attachmentPoint_0(FrozenWorld_AttachmentPoint_t9CFC25078C6DC48E1E0B632B7D2F754B23B7A057  value)
+	{
+		___attachmentPoint_0 = value;
+	}
+
+	inline static int32_t get_offset_of_relevance_1() { return static_cast<int32_t>(offsetof(FrozenWorld_Support_t642466214BF4D10189050DC50AC2087FC15DD86E, ___relevance_1)); }
+	inline float get_relevance_1() const { return ___relevance_1; }
+	inline float* get_address_of_relevance_1() { return &___relevance_1; }
+	inline void set_relevance_1(float value)
+	{
+		___relevance_1 = value;
+	}
+
+	inline static int32_t get_offset_of_tightness_2() { return static_cast<int32_t>(offsetof(FrozenWorld_Support_t642466214BF4D10189050DC50AC2087FC15DD86E, ___tightness_2)); }
+	inline float get_tightness_2() const { return ___tightness_2; }
+	inline float* get_address_of_tightness_2() { return &___tightness_2; }
+	inline void set_tightness_2(float value)
+	{
+		___tightness_2 = value;
+	}
+};
+
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
@@ -854,6 +892,12 @@ IL2CPP_EXTERN_C int32_t DEFAULT_CALL FrozenWorld_Step_GatherSupports();
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
 IL2CPP_EXTERN_C void DEFAULT_CALL FrozenWorld_Step_AlignSupports();
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
+IL2CPP_EXTERN_C int32_t DEFAULT_CALL FrozenWorld_GetNumSupports();
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
+IL2CPP_EXTERN_C int32_t DEFAULT_CALL FrozenWorld_GetSupports(int32_t, FrozenWorld_Support_t642466214BF4D10189050DC50AC2087FC15DD86E *);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
 IL2CPP_EXTERN_C void DEFAULT_CALL FrozenWorld_GetHead(int32_t, FrozenWorld_Vector_tACCFB903329A72D01288999DBB0B8C09D6DC8B45 *, FrozenWorld_Vector_tACCFB903329A72D01288999DBB0B8C09D6DC8B45 *, FrozenWorld_Vector_tACCFB903329A72D01288999DBB0B8C09D6DC8B45 *);
@@ -890,6 +934,9 @@ IL2CPP_EXTERN_C void DEFAULT_CALL FrozenWorld_ClearAnchors(int32_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
 IL2CPP_EXTERN_C int32_t DEFAULT_CALL FrozenWorld_GetNumEdges(int32_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
+IL2CPP_EXTERN_C int32_t DEFAULT_CALL FrozenWorld_GetEdges(int32_t, int32_t, FrozenWorld_Edge_t7032053CA58162B69CE92E72AE1EAC141FE28073 *);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
 IL2CPP_EXTERN_C void DEFAULT_CALL FrozenWorld_AddEdges(int32_t, int32_t, FrozenWorld_Edge_t7032053CA58162B69CE92E72AE1EAC141FE28073 *);
@@ -1162,6 +1209,52 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Engine_FrozenWorld_Step_AlignSupports_m0
 	#endif
 
 }
+// System.Int32 Microsoft.MixedReality.FrozenWorld.Engine.Engine::FrozenWorld_GetNumSupports()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Engine_FrozenWorld_GetNumSupports_m014CFF3A223B2CDAD4236E88597300FBD7AF765F (const RuntimeMethod* method)
+{
+	typedef int32_t (DEFAULT_CALL *PInvokeFunc) ();
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = 0;
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("FrozenWorldPlugin"), "FrozenWorld_GetNumSupports", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(FrozenWorld_GetNumSupports)();
+	#else
+	int32_t returnValue = il2cppPInvokeFunc();
+	#endif
+
+	return returnValue;
+}
+// System.Int32 Microsoft.MixedReality.FrozenWorld.Engine.Engine::FrozenWorld_GetSupports(System.Int32,Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Support*)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Engine_FrozenWorld_GetSupports_m2695AE6FFB58DE23F4F6BD96EAE3BC23B9863E89 (int32_t ___supportsBufferSize0, FrozenWorld_Support_t642466214BF4D10189050DC50AC2087FC15DD86E * ___supportsOut1, const RuntimeMethod* method)
+{
+	typedef int32_t (DEFAULT_CALL *PInvokeFunc) (int32_t, FrozenWorld_Support_t642466214BF4D10189050DC50AC2087FC15DD86E *);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(int32_t) + sizeof(FrozenWorld_Support_t642466214BF4D10189050DC50AC2087FC15DD86E *);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("FrozenWorldPlugin"), "FrozenWorld_GetSupports", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(FrozenWorld_GetSupports)(___supportsBufferSize0, ___supportsOut1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___supportsBufferSize0, ___supportsOut1);
+	#endif
+
+	return returnValue;
+}
 // System.Void Microsoft.MixedReality.FrozenWorld.Engine.Engine::FrozenWorld_GetHead(Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Snapshot,Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Vector*,Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Vector*,Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Vector*)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Engine_FrozenWorld_GetHead_m3807D05FED6DE1E68F13697F6A66BAC079F97377 (int32_t ___snapshot0, FrozenWorld_Vector_tACCFB903329A72D01288999DBB0B8C09D6DC8B45 * ___headPositionOut1, FrozenWorld_Vector_tACCFB903329A72D01288999DBB0B8C09D6DC8B45 * ___headDirectionForwardOut2, FrozenWorld_Vector_tACCFB903329A72D01288999DBB0B8C09D6DC8B45 * ___headDirectionUpOut3, const RuntimeMethod* method)
 {
@@ -1426,6 +1519,29 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Engine_FrozenWorld_GetNumEdges_mF0354
 	int32_t returnValue = reinterpret_cast<PInvokeFunc>(FrozenWorld_GetNumEdges)(___snapshot0);
 	#else
 	int32_t returnValue = il2cppPInvokeFunc(___snapshot0);
+	#endif
+
+	return returnValue;
+}
+// System.Int32 Microsoft.MixedReality.FrozenWorld.Engine.Engine::FrozenWorld_GetEdges(Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Snapshot,System.Int32,Microsoft.MixedReality.FrozenWorld.Engine.Engine/FrozenWorld_Edge*)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Engine_FrozenWorld_GetEdges_m0BC264CA8BAA3195CDD7642ED7BD83FFA802DE4C (int32_t ___snapshot0, int32_t ___edgesBufferSize1, FrozenWorld_Edge_t7032053CA58162B69CE92E72AE1EAC141FE28073 * ___edgesOut2, const RuntimeMethod* method)
+{
+	typedef int32_t (DEFAULT_CALL *PInvokeFunc) (int32_t, int32_t, FrozenWorld_Edge_t7032053CA58162B69CE92E72AE1EAC141FE28073 *);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(int32_t) + sizeof(int32_t) + sizeof(FrozenWorld_Edge_t7032053CA58162B69CE92E72AE1EAC141FE28073 *);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("FrozenWorldPlugin"), "FrozenWorld_GetEdges", IL2CPP_CALL_DEFAULT, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_FrozenWorldPlugin_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(FrozenWorld_GetEdges)(___snapshot0, ___edgesBufferSize1, ___edgesOut2);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___snapshot0, ___edgesBufferSize1, ___edgesOut2);
 	#endif
 
 	return returnValue;
@@ -2341,6 +2457,14 @@ IL2CPP_EXTERN_C void FrozenWorld_Serialize_Stream_tE01419B3FEE2C5351B5C4FE4E00E7
 IL2CPP_EXTERN_C void FrozenWorld_Serialize_Stream_tE01419B3FEE2C5351B5C4FE4E00E727D94131673_marshal_com_cleanup(FrozenWorld_Serialize_Stream_tE01419B3FEE2C5351B5C4FE4E00E727D94131673_marshaled_com& marshaled)
 {
 }
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif

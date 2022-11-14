@@ -51,8 +51,10 @@ IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Microsoft_MixedReality_Toolkit_Servi
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Microsoft_MixedReality_Toolkit_Services_SpatialAwarenessSystem_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Microsoft_MixedReality_Toolkit_Services_TeleportSystem_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Microsoft_MixedReality_Unity_FrozenWorld_Engine_CodeGenModule;
+IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Microsoft_MixedReality_WorldLocking_ASA_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Microsoft_MixedReality_WorldLocking_Core_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Microsoft_MixedReality_WorldLocking_Engine_CodeGenModule;
+IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Microsoft_MixedReality_WorldLocking_Tools_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Mono_Security_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_Photon3Unity3D_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_PhotonChat_CodeGenModule;
@@ -124,7 +126,7 @@ IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_WindowsRuntimeMetadata_CodeGenModule
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_mscorlib_CodeGenModule;
 IL2CPP_EXTERN_C_CONST Il2CppCodeGenModule g_netstandard_CodeGenModule;
 IL2CPP_EXTERN_C const Il2CppCodeGenModule* g_CodeGenModules[];
-const Il2CppCodeGenModule* g_CodeGenModules[105] = 
+const Il2CppCodeGenModule* g_CodeGenModules[107] = 
 {
 	(&g_AssemblyU2DCSharp_CodeGenModule),
 	(&g_AzureSpatialAnchors_SDK_Core_Runtime_CodeGenModule),
@@ -159,8 +161,10 @@ const Il2CppCodeGenModule* g_CodeGenModules[105] =
 	(&g_Microsoft_MixedReality_Toolkit_Services_SpatialAwarenessSystem_CodeGenModule),
 	(&g_Microsoft_MixedReality_Toolkit_Services_TeleportSystem_CodeGenModule),
 	(&g_Microsoft_MixedReality_Unity_FrozenWorld_Engine_CodeGenModule),
+	(&g_Microsoft_MixedReality_WorldLocking_ASA_CodeGenModule),
 	(&g_Microsoft_MixedReality_WorldLocking_Core_CodeGenModule),
 	(&g_Microsoft_MixedReality_WorldLocking_Engine_CodeGenModule),
+	(&g_Microsoft_MixedReality_WorldLocking_Tools_CodeGenModule),
 	(&g_Mono_Security_CodeGenModule),
 	(&g_Photon3Unity3D_CodeGenModule),
 	(&g_PhotonChat_CodeGenModule),
@@ -235,20 +239,20 @@ const Il2CppCodeGenModule* g_CodeGenModules[105] =
 IL2CPP_EXTERN_C const Il2CppCodeRegistration g_CodeRegistration;
 const Il2CppCodeRegistration g_CodeRegistration = 
 {
-	20,
+	22,
 	g_ReversePInvokeWrapperPointers,
-	55891,
+	61631,
 	g_Il2CppGenericMethodPointers,
 	g_Il2CppGenericAdjustorThunks,
-	8787,
+	9791,
 	g_Il2CppInvokerPointers,
-	2129,
+	2361,
 	g_UnresolvedVirtualMethodPointers,
-	8718,
+	9353,
 	g_Il2CppInteropData,
 	0,
 	NULL,
-	105,
+	107,
 	g_CodeGenModules,
 };
 IL2CPP_EXTERN_C_CONST Il2CppMetadataRegistration g_MetadataRegistration;

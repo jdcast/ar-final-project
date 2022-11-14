@@ -33,6 +33,17 @@ struct VirtActionInvoker2
 		((Action)invokeData.methodPtr)(obj, p1, p2, invokeData.method);
 	}
 };
+template <typename R, typename T1>
+struct VirtFuncInvoker1
+{
+	typedef R (*Func)(void*, T1, const RuntimeMethod*);
+
+	static inline R Invoke (Il2CppMethodSlot slot, RuntimeObject* obj, T1 p1)
+	{
+		const VirtualInvokeData& invokeData = il2cpp_codegen_get_virtual_invoke_data(slot, obj);
+		return ((Func)invokeData.methodPtr)(obj, p1, invokeData.method);
+	}
+};
 template <typename T1>
 struct GenericVirtActionInvoker1
 {
@@ -139,6 +150,10 @@ struct GenericInterfaceActionInvoker2
 
 // System.Action`1<System.Object>
 struct Action_1_tD9663D9715FAA4E62035CFCF1AD4D094EE7872DC;
+// Microsoft.Azure.SpatialAnchors.BasePrivateDictionary`2<System.Object,System.Object>
+struct BasePrivateDictionary_2_t72060365414E4F79C9A16009219742B61E689A78;
+// Microsoft.Azure.SpatialAnchors.BasePrivateDictionary`2<System.String,System.String>
+struct BasePrivateDictionary_2_t5CD4241164281D4CAE683213159E8C584C401F50;
 // System.Collections.Generic.Dictionary`2<System.Int32,System.Threading.Tasks.Task>
 struct Dictionary_2_tB758E2A2593CD827EFC041BE1F1BB4B68DE1C3E8;
 // System.Collections.Generic.Dictionary`2<System.Object,System.Object>
@@ -175,10 +190,14 @@ struct Func_2_t9173C664F17FE69E2BF2A3582D0FD6BEFC79F122;
 struct Func_2_t7DA716707F86A91D0BB4761EA5CFC0EAFEBD3708;
 // System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.LocateAnchorsCompletedEventArgs>
 struct Func_2_t606AC356509F0321020741ADB70158C6D4C623A7;
+// System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.NearDeviceCriteria>
+struct Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9;
 // System.Func`2<System.UInt64,System.Object>
 struct Func_2_t0B6A86D0941C273E5216BB4738FC4442AA4A8DE2;
 // System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs>
 struct Func_2_tC36BDCB052752E38E0877B5EB949FAC6E55F6A99;
+// System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.SensorCapabilities>
+struct Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893;
 // System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.SensorFingerprintEventArgs>
 struct Func_2_t6C92B3B82522DACA8350CA11F736A87673325534;
 // System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.SessionConfiguration>
@@ -193,6 +212,8 @@ struct Func_2_tC312BE0881F4EEA05C6AAB659E33240A8B7D26DA;
 struct Func_2_t359D7CEB12F816C2161099A37BC8F3CB4A5BBA23;
 // System.Collections.Generic.IDictionary`2<System.String,System.Delegate>
 struct IDictionary_2_tBEB13C0046CFA03C8FF979A27DEEEA9C56570385;
+// System.Collections.Generic.IDictionary`2<System.String,System.String>
+struct IDictionary_2_tA1998BD309D36A531FCABB9A6BE08237AEB22560;
 // System.Collections.Generic.IDictionary`2<System.UInt64,System.Collections.Generic.IDictionary`2<System.String,System.Delegate>>
 struct IDictionary_2_t22F02A503FC2B8ADFC4383C57DF812675C1079AB;
 // System.Collections.Generic.IEnumerable`1<Microsoft.Azure.SpatialAnchors.CloudSpatialAnchorWatcher>
@@ -253,6 +274,8 @@ struct EntryU5BU5D_tD7FCDD66A48A28C1990072180391BBA2D830A0D9;
 struct EntryU5BU5D_t24B64CB6EDFD33F9BC29503EDA89C315D8FB0AC7;
 // System.Collections.Generic.Dictionary`2/Entry<System.UInt64,System.WeakReference`1<Microsoft.Azure.SpatialAnchors.ICachedObject>>[]
 struct EntryU5BU5D_t8BE19AB1ED7ACB7FF55726B461DAC513DCCBEA4A;
+// System.Byte[]
+struct ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726;
 // System.Char[]
 struct CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34;
 // Microsoft.Azure.SpatialAnchors.CloudSpatialAnchorWatcher[]
@@ -263,6 +286,8 @@ struct DelegateU5BU5D_t677D8FE08A5F99E8EE49150B73966CD6E9BF7DB8;
 struct Int32U5BU5D_t70F1BDC14B1786481B176D6139A5E3B87DC54C32;
 // System.IntPtr[]
 struct IntPtrU5BU5D_t27FC72B0409D75AAF33EC42498E8094E95FEE9A6;
+// System.Object[]
+struct ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE;
 // System.Diagnostics.StackTrace[]
 struct StackTraceU5BU5D_t4AD999C288CB6D1F38A299D12B1598D606588971;
 // System.String[]
@@ -295,16 +320,26 @@ struct CloudSpatialAnchorSessionDeferral_t7629B303DC7F9C6160BC7C24F3DAB627BC9190
 struct CloudSpatialAnchorWatcher_t1084A2771602AA403BF855F4917F9D5F452C61D9;
 // Microsoft.Azure.SpatialAnchors.CloudSpatialException
 struct CloudSpatialException_t0D51F010B5D03F5317C347AC2735D2039C2215B4;
+// System.Globalization.CodePageDataItem
+struct CodePageDataItem_t09A62F57142BF0456C8F414898A37E79BCC9F09E;
 // System.Threading.ContextCallback
 struct ContextCallback_t93707E0430F4FF3E15E1FB5A4844BE89C657AE8B;
+// System.Text.DecoderFallback
+struct DecoderFallback_tF86D337D6576E81E5DA285E5673183EBC66DEF8D;
 // System.Delegate
 struct Delegate_t;
 // System.DelegateData
 struct DelegateData_t17DD30660E330C49381DAA99F934BE75CB11F288;
+// System.Text.EncoderFallback
+struct EncoderFallback_t02AC990075E17EB09F0D7E4831C3B3F264025CC4;
+// System.Text.Encoding
+struct Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827;
 // System.EventArgs
 struct EventArgs_tBCAACA538A5195B6D6C8DFCC3524A2A4A67FD8BA;
 // System.Exception
 struct Exception_t;
+// System.Collections.Hashtable
+struct Hashtable_t7565AB92A12227AD5BADD6911F10D87EE52509AC;
 // System.IAsyncResult
 struct IAsyncResult_tC9F97BF36FCF122D29D3101D80642278297BF370;
 // System.Runtime.CompilerServices.IAsyncStateMachine
@@ -313,6 +348,8 @@ struct IAsyncStateMachine_tAE063F84A60E1058FCA4E3EA9F555D3462641F7D;
 struct ICachedObject_t248A56B70CD8E8780735301C7BBA18780898C084;
 // System.Collections.IDictionary
 struct IDictionary_t99871C56B8EC2452AC5C4CF3831695E617B89D3A;
+// Microsoft.Azure.SpatialAnchors.IDictionary_String_String
+struct IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409;
 // System.InvalidOperationException
 struct InvalidOperationException_t10D3EE59AD28EC641ACEE05BCA4271A527E5ECAB;
 // System.Collections.Generic.KeyNotFoundException
@@ -325,6 +362,10 @@ struct LocateAnchorsCompletedDelegateNative_t40A008455ADD140F0F4766A1A3BF1572B04
 struct LocateAnchorsCompletedEventArgs_tA2B0431641D3164E78909D0F0CA77DA946732FBD;
 // System.Reflection.MethodInfo
 struct MethodInfo_t;
+// Microsoft.Azure.SpatialAnchors.NearAnchorCriteria
+struct NearAnchorCriteria_t292ADB7FCE0963CC89D65EFF074F791AAC66B27C;
+// Microsoft.Azure.SpatialAnchors.NearDeviceCriteria
+struct NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152;
 // System.NotImplementedException
 struct NotImplementedException_t26260C4EE0444C5FA022994203060B3A42A3ADE6;
 // System.ObjectDisposedException
@@ -337,10 +378,14 @@ struct OnLogDebugDelegateNative_t348C93A689D4E97A6AAADD99C638761B4CC60116;
 struct OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC;
 // System.OutOfMemoryException
 struct OutOfMemoryException_t2671AB315BD130A49A1592BAD0AEE9F2D37667AC;
+// Microsoft.Azure.SpatialAnchors.PlatformLocationProvider
+struct PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574;
 // Microsoft.Azure.SpatialAnchors.ProjectedObjectCleanupNative
 struct ProjectedObjectCleanupNative_tD33DF670D146402E99DDA5C2FD34B099D78E692D;
 // System.Runtime.Serialization.SafeSerializationManager
 struct SafeSerializationManager_tDE44F029589A028F8A3053C5C06153FAB4AAE29F;
+// Microsoft.Azure.SpatialAnchors.SensorCapabilities
+struct SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51;
 // Microsoft.Azure.SpatialAnchors.SensorFingerprintEventArgs
 struct SensorFingerprintEventArgs_tC2D10DC671B9190FD90C8B3E4B9358EEAFDC5461;
 // Microsoft.Azure.SpatialAnchors.SessionConfiguration
@@ -407,8 +452,12 @@ struct U3CU3Ec__DisplayClass7_0_t6D710B66FF5D7620D9E6695A24A571729F95E35C;
 struct U3CU3Ec__DisplayClass9_0_tDD316B9C8A6AB0B68531C8E0E6BAE663F860C7EE;
 // Microsoft.Azure.SpatialAnchors.LocateAnchorsCompletedEventArgs/<>c__DisplayClass10_0
 struct U3CU3Ec__DisplayClass10_0_t1D9AAAB7108C832E5A6B554F8FEA3195DC079BFA;
+// Microsoft.Azure.SpatialAnchors.NearDeviceCriteria/<>c__DisplayClass13_0
+struct U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6;
 // Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs/<>c__DisplayClass8_0
 struct U3CU3Ec__DisplayClass8_0_t94956790EC6A91BD09D913A0222A4296C90DA100;
+// Microsoft.Azure.SpatialAnchors.SensorCapabilities/<>c__DisplayClass18_0
+struct U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D;
 // Microsoft.Azure.SpatialAnchors.SensorFingerprintEventArgs/<>c__DisplayClass9_0
 struct U3CU3Ec__DisplayClass9_0_t0AACFE99D25671299B5A02B6FBD2EDB6B3163623;
 // Microsoft.Azure.SpatialAnchors.SessionConfiguration/<>c__DisplayClass21_0
@@ -432,6 +481,8 @@ IL2CPP_EXTERN_C RuntimeClass* ArgumentNullException_tFB5C4621957BC53A7D1B4FDD5C3
 IL2CPP_EXTERN_C RuntimeClass* ArgumentOutOfRangeException_tFAF23713820951D4A09ABBFE5CC091E445A6F3D8_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* AsyncTaskMethodBuilder_1_t05C0531D7C8C5D8FCE689854EC681A06349E267D_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* AsyncTaskMethodBuilder_t7A010673279CD8726E70047F1D15B3D17C56503B_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* CloudSpatialAnchorSessionDeferral_t7629B303DC7F9C6160BC7C24F3DAB627BC9190CE_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* CloudSpatialAnchorSession_tA71B2460BEFD6D2F80236B2506272152F826ABB0_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* CloudSpatialAnchorWatcher_t1084A2771602AA403BF855F4917F9D5F452C61D9_il2cpp_TypeInfo_var;
@@ -447,6 +498,7 @@ IL2CPP_EXTERN_C RuntimeClass* Func_1_t7F5F5CE8FBF6B91A46321BEF919F3621E2930CCC_i
 IL2CPP_EXTERN_C RuntimeClass* Func_2_t0132CAA8ECB0134AD8847ABD749316EDA3CD628D_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_t2EE24BB42F20BBDCBEC046476DFBE85C3CE3F1FA_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_t359D7CEB12F816C2161099A37BC8F3CB4A5BBA23_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_t606AC356509F0321020741ADB70158C6D4C623A7_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_t6AEC3C63B73410D4676D33BCF9438F695819E713_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_t6C92B3B82522DACA8350CA11F736A87673325534_il2cpp_TypeInfo_var;
@@ -454,18 +506,22 @@ IL2CPP_EXTERN_C RuntimeClass* Func_2_t7DA716707F86A91D0BB4761EA5CFC0EAFEBD3708_i
 IL2CPP_EXTERN_C RuntimeClass* Func_2_t8FE1933A37F67576AB5E9EF5B1BABB97DA126823_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_t9173C664F17FE69E2BF2A3582D0FD6BEFC79F122_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_t92A748E53528B352DBC453E830CD74B9B20E2012_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_tBC2A3FD93BDF864B5D46159C5A7C3409A25EE5D6_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_tC312BE0881F4EEA05C6AAB659E33240A8B7D26DA_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_tC36BDCB052752E38E0877B5EB949FAC6E55F6A99_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Func_2_tCB04D4AE99776F259C11E7905F27217CDB0D68E1_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ICachedObject_t248A56B70CD8E8780735301C7BBA18780898C084_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IDictionary_2_t22F02A503FC2B8ADFC4383C57DF812675C1079AB_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IntPtrU5BU5D_t27FC72B0409D75AAF33EC42498E8094E95FEE9A6_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* IntPtr_t_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* InvalidOperationException_t10D3EE59AD28EC641ACEE05BCA4271A527E5ECAB_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* KeyNotFoundException_t0A3BE653F7FA27DEA1C91C2FB3DAA6C8D0CBB952_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* LocateAnchorsCompletedDelegateNative_t40A008455ADD140F0F4766A1A3BF1572B04CB50E_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* LocateAnchorsCompletedEventArgs_tA2B0431641D3164E78909D0F0CA77DA946732FBD_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* Marshal_tEBAFAE20369FCB1B38C49C4E27A8D8C2C4B55058_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* NotImplementedException_t26260C4EE0444C5FA022994203060B3A42A3ADE6_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ObjectDisposedException_t29EF6F519F16BA477EC682F23E8344BB1E9A958A_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* OnLogDebugDelegateNative_t348C93A689D4E97A6AAADD99C638761B4CC60116_il2cpp_TypeInfo_var;
@@ -474,6 +530,7 @@ IL2CPP_EXTERN_C RuntimeClass* OutOfMemoryException_t2671AB315BD130A49A1592BAD0AE
 IL2CPP_EXTERN_C RuntimeClass* ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ProjectedObjectCleanupNative_tD33DF670D146402E99DDA5C2FD34B099D78E692D_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ProjectedObjectEventHandlerCache_tFC5FB656E9324D85557DC40A7B536C64E45131F9_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* SensorFingerprintEventArgs_tC2D10DC671B9190FD90C8B3E4B9358EEAFDC5461_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* SessionConfiguration_tC4806BD0D5A49DE7C8C0B8FCE3B1B95D8994BEF2_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* SessionErrorDelegateNative_t47E85E2AE4CF26255DB45ADFD6B92629056E1C7B_il2cpp_TypeInfo_var;
@@ -491,9 +548,11 @@ IL2CPP_EXTERN_C RuntimeClass* U3CDeleteAnchorAsyncU3Ed__70_tB21BCADEDC753B224D7E
 IL2CPP_EXTERN_C RuntimeClass* U3CGetSessionStatusAsyncU3Ed__71_t914549CE8BD14F5D3ABB688F2908019576FB827F_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass10_0_t1D9AAAB7108C832E5A6B554F8FEA3195DC079BFA_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass12_0_t2A84C57A38EBA87EF4AFBDA60F4C305ACB930983_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass13_0_tB8E1FA9ABB64AEF9A4501022BF13CE9A993D0367_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass16_0_t46D9D296151442A76E893AD36C1FAE5A37E534F8_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass16_0_tAE15256A9685F843005C0C100540CB11C4D28D6B_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass19_0_t31BA8A192E12B82C22481389EDF3B0FD7866FBFA_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass21_0_t2577C9732938D6F534AA56E7CBCE4A95906BCE71_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CU3Ec__DisplayClass63_0_t585BD7CD4916D1B105AB7A1769A1CD10EC581F30_il2cpp_TypeInfo_var;
@@ -530,6 +589,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteralF3E84B722399601AD7E281754E917478AA9AD48D
 IL2CPP_EXTERN_C String_t* _stringLiteralFFE3A1B73CD7FC81540FBBE737435B0A887629D5;
 IL2CPP_EXTERN_C const RuntimeMethod* AnchorLocateCriteria_ConvertHandleToCookie_mD67A1B3B9FB50EC7589D1EC3AC4854AE7EF7BEF6_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AnchorLocatedEventArgs_ConvertHandleToCookie_m86EBF7A773A591D96FB024216869216EA7F62494_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Array_Empty_TisString_t_m224DA90A7384ACF7EBE2F94D2DFDE2F310D1E77D_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AsyncTaskMethodBuilder_1_AwaitUnsafeOnCompleted_TisTaskAwaiter_1_tFB9A2C6BC00D22C6D7DAC94B7A6A11481ED0DEDE_TisU3CGetSessionStatusAsyncU3Ed__71_t914549CE8BD14F5D3ABB688F2908019576FB827F_m8CC965E61C10A05A9286A3AE72AA708B22FBC64B_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AsyncTaskMethodBuilder_1_Create_m5C5097708E09EB8ADBA7E1B380E6720705B8F4FC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AsyncTaskMethodBuilder_1_SetException_mF8D42ED09B03E8A714020A09EB03891407A125AB_RuntimeMethod_var;
@@ -540,6 +600,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* AsyncTaskMethodBuilder_AwaitUnsafeOnComplet
 IL2CPP_EXTERN_C const RuntimeMethod* AsyncTaskMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t3780D365E9D10C2D6C4E76C78AA0CDF92B8F181C_TisU3CDeleteAnchorAsyncU3Ed__70_tB21BCADEDC753B224D7E3419517D70B6BA05E499_mBDEFB84CEB02266FFC0EEBCB7F25A0C77DB8D6C8_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AsyncTaskMethodBuilder_Start_TisU3CCreateAnchorAsyncU3Ed__63_tDD9D2DD17C7915D1C50AF604D9CCDB1047E9C76A_m044E893A26DC908F4006E6668691865C4233F036_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* AsyncTaskMethodBuilder_Start_TisU3CDeleteAnchorAsyncU3Ed__70_tB21BCADEDC753B224D7E3419517D70B6BA05E499_mDD2FA6DC3B66429D335172D2823713789F4DA630_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* BasePrivateDictionary_2__ctor_m0947CD974AA0A2F5AE5AF0996BE2D414F88B0461_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* CloudSpatialAnchorSessionDeferral_ConvertHandleToCookie_m846D2725AD86F2A2C18B8BC60AA6256437DD9317_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* CloudSpatialAnchorSession_AnchorLocatedStaticHandler_m64E9E6D3AB036F0C861FE8ADCE0533E48FFA1B90_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* CloudSpatialAnchorSession_ConvertHandleToCookie_m4A6FE06BE665D1733D178C36D39FF11EFA55C2E2_RuntimeMethod_var;
@@ -574,13 +635,18 @@ IL2CPP_EXTERN_C const RuntimeMethod* Func_2__ctor_mBDF27FEFC7D9ACF3D733F689B7568
 IL2CPP_EXTERN_C const RuntimeMethod* Func_2__ctor_mCB957C306874787170E137B1177A1ABE4318059D_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Func_2__ctor_mD7B4427A73DC9A7E50F20E9E31E2DF4219450A30_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Func_2__ctor_mDE5D0AFC95B6F8B6D9B5145BCD84FBD45271E0F5_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Func_2__ctor_mE0B0428F617728986F7F17500279A933425FBDCD_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Func_2__ctor_mE6C1D5A3FFC5676FB36FFAFBCEDCB5F8A5874A87_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Func_2__ctor_mEF25C221410DDB0BA4293ECB78897785EC06F52F_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* Func_2__ctor_mF78AC30D13AE05AA3A7198CE9FD575BA62429830_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* List_1_AsReadOnly_m75521C360D663C786FAB301E47742E4C930B5319_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* LocateAnchorsCompletedEventArgs_ConvertHandleToCookie_mF68A301E06E7EBF8526EA817A228FEAAAB9B1BE7_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* NativeLibraryHelpers_CheckStatus_mA83655BEEEA0AC46F4E1D1FB75E2C4AE76A6F748_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* NearAnchorCriteria_ConvertHandleToCookie_m92EDA179A55DF024E6851D1E6776E5A64E7EEE72_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* NearDeviceCriteria_ConvertHandleToCookie_m5B008308B09D6299B86FF47BEEF89A8F18EAD1AD_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* OnLogDebugEventArgs_ConvertHandleToCookie_mD4A274010DCF49CCF609D79BF1486BEDB4F8DBFE_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* PlatformLocationProvider_ConvertHandleToCookie_mB0370D0BB96E47C49043C023A5206CC2C4BF2AA3_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_Add_m3F46CE771938FC3A003F72EFF98F300B2F975187_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisAnchorLocatedEventArgs_t720725E81E3D70A4D051BB6D791FE28B7864C55B_mF803447E3B7C4AE44D721CCBFD6774FD2B65EEBC_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisCloudSpatialAnchorSessionDeferral_t7629B303DC7F9C6160BC7C24F3DAB627BC9190CE_mBC50124E2D984E4EF116613BDA902262E97F9536_RuntimeMethod_var;
@@ -588,7 +654,9 @@ IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisCloudSp
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisCloudSpatialAnchorWatcher_t1084A2771602AA403BF855F4917F9D5F452C61D9_mB78877F2CD617644DA89A7EF64E490E01120C38F_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisCloudSpatialAnchor_t03448002616C4EF52821932C9ACC3DEFA04A8D70_m705BF2C78A940FED131D9071FB663EC85783C546_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisLocateAnchorsCompletedEventArgs_tA2B0431641D3164E78909D0F0CA77DA946732FBD_m5BB6793C9DC42AE2155CF2898DF16BB36D99A930_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisNearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152_m31B58258F032282233490544EB5F4A5EF4860856_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisOnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC_m28B099908D0C83E7492FC04ED7C40CDBFF0BA3D6_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisSensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51_m5162CEAC2545A48AA28423BBA4BEE1B53485E8E2_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisSensorFingerprintEventArgs_tC2D10DC671B9190FD90C8B3E4B9358EEAFDC5461_m26C3225E40077703EF7589A556751DEE13212507_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisSessionConfiguration_tC4806BD0D5A49DE7C8C0B8FCE3B1B95D8994BEF2_m578CAAE061F7484B9CAF1F469A961273748C4FFA_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectCache_GetOrCreate_TisSessionErrorEventArgs_tBC6BD7D553FA7F076DDB179DBBC576D276D8482F_m0734350428EFA610E46D2E4F4B3E295B246BF04F_RuntimeMethod_var;
@@ -617,6 +685,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectEventHandlerCache_RemoveEven
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectEventHandlerCache_RemoveEventHandler_TisSessionErrorDelegate_tE0A36A47233546A0AC10AA9E7E968EFA1E4D701E_m37ED5CA1AEEAC5448593752F12D5F6A5B65371D9_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectEventHandlerCache_RemoveEventHandler_TisSessionUpdatedDelegate_tD67BE8F2854C1D0B6FEF4EF4D5B63BA82F61BDE0_m06A100E01BEAD1920ED0824EBA143251D8BC4FE8_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* ProjectedObjectEventHandlerCache_RemoveEventHandler_TisTokenRequiredDelegate_t70A4360AC991AA247E387C0D21977CE65A95D266_m232C3BF701159D7A1181734A2E71F4DFF38EF491_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* SensorCapabilities_ConvertHandleToCookie_m57CD28E564C224C1AB557384BB09F9957DFBA6EE_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* SensorFingerprintEventArgs_ConvertHandleToCookie_mBCACE78A25AA116A0859EEBF00C62BDA4A56AB5C_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* SessionConfiguration_ConvertHandleToCookie_mC40A2607C6FF69632D06C8E92FA71AC42E039CB9_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* SessionErrorEventArgs_ConvertHandleToCookie_m2F473C7D7C79CDCEA3F283CA412FEED0F4B2760D_RuntimeMethod_var;
@@ -631,8 +700,10 @@ IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec_U3CGetActiveWatchersU3Eb__67_0_m4FF
 IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass10_0_U3CGetOrCreateInstanceU3Eb__0_mD9455A039313D34441E5743399E83BA1EE5D186F_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass12_0_U3CGetOrCreateInstanceU3Eb__0_mD300ED9C6F9B55C6FE58971DDCE92521400E6BBA_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass13_0_U3CGetOrCreateInstanceU3Eb__0_mCAD4011564504E44C7FFB28DDFB752F9532091F1_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass13_0_U3CGetOrCreateInstanceU3Eb__0_mF932CFE5DFC907F5B7CA0B36692A91363C8B4207_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass16_0_U3CGetOrCreateInstanceU3Eb__0_m00D454091B1664ED5327C6BFA73928F5EC0ADD63_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass16_0_U3CGetOrCreateInstanceU3Eb__0_mCB9FD0015E860E8905A5511E2A75EB81169DF6D7_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass18_0_U3CGetOrCreateInstanceU3Eb__0_m77579BC641FCF83CBB559321B063DB487B43791C_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass19_0_U3CGetOrCreateInstanceU3Eb__0_m587DC65E6CCCA852E94AB662E0055BD385076860_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass21_0_U3CGetOrCreateInstanceU3Eb__0_m1FCAECE05F91EA259C8A1E4DD90D6D3892BC57EF_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CU3Ec__DisplayClass63_0_U3CCreateAnchorAsyncU3Eb__0_mB584D7183C0F11D74F1B881FA174282C48BBB612_RuntimeMethod_var;
@@ -651,8 +722,11 @@ struct Delegate_t_marshaled_pinvoke;
 struct Exception_t_marshaled_com;
 struct Exception_t_marshaled_pinvoke;
 
+struct ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726;
+struct CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34;
 struct DelegateU5BU5D_t677D8FE08A5F99E8EE49150B73966CD6E9BF7DB8;
 struct IntPtrU5BU5D_t27FC72B0409D75AAF33EC42498E8094E95FEE9A6;
+struct ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE;
 struct StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A;
 
 IL2CPP_EXTERN_C_BEGIN
@@ -674,6 +748,15 @@ public:
 
 
 // System.Object
+
+
+// Microsoft.Azure.SpatialAnchors.BasePrivateDictionary`2<System.String,System.String>
+struct BasePrivateDictionary_2_t5CD4241164281D4CAE683213159E8C584C401F50  : public RuntimeObject
+{
+public:
+
+public:
+};
 
 
 // System.Collections.Generic.Dictionary`2<System.String,System.Delegate>
@@ -1018,6 +1101,32 @@ public:
 };
 
 
+// System.EmptyArray`1<System.Object>
+struct EmptyArray_1_tBF73225DFA890366D579424FE8F40073BF9FBAD4  : public RuntimeObject
+{
+public:
+
+public:
+};
+
+struct EmptyArray_1_tBF73225DFA890366D579424FE8F40073BF9FBAD4_StaticFields
+{
+public:
+	// T[] System.EmptyArray`1::Value
+	ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE* ___Value_0;
+
+public:
+	inline static int32_t get_offset_of_Value_0() { return static_cast<int32_t>(offsetof(EmptyArray_1_tBF73225DFA890366D579424FE8F40073BF9FBAD4_StaticFields, ___Value_0)); }
+	inline ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE* get_Value_0() const { return ___Value_0; }
+	inline ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE** get_address_of_Value_0() { return &___Value_0; }
+	inline void set_Value_0(ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE* value)
+	{
+		___Value_0 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___Value_0), (void*)value);
+	}
+};
+
+
 // System.Collections.Generic.List`1<Microsoft.Azure.SpatialAnchors.CloudSpatialAnchorWatcher>
 struct List_1_tBD73B3F0977FB777373B9431C896264FFBCE414C  : public RuntimeObject
 {
@@ -1117,6 +1226,193 @@ public:
 struct Il2CppArrayBounds;
 
 // System.Array
+
+
+// System.Text.Encoding
+struct Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827  : public RuntimeObject
+{
+public:
+	// System.Int32 System.Text.Encoding::m_codePage
+	int32_t ___m_codePage_55;
+	// System.Globalization.CodePageDataItem System.Text.Encoding::dataItem
+	CodePageDataItem_t09A62F57142BF0456C8F414898A37E79BCC9F09E * ___dataItem_56;
+	// System.Boolean System.Text.Encoding::m_deserializedFromEverett
+	bool ___m_deserializedFromEverett_57;
+	// System.Boolean System.Text.Encoding::m_isReadOnly
+	bool ___m_isReadOnly_58;
+	// System.Text.EncoderFallback System.Text.Encoding::encoderFallback
+	EncoderFallback_t02AC990075E17EB09F0D7E4831C3B3F264025CC4 * ___encoderFallback_59;
+	// System.Text.DecoderFallback System.Text.Encoding::decoderFallback
+	DecoderFallback_tF86D337D6576E81E5DA285E5673183EBC66DEF8D * ___decoderFallback_60;
+
+public:
+	inline static int32_t get_offset_of_m_codePage_55() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827, ___m_codePage_55)); }
+	inline int32_t get_m_codePage_55() const { return ___m_codePage_55; }
+	inline int32_t* get_address_of_m_codePage_55() { return &___m_codePage_55; }
+	inline void set_m_codePage_55(int32_t value)
+	{
+		___m_codePage_55 = value;
+	}
+
+	inline static int32_t get_offset_of_dataItem_56() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827, ___dataItem_56)); }
+	inline CodePageDataItem_t09A62F57142BF0456C8F414898A37E79BCC9F09E * get_dataItem_56() const { return ___dataItem_56; }
+	inline CodePageDataItem_t09A62F57142BF0456C8F414898A37E79BCC9F09E ** get_address_of_dataItem_56() { return &___dataItem_56; }
+	inline void set_dataItem_56(CodePageDataItem_t09A62F57142BF0456C8F414898A37E79BCC9F09E * value)
+	{
+		___dataItem_56 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___dataItem_56), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_m_deserializedFromEverett_57() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827, ___m_deserializedFromEverett_57)); }
+	inline bool get_m_deserializedFromEverett_57() const { return ___m_deserializedFromEverett_57; }
+	inline bool* get_address_of_m_deserializedFromEverett_57() { return &___m_deserializedFromEverett_57; }
+	inline void set_m_deserializedFromEverett_57(bool value)
+	{
+		___m_deserializedFromEverett_57 = value;
+	}
+
+	inline static int32_t get_offset_of_m_isReadOnly_58() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827, ___m_isReadOnly_58)); }
+	inline bool get_m_isReadOnly_58() const { return ___m_isReadOnly_58; }
+	inline bool* get_address_of_m_isReadOnly_58() { return &___m_isReadOnly_58; }
+	inline void set_m_isReadOnly_58(bool value)
+	{
+		___m_isReadOnly_58 = value;
+	}
+
+	inline static int32_t get_offset_of_encoderFallback_59() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827, ___encoderFallback_59)); }
+	inline EncoderFallback_t02AC990075E17EB09F0D7E4831C3B3F264025CC4 * get_encoderFallback_59() const { return ___encoderFallback_59; }
+	inline EncoderFallback_t02AC990075E17EB09F0D7E4831C3B3F264025CC4 ** get_address_of_encoderFallback_59() { return &___encoderFallback_59; }
+	inline void set_encoderFallback_59(EncoderFallback_t02AC990075E17EB09F0D7E4831C3B3F264025CC4 * value)
+	{
+		___encoderFallback_59 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___encoderFallback_59), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_decoderFallback_60() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827, ___decoderFallback_60)); }
+	inline DecoderFallback_tF86D337D6576E81E5DA285E5673183EBC66DEF8D * get_decoderFallback_60() const { return ___decoderFallback_60; }
+	inline DecoderFallback_tF86D337D6576E81E5DA285E5673183EBC66DEF8D ** get_address_of_decoderFallback_60() { return &___decoderFallback_60; }
+	inline void set_decoderFallback_60(DecoderFallback_tF86D337D6576E81E5DA285E5673183EBC66DEF8D * value)
+	{
+		___decoderFallback_60 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___decoderFallback_60), (void*)value);
+	}
+};
+
+struct Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields
+{
+public:
+	// System.Text.Encoding modreq(System.Runtime.CompilerServices.IsVolatile) System.Text.Encoding::defaultEncoding
+	Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * ___defaultEncoding_0;
+	// System.Text.Encoding modreq(System.Runtime.CompilerServices.IsVolatile) System.Text.Encoding::unicodeEncoding
+	Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * ___unicodeEncoding_1;
+	// System.Text.Encoding modreq(System.Runtime.CompilerServices.IsVolatile) System.Text.Encoding::bigEndianUnicode
+	Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * ___bigEndianUnicode_2;
+	// System.Text.Encoding modreq(System.Runtime.CompilerServices.IsVolatile) System.Text.Encoding::utf7Encoding
+	Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * ___utf7Encoding_3;
+	// System.Text.Encoding modreq(System.Runtime.CompilerServices.IsVolatile) System.Text.Encoding::utf8Encoding
+	Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * ___utf8Encoding_4;
+	// System.Text.Encoding modreq(System.Runtime.CompilerServices.IsVolatile) System.Text.Encoding::utf32Encoding
+	Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * ___utf32Encoding_5;
+	// System.Text.Encoding modreq(System.Runtime.CompilerServices.IsVolatile) System.Text.Encoding::asciiEncoding
+	Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * ___asciiEncoding_6;
+	// System.Text.Encoding modreq(System.Runtime.CompilerServices.IsVolatile) System.Text.Encoding::latin1Encoding
+	Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * ___latin1Encoding_7;
+	// System.Collections.Hashtable modreq(System.Runtime.CompilerServices.IsVolatile) System.Text.Encoding::encodings
+	Hashtable_t7565AB92A12227AD5BADD6911F10D87EE52509AC * ___encodings_8;
+	// System.Object System.Text.Encoding::s_InternalSyncObject
+	RuntimeObject * ___s_InternalSyncObject_61;
+
+public:
+	inline static int32_t get_offset_of_defaultEncoding_0() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields, ___defaultEncoding_0)); }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * get_defaultEncoding_0() const { return ___defaultEncoding_0; }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 ** get_address_of_defaultEncoding_0() { return &___defaultEncoding_0; }
+	inline void set_defaultEncoding_0(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * value)
+	{
+		___defaultEncoding_0 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___defaultEncoding_0), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_unicodeEncoding_1() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields, ___unicodeEncoding_1)); }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * get_unicodeEncoding_1() const { return ___unicodeEncoding_1; }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 ** get_address_of_unicodeEncoding_1() { return &___unicodeEncoding_1; }
+	inline void set_unicodeEncoding_1(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * value)
+	{
+		___unicodeEncoding_1 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___unicodeEncoding_1), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_bigEndianUnicode_2() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields, ___bigEndianUnicode_2)); }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * get_bigEndianUnicode_2() const { return ___bigEndianUnicode_2; }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 ** get_address_of_bigEndianUnicode_2() { return &___bigEndianUnicode_2; }
+	inline void set_bigEndianUnicode_2(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * value)
+	{
+		___bigEndianUnicode_2 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___bigEndianUnicode_2), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_utf7Encoding_3() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields, ___utf7Encoding_3)); }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * get_utf7Encoding_3() const { return ___utf7Encoding_3; }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 ** get_address_of_utf7Encoding_3() { return &___utf7Encoding_3; }
+	inline void set_utf7Encoding_3(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * value)
+	{
+		___utf7Encoding_3 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___utf7Encoding_3), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_utf8Encoding_4() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields, ___utf8Encoding_4)); }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * get_utf8Encoding_4() const { return ___utf8Encoding_4; }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 ** get_address_of_utf8Encoding_4() { return &___utf8Encoding_4; }
+	inline void set_utf8Encoding_4(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * value)
+	{
+		___utf8Encoding_4 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___utf8Encoding_4), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_utf32Encoding_5() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields, ___utf32Encoding_5)); }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * get_utf32Encoding_5() const { return ___utf32Encoding_5; }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 ** get_address_of_utf32Encoding_5() { return &___utf32Encoding_5; }
+	inline void set_utf32Encoding_5(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * value)
+	{
+		___utf32Encoding_5 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___utf32Encoding_5), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_asciiEncoding_6() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields, ___asciiEncoding_6)); }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * get_asciiEncoding_6() const { return ___asciiEncoding_6; }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 ** get_address_of_asciiEncoding_6() { return &___asciiEncoding_6; }
+	inline void set_asciiEncoding_6(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * value)
+	{
+		___asciiEncoding_6 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___asciiEncoding_6), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_latin1Encoding_7() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields, ___latin1Encoding_7)); }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * get_latin1Encoding_7() const { return ___latin1Encoding_7; }
+	inline Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 ** get_address_of_latin1Encoding_7() { return &___latin1Encoding_7; }
+	inline void set_latin1Encoding_7(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * value)
+	{
+		___latin1Encoding_7 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___latin1Encoding_7), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_encodings_8() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields, ___encodings_8)); }
+	inline Hashtable_t7565AB92A12227AD5BADD6911F10D87EE52509AC * get_encodings_8() const { return ___encodings_8; }
+	inline Hashtable_t7565AB92A12227AD5BADD6911F10D87EE52509AC ** get_address_of_encodings_8() { return &___encodings_8; }
+	inline void set_encodings_8(Hashtable_t7565AB92A12227AD5BADD6911F10D87EE52509AC * value)
+	{
+		___encodings_8 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___encodings_8), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_s_InternalSyncObject_61() { return static_cast<int32_t>(offsetof(Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827_StaticFields, ___s_InternalSyncObject_61)); }
+	inline RuntimeObject * get_s_InternalSyncObject_61() const { return ___s_InternalSyncObject_61; }
+	inline RuntimeObject ** get_address_of_s_InternalSyncObject_61() { return &___s_InternalSyncObject_61; }
+	inline void set_s_InternalSyncObject_61(RuntimeObject * value)
+	{
+		___s_InternalSyncObject_61 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___s_InternalSyncObject_61), (void*)value);
+	}
+};
 
 
 // System.EventArgs
@@ -1612,6 +1908,34 @@ public:
 };
 
 
+// Microsoft.Azure.SpatialAnchors.NearDeviceCriteria/<>c__DisplayClass13_0
+struct U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6  : public RuntimeObject
+{
+public:
+	// System.UInt64 Microsoft.Azure.SpatialAnchors.NearDeviceCriteria/<>c__DisplayClass13_0::cookie
+	uint64_t ___cookie_0;
+	// System.Boolean Microsoft.Azure.SpatialAnchors.NearDeviceCriteria/<>c__DisplayClass13_0::transfer
+	bool ___transfer_1;
+
+public:
+	inline static int32_t get_offset_of_cookie_0() { return static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6, ___cookie_0)); }
+	inline uint64_t get_cookie_0() const { return ___cookie_0; }
+	inline uint64_t* get_address_of_cookie_0() { return &___cookie_0; }
+	inline void set_cookie_0(uint64_t value)
+	{
+		___cookie_0 = value;
+	}
+
+	inline static int32_t get_offset_of_transfer_1() { return static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6, ___transfer_1)); }
+	inline bool get_transfer_1() const { return ___transfer_1; }
+	inline bool* get_address_of_transfer_1() { return &___transfer_1; }
+	inline void set_transfer_1(bool value)
+	{
+		___transfer_1 = value;
+	}
+};
+
+
 // Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs/<>c__DisplayClass8_0
 struct U3CU3Ec__DisplayClass8_0_t94956790EC6A91BD09D913A0222A4296C90DA100  : public RuntimeObject
 {
@@ -1631,6 +1955,34 @@ public:
 	}
 
 	inline static int32_t get_offset_of_transfer_1() { return static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass8_0_t94956790EC6A91BD09D913A0222A4296C90DA100, ___transfer_1)); }
+	inline bool get_transfer_1() const { return ___transfer_1; }
+	inline bool* get_address_of_transfer_1() { return &___transfer_1; }
+	inline void set_transfer_1(bool value)
+	{
+		___transfer_1 = value;
+	}
+};
+
+
+// Microsoft.Azure.SpatialAnchors.SensorCapabilities/<>c__DisplayClass18_0
+struct U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D  : public RuntimeObject
+{
+public:
+	// System.UInt64 Microsoft.Azure.SpatialAnchors.SensorCapabilities/<>c__DisplayClass18_0::cookie
+	uint64_t ___cookie_0;
+	// System.Boolean Microsoft.Azure.SpatialAnchors.SensorCapabilities/<>c__DisplayClass18_0::transfer
+	bool ___transfer_1;
+
+public:
+	inline static int32_t get_offset_of_cookie_0() { return static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D, ___cookie_0)); }
+	inline uint64_t get_cookie_0() const { return ___cookie_0; }
+	inline uint64_t* get_address_of_cookie_0() { return &___cookie_0; }
+	inline void set_cookie_0(uint64_t value)
+	{
+		___cookie_0 = value;
+	}
+
+	inline static int32_t get_offset_of_transfer_1() { return static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D, ___transfer_1)); }
 	inline bool get_transfer_1() const { return ___transfer_1; }
 	inline bool* get_address_of_transfer_1() { return &___transfer_1; }
 	inline void set_transfer_1(bool value)
@@ -1930,6 +2282,59 @@ public:
 	{
 		___FalseString_6 = value;
 		Il2CppCodeGenWriteBarrier((void**)(&___FalseString_6), (void*)value);
+	}
+};
+
+
+// System.Byte
+struct Byte_t0111FAB8B8685667EDDAF77683F0D8F86B659056 
+{
+public:
+	// System.Byte System.Byte::m_value
+	uint8_t ___m_value_0;
+
+public:
+	inline static int32_t get_offset_of_m_value_0() { return static_cast<int32_t>(offsetof(Byte_t0111FAB8B8685667EDDAF77683F0D8F86B659056, ___m_value_0)); }
+	inline uint8_t get_m_value_0() const { return ___m_value_0; }
+	inline uint8_t* get_address_of_m_value_0() { return &___m_value_0; }
+	inline void set_m_value_0(uint8_t value)
+	{
+		___m_value_0 = value;
+	}
+};
+
+
+// System.Char
+struct Char_tFF60D8E7E89A20BE2294A003734341BD1DF43E14 
+{
+public:
+	// System.Char System.Char::m_value
+	Il2CppChar ___m_value_0;
+
+public:
+	inline static int32_t get_offset_of_m_value_0() { return static_cast<int32_t>(offsetof(Char_tFF60D8E7E89A20BE2294A003734341BD1DF43E14, ___m_value_0)); }
+	inline Il2CppChar get_m_value_0() const { return ___m_value_0; }
+	inline Il2CppChar* get_address_of_m_value_0() { return &___m_value_0; }
+	inline void set_m_value_0(Il2CppChar value)
+	{
+		___m_value_0 = value;
+	}
+};
+
+struct Char_tFF60D8E7E89A20BE2294A003734341BD1DF43E14_StaticFields
+{
+public:
+	// System.Byte[] System.Char::categoryForLatin1
+	ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726* ___categoryForLatin1_3;
+
+public:
+	inline static int32_t get_offset_of_categoryForLatin1_3() { return static_cast<int32_t>(offsetof(Char_tFF60D8E7E89A20BE2294A003734341BD1DF43E14_StaticFields, ___categoryForLatin1_3)); }
+	inline ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726* get_categoryForLatin1_3() const { return ___categoryForLatin1_3; }
+	inline ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726** get_address_of_categoryForLatin1_3() { return &___categoryForLatin1_3; }
+	inline void set_categoryForLatin1_3(ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726* value)
+	{
+		___categoryForLatin1_3 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___categoryForLatin1_3), (void*)value);
 	}
 };
 
@@ -2381,6 +2786,24 @@ public:
 };
 
 
+// Microsoft.Azure.SpatialAnchors.AnchorDataCategory
+struct AnchorDataCategory_t983543BEEC3428E8E43E3661398C77893E06A3B9 
+{
+public:
+	// System.Int32 Microsoft.Azure.SpatialAnchors.AnchorDataCategory::value__
+	int32_t ___value___2;
+
+public:
+	inline static int32_t get_offset_of_value___2() { return static_cast<int32_t>(offsetof(AnchorDataCategory_t983543BEEC3428E8E43E3661398C77893E06A3B9, ___value___2)); }
+	inline int32_t get_value___2() const { return ___value___2; }
+	inline int32_t* get_address_of_value___2() { return &___value___2; }
+	inline void set_value___2(int32_t value)
+	{
+		___value___2 = value;
+	}
+};
+
+
 // Microsoft.Azure.SpatialAnchors.AnchorLocateCriteria
 struct AnchorLocateCriteria_t752C300C49E053B42AA68DDF88DB9D816B30174D  : public RuntimeObject
 {
@@ -2413,6 +2836,24 @@ public:
 	inline void set_handle_1(intptr_t value)
 	{
 		___handle_1 = value;
+	}
+};
+
+
+// Microsoft.Azure.SpatialAnchors.BluetoothStatusResult
+struct BluetoothStatusResult_t08BBA6CE476A07F063F2686948F6A680038BD519 
+{
+public:
+	// System.Int32 Microsoft.Azure.SpatialAnchors.BluetoothStatusResult::value__
+	int32_t ___value___2;
+
+public:
+	inline static int32_t get_offset_of_value___2() { return static_cast<int32_t>(offsetof(BluetoothStatusResult_t08BBA6CE476A07F063F2686948F6A680038BD519, ___value___2)); }
+	inline int32_t get_value___2() const { return ___value___2; }
+	inline int32_t* get_address_of_value___2() { return &___value___2; }
+	inline void set_value___2(int32_t value)
+	{
+		___value___2 = value;
 	}
 };
 
@@ -3022,6 +3463,42 @@ struct Exception_t_marshaled_com
 	Il2CppSafeArray/*NONE*/* ___native_trace_ips_15;
 };
 
+// Microsoft.Azure.SpatialAnchors.GeoLocationStatusResult
+struct GeoLocationStatusResult_t8BB0E712510954D95C9CEE8457B00DB561E2AF15 
+{
+public:
+	// System.Int32 Microsoft.Azure.SpatialAnchors.GeoLocationStatusResult::value__
+	int32_t ___value___2;
+
+public:
+	inline static int32_t get_offset_of_value___2() { return static_cast<int32_t>(offsetof(GeoLocationStatusResult_t8BB0E712510954D95C9CEE8457B00DB561E2AF15, ___value___2)); }
+	inline int32_t get_value___2() const { return ___value___2; }
+	inline int32_t* get_address_of_value___2() { return &___value___2; }
+	inline void set_value___2(int32_t value)
+	{
+		___value___2 = value;
+	}
+};
+
+
+// Microsoft.Azure.SpatialAnchors.IDictionary_String_String
+struct IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409  : public BasePrivateDictionary_2_t5CD4241164281D4CAE683213159E8C584C401F50
+{
+public:
+	// System.IntPtr Microsoft.Azure.SpatialAnchors.IDictionary_String_String::handle
+	intptr_t ___handle_0;
+
+public:
+	inline static int32_t get_offset_of_handle_0() { return static_cast<int32_t>(offsetof(IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409, ___handle_0)); }
+	inline intptr_t get_handle_0() const { return ___handle_0; }
+	inline intptr_t* get_address_of_handle_0() { return &___handle_0; }
+	inline void set_handle_0(intptr_t value)
+	{
+		___handle_0 = value;
+	}
+};
+
+
 // Microsoft.Azure.SpatialAnchors.LocateAnchorStatus
 struct LocateAnchorStatus_t0D35003BCED53ACDC9501A90E60B7100AC7FF990 
 {
@@ -3058,6 +3535,42 @@ public:
 };
 
 
+// Microsoft.Azure.SpatialAnchors.NearAnchorCriteria
+struct NearAnchorCriteria_t292ADB7FCE0963CC89D65EFF074F791AAC66B27C  : public RuntimeObject
+{
+public:
+	// System.IntPtr Microsoft.Azure.SpatialAnchors.NearAnchorCriteria::handle
+	intptr_t ___handle_0;
+
+public:
+	inline static int32_t get_offset_of_handle_0() { return static_cast<int32_t>(offsetof(NearAnchorCriteria_t292ADB7FCE0963CC89D65EFF074F791AAC66B27C, ___handle_0)); }
+	inline intptr_t get_handle_0() const { return ___handle_0; }
+	inline intptr_t* get_address_of_handle_0() { return &___handle_0; }
+	inline void set_handle_0(intptr_t value)
+	{
+		___handle_0 = value;
+	}
+};
+
+
+// Microsoft.Azure.SpatialAnchors.NearDeviceCriteria
+struct NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152  : public RuntimeObject
+{
+public:
+	// System.IntPtr Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::handle
+	intptr_t ___handle_0;
+
+public:
+	inline static int32_t get_offset_of_handle_0() { return static_cast<int32_t>(offsetof(NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152, ___handle_0)); }
+	inline intptr_t get_handle_0() const { return ___handle_0; }
+	inline intptr_t* get_address_of_handle_0() { return &___handle_0; }
+	inline void set_handle_0(intptr_t value)
+	{
+		___handle_0 = value;
+	}
+};
+
+
 // Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs
 struct OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC  : public EventArgs_tBCAACA538A5195B6D6C8DFCC3524A2A4A67FD8BA
 {
@@ -3072,6 +3585,42 @@ public:
 	inline void set_handle_1(intptr_t value)
 	{
 		___handle_1 = value;
+	}
+};
+
+
+// Microsoft.Azure.SpatialAnchors.PlatformLocationProvider
+struct PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574  : public RuntimeObject
+{
+public:
+	// System.IntPtr Microsoft.Azure.SpatialAnchors.PlatformLocationProvider::handle
+	intptr_t ___handle_0;
+
+public:
+	inline static int32_t get_offset_of_handle_0() { return static_cast<int32_t>(offsetof(PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574, ___handle_0)); }
+	inline intptr_t get_handle_0() const { return ___handle_0; }
+	inline intptr_t* get_address_of_handle_0() { return &___handle_0; }
+	inline void set_handle_0(intptr_t value)
+	{
+		___handle_0 = value;
+	}
+};
+
+
+// Microsoft.Azure.SpatialAnchors.SensorCapabilities
+struct SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51  : public RuntimeObject
+{
+public:
+	// System.IntPtr Microsoft.Azure.SpatialAnchors.SensorCapabilities::handle
+	intptr_t ___handle_0;
+
+public:
+	inline static int32_t get_offset_of_handle_0() { return static_cast<int32_t>(offsetof(SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51, ___handle_0)); }
+	inline intptr_t get_handle_0() const { return ___handle_0; }
+	inline intptr_t* get_address_of_handle_0() { return &___handle_0; }
+	inline void set_handle_0(intptr_t value)
+	{
+		___handle_0 = value;
 	}
 };
 
@@ -3460,6 +4009,24 @@ public:
 };
 
 
+// Microsoft.Azure.SpatialAnchors.WifiStatusResult
+struct WifiStatusResult_t3FAF55213322F3D744707251FCF826550234FC9B 
+{
+public:
+	// System.Int32 Microsoft.Azure.SpatialAnchors.WifiStatusResult::value__
+	int32_t ___value___2;
+
+public:
+	inline static int32_t get_offset_of_value___2() { return static_cast<int32_t>(offsetof(WifiStatusResult_t3FAF55213322F3D744707251FCF826550234FC9B, ___value___2)); }
+	inline int32_t get_value___2() const { return ___value___2; }
+	inline int32_t* get_address_of_value___2() { return &___value___2; }
+	inline void set_value___2(int32_t value)
+	{
+		___value___2 = value;
+	}
+};
+
+
 // Microsoft.Azure.SpatialAnchors.status
 struct status_tEA46B2A1C945DDD1154E277136E3088E3A9C576B 
 {
@@ -3795,8 +4362,26 @@ public:
 };
 
 
+// System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.NearDeviceCriteria>
+struct Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9  : public MulticastDelegate_t
+{
+public:
+
+public:
+};
+
+
 // System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs>
 struct Func_2_tC36BDCB052752E38E0877B5EB949FAC6E55F6A99  : public MulticastDelegate_t
+{
+public:
+
+public:
+};
+
+
+// System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.SensorCapabilities>
+struct Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893  : public MulticastDelegate_t
 {
 public:
 
@@ -4399,6 +4984,113 @@ public:
 		m_Items[index] = value;
 	}
 };
+// System.Byte[]
+struct ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726  : public RuntimeArray
+{
+public:
+	ALIGN_FIELD (8) uint8_t m_Items[1];
+
+public:
+	inline uint8_t GetAt(il2cpp_array_size_t index) const
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items[index];
+	}
+	inline uint8_t* GetAddressAt(il2cpp_array_size_t index)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items + index;
+	}
+	inline void SetAt(il2cpp_array_size_t index, uint8_t value)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		m_Items[index] = value;
+	}
+	inline uint8_t GetAtUnchecked(il2cpp_array_size_t index) const
+	{
+		return m_Items[index];
+	}
+	inline uint8_t* GetAddressAtUnchecked(il2cpp_array_size_t index)
+	{
+		return m_Items + index;
+	}
+	inline void SetAtUnchecked(il2cpp_array_size_t index, uint8_t value)
+	{
+		m_Items[index] = value;
+	}
+};
+// System.Char[]
+struct CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34  : public RuntimeArray
+{
+public:
+	ALIGN_FIELD (8) Il2CppChar m_Items[1];
+
+public:
+	inline Il2CppChar GetAt(il2cpp_array_size_t index) const
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items[index];
+	}
+	inline Il2CppChar* GetAddressAt(il2cpp_array_size_t index)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items + index;
+	}
+	inline void SetAt(il2cpp_array_size_t index, Il2CppChar value)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		m_Items[index] = value;
+	}
+	inline Il2CppChar GetAtUnchecked(il2cpp_array_size_t index) const
+	{
+		return m_Items[index];
+	}
+	inline Il2CppChar* GetAddressAtUnchecked(il2cpp_array_size_t index)
+	{
+		return m_Items + index;
+	}
+	inline void SetAtUnchecked(il2cpp_array_size_t index, Il2CppChar value)
+	{
+		m_Items[index] = value;
+	}
+};
+// System.Object[]
+struct ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE  : public RuntimeArray
+{
+public:
+	ALIGN_FIELD (8) RuntimeObject * m_Items[1];
+
+public:
+	inline RuntimeObject * GetAt(il2cpp_array_size_t index) const
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items[index];
+	}
+	inline RuntimeObject ** GetAddressAt(il2cpp_array_size_t index)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		return m_Items + index;
+	}
+	inline void SetAt(il2cpp_array_size_t index, RuntimeObject * value)
+	{
+		IL2CPP_ARRAY_BOUNDS_CHECK(index, (uint32_t)(this)->max_length);
+		m_Items[index] = value;
+		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
+	}
+	inline RuntimeObject * GetAtUnchecked(il2cpp_array_size_t index) const
+	{
+		return m_Items[index];
+	}
+	inline RuntimeObject ** GetAddressAtUnchecked(il2cpp_array_size_t index)
+	{
+		return m_Items + index;
+	}
+	inline void SetAtUnchecked(il2cpp_array_size_t index, RuntimeObject * value)
+	{
+		m_Items[index] = value;
+		Il2CppCodeGenWriteBarrier((void**)m_Items + index, (void*)value);
+	}
+};
 
 
 // System.Void System.Func`2<System.UInt64,System.Object>::.ctor(System.Object,System.IntPtr)
@@ -4429,6 +5121,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AsyncTaskMethodBuilder_1_tDD2A3BA099C327938EA
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AsyncTaskMethodBuilder_1_Start_TisRuntimeObject_m25C57EA59EF179635A81530036C12082EE50878B_gshared (AsyncTaskMethodBuilder_1_tDD2A3BA099C327938EA03C35FDB1A7502BA73020 * __this, RuntimeObject ** ___stateMachine0, const RuntimeMethod* method);
 // System.Threading.Tasks.Task`1<!0> System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1<System.Object>::get_Task()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Task_1_tC1805497876E88B78A2B0CB81C6409E0B381AC17 * AsyncTaskMethodBuilder_1_get_Task_m61DEC300353320E428E17DA0D59D61974F4415BB_gshared (AsyncTaskMethodBuilder_1_tDD2A3BA099C327938EA03C35FDB1A7502BA73020 * __this, const RuntimeMethod* method);
+// System.Void Microsoft.Azure.SpatialAnchors.BasePrivateDictionary`2<System.Object,System.Object>::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void BasePrivateDictionary_2__ctor_m40EB0301807442CADA0952DCF2BC07F5763E80FD_gshared (BasePrivateDictionary_2_t72060365414E4F79C9A16009219742B61E689A78 * __this, const RuntimeMethod* method);
+// !!0[] System.Array::Empty<System.Object>()
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE* Array_Empty_TisRuntimeObject_m1FBC21243DF3542384C523801E8CA8A97606C747_gshared_inline (const RuntimeMethod* method);
 // System.Void System.Collections.Generic.Dictionary`2<System.UInt64,System.Object>::.ctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Dictionary_2__ctor_mD19EFEA75894BC3F4C1B3FE93B568155B2D13603_gshared (Dictionary_2_t0D2BB9F0E2FC837777BFA6F573B64ED6362F83C8 * __this, const RuntimeMethod* method);
 // System.Boolean System.Collections.Generic.Dictionary`2<System.UInt64,System.Object>::TryGetValue(!0,!1&)
@@ -4476,8 +5172,26 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ProjectedObjectCache_Add_m3F46CE771938FC
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_release_mB582B616DBE78E162D9100509ED067F1A9943EE2 (intptr_t ___handle0, const RuntimeMethod* method);
 // System.Void System.Object::Finalize()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object_Finalize_mC59C83CF4F7707E425FFA6362931C25D4C36676A (RuntimeObject * __this, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_get_bypass_cache(System.IntPtr,System.Boolean&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_get_bypass_cache_m2D2B634760E5F2920BD5A20AA5F291A78411CF28 (intptr_t ___handle0, bool* ___result1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_get_requested_categories(System.IntPtr,Microsoft.Azure.SpatialAnchors.AnchorDataCategory&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_get_requested_categories_m11B1E90FCA813E0629EE7D2261EDE6418CD9591A (intptr_t ___handle0, int32_t* ___result1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_get_identifiers(System.IntPtr,System.IntPtr&,System.Int32&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_get_identifiers_m54469C9DED1C929E38E12164D1F7BB706FE38BD4 (intptr_t ___handle0, intptr_t* ___result1, int32_t* ___result_count2, const RuntimeMethod* method);
+// System.String[] Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers::IntPtrToStringArray(System.IntPtr,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* NativeLibraryHelpers_IntPtrToStringArray_m265B3B75D0CB5C1FA09C826295509163853E9A09 (intptr_t ___result0, int32_t ___result_length1, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_set_identifiers(System.IntPtr,System.String[],System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_set_identifiers_m2FF6A63CEA615ACEEBCD517FBEB0E6A741323AFE (intptr_t ___handle0, StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___value1, int32_t ___value_count2, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_set_near_anchor(System.IntPtr,System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_set_near_anchor_mDAD306D033416C69F2B3821FD8B9C74BC6770BF3 (intptr_t ___handle0, intptr_t ___value1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_get_near_device(System.IntPtr,System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_get_near_device_mCAC058522FD56F871EC99EF8D939F613102D6AED (intptr_t ___handle0, intptr_t* ___result1, const RuntimeMethod* method);
+// System.Boolean System.IntPtr::op_Inequality(System.IntPtr,System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool IntPtr_op_Inequality_m212AF0E66AA81FEDC982B1C8A44ADDA24B995EB8 (intptr_t ___value10, intptr_t ___value21, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.NearDeviceCriteria Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::GetOrCreateInstance(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * NearDeviceCriteria_GetOrCreateInstance_mEB93B4EB5CCDE5910A0C57A80411C6DB85228183 (intptr_t ___handle0, bool ___transfer1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_set_near_device(System.IntPtr,System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_set_near_device_m6CF54405876474A27D6857E38EB68998BA574674 (intptr_t ___handle0, intptr_t ___value1, const RuntimeMethod* method);
 // System.UInt64 Microsoft.Azure.SpatialAnchors.AnchorLocateCriteria::ConvertHandleToCookie(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t AnchorLocateCriteria_ConvertHandleToCookie_mD67A1B3B9FB50EC7589D1EC3AC4854AE7EF7BEF6 (intptr_t ___handle0, const RuntimeMethod* method);
 // System.Boolean System.IntPtr::op_Equality(System.IntPtr,System.IntPtr)
@@ -4494,8 +5208,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_located_even
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_located_event_args_release_m9F2224B74E09A7348E9CD18047B434696F62D6C1 (intptr_t ___handle0, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_located_event_args_get_anchor(System.IntPtr,System.IntPtr&)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_located_event_args_get_anchor_mF587C361DDE6491C9262FDC045466F2C4B3CEB08 (intptr_t ___handle0, intptr_t* ___result1, const RuntimeMethod* method);
-// System.Boolean System.IntPtr::op_Inequality(System.IntPtr,System.IntPtr)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool IntPtr_op_Inequality_m212AF0E66AA81FEDC982B1C8A44ADDA24B995EB8 (intptr_t ___value10, intptr_t ___value21, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.CloudSpatialAnchor Microsoft.Azure.SpatialAnchors.CloudSpatialAnchor::GetOrCreateInstance(System.IntPtr,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR CloudSpatialAnchor_t03448002616C4EF52821932C9ACC3DEFA04A8D70 * CloudSpatialAnchor_GetOrCreateInstance_mC8D150A0DFA32A4096F9F89B7EBDC3556617DAAB (intptr_t ___handle0, bool ___transfer1, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_located_event_args_get_identifier(System.IntPtr,System.String&)
@@ -4538,6 +5250,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int64_t DateTimeOffset_ToUnixTimeMilliseconds
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_anchor_set_expiration_m7703E52A0B27DF0E1020FB7318A8E0206424BDF1 (intptr_t ___handle0, int64_t ___value1, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_cloud_spatial_anchor_get_identifier(System.IntPtr,System.String&)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_anchor_get_identifier_m4A199E6C5460918C9878647D44E40B21B5631D2B (intptr_t ___handle0, String_t** ___result1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_cloud_spatial_anchor_get_app_properties(System.IntPtr,System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_anchor_get_app_properties_m6E5B953D5384D3B53B0B74C3B1D5C8D8B6FF279F (intptr_t ___handle0, intptr_t* ___result1, const RuntimeMethod* method);
+// System.Void Microsoft.Azure.SpatialAnchors.IDictionary_String_String::.ctor(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IDictionary_String_String__ctor_mB0DEFEBA2E5A45E56040E7926EC99541D9F7634A (IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * __this, intptr_t ___ahandle0, bool ___transfer1, const RuntimeMethod* method);
 // System.UInt64 Microsoft.Azure.SpatialAnchors.CloudSpatialAnchor::ConvertHandleToCookie(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t CloudSpatialAnchor_ConvertHandleToCookie_m3FFCE21894CB2DEDAB980C8EE2FDE37AFA6BCE37 (intptr_t ___handle0, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.CloudSpatialAnchor Microsoft.Azure.SpatialAnchors.CloudSpatialAnchor::GetOrCreateInstance(System.UInt64,System.Boolean)
@@ -4582,6 +5298,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_ancho
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR SessionConfiguration_tC4806BD0D5A49DE7C8C0B8FCE3B1B95D8994BEF2 * SessionConfiguration_GetOrCreateInstance_m69E5E94079E21CD220FD270215D76651D35D4D26 (intptr_t ___handle0, bool ___transfer1, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_cloud_spatial_anchor_session_set_log_level(System.IntPtr,Microsoft.Azure.SpatialAnchors.SessionLogLevel)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_anchor_session_set_log_level_mAE60DD06126A4227355ED33F6404D9D8B8E7412C (intptr_t ___handle0, int32_t ___value1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_cloud_spatial_anchor_session_set_location_provider(System.IntPtr,System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_anchor_session_set_location_provider_mCEEF5E3F1F21A743943BC3286F466A7E60CA2A54 (intptr_t ___handle0, intptr_t ___value1, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.CloudSpatialAnchorSession Microsoft.Azure.SpatialAnchors.CloudSpatialAnchorSession::GetOrCreateInstance(System.UInt64,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR CloudSpatialAnchorSession_tA71B2460BEFD6D2F80236B2506272152F826ABB0 * CloudSpatialAnchorSession_GetOrCreateInstance_m4116F0D81D1223255A428B5A1BB40E13BA1E162F (uint64_t ___cookie0, bool ___transfer1, const RuntimeMethod* method);
 // System.Void System.InvalidOperationException::.ctor(System.String)
@@ -4873,6 +5591,25 @@ inline CloudSpatialAnchorWatcher_t1084A2771602AA403BF855F4917F9D5F452C61D9 * Pro
 }
 // System.Void System.Exception::.ctor(System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Exception__ctor_m8ECDE8ACA7F2E0EF1144BD1200FB5DB2870B5F11 (Exception_t * __this, String_t* ___message0, const RuntimeMethod* method);
+// System.Void Microsoft.Azure.SpatialAnchors.BasePrivateDictionary`2<System.String,System.String>::.ctor()
+inline void BasePrivateDictionary_2__ctor_m0947CD974AA0A2F5AE5AF0996BE2D414F88B0461 (BasePrivateDictionary_2_t5CD4241164281D4CAE683213159E8C584C401F50 * __this, const RuntimeMethod* method)
+{
+	((  void (*) (BasePrivateDictionary_2_t5CD4241164281D4CAE683213159E8C584C401F50 *, const RuntimeMethod*))BasePrivateDictionary_2__ctor_m40EB0301807442CADA0952DCF2BC07F5763E80FD_gshared)(__this, method);
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_addref(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_addref_m3ABCE51DD280FB11BE1DAFBC2C65560001CECDD3 (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_release(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_release_mC208BC3A5ECEA3CEF191BCCF92DDC9370A186953 (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_get_count(System.IntPtr,System.Int32&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_get_count_m1406546FC99DA2882BFC3553EAEC68B460AAB8AC (intptr_t ___handle0, int32_t* ___result1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_get_key(System.IntPtr,System.Int32,System.String&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_get_key_mC0DA79FE4F5F61934155CA8D513F0266F53955CA (intptr_t ___handle0, int32_t ___index1, String_t** ___result2, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_get_item(System.IntPtr,System.String,System.String&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_get_item_m954701F1200D6F23A1FF39709E5782C3C09D4737 (intptr_t ___handle0, String_t* ___key1, String_t** ___result2, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_set_item(System.IntPtr,System.String,System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_set_item_m72697AEABE7C7D8D77E7821638D4CCEB9AE6102C (intptr_t ___handle0, String_t* ___key1, String_t* ___value2, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_remove_key(System.IntPtr,System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_remove_key_m0BBF329B5F6E120359630A6EDE8A60D91618AA51 (intptr_t ___handle0, String_t* ___key1, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_locate_anchors_completed_event_args_addref(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_locate_anchors_completed_event_args_addref_mAC0F63DD9E10A9EA43CB944B78472DBD72FEDA4A (intptr_t ___handle0, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_locate_anchors_completed_event_args_release(System.IntPtr)
@@ -4893,6 +5630,19 @@ inline LocateAnchorsCompletedEventArgs_tA2B0431641D3164E78909D0F0CA77DA946732FBD
 {
 	return ((  LocateAnchorsCompletedEventArgs_tA2B0431641D3164E78909D0F0CA77DA946732FBD * (*) (uint64_t, Func_2_t606AC356509F0321020741ADB70158C6D4C623A7 *, const RuntimeMethod*))ProjectedObjectCache_GetOrCreate_TisRuntimeObject_mF06AB21B06AA66143E2B21278FAD093022D4F639_gshared)(___cookie0, ___createFactory1, method);
 }
+// !!0[] System.Array::Empty<System.String>()
+inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* Array_Empty_TisString_t_m224DA90A7384ACF7EBE2F94D2DFDE2F310D1E77D_inline (const RuntimeMethod* method)
+{
+	return ((  StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* (*) (const RuntimeMethod*))Array_Empty_TisRuntimeObject_m1FBC21243DF3542384C523801E8CA8A97606C747_gshared_inline)(method);
+}
+// System.Void System.Runtime.InteropServices.Marshal::Copy(System.IntPtr,System.Byte[],System.Int32,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Marshal_Copy_m057A8067BF7212A361510EA26B24022990A07AC0 (intptr_t ___source0, ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726* ___destination1, int32_t ___startIndex2, int32_t ___length3, const RuntimeMethod* method);
+// System.Void System.Runtime.InteropServices.Marshal::FreeCoTaskMem(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Marshal_FreeCoTaskMem_mCC0E874C853846E0A82E36971E3FC7BF359C6AA5 (intptr_t ___ptr0, const RuntimeMethod* method);
+// System.Text.Encoding System.Text.Encoding::get_UTF8()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * Encoding_get_UTF8_mC877FB3137BBD566AEE7B15F9BF61DC4EF8F5E5E (const RuntimeMethod* method);
+// System.String[] System.String::Split(System.Char[])
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* String_Split_m2C74DC2B85B322998094BEDE787C378822E1F28B (String_t* __this, CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34* ___separator0, const RuntimeMethod* method);
 // System.Void System.ObjectDisposedException::.ctor(System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ObjectDisposedException__ctor_mE57C6A61713668708F9B3CEF060A8D006B1FE880 (ObjectDisposedException_t29EF6F519F16BA477EC682F23E8344BB1E9A958A * __this, String_t* ___objectName0, const RuntimeMethod* method);
 // System.Void System.OutOfMemoryException::.ctor(System.String)
@@ -4917,10 +5667,44 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_IsNullOrEmpty_m9AFBB5335B441B94E8
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Concat_m37A5BF26F8F8F1892D60D727303B23FB604FEE78 (String_t* ___str00, String_t* ___str11, String_t* ___str22, String_t* ___str33, const RuntimeMethod* method);
 // System.Void Microsoft.Azure.SpatialAnchors.CloudSpatialException::.ctor(Microsoft.Azure.SpatialAnchors.CloudSpatialErrorCode,System.String,System.String,System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CloudSpatialException__ctor_m7606E16E4A92E43EBBC207D2C68B8C6C1D5B8F8D (CloudSpatialException_t0D51F010B5D03F5317C347AC2735D2039C2215B4 * __this, int32_t ___code0, String_t* ___message1, String_t* ___requestCorrelationVector2, String_t* ___responseCorrelationVector3, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_anchor_criteria_create(System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_anchor_criteria_create_mE543DD16AD8BE7BF4A726A888F0F2915BC067640 (intptr_t* ___instance0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_anchor_criteria_release(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_anchor_criteria_release_mB8E9208C26C60910F35734C63DF21FFC6BDC9953 (intptr_t ___handle0, const RuntimeMethod* method);
+// System.UInt64 Microsoft.Azure.SpatialAnchors.NearAnchorCriteria::ConvertHandleToCookie(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t NearAnchorCriteria_ConvertHandleToCookie_m92EDA179A55DF024E6851D1E6776E5A64E7EEE72 (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_device_criteria_addref(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_device_criteria_addref_m6A7080BA980286800A4B1C6FB4291A06A3886FC4 (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_device_criteria_create(System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_device_criteria_create_mE197F9DB9C7A59C12F21BB5AEE9CE4D20F0C579C (intptr_t* ___instance0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_device_criteria_release(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_device_criteria_release_m4C87AF51BDF2B3EC82D498392E2A401D7FDAE5E3 (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_device_criteria_set_distance_in_meters(System.IntPtr,System.Single)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_device_criteria_set_distance_in_meters_mAE5DAEB8AF751435E0AB34E13E32A19966BE6C79 (intptr_t ___handle0, float ___value1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_device_criteria_set_max_result_count(System.IntPtr,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_device_criteria_set_max_result_count_m03F0C1AD4D29D716949FE74B93FEB8151A50789C (intptr_t ___handle0, int32_t ___value1, const RuntimeMethod* method);
+// System.UInt64 Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::ConvertHandleToCookie(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t NearDeviceCriteria_ConvertHandleToCookie_m5B008308B09D6299B86FF47BEEF89A8F18EAD1AD (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.NearDeviceCriteria Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::GetOrCreateInstance(System.UInt64,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * NearDeviceCriteria_GetOrCreateInstance_m9F8CE842E931FAD67DE56EF4DBDDB2922989034A (uint64_t ___cookie0, bool ___transfer1, const RuntimeMethod* method);
+// System.Void Microsoft.Azure.SpatialAnchors.NearDeviceCriteria/<>c__DisplayClass13_0::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass13_0__ctor_m26237F9921B747D4503FE971BD084447A94963F2 (U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6 * __this, const RuntimeMethod* method);
+// System.Void System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.NearDeviceCriteria>::.ctor(System.Object,System.IntPtr)
+inline void Func_2__ctor_mF78AC30D13AE05AA3A7198CE9FD575BA62429830 (Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9 * __this, RuntimeObject * ___object0, intptr_t ___method1, const RuntimeMethod* method)
+{
+	((  void (*) (Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9 *, RuntimeObject *, intptr_t, const RuntimeMethod*))Func_2__ctor_m6CFF53DABBCDEA2CA8B051805CF16879F03231CD_gshared)(__this, ___object0, ___method1, method);
+}
+// T Microsoft.Azure.SpatialAnchors.ProjectedObjectCache::GetOrCreate<Microsoft.Azure.SpatialAnchors.NearDeviceCriteria>(System.UInt64,System.Func`2<System.UInt64,T>)
+inline NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * ProjectedObjectCache_GetOrCreate_TisNearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152_m31B58258F032282233490544EB5F4A5EF4860856 (uint64_t ___cookie0, Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9 * ___createFactory1, const RuntimeMethod* method)
+{
+	return ((  NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * (*) (uint64_t, Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9 *, const RuntimeMethod*))ProjectedObjectCache_GetOrCreate_TisRuntimeObject_mF06AB21B06AA66143E2B21278FAD093022D4F639_gshared)(___cookie0, ___createFactory1, method);
+}
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_on_log_debug_event_args_addref(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_on_log_debug_event_args_addref_mDA7B022250AA87F35C567035AEB1856AEEF37852 (intptr_t ___handle0, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_on_log_debug_event_args_release(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_on_log_debug_event_args_release_m1E8E7A5D40A033142A957D3D460C15DF0ED46AEF (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_on_log_debug_event_args_get_message(System.IntPtr,System.String&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_on_log_debug_event_args_get_message_m129CEB187A373746176F5709E3B739BC91DEA0DF (intptr_t ___handle0, String_t** ___result1, const RuntimeMethod* method);
 // System.UInt64 Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs::ConvertHandleToCookie(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t OnLogDebugEventArgs_ConvertHandleToCookie_mD4A274010DCF49CCF609D79BF1486BEDB4F8DBFE (intptr_t ___handle0, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs::GetOrCreateInstance(System.UInt64,System.Boolean)
@@ -4937,6 +5721,22 @@ inline OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC * Projected
 {
 	return ((  OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC * (*) (uint64_t, Func_2_tC36BDCB052752E38E0877B5EB949FAC6E55F6A99 *, const RuntimeMethod*))ProjectedObjectCache_GetOrCreate_TisRuntimeObject_mF06AB21B06AA66143E2B21278FAD093022D4F639_gshared)(___cookie0, ___createFactory1, method);
 }
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_create(System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_create_m303AE6B89C817C854D38CFDA870F5A729F1CD33A (intptr_t* ___instance0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_release(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_release_m555185448E24B8170CB8CFECC5A9B3A4C74F57ED (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_get_sensors(System.IntPtr,System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_get_sensors_m638E5C3751708B30C7B4FC805BDF522356D1AB32 (intptr_t ___handle0, intptr_t* ___result1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.SensorCapabilities Microsoft.Azure.SpatialAnchors.SensorCapabilities::GetOrCreateInstance(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * SensorCapabilities_GetOrCreateInstance_mA006F366F816C3436674CF2C0E3B0AD5AFD99D23 (intptr_t ___handle0, bool ___transfer1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_get_geo_location_status(System.IntPtr,Microsoft.Azure.SpatialAnchors.GeoLocationStatusResult&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_get_geo_location_status_m51065029A92CF1E610418401A89450AA8200E76C (intptr_t ___handle0, int32_t* ___result1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_get_wifi_status(System.IntPtr,Microsoft.Azure.SpatialAnchors.WifiStatusResult&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_get_wifi_status_m19F8C4F64EA96AB8C82E1429DFEF5F473D8A3143 (intptr_t ___handle0, int32_t* ___result1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_get_bluetooth_status(System.IntPtr,Microsoft.Azure.SpatialAnchors.BluetoothStatusResult&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_get_bluetooth_status_m830EA12381061A9FEE104542A2FC1D00AEABEB10 (intptr_t ___handle0, int32_t* ___result1, const RuntimeMethod* method);
+// System.UInt64 Microsoft.Azure.SpatialAnchors.PlatformLocationProvider::ConvertHandleToCookie(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t PlatformLocationProvider_ConvertHandleToCookie_mB0370D0BB96E47C49043C023A5206CC2C4BF2AA3 (intptr_t ___handle0, const RuntimeMethod* method);
 // System.Void Microsoft.Azure.SpatialAnchors.ProjectedObjectCache::ProjectedObjectCleanupHandler(System.UInt64)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ProjectedObjectCache_ProjectedObjectCleanupHandler_m91E4601948A66640AEF1ECEA3E4105FC800F16CF (uint64_t ___cookie0, const RuntimeMethod* method);
 // System.Void System.Collections.Generic.Dictionary`2<System.UInt64,System.WeakReference`1<Microsoft.Azure.SpatialAnchors.ICachedObject>>::.ctor()
@@ -5004,6 +5804,34 @@ inline void Dictionary_2__ctor_m576D0AA3BE951A9D600781445D600CDF963260B6 (Dictio
 {
 	((  void (*) (Dictionary_2_t995AB6A9D11D19858440976C9072FEB5F13721FB *, const RuntimeMethod*))Dictionary_2__ctor_mD19EFEA75894BC3F4C1B3FE93B568155B2D13603_gshared)(__this, method);
 }
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_addref(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_addref_m50BBB7BCE320767EBBC52B3D0BDAD10ED4CB077B (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_release(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_release_m7ECA26C3FBAB299DE5D2166A73FB489198343B31 (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_set_geo_location_enabled(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_set_geo_location_enabled_m1E757B9A3ADF65B43EEC6C92E2523627494E690C (intptr_t ___handle0, bool ___value1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_set_wifi_enabled(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_set_wifi_enabled_m43F60DEDDA2889F0D62D23F52A68217769BD0E31 (intptr_t ___handle0, bool ___value1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_set_bluetooth_enabled(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_set_bluetooth_enabled_m5A4471C253732C98580C326670D8E9F4375FAC3C (intptr_t ___handle0, bool ___value1, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_set_known_beacon_proximity_uuids(System.IntPtr,System.String[],System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_set_known_beacon_proximity_uuids_mDB1E2FB17BE70139BAA67D1761FBC1A79A6312AF (intptr_t ___handle0, StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___value1, int32_t ___value_count2, const RuntimeMethod* method);
+// System.UInt64 Microsoft.Azure.SpatialAnchors.SensorCapabilities::ConvertHandleToCookie(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t SensorCapabilities_ConvertHandleToCookie_m57CD28E564C224C1AB557384BB09F9957DFBA6EE (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.SensorCapabilities Microsoft.Azure.SpatialAnchors.SensorCapabilities::GetOrCreateInstance(System.UInt64,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * SensorCapabilities_GetOrCreateInstance_m53BDC712117CB757454F09637900F5F0BFFB8EA4 (uint64_t ___cookie0, bool ___transfer1, const RuntimeMethod* method);
+// System.Void Microsoft.Azure.SpatialAnchors.SensorCapabilities/<>c__DisplayClass18_0::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass18_0__ctor_m1B169E965ADD6392DE7F4C383561112C66310E1A (U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D * __this, const RuntimeMethod* method);
+// System.Void System.Func`2<System.UInt64,Microsoft.Azure.SpatialAnchors.SensorCapabilities>::.ctor(System.Object,System.IntPtr)
+inline void Func_2__ctor_mE0B0428F617728986F7F17500279A933425FBDCD (Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893 * __this, RuntimeObject * ___object0, intptr_t ___method1, const RuntimeMethod* method)
+{
+	((  void (*) (Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893 *, RuntimeObject *, intptr_t, const RuntimeMethod*))Func_2__ctor_m6CFF53DABBCDEA2CA8B051805CF16879F03231CD_gshared)(__this, ___object0, ___method1, method);
+}
+// T Microsoft.Azure.SpatialAnchors.ProjectedObjectCache::GetOrCreate<Microsoft.Azure.SpatialAnchors.SensorCapabilities>(System.UInt64,System.Func`2<System.UInt64,T>)
+inline SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * ProjectedObjectCache_GetOrCreate_TisSensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51_m5162CEAC2545A48AA28423BBA4BEE1B53485E8E2 (uint64_t ___cookie0, Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893 * ___createFactory1, const RuntimeMethod* method)
+{
+	return ((  SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * (*) (uint64_t, Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893 *, const RuntimeMethod*))ProjectedObjectCache_GetOrCreate_TisRuntimeObject_mF06AB21B06AA66143E2B21278FAD093022D4F639_gshared)(___cookie0, ___createFactory1, method);
+}
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_fingerprint_event_args_addref(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_fingerprint_event_args_addref_mAFEB2522453E2F91360539D68E35A2BE4E8C58FC (intptr_t ___handle0, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_fingerprint_event_args_release(System.IntPtr)
@@ -5054,6 +5882,8 @@ inline SessionConfiguration_tC4806BD0D5A49DE7C8C0B8FCE3B1B95D8994BEF2 * Projecte
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_error_event_args_addref_mDCA6E2BCC841DEC06B6A5F99A2AB513505CCDD2E (intptr_t ___handle0, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_session_error_event_args_release(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_error_event_args_release_mE7E5478048CEB32AA2BB398868DBC8E6D4B0CEFB (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_session_error_event_args_get_error_message(System.IntPtr,System.String&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_error_event_args_get_error_message_m26D3AC9C01DEF1376108E5F2E9E9E7D571B96812 (intptr_t ___handle0, String_t** ___result1, const RuntimeMethod* method);
 // System.UInt64 Microsoft.Azure.SpatialAnchors.SessionErrorEventArgs::ConvertHandleToCookie(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t SessionErrorEventArgs_ConvertHandleToCookie_m2F473C7D7C79CDCEA3F283CA412FEED0F4B2760D (intptr_t ___handle0, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.SessionErrorEventArgs Microsoft.Azure.SpatialAnchors.SessionErrorEventArgs::GetOrCreateInstance(System.UInt64,System.Boolean)
@@ -5074,6 +5904,8 @@ inline SessionErrorEventArgs_tBC6BD7D553FA7F076DDB179DBBC576D276D8482F * Project
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_status_addref_mA2A5DC88FAC358C9D7FE60F51D7B31244BE5D619 (intptr_t ___handle0, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_session_status_release(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_status_release_m25D664F58280521504183619CB66FB6AE91058F4 (intptr_t ___handle0, const RuntimeMethod* method);
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_session_status_get_ready_for_create_progress(System.IntPtr,System.Single&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_status_get_ready_for_create_progress_m43CECFFEA1285C44778EEC62317AA83A09C27771 (intptr_t ___handle0, float* ___result1, const RuntimeMethod* method);
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_session_status_get_recommended_for_create_progress(System.IntPtr,System.Single&)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_status_get_recommended_for_create_progress_m010CEBE78DAA16636F3F2B982B99928142ACAE1D (intptr_t ___handle0, float* ___result1, const RuntimeMethod* method);
 // System.UInt64 Microsoft.Azure.SpatialAnchors.SessionStatus::ConvertHandleToCookie(System.IntPtr)
@@ -5238,10 +6070,18 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CloudSpatialAnchorWatcher__ctor_mF036166
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t LocateAnchorsCompletedEventArgs_ConvertCookieToHandle_m561DFDBF5C9634A3BCBC5745FE9CC7ED41347146 (uint64_t ___cookie0, const RuntimeMethod* method);
 // System.Void Microsoft.Azure.SpatialAnchors.LocateAnchorsCompletedEventArgs::.ctor(System.IntPtr,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LocateAnchorsCompletedEventArgs__ctor_m8C0FDEAC2D9556019F93D342982BA762A56E57BF (LocateAnchorsCompletedEventArgs_tA2B0431641D3164E78909D0F0CA77DA946732FBD * __this, intptr_t ___ahandle0, bool ___transfer1, const RuntimeMethod* method);
+// System.IntPtr Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::ConvertCookieToHandle(System.UInt64)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t NearDeviceCriteria_ConvertCookieToHandle_mF9179E4D71061A751FD869862EB2AE929D463970 (uint64_t ___cookie0, const RuntimeMethod* method);
+// System.Void Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::.ctor(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NearDeviceCriteria__ctor_m752F9685E9B0D6D8BE4909A2A7455862CFD86609 (NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * __this, intptr_t ___ahandle0, bool ___transfer1, const RuntimeMethod* method);
 // System.IntPtr Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs::ConvertCookieToHandle(System.UInt64)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t OnLogDebugEventArgs_ConvertCookieToHandle_mE60FE565A19DA614DFA21820BC862E05312B4142 (uint64_t ___cookie0, const RuntimeMethod* method);
 // System.Void Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs::.ctor(System.IntPtr,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OnLogDebugEventArgs__ctor_m5E9C80CEB6D82F6380568FD5E70FB47D2C0C0755 (OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC * __this, intptr_t ___ahandle0, bool ___transfer1, const RuntimeMethod* method);
+// System.IntPtr Microsoft.Azure.SpatialAnchors.SensorCapabilities::ConvertCookieToHandle(System.UInt64)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t SensorCapabilities_ConvertCookieToHandle_m408D5F6B4E6A33C9AEDAEFF2B45B91AFE524FAAF (uint64_t ___cookie0, const RuntimeMethod* method);
+// System.Void Microsoft.Azure.SpatialAnchors.SensorCapabilities::.ctor(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SensorCapabilities__ctor_mB5BE06120E4DF70BB7780E51B5920240EF051D9C (SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * __this, intptr_t ___ahandle0, bool ___transfer1, const RuntimeMethod* method);
 // System.IntPtr Microsoft.Azure.SpatialAnchors.SensorFingerprintEventArgs::ConvertCookieToHandle(System.UInt64)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t SensorFingerprintEventArgs_ConvertCookieToHandle_m5B12F1F47D0E1DBDA08FE1B55951D458C9F74F48 (uint64_t ___cookie0, const RuntimeMethod* method);
 // System.Void Microsoft.Azure.SpatialAnchors.SensorFingerprintEventArgs::.ctor(System.IntPtr,System.Boolean)
@@ -5270,10 +6110,28 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void TokenRequiredEventArgs__ctor_mFF207B362C
 IL2CPP_EXTERN_C int32_t CDECL ssc_anchor_locate_criteria_create(intptr_t*);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_anchor_locate_criteria_get_bypass_cache(intptr_t, uint8_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_anchor_locate_criteria_get_identifiers_wide_flat(intptr_t, intptr_t*, int32_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_anchor_locate_criteria_get_near_device(intptr_t, intptr_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_anchor_locate_criteria_get_requested_categories(intptr_t, int32_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_anchor_locate_criteria_release(intptr_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_anchor_locate_criteria_set_identifiers_wide(intptr_t, Il2CppChar**, int32_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_anchor_locate_criteria_set_near_anchor(intptr_t, intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_anchor_locate_criteria_set_near_device(intptr_t, intptr_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_anchor_located_event_args_addref(intptr_t);
@@ -5295,6 +6153,9 @@ IL2CPP_EXTERN_C int32_t CDECL ssc_cloud_spatial_anchor_addref(intptr_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_cloud_spatial_anchor_create(intptr_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_cloud_spatial_anchor_get_app_properties(intptr_t, intptr_t*);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_cloud_spatial_anchor_get_identifier_wide(intptr_t, Il2CppChar**);
@@ -5360,6 +6221,9 @@ IL2CPP_EXTERN_C int32_t CDECL ssc_cloud_spatial_anchor_session_set_error(intptr_
 IL2CPP_EXTERN_C int32_t CDECL ssc_cloud_spatial_anchor_session_set_locate_anchors_completed(intptr_t, uint64_t, Il2CppMethodPointer);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_cloud_spatial_anchor_session_set_location_provider(intptr_t, intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_cloud_spatial_anchor_session_set_log_level(intptr_t, int32_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
@@ -5396,16 +6260,97 @@ IL2CPP_EXTERN_C int32_t CDECL ssc_cloud_spatial_anchor_watcher_stop(intptr_t);
 IL2CPP_EXTERN_C int32_t CDECL ssc_get_error_details_wide(intptr_t, Il2CppChar**, Il2CppChar**, Il2CppChar**);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_idictionary_string_string_addref(intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_idictionary_string_string_get_count(intptr_t, int32_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_idictionary_string_string_get_item_wide(intptr_t, Il2CppChar*, Il2CppChar**);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_idictionary_string_string_get_key_wide(intptr_t, int32_t, Il2CppChar**);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_idictionary_string_string_release(intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_idictionary_string_string_remove_key_wide(intptr_t, Il2CppChar*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_idictionary_string_string_set_item_wide(intptr_t, Il2CppChar*, Il2CppChar*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_locate_anchors_completed_event_args_addref(intptr_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_locate_anchors_completed_event_args_release(intptr_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_near_anchor_criteria_create(intptr_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_near_anchor_criteria_release(intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_near_device_criteria_addref(intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_near_device_criteria_create(intptr_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_near_device_criteria_release(intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_near_device_criteria_set_distance_in_meters(intptr_t, float);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_near_device_criteria_set_max_result_count(intptr_t, int32_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_on_log_debug_event_args_addref(intptr_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_on_log_debug_event_args_get_message_wide(intptr_t, Il2CppChar**);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_on_log_debug_event_args_release(intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_platform_location_provider_create(intptr_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_platform_location_provider_get_bluetooth_status(intptr_t, int32_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_platform_location_provider_get_geo_location_status(intptr_t, int32_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_platform_location_provider_get_sensors(intptr_t, intptr_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_platform_location_provider_get_wifi_status(intptr_t, int32_t*);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_platform_location_provider_release(intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_sensor_capabilities_addref(intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_sensor_capabilities_release(intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_sensor_capabilities_set_bluetooth_enabled(intptr_t, uint8_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_sensor_capabilities_set_geo_location_enabled(intptr_t, uint8_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_sensor_capabilities_set_known_beacon_proximity_uuids_wide(intptr_t, Il2CppChar**, int32_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_sensor_capabilities_set_wifi_enabled(intptr_t, uint8_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_sensor_fingerprint_event_args_addref(intptr_t);
@@ -5432,10 +6377,16 @@ IL2CPP_EXTERN_C int32_t CDECL ssc_session_configuration_set_account_key_wide(int
 IL2CPP_EXTERN_C int32_t CDECL ssc_session_error_event_args_addref(intptr_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_session_error_event_args_get_error_message_wide(intptr_t, Il2CppChar**);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_session_error_event_args_release(intptr_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_session_status_addref(intptr_t);
+#endif
+#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+IL2CPP_EXTERN_C int32_t CDECL ssc_session_status_get_ready_for_create_progress(intptr_t, float*);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_session_status_get_recommended_for_create_progress(intptr_t, float*);
@@ -5466,6 +6417,14 @@ IL2CPP_EXTERN_C int32_t CDECL ssc_token_required_event_args_release(intptr_t);
 #endif
 #if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
 IL2CPP_EXTERN_C int32_t CDECL ssc_token_required_event_args_set_authentication_token_wide(intptr_t, Il2CppChar*);
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
 #endif
 #ifdef __clang__
 #pragma clang diagnostic push
@@ -5560,6 +6519,86 @@ IL_002e:
 		return;
 	}
 }
+// System.Boolean Microsoft.Azure.SpatialAnchors.AnchorLocateCriteria::get_BypassCache()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AnchorLocateCriteria_get_BypassCache_m25B0944F4C297C5EBD3C8F232573F859AA97AE83 (AnchorLocateCriteria_t752C300C49E053B42AA68DDF88DB9D816B30174D * __this, const RuntimeMethod* method)
+{
+	bool V_0 = false;
+	bool V_1 = false;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_anchor_locate_criteria_get_bypass_cache(this.handle, out result));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_anchor_locate_criteria_get_bypass_cache_m2D2B634760E5F2920BD5A20AA5F291A78411CF28((intptr_t)L_1, (bool*)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// return result;
+		bool L_3 = V_0;
+		V_1 = L_3;
+		goto IL_001e;
+	}
+
+IL_001e:
+	{
+		// }
+		bool L_4 = V_1;
+		return L_4;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.AnchorDataCategory Microsoft.Azure.SpatialAnchors.AnchorLocateCriteria::get_RequestedCategories()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t AnchorLocateCriteria_get_RequestedCategories_m8C987AD4AEF3E843EF18AF88311EAC7F199AFBDE (AnchorLocateCriteria_t752C300C49E053B42AA68DDF88DB9D816B30174D * __this, const RuntimeMethod* method)
+{
+	int32_t V_0 = 0;
+	int32_t V_1 = 0;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_anchor_locate_criteria_get_requested_categories(this.handle, out result));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_anchor_locate_criteria_get_requested_categories_m11B1E90FCA813E0629EE7D2261EDE6418CD9591A((intptr_t)L_1, (int32_t*)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// return result;
+		int32_t L_3 = V_0;
+		V_1 = L_3;
+		goto IL_001e;
+	}
+
+IL_001e:
+	{
+		// }
+		int32_t L_4 = V_1;
+		return L_4;
+	}
+}
+// System.String[] Microsoft.Azure.SpatialAnchors.AnchorLocateCriteria::get_Identifiers()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* AnchorLocateCriteria_get_Identifiers_mA4052FC823B27AA44ECA2EB63BC2F3FECCC66893 (AnchorLocateCriteria_t752C300C49E053B42AA68DDF88DB9D816B30174D * __this, const RuntimeMethod* method)
+{
+	intptr_t V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	int32_t V_1 = 0;
+	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* V_2 = NULL;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_anchor_locate_criteria_get_identifiers(this.handle, out result, out result_length));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_anchor_locate_criteria_get_identifiers_m54469C9DED1C929E38E12164D1F7BB706FE38BD4((intptr_t)L_1, (intptr_t*)(&V_0), (int32_t*)(&V_1), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// return Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.IntPtrToStringArray(result, result_length);
+		intptr_t L_3 = V_0;
+		int32_t L_4 = V_1;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_5;
+		L_5 = NativeLibraryHelpers_IntPtrToStringArray_m265B3B75D0CB5C1FA09C826295509163853E9A09((intptr_t)L_3, L_4, /*hidden argument*/NULL);
+		V_2 = L_5;
+		goto IL_0026;
+	}
+
+IL_0026:
+	{
+		// }
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_6 = V_2;
+		return L_6;
+	}
+}
 // System.Void Microsoft.Azure.SpatialAnchors.AnchorLocateCriteria::set_Identifiers(System.String[])
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorLocateCriteria_set_Identifiers_mD081BE05E5000A5D9E78ECB6BDE566DFF4F2493E (AnchorLocateCriteria_t752C300C49E053B42AA68DDF88DB9D816B30174D * __this, StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___value0, const RuntimeMethod* method)
 {
@@ -5619,6 +6658,191 @@ IL_0017:
 		int32_t L_5;
 		L_5 = NativeLibrary_ssc_anchor_locate_criteria_set_identifiers_m2FF6A63CEA615ACEEBCD517FBEB0E6A741323AFE((intptr_t)G_B3_2, G_B3_1, G_B3_0, /*hidden argument*/NULL);
 		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)G_B3_3, L_5, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.AnchorLocateCriteria::set_NearAnchor(Microsoft.Azure.SpatialAnchors.NearAnchorCriteria)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorLocateCriteria_set_NearAnchor_m66DE5D7B4DCA1C668AB23E6DAEDE10D420C09FF3 (AnchorLocateCriteria_t752C300C49E053B42AA68DDF88DB9D816B30174D * __this, NearAnchorCriteria_t292ADB7FCE0963CC89D65EFF074F791AAC66B27C * ___value0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	intptr_t G_B2_0;
+	memset((&G_B2_0), 0, sizeof(G_B2_0));
+	intptr_t G_B2_1;
+	memset((&G_B2_1), 0, sizeof(G_B2_1));
+	intptr_t G_B1_0;
+	memset((&G_B1_0), 0, sizeof(G_B1_0));
+	intptr_t G_B1_1;
+	memset((&G_B1_1), 0, sizeof(G_B1_1));
+	intptr_t G_B3_0;
+	memset((&G_B3_0), 0, sizeof(G_B3_0));
+	intptr_t G_B3_1;
+	memset((&G_B3_1), 0, sizeof(G_B3_1));
+	intptr_t G_B3_2;
+	memset((&G_B3_2), 0, sizeof(G_B3_2));
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_anchor_locate_criteria_set_near_anchor(this.handle, value != null ? value.handle : IntPtr.Zero));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		NearAnchorCriteria_t292ADB7FCE0963CC89D65EFF074F791AAC66B27C * L_2 = ___value0;
+		G_B1_0 = L_1;
+		G_B1_1 = L_0;
+		if (L_2)
+		{
+			G_B2_0 = L_1;
+			G_B2_1 = L_0;
+			goto IL_0017;
+		}
+	}
+	{
+		G_B3_0 = (0);
+		G_B3_1 = G_B1_0;
+		G_B3_2 = G_B1_1;
+		goto IL_001d;
+	}
+
+IL_0017:
+	{
+		NearAnchorCriteria_t292ADB7FCE0963CC89D65EFF074F791AAC66B27C * L_3 = ___value0;
+		NullCheck(L_3);
+		intptr_t L_4 = L_3->get_handle_0();
+		G_B3_0 = L_4;
+		G_B3_1 = G_B2_0;
+		G_B3_2 = G_B2_1;
+	}
+
+IL_001d:
+	{
+		int32_t L_5;
+		L_5 = NativeLibrary_ssc_anchor_locate_criteria_set_near_anchor_mDAD306D033416C69F2B3821FD8B9C74BC6770BF3((intptr_t)G_B3_1, (intptr_t)G_B3_0, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)G_B3_2, L_5, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.NearDeviceCriteria Microsoft.Azure.SpatialAnchors.AnchorLocateCriteria::get_NearDevice()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * AnchorLocateCriteria_get_NearDevice_mA6324CDC0768C0F5668CD0375C0B1B26855EF4D6 (AnchorLocateCriteria_t752C300C49E053B42AA68DDF88DB9D816B30174D * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	intptr_t V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * V_1 = NULL;
+	NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * V_2 = NULL;
+	NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * G_B3_0 = NULL;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_anchor_locate_criteria_get_near_device(this.handle, out result_handle));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_anchor_locate_criteria_get_near_device_mCAC058522FD56F871EC99EF8D939F613102D6AED((intptr_t)L_1, (intptr_t*)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// result_object = (result_handle != IntPtr.Zero) ? Microsoft.Azure.SpatialAnchors.NearDeviceCriteria.GetOrCreateInstance(result_handle, transfer: true) : null;
+		intptr_t L_3 = V_0;
+		bool L_4;
+		L_4 = IntPtr_op_Inequality_m212AF0E66AA81FEDC982B1C8A44ADDA24B995EB8((intptr_t)L_3, (intptr_t)(0), /*hidden argument*/NULL);
+		if (L_4)
+		{
+			goto IL_002a;
+		}
+	}
+	{
+		G_B3_0 = ((NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 *)(NULL));
+		goto IL_0031;
+	}
+
+IL_002a:
+	{
+		intptr_t L_5 = V_0;
+		NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * L_6;
+		L_6 = NearDeviceCriteria_GetOrCreateInstance_mEB93B4EB5CCDE5910A0C57A80411C6DB85228183((intptr_t)L_5, (bool)1, /*hidden argument*/NULL);
+		G_B3_0 = L_6;
+	}
+
+IL_0031:
+	{
+		V_1 = G_B3_0;
+		// return result_object;
+		NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * L_7 = V_1;
+		V_2 = L_7;
+		goto IL_0036;
+	}
+
+IL_0036:
+	{
+		// }
+		NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * L_8 = V_2;
+		return L_8;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.AnchorLocateCriteria::set_NearDevice(Microsoft.Azure.SpatialAnchors.NearDeviceCriteria)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AnchorLocateCriteria_set_NearDevice_m5CA60FEA011E89C9C1793D41106EA7D01D786C6D (AnchorLocateCriteria_t752C300C49E053B42AA68DDF88DB9D816B30174D * __this, NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * ___value0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	intptr_t G_B2_0;
+	memset((&G_B2_0), 0, sizeof(G_B2_0));
+	intptr_t G_B2_1;
+	memset((&G_B2_1), 0, sizeof(G_B2_1));
+	intptr_t G_B1_0;
+	memset((&G_B1_0), 0, sizeof(G_B1_0));
+	intptr_t G_B1_1;
+	memset((&G_B1_1), 0, sizeof(G_B1_1));
+	intptr_t G_B3_0;
+	memset((&G_B3_0), 0, sizeof(G_B3_0));
+	intptr_t G_B3_1;
+	memset((&G_B3_1), 0, sizeof(G_B3_1));
+	intptr_t G_B3_2;
+	memset((&G_B3_2), 0, sizeof(G_B3_2));
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_anchor_locate_criteria_set_near_device(this.handle, value != null ? value.handle : IntPtr.Zero));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * L_2 = ___value0;
+		G_B1_0 = L_1;
+		G_B1_1 = L_0;
+		if (L_2)
+		{
+			G_B2_0 = L_1;
+			G_B2_1 = L_0;
+			goto IL_0017;
+		}
+	}
+	{
+		G_B3_0 = (0);
+		G_B3_1 = G_B1_0;
+		G_B3_2 = G_B1_1;
+		goto IL_001d;
+	}
+
+IL_0017:
+	{
+		NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * L_3 = ___value0;
+		NullCheck(L_3);
+		intptr_t L_4 = L_3->get_handle_0();
+		G_B3_0 = L_4;
+		G_B3_1 = G_B2_0;
+		G_B3_2 = G_B2_1;
+	}
+
+IL_001d:
+	{
+		int32_t L_5;
+		L_5 = NativeLibrary_ssc_anchor_locate_criteria_set_near_device_m6CF54405876474A27D6857E38EB68998BA574674((intptr_t)G_B3_1, (intptr_t)G_B3_0, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)G_B3_2, L_5, /*hidden argument*/NULL);
 		// }
 		return;
 	}
@@ -6282,6 +7506,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t AnchorLocatedEventArgs_ConvertCookie
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
 // System.Void Microsoft.Azure.SpatialAnchors.CloudSpatialAnchor::.ctor(System.IntPtr,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CloudSpatialAnchor__ctor_m0DC069CF367E9E6CFF72E48B7CCD0F7EFCD2E741 (CloudSpatialAnchor_t03448002616C4EF52821932C9ACC3DEFA04A8D70 * __this, intptr_t ___ahandle0, bool ___transfer1, const RuntimeMethod* method)
 {
@@ -6533,6 +7765,44 @@ IL_001e:
 		// }
 		String_t* L_4 = V_1;
 		return L_4;
+	}
+}
+// System.Collections.Generic.IDictionary`2<System.String,System.String> Microsoft.Azure.SpatialAnchors.CloudSpatialAnchor::get_AppProperties()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* CloudSpatialAnchor_get_AppProperties_mBB0E5D043D9C75FF2567B6E91076277BCFF352E0 (CloudSpatialAnchor_t03448002616C4EF52821932C9ACC3DEFA04A8D70 * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	intptr_t V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * V_1 = NULL;
+	RuntimeObject* V_2 = NULL;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_cloud_spatial_anchor_get_app_properties(this.handle, out result_handle));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_cloud_spatial_anchor_get_app_properties_m6E5B953D5384D3B53B0B74C3B1D5C8D8B6FF279F((intptr_t)L_1, (intptr_t*)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// result_object = new IDictionary_String_String(result_handle, transfer: true);
+		intptr_t L_3 = V_0;
+		IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * L_4 = (IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 *)il2cpp_codegen_object_new(IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409_il2cpp_TypeInfo_var);
+		IDictionary_String_String__ctor_mB0DEFEBA2E5A45E56040E7926EC99541D9F7634A(L_4, (intptr_t)L_3, (bool)1, /*hidden argument*/NULL);
+		V_1 = L_4;
+		// return result_object;
+		IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * L_5 = V_1;
+		V_2 = L_5;
+		goto IL_0026;
+	}
+
+IL_0026:
+	{
+		// }
+		RuntimeObject* L_6 = V_2;
+		return L_6;
 	}
 }
 // System.UInt64 Microsoft.Azure.SpatialAnchors.CloudSpatialAnchor::Microsoft.Azure.SpatialAnchors.ICachedObject.get_Cookie()
@@ -6921,6 +8191,69 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CloudSpatialAnchorSession_set_LogLevel_m
 		int32_t L_3;
 		L_3 = NativeLibrary_ssc_cloud_spatial_anchor_session_set_log_level_mAE60DD06126A4227355ED33F6404D9D8B8E7412C((intptr_t)L_1, L_2, /*hidden argument*/NULL);
 		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_3, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.CloudSpatialAnchorSession::set_LocationProvider(Microsoft.Azure.SpatialAnchors.PlatformLocationProvider)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CloudSpatialAnchorSession_set_LocationProvider_mFA02554DDFA36A89CF3DB1F22806409DBA0D78A5 (CloudSpatialAnchorSession_tA71B2460BEFD6D2F80236B2506272152F826ABB0 * __this, PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574 * ___value0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	intptr_t G_B2_0;
+	memset((&G_B2_0), 0, sizeof(G_B2_0));
+	intptr_t G_B2_1;
+	memset((&G_B2_1), 0, sizeof(G_B2_1));
+	intptr_t G_B1_0;
+	memset((&G_B1_0), 0, sizeof(G_B1_0));
+	intptr_t G_B1_1;
+	memset((&G_B1_1), 0, sizeof(G_B1_1));
+	intptr_t G_B3_0;
+	memset((&G_B3_0), 0, sizeof(G_B3_0));
+	intptr_t G_B3_1;
+	memset((&G_B3_1), 0, sizeof(G_B3_1));
+	intptr_t G_B3_2;
+	memset((&G_B3_2), 0, sizeof(G_B3_2));
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_cloud_spatial_anchor_session_set_location_provider(this.handle, value != null ? value.handle : IntPtr.Zero));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574 * L_2 = ___value0;
+		G_B1_0 = L_1;
+		G_B1_1 = L_0;
+		if (L_2)
+		{
+			G_B2_0 = L_1;
+			G_B2_1 = L_0;
+			goto IL_0017;
+		}
+	}
+	{
+		G_B3_0 = (0);
+		G_B3_1 = G_B1_0;
+		G_B3_2 = G_B1_1;
+		goto IL_001d;
+	}
+
+IL_0017:
+	{
+		PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574 * L_3 = ___value0;
+		NullCheck(L_3);
+		intptr_t L_4 = L_3->get_handle_0();
+		G_B3_0 = L_4;
+		G_B3_1 = G_B2_0;
+		G_B3_2 = G_B2_1;
+	}
+
+IL_001d:
+	{
+		int32_t L_5;
+		L_5 = NativeLibrary_ssc_cloud_spatial_anchor_session_set_location_provider_mCEEF5E3F1F21A743943BC3286F466A7E60CA2A54((intptr_t)G_B3_1, (intptr_t)G_B3_0, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)G_B3_2, L_5, /*hidden argument*/NULL);
 		// }
 		return;
 	}
@@ -8916,6 +10249,219 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CloudSpatialException__ctor_m7606E16E4A9
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+// System.Void Microsoft.Azure.SpatialAnchors.IDictionary_String_String::.ctor(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IDictionary_String_String__ctor_mB0DEFEBA2E5A45E56040E7926EC99541D9F7634A (IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * __this, intptr_t ___ahandle0, bool ___transfer1, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&BasePrivateDictionary_2__ctor_m0947CD974AA0A2F5AE5AF0996BE2D414F88B0461_RuntimeMethod_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	bool V_0 = false;
+	{
+		// internal IDictionary_String_String(IntPtr ahandle, bool transfer)
+		BasePrivateDictionary_2__ctor_m0947CD974AA0A2F5AE5AF0996BE2D414F88B0461(__this, /*hidden argument*/BasePrivateDictionary_2__ctor_m0947CD974AA0A2F5AE5AF0996BE2D414F88B0461_RuntimeMethod_var);
+		// this.handle = ahandle;
+		intptr_t L_0 = ___ahandle0;
+		__this->set_handle_0((intptr_t)L_0);
+		// if (!transfer) Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_idictionary_string_string_addref(ahandle);
+		bool L_1 = ___transfer1;
+		V_0 = (bool)((((int32_t)L_1) == ((int32_t)0))? 1 : 0);
+		bool L_2 = V_0;
+		if (!L_2)
+		{
+			goto IL_001e;
+		}
+	}
+	{
+		// if (!transfer) Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_idictionary_string_string_addref(ahandle);
+		intptr_t L_3 = ___ahandle0;
+		int32_t L_4;
+		L_4 = NativeLibrary_ssc_idictionary_string_string_addref_m3ABCE51DD280FB11BE1DAFBC2C65560001CECDD3((intptr_t)L_3, /*hidden argument*/NULL);
+	}
+
+IL_001e:
+	{
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.IDictionary_String_String::Finalize()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IDictionary_String_String_Finalize_m4090DB931E54CE82DD4452FC0C8AF977D68DC186 (IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t * __last_unhandled_exception = 0;
+	il2cpp::utils::ExceptionSupportStack<int32_t, 1> __leave_targets;
+	{
+	}
+
+IL_0001:
+	try
+	{ // begin try (depth: 1)
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_idictionary_string_string_release(this.handle));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_idictionary_string_string_release_mC208BC3A5ECEA3CEF191BCCF92DDC9370A186953((intptr_t)L_1, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// this.handle = IntPtr.Zero;
+		__this->set_handle_0((intptr_t)(0));
+		IL2CPP_LEAVE(0x2E, FINALLY_0026);
+	} // end try (depth: 1)
+	catch(Il2CppExceptionWrapper& e)
+	{
+		__last_unhandled_exception = (Exception_t *)e.ex;
+		goto FINALLY_0026;
+	}
+
+FINALLY_0026:
+	{ // begin finally (depth: 1)
+		// }
+		Object_Finalize_mC59C83CF4F7707E425FFA6362931C25D4C36676A(__this, /*hidden argument*/NULL);
+		IL2CPP_END_FINALLY(38)
+	} // end finally (depth: 1)
+	IL2CPP_CLEANUP(38)
+	{
+		IL2CPP_RETHROW_IF_UNHANDLED(Exception_t *)
+		IL2CPP_JUMP_TBL(0x2E, IL_002e)
+	}
+
+IL_002e:
+	{
+		// }
+		return;
+	}
+}
+// System.Int32 Microsoft.Azure.SpatialAnchors.IDictionary_String_String::InternalGetCount()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t IDictionary_String_String_InternalGetCount_mB08E3A89EA448B637C07BC011467813E53067634 (IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * __this, const RuntimeMethod* method)
+{
+	int32_t V_0 = 0;
+	int32_t V_1 = 0;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_idictionary_string_string_get_count(this.handle, out result));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_idictionary_string_string_get_count_m1406546FC99DA2882BFC3553EAEC68B460AAB8AC((intptr_t)L_1, (int32_t*)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// return result;
+		int32_t L_3 = V_0;
+		V_1 = L_3;
+		goto IL_001e;
+	}
+
+IL_001e:
+	{
+		// }
+		int32_t L_4 = V_1;
+		return L_4;
+	}
+}
+// System.String Microsoft.Azure.SpatialAnchors.IDictionary_String_String::InternalGetKey(System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* IDictionary_String_String_InternalGetKey_m0CBAE4201FB863AC8D3BD9EDEC63050BD13090FA (IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * __this, int32_t ___index0, const RuntimeMethod* method)
+{
+	String_t* V_0 = NULL;
+	String_t* V_1 = NULL;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_idictionary_string_string_get_key(this.handle, index, out result));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2 = ___index0;
+		int32_t L_3;
+		L_3 = NativeLibrary_ssc_idictionary_string_string_get_key_mC0DA79FE4F5F61934155CA8D513F0266F53955CA((intptr_t)L_1, L_2, (String_t**)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_3, /*hidden argument*/NULL);
+		// return result;
+		String_t* L_4 = V_0;
+		V_1 = L_4;
+		goto IL_001f;
+	}
+
+IL_001f:
+	{
+		// }
+		String_t* L_5 = V_1;
+		return L_5;
+	}
+}
+// System.String Microsoft.Azure.SpatialAnchors.IDictionary_String_String::InternalGetItem(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* IDictionary_String_String_InternalGetItem_mE37284F29E5526CB5415D70B5F6A50441B87C48F (IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * __this, String_t* ___key0, const RuntimeMethod* method)
+{
+	String_t* V_0 = NULL;
+	String_t* V_1 = NULL;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_idictionary_string_string_get_item(this.handle, key, out result));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		String_t* L_2 = ___key0;
+		int32_t L_3;
+		L_3 = NativeLibrary_ssc_idictionary_string_string_get_item_m954701F1200D6F23A1FF39709E5782C3C09D4737((intptr_t)L_1, L_2, (String_t**)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_3, /*hidden argument*/NULL);
+		// return result;
+		String_t* L_4 = V_0;
+		V_1 = L_4;
+		goto IL_001f;
+	}
+
+IL_001f:
+	{
+		// }
+		String_t* L_5 = V_1;
+		return L_5;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.IDictionary_String_String::InternalSetItem(System.String,System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IDictionary_String_String_InternalSetItem_m7E56083B5DC97AFA7A568ED0179E49C3549B46EE (IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * __this, String_t* ___key0, String_t* ___value1, const RuntimeMethod* method)
+{
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_idictionary_string_string_set_item(this.handle, key, value));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		String_t* L_2 = ___key0;
+		String_t* L_3 = ___value1;
+		int32_t L_4;
+		L_4 = NativeLibrary_ssc_idictionary_string_string_set_item_m72697AEABE7C7D8D77E7821638D4CCEB9AE6102C((intptr_t)L_1, L_2, L_3, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_4, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.IDictionary_String_String::InternalRemoveKey(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void IDictionary_String_String_InternalRemoveKey_mD312E587E75B1D2CB9A7000FB53ED4CC56099926 (IDictionary_String_String_tC596E604DA9DA0B7467E47AFC62216370CFD2409 * __this, String_t* ___key0, const RuntimeMethod* method)
+{
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_idictionary_string_string_remove_key(this.handle, key));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		String_t* L_2 = ___key0;
+		int32_t L_3;
+		L_3 = NativeLibrary_ssc_idictionary_string_string_remove_key_m0BBF329B5F6E120359630A6EDE8A60D91618AA51((intptr_t)L_1, L_2, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_3, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
 // System.Void Microsoft.Azure.SpatialAnchors.LocateAnchorsCompletedDelegate::.ctor(System.Object,System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LocateAnchorsCompletedDelegate__ctor_mA0865702FA4E2D7A6AF709B0E84AFA89B90758A3 (LocateAnchorsCompletedDelegate_t73E51F6E92EAF6812D46CB7118A0E04DBD1ABF91 * __this, RuntimeObject * ___object0, intptr_t ___method1, const RuntimeMethod* method)
 {
@@ -9424,6 +10970,98 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_crite
 
 	return returnValue;
 }
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_get_bypass_cache(System.IntPtr,System.Boolean&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_get_bypass_cache_m2D2B634760E5F2920BD5A20AA5F291A78411CF28 (intptr_t ___handle0, bool* ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, uint8_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(uint8_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_anchor_locate_criteria_get_bypass_cache", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_anchor_locate_criteria_get_bypass_cache)(___handle0, reinterpret_cast<uint8_t*>(___result1));
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, reinterpret_cast<uint8_t*>(___result1));
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_get_identifiers(System.IntPtr,System.IntPtr&,System.Int32&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_get_identifiers_m54469C9DED1C929E38E12164D1F7BB706FE38BD4 (intptr_t ___handle0, intptr_t* ___result1, int32_t* ___result_count2, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, intptr_t*, int32_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(intptr_t*) + sizeof(int32_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_anchor_locate_criteria_get_identifiers_wide_flat", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_anchor_locate_criteria_get_identifiers_wide_flat)(___handle0, ___result1, ___result_count2);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___result1, ___result_count2);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_get_near_device(System.IntPtr,System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_get_near_device_mCAC058522FD56F871EC99EF8D939F613102D6AED (intptr_t ___handle0, intptr_t* ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, intptr_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(intptr_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_anchor_locate_criteria_get_near_device", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_anchor_locate_criteria_get_near_device)(___handle0, ___result1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___result1);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_get_requested_categories(System.IntPtr,Microsoft.Azure.SpatialAnchors.AnchorDataCategory&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_get_requested_categories_m11B1E90FCA813E0629EE7D2261EDE6418CD9591A (intptr_t ___handle0, int32_t* ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, int32_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(int32_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_anchor_locate_criteria_get_requested_categories", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_anchor_locate_criteria_get_requested_categories)(___handle0, ___result1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___result1);
+	#endif
+
+	return returnValue;
+}
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_release(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_release_mB582B616DBE78E162D9100509ED067F1A9943EE2 (intptr_t ___handle0, const RuntimeMethod* method)
 {
@@ -9497,6 +11135,52 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_crite
 		il2cpp_codegen_marshal_free(____value1_marshaled);
 		____value1_marshaled = NULL;
 	}
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_set_near_anchor(System.IntPtr,System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_set_near_anchor_mDAD306D033416C69F2B3821FD8B9C74BC6770BF3 (intptr_t ___handle0, intptr_t ___value1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_anchor_locate_criteria_set_near_anchor", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_anchor_locate_criteria_set_near_anchor)(___handle0, ___value1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___value1);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_anchor_locate_criteria_set_near_device(System.IntPtr,System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_anchor_locate_criteria_set_near_device_m6CF54405876474A27D6857E38EB68998BA574674 (intptr_t ___handle0, intptr_t ___value1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_anchor_locate_criteria_set_near_device", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_anchor_locate_criteria_set_near_device)(___handle0, ___value1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___value1);
+	#endif
 
 	return returnValue;
 }
@@ -9671,6 +11355,29 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_ancho
 	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_cloud_spatial_anchor_create)(___instance0);
 	#else
 	int32_t returnValue = il2cppPInvokeFunc(___instance0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_cloud_spatial_anchor_get_app_properties(System.IntPtr,System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_anchor_get_app_properties_m6E5B953D5384D3B53B0B74C3B1D5C8D8B6FF279F (intptr_t ___handle0, intptr_t* ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, intptr_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(intptr_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_cloud_spatial_anchor_get_app_properties", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_cloud_spatial_anchor_get_app_properties)(___handle0, ___result1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___result1);
 	#endif
 
 	return returnValue;
@@ -10191,6 +11898,29 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_ancho
 
 	return returnValue;
 }
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_cloud_spatial_anchor_session_set_location_provider(System.IntPtr,System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_anchor_session_set_location_provider_mCEEF5E3F1F21A743943BC3286F466A7E60CA2A54 (intptr_t ___handle0, intptr_t ___value1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_cloud_spatial_anchor_session_set_location_provider", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_cloud_spatial_anchor_session_set_location_provider)(___handle0, ___value1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___value1);
+	#endif
+
+	return returnValue;
+}
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_cloud_spatial_anchor_session_set_log_level(System.IntPtr,Microsoft.Azure.SpatialAnchors.SessionLogLevel)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_cloud_spatial_anchor_session_set_log_level_mAE60DD06126A4227355ED33F6404D9D8B8E7412C (intptr_t ___handle0, int32_t ___value1, const RuntimeMethod* method)
 {
@@ -10521,6 +12251,223 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_get_error_details_m
 
 	return returnValue;
 }
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_addref(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_addref_m3ABCE51DD280FB11BE1DAFBC2C65560001CECDD3 (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_idictionary_string_string_addref", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_idictionary_string_string_addref)(___handle0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_get_count(System.IntPtr,System.Int32&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_get_count_m1406546FC99DA2882BFC3553EAEC68B460AAB8AC (intptr_t ___handle0, int32_t* ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, int32_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(int32_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_idictionary_string_string_get_count", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_idictionary_string_string_get_count)(___handle0, ___result1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___result1);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_get_item(System.IntPtr,System.String,System.String&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_get_item_m954701F1200D6F23A1FF39709E5782C3C09D4737 (intptr_t ___handle0, String_t* ___key1, String_t** ___result2, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, Il2CppChar*, Il2CppChar**);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(Il2CppChar*) + sizeof(Il2CppChar**);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_idictionary_string_string_get_item_wide", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Marshaling of parameter '___key1' to native representation
+	Il2CppChar* ____key1_marshaled = NULL;
+	if (___key1 != NULL)
+	{
+		____key1_marshaled = ___key1->get_address_of_m_firstChar_1();
+	}
+
+	// Marshaling of parameter '___result2' to native representation
+	Il2CppChar* ____result2_empty = NULL;
+	Il2CppChar** ____result2_marshaled = &____result2_empty;
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_idictionary_string_string_get_item_wide)(___handle0, ____key1_marshaled, ____result2_marshaled);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ____key1_marshaled, ____result2_marshaled);
+	#endif
+
+	// Marshaling of parameter '___result2' back from native representation
+	String_t* _____result2_marshaled_unmarshaled_dereferenced = NULL;
+	_____result2_marshaled_unmarshaled_dereferenced = il2cpp_codegen_marshal_wstring_result(*____result2_marshaled);
+	*___result2 = _____result2_marshaled_unmarshaled_dereferenced;
+	Il2CppCodeGenWriteBarrier((void**)___result2, (void*)____result2_marshaled);
+
+	// Marshaling cleanup of parameter '___result2' native representation
+	il2cpp_codegen_marshal_free(*____result2_marshaled);
+	*____result2_marshaled = NULL;
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_get_key(System.IntPtr,System.Int32,System.String&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_get_key_mC0DA79FE4F5F61934155CA8D513F0266F53955CA (intptr_t ___handle0, int32_t ___index1, String_t** ___result2, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, int32_t, Il2CppChar**);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(int32_t) + sizeof(Il2CppChar**);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_idictionary_string_string_get_key_wide", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Marshaling of parameter '___result2' to native representation
+	Il2CppChar* ____result2_empty = NULL;
+	Il2CppChar** ____result2_marshaled = &____result2_empty;
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_idictionary_string_string_get_key_wide)(___handle0, ___index1, ____result2_marshaled);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___index1, ____result2_marshaled);
+	#endif
+
+	// Marshaling of parameter '___result2' back from native representation
+	String_t* _____result2_marshaled_unmarshaled_dereferenced = NULL;
+	_____result2_marshaled_unmarshaled_dereferenced = il2cpp_codegen_marshal_wstring_result(*____result2_marshaled);
+	*___result2 = _____result2_marshaled_unmarshaled_dereferenced;
+	Il2CppCodeGenWriteBarrier((void**)___result2, (void*)____result2_marshaled);
+
+	// Marshaling cleanup of parameter '___result2' native representation
+	il2cpp_codegen_marshal_free(*____result2_marshaled);
+	*____result2_marshaled = NULL;
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_release(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_release_mC208BC3A5ECEA3CEF191BCCF92DDC9370A186953 (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_idictionary_string_string_release", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_idictionary_string_string_release)(___handle0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_remove_key(System.IntPtr,System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_remove_key_m0BBF329B5F6E120359630A6EDE8A60D91618AA51 (intptr_t ___handle0, String_t* ___key1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, Il2CppChar*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(Il2CppChar*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_idictionary_string_string_remove_key_wide", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Marshaling of parameter '___key1' to native representation
+	Il2CppChar* ____key1_marshaled = NULL;
+	if (___key1 != NULL)
+	{
+		____key1_marshaled = ___key1->get_address_of_m_firstChar_1();
+	}
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_idictionary_string_string_remove_key_wide)(___handle0, ____key1_marshaled);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ____key1_marshaled);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_idictionary_string_string_set_item(System.IntPtr,System.String,System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_idictionary_string_string_set_item_m72697AEABE7C7D8D77E7821638D4CCEB9AE6102C (intptr_t ___handle0, String_t* ___key1, String_t* ___value2, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, Il2CppChar*, Il2CppChar*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(Il2CppChar*) + sizeof(Il2CppChar*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_idictionary_string_string_set_item_wide", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Marshaling of parameter '___key1' to native representation
+	Il2CppChar* ____key1_marshaled = NULL;
+	if (___key1 != NULL)
+	{
+		____key1_marshaled = ___key1->get_address_of_m_firstChar_1();
+	}
+
+	// Marshaling of parameter '___value2' to native representation
+	Il2CppChar* ____value2_marshaled = NULL;
+	if (___value2 != NULL)
+	{
+		____value2_marshaled = ___value2->get_address_of_m_firstChar_1();
+	}
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_idictionary_string_string_set_item_wide)(___handle0, ____key1_marshaled, ____value2_marshaled);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ____key1_marshaled, ____value2_marshaled);
+	#endif
+
+	return returnValue;
+}
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_locate_anchors_completed_event_args_addref(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_locate_anchors_completed_event_args_addref_mAC0F63DD9E10A9EA43CB944B78472DBD72FEDA4A (intptr_t ___handle0, const RuntimeMethod* method)
 {
@@ -10567,6 +12514,167 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_locate_anchors_comp
 
 	return returnValue;
 }
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_anchor_criteria_create(System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_anchor_criteria_create_mE543DD16AD8BE7BF4A726A888F0F2915BC067640 (intptr_t* ___instance0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_near_anchor_criteria_create", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_near_anchor_criteria_create)(___instance0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___instance0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_anchor_criteria_release(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_anchor_criteria_release_mB8E9208C26C60910F35734C63DF21FFC6BDC9953 (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_near_anchor_criteria_release", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_near_anchor_criteria_release)(___handle0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_device_criteria_addref(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_device_criteria_addref_m6A7080BA980286800A4B1C6FB4291A06A3886FC4 (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_near_device_criteria_addref", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_near_device_criteria_addref)(___handle0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_device_criteria_create(System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_device_criteria_create_mE197F9DB9C7A59C12F21BB5AEE9CE4D20F0C579C (intptr_t* ___instance0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_near_device_criteria_create", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_near_device_criteria_create)(___instance0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___instance0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_device_criteria_release(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_device_criteria_release_m4C87AF51BDF2B3EC82D498392E2A401D7FDAE5E3 (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_near_device_criteria_release", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_near_device_criteria_release)(___handle0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_device_criteria_set_distance_in_meters(System.IntPtr,System.Single)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_device_criteria_set_distance_in_meters_mAE5DAEB8AF751435E0AB34E13E32A19966BE6C79 (intptr_t ___handle0, float ___value1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, float);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(float);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_near_device_criteria_set_distance_in_meters", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_near_device_criteria_set_distance_in_meters)(___handle0, ___value1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___value1);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_near_device_criteria_set_max_result_count(System.IntPtr,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_near_device_criteria_set_max_result_count_m03F0C1AD4D29D716949FE74B93FEB8151A50789C (intptr_t ___handle0, int32_t ___value1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, int32_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(int32_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_near_device_criteria_set_max_result_count", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_near_device_criteria_set_max_result_count)(___handle0, ___value1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___value1);
+	#endif
+
+	return returnValue;
+}
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_on_log_debug_event_args_addref(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_on_log_debug_event_args_addref_mDA7B022250AA87F35C567035AEB1856AEEF37852 (intptr_t ___handle0, const RuntimeMethod* method)
 {
@@ -10590,6 +12698,43 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_on_log_debug_event_
 
 	return returnValue;
 }
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_on_log_debug_event_args_get_message(System.IntPtr,System.String&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_on_log_debug_event_args_get_message_m129CEB187A373746176F5709E3B739BC91DEA0DF (intptr_t ___handle0, String_t** ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, Il2CppChar**);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(Il2CppChar**);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_on_log_debug_event_args_get_message_wide", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Marshaling of parameter '___result1' to native representation
+	Il2CppChar* ____result1_empty = NULL;
+	Il2CppChar** ____result1_marshaled = &____result1_empty;
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_on_log_debug_event_args_get_message_wide)(___handle0, ____result1_marshaled);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ____result1_marshaled);
+	#endif
+
+	// Marshaling of parameter '___result1' back from native representation
+	String_t* _____result1_marshaled_unmarshaled_dereferenced = NULL;
+	_____result1_marshaled_unmarshaled_dereferenced = il2cpp_codegen_marshal_wstring_result(*____result1_marshaled);
+	*___result1 = _____result1_marshaled_unmarshaled_dereferenced;
+	Il2CppCodeGenWriteBarrier((void**)___result1, (void*)____result1_marshaled);
+
+	// Marshaling cleanup of parameter '___result1' native representation
+	il2cpp_codegen_marshal_free(*____result1_marshaled);
+	*____result1_marshaled = NULL;
+
+	return returnValue;
+}
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_on_log_debug_event_args_release(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_on_log_debug_event_args_release_m1E8E7A5D40A033142A957D3D460C15DF0ED46AEF (intptr_t ___handle0, const RuntimeMethod* method)
 {
@@ -10609,6 +12754,312 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_on_log_debug_event_
 	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_on_log_debug_event_args_release)(___handle0);
 	#else
 	int32_t returnValue = il2cppPInvokeFunc(___handle0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_create(System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_create_m303AE6B89C817C854D38CFDA870F5A729F1CD33A (intptr_t* ___instance0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_platform_location_provider_create", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_platform_location_provider_create)(___instance0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___instance0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_get_bluetooth_status(System.IntPtr,Microsoft.Azure.SpatialAnchors.BluetoothStatusResult&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_get_bluetooth_status_m830EA12381061A9FEE104542A2FC1D00AEABEB10 (intptr_t ___handle0, int32_t* ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, int32_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(int32_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_platform_location_provider_get_bluetooth_status", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_platform_location_provider_get_bluetooth_status)(___handle0, ___result1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___result1);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_get_geo_location_status(System.IntPtr,Microsoft.Azure.SpatialAnchors.GeoLocationStatusResult&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_get_geo_location_status_m51065029A92CF1E610418401A89450AA8200E76C (intptr_t ___handle0, int32_t* ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, int32_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(int32_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_platform_location_provider_get_geo_location_status", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_platform_location_provider_get_geo_location_status)(___handle0, ___result1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___result1);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_get_sensors(System.IntPtr,System.IntPtr&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_get_sensors_m638E5C3751708B30C7B4FC805BDF522356D1AB32 (intptr_t ___handle0, intptr_t* ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, intptr_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(intptr_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_platform_location_provider_get_sensors", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_platform_location_provider_get_sensors)(___handle0, ___result1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___result1);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_get_wifi_status(System.IntPtr,Microsoft.Azure.SpatialAnchors.WifiStatusResult&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_get_wifi_status_m19F8C4F64EA96AB8C82E1429DFEF5F473D8A3143 (intptr_t ___handle0, int32_t* ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, int32_t*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(int32_t*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_platform_location_provider_get_wifi_status", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_platform_location_provider_get_wifi_status)(___handle0, ___result1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___result1);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_platform_location_provider_release(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_platform_location_provider_release_m555185448E24B8170CB8CFECC5A9B3A4C74F57ED (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_platform_location_provider_release", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_platform_location_provider_release)(___handle0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_addref(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_addref_m50BBB7BCE320767EBBC52B3D0BDAD10ED4CB077B (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_sensor_capabilities_addref", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_sensor_capabilities_addref)(___handle0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_release(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_release_m7ECA26C3FBAB299DE5D2166A73FB489198343B31 (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_sensor_capabilities_release", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_sensor_capabilities_release)(___handle0);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_set_bluetooth_enabled(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_set_bluetooth_enabled_m5A4471C253732C98580C326670D8E9F4375FAC3C (intptr_t ___handle0, bool ___value1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, uint8_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + 1 + 3;
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_sensor_capabilities_set_bluetooth_enabled", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_sensor_capabilities_set_bluetooth_enabled)(___handle0, static_cast<uint8_t>(___value1));
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, static_cast<uint8_t>(___value1));
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_set_geo_location_enabled(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_set_geo_location_enabled_m1E757B9A3ADF65B43EEC6C92E2523627494E690C (intptr_t ___handle0, bool ___value1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, uint8_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + 1 + 3;
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_sensor_capabilities_set_geo_location_enabled", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_sensor_capabilities_set_geo_location_enabled)(___handle0, static_cast<uint8_t>(___value1));
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, static_cast<uint8_t>(___value1));
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_set_known_beacon_proximity_uuids(System.IntPtr,System.String[],System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_set_known_beacon_proximity_uuids_mDB1E2FB17BE70139BAA67D1761FBC1A79A6312AF (intptr_t ___handle0, StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___value1, int32_t ___value_count2, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, Il2CppChar**, int32_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(void*) + sizeof(int32_t);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_sensor_capabilities_set_known_beacon_proximity_uuids_wide", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Marshaling of parameter '___value1' to native representation
+	Il2CppChar** ____value1_marshaled = NULL;
+	if (___value1 != NULL)
+	{
+		il2cpp_array_size_t ____value1_Length = (___value1)->max_length;
+		____value1_marshaled = il2cpp_codegen_marshal_allocate_array<Il2CppChar*>(____value1_Length + 1);
+		(____value1_marshaled)[____value1_Length] = NULL;
+		for (int32_t i = 0; i < ARRAY_LENGTH_AS_INT32(____value1_Length); i++)
+		{
+			(____value1_marshaled)[i] = il2cpp_codegen_marshal_wstring((___value1)->GetAtUnchecked(static_cast<il2cpp_array_size_t>(i)));
+		}
+	}
+	else
+	{
+		____value1_marshaled = NULL;
+	}
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_sensor_capabilities_set_known_beacon_proximity_uuids_wide)(___handle0, ____value1_marshaled, ___value_count2);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ____value1_marshaled, ___value_count2);
+	#endif
+
+	// Marshaling cleanup of parameter '___value1' native representation
+	if (____value1_marshaled != NULL)
+	{
+		const il2cpp_array_size_t ____value1_marshaled_CleanupLoopCount = (___value1 != NULL) ? (___value1)->max_length : 0;
+		for (int32_t i = 0; i < ARRAY_LENGTH_AS_INT32(____value1_marshaled_CleanupLoopCount); i++)
+		{
+			il2cpp_codegen_marshal_free((____value1_marshaled)[i]);
+			(____value1_marshaled)[i] = NULL;
+		}
+		il2cpp_codegen_marshal_free(____value1_marshaled);
+		____value1_marshaled = NULL;
+	}
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_sensor_capabilities_set_wifi_enabled(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_sensor_capabilities_set_wifi_enabled_m43F60DEDDA2889F0D62D23F52A68217769BD0E31 (intptr_t ___handle0, bool ___value1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, uint8_t);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + 1 + 3;
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_sensor_capabilities_set_wifi_enabled", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_sensor_capabilities_set_wifi_enabled)(___handle0, static_cast<uint8_t>(___value1));
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, static_cast<uint8_t>(___value1));
 	#endif
 
 	return returnValue;
@@ -10818,6 +13269,43 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_error_event
 
 	return returnValue;
 }
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_session_error_event_args_get_error_message(System.IntPtr,System.String&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_error_event_args_get_error_message_m26D3AC9C01DEF1376108E5F2E9E9E7D571B96812 (intptr_t ___handle0, String_t** ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, Il2CppChar**);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(Il2CppChar**);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_session_error_event_args_get_error_message_wide", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Marshaling of parameter '___result1' to native representation
+	Il2CppChar* ____result1_empty = NULL;
+	Il2CppChar** ____result1_marshaled = &____result1_empty;
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_session_error_event_args_get_error_message_wide)(___handle0, ____result1_marshaled);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ____result1_marshaled);
+	#endif
+
+	// Marshaling of parameter '___result1' back from native representation
+	String_t* _____result1_marshaled_unmarshaled_dereferenced = NULL;
+	_____result1_marshaled_unmarshaled_dereferenced = il2cpp_codegen_marshal_wstring_result(*____result1_marshaled);
+	*___result1 = _____result1_marshaled_unmarshaled_dereferenced;
+	Il2CppCodeGenWriteBarrier((void**)___result1, (void*)____result1_marshaled);
+
+	// Marshaling cleanup of parameter '___result1' native representation
+	il2cpp_codegen_marshal_free(*____result1_marshaled);
+	*____result1_marshaled = NULL;
+
+	return returnValue;
+}
 // Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_session_error_event_args_release(System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_error_event_args_release_mE7E5478048CEB32AA2BB398868DBC8E6D4B0CEFB (intptr_t ___handle0, const RuntimeMethod* method)
 {
@@ -10860,6 +13348,29 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_status_addr
 	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_session_status_addref)(___handle0);
 	#else
 	int32_t returnValue = il2cppPInvokeFunc(___handle0);
+	#endif
+
+	return returnValue;
+}
+// Microsoft.Azure.SpatialAnchors.status Microsoft.Azure.SpatialAnchors.NativeLibrary::ssc_session_status_get_ready_for_create_progress(System.IntPtr,System.Single&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_session_status_get_ready_for_create_progress_m43CECFFEA1285C44778EEC62317AA83A09C27771 (intptr_t ___handle0, float* ___result1, const RuntimeMethod* method)
+{
+	typedef int32_t (CDECL *PInvokeFunc) (intptr_t, float*);
+	#if !FORCE_PINVOKE_INTERNAL && !FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	static PInvokeFunc il2cppPInvokeFunc;
+	if (il2cppPInvokeFunc == NULL)
+	{
+		int parameterSize = sizeof(intptr_t) + sizeof(float*);
+		il2cppPInvokeFunc = il2cpp_codegen_resolve_pinvoke<PInvokeFunc>(IL2CPP_NATIVE_STRING("AzureSpatialAnchors"), "ssc_session_status_get_ready_for_create_progress", IL2CPP_CALL_C, CHARSET_NOT_SPECIFIED, parameterSize, false);
+		IL2CPP_ASSERT(il2cppPInvokeFunc != NULL);
+	}
+	#endif
+
+	// Native function invocation
+	#if FORCE_PINVOKE_INTERNAL || FORCE_PINVOKE_AzureSpatialAnchors_INTERNAL
+	int32_t returnValue = reinterpret_cast<PInvokeFunc>(ssc_session_status_get_ready_for_create_progress)(___handle0, ___result1);
+	#else
+	int32_t returnValue = il2cppPInvokeFunc(___handle0, ___result1);
 	#endif
 
 	return returnValue;
@@ -11113,6 +13624,76 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t NativeLibrary_ssc_token_required_even
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+// System.String[] Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers::IntPtrToStringArray(System.IntPtr,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* NativeLibraryHelpers_IntPtrToStringArray_m265B3B75D0CB5C1FA09C826295509163853E9A09 (intptr_t ___result0, int32_t ___result_length1, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Array_Empty_TisString_t_m224DA90A7384ACF7EBE2F94D2DFDE2F310D1E77D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Marshal_tEBAFAE20369FCB1B38C49C4E27A8D8C2C4B55058_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726* V_0 = NULL;
+	bool V_1 = false;
+	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* V_2 = NULL;
+	{
+		// if (result_length == 1)
+		int32_t L_0 = ___result_length1;
+		V_1 = (bool)((((int32_t)L_0) == ((int32_t)1))? 1 : 0);
+		bool L_1 = V_1;
+		if (!L_1)
+		{
+			goto IL_0012;
+		}
+	}
+	{
+		// return Array.Empty<string>();
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_2;
+		L_2 = Array_Empty_TisString_t_m224DA90A7384ACF7EBE2F94D2DFDE2F310D1E77D_inline(/*hidden argument*/Array_Empty_TisString_t_m224DA90A7384ACF7EBE2F94D2DFDE2F310D1E77D_RuntimeMethod_var);
+		V_2 = L_2;
+		goto IL_0047;
+	}
+
+IL_0012:
+	{
+		// byte[] bytes = new byte[result_length - 1];
+		int32_t L_3 = ___result_length1;
+		ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726* L_4 = (ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726*)(ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726*)SZArrayNew(ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726_il2cpp_TypeInfo_var, (uint32_t)((int32_t)il2cpp_codegen_subtract((int32_t)L_3, (int32_t)1)));
+		V_0 = L_4;
+		// System.Runtime.InteropServices.Marshal.Copy(result, bytes, 0, result_length - 1);
+		intptr_t L_5 = ___result0;
+		ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726* L_6 = V_0;
+		int32_t L_7 = ___result_length1;
+		IL2CPP_RUNTIME_CLASS_INIT(Marshal_tEBAFAE20369FCB1B38C49C4E27A8D8C2C4B55058_il2cpp_TypeInfo_var);
+		Marshal_Copy_m057A8067BF7212A361510EA26B24022990A07AC0((intptr_t)L_5, L_6, 0, ((int32_t)il2cpp_codegen_subtract((int32_t)L_7, (int32_t)1)), /*hidden argument*/NULL);
+		// System.Runtime.InteropServices.Marshal.FreeCoTaskMem(result);
+		intptr_t L_8 = ___result0;
+		Marshal_FreeCoTaskMem_mCC0E874C853846E0A82E36971E3FC7BF359C6AA5((intptr_t)L_8, /*hidden argument*/NULL);
+		// return System.Text.Encoding.UTF8.GetString(bytes).Split('\0');
+		Encoding_tE901442411E2E70039D2A4AE77FB81C3D6064827 * L_9;
+		L_9 = Encoding_get_UTF8_mC877FB3137BBD566AEE7B15F9BF61DC4EF8F5E5E(/*hidden argument*/NULL);
+		ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726* L_10 = V_0;
+		NullCheck(L_9);
+		String_t* L_11;
+		L_11 = VirtFuncInvoker1< String_t*, ByteU5BU5D_tDBBEB0E8362242FA7223000D978B0DD19D4B0726* >::Invoke(42 /* System.String System.Text.Encoding::GetString(System.Byte[]) */, L_9, L_10);
+		CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34* L_12 = (CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34*)(CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34*)SZArrayNew(CharU5BU5D_t7B7FC5BC8091AA3B9CB0B29CDD80B5EE9254AA34_il2cpp_TypeInfo_var, (uint32_t)1);
+		NullCheck(L_11);
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_13;
+		L_13 = String_Split_m2C74DC2B85B322998094BEDE787C378822E1F28B(L_11, L_12, /*hidden argument*/NULL);
+		V_2 = L_13;
+		goto IL_0047;
+	}
+
+IL_0047:
+	{
+		// }
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_14 = V_2;
+		return L_14;
+	}
+}
 // System.Void Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers::CheckStatus(Microsoft.Azure.SpatialAnchors.status)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NativeLibraryHelpers_CheckStatus_mA83655BEEEA0AC46F4E1D1FB75E2C4AE76A6F748 (int32_t ___value0, const RuntimeMethod* method)
 {
@@ -12218,6 +14799,435 @@ IL_027a:
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+// System.Void Microsoft.Azure.SpatialAnchors.NearAnchorCriteria::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NearAnchorCriteria__ctor_mD2BF44BCE80BEA095654A01A560FAAD00BEB76F4 (NearAnchorCriteria_t292ADB7FCE0963CC89D65EFF074F791AAC66B27C * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	{
+		// public NearAnchorCriteria()
+		Object__ctor_m88880E0413421D13FD95325EDCE231707CE1F405(__this, /*hidden argument*/NULL);
+		// Microsoft.Azure.SpatialAnchors.status resultStatus = (Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_near_anchor_criteria_create(out this.handle));
+		intptr_t* L_0 = __this->get_address_of_handle_0();
+		int32_t L_1;
+		L_1 = NativeLibrary_ssc_near_anchor_criteria_create_mE543DD16AD8BE7BF4A726A888F0F2915BC067640((intptr_t*)L_0, /*hidden argument*/NULL);
+		V_0 = L_1;
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, resultStatus);
+		intptr_t L_2 = __this->get_handle_0();
+		int32_t L_3 = V_0;
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_2, L_3, /*hidden argument*/NULL);
+		// Microsoft.Azure.SpatialAnchors.ProjectedObjectCache.Add(this);
+		IL2CPP_RUNTIME_CLASS_INIT(ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		ProjectedObjectCache_Add_m3F46CE771938FC3A003F72EFF98F300B2F975187(__this, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.NearAnchorCriteria::Finalize()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NearAnchorCriteria_Finalize_m835DCC4A8AF533F2BB62E7820124C3A736D4890C (NearAnchorCriteria_t292ADB7FCE0963CC89D65EFF074F791AAC66B27C * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t * __last_unhandled_exception = 0;
+	il2cpp::utils::ExceptionSupportStack<int32_t, 1> __leave_targets;
+	{
+	}
+
+IL_0001:
+	try
+	{ // begin try (depth: 1)
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_near_anchor_criteria_release(this.handle));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_near_anchor_criteria_release_mB8E9208C26C60910F35734C63DF21FFC6BDC9953((intptr_t)L_1, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// this.handle = IntPtr.Zero;
+		__this->set_handle_0((intptr_t)(0));
+		IL2CPP_LEAVE(0x2E, FINALLY_0026);
+	} // end try (depth: 1)
+	catch(Il2CppExceptionWrapper& e)
+	{
+		__last_unhandled_exception = (Exception_t *)e.ex;
+		goto FINALLY_0026;
+	}
+
+FINALLY_0026:
+	{ // begin finally (depth: 1)
+		// }
+		Object_Finalize_mC59C83CF4F7707E425FFA6362931C25D4C36676A(__this, /*hidden argument*/NULL);
+		IL2CPP_END_FINALLY(38)
+	} // end finally (depth: 1)
+	IL2CPP_CLEANUP(38)
+	{
+		IL2CPP_RETHROW_IF_UNHANDLED(Exception_t *)
+		IL2CPP_JUMP_TBL(0x2E, IL_002e)
+	}
+
+IL_002e:
+	{
+		// }
+		return;
+	}
+}
+// System.UInt64 Microsoft.Azure.SpatialAnchors.NearAnchorCriteria::Microsoft.Azure.SpatialAnchors.ICachedObject.get_Cookie()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t NearAnchorCriteria_Microsoft_Azure_SpatialAnchors_ICachedObject_get_Cookie_m17C99918429A47B0142520DB3BDA80140B249ED5 (NearAnchorCriteria_t292ADB7FCE0963CC89D65EFF074F791AAC66B27C * __this, const RuntimeMethod* method)
+{
+	{
+		// ulong ICachedObject.Cookie => ConvertHandleToCookie(this.handle);
+		intptr_t L_0 = __this->get_handle_0();
+		uint64_t L_1;
+		L_1 = NearAnchorCriteria_ConvertHandleToCookie_m92EDA179A55DF024E6851D1E6776E5A64E7EEE72((intptr_t)L_0, /*hidden argument*/NULL);
+		return L_1;
+	}
+}
+// System.UInt64 Microsoft.Azure.SpatialAnchors.NearAnchorCriteria::ConvertHandleToCookie(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t NearAnchorCriteria_ConvertHandleToCookie_m92EDA179A55DF024E6851D1E6776E5A64E7EEE72 (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	bool V_0 = false;
+	uint64_t V_1 = 0;
+	{
+		// if (handle == IntPtr.Zero)
+		intptr_t L_0 = ___handle0;
+		bool L_1;
+		L_1 = IntPtr_op_Equality_mD94F3FE43A65684EFF984A7B95E70D2520C0AC73((intptr_t)L_0, (intptr_t)(0), /*hidden argument*/NULL);
+		V_0 = L_1;
+		bool L_2 = V_0;
+		if (!L_2)
+		{
+			goto IL_0021;
+		}
+	}
+	{
+		// throw new ArgumentException("Invalid handle.", nameof(handle));
+		ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00 * L_3 = (ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00 *)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00_il2cpp_TypeInfo_var)));
+		ArgumentException__ctor_m71044C2110E357B71A1C30D2561C3F861AF1DC0D(L_3, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral4FA4AF8CCEA6268C5E66D1C425E81865807A8330)), ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralFFE3A1B73CD7FC81540FBBE737435B0A887629D5)), /*hidden argument*/NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_3, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&NearAnchorCriteria_ConvertHandleToCookie_m92EDA179A55DF024E6851D1E6776E5A64E7EEE72_RuntimeMethod_var)));
+	}
+
+IL_0021:
+	{
+		// return (ulong)handle.ToInt64();
+		int64_t L_4;
+		L_4 = IntPtr_ToInt64_m521F809F5D9ECAF93E808CFFFE45F67620C7879A((intptr_t*)(&___handle0), /*hidden argument*/NULL);
+		V_1 = L_4;
+		goto IL_002b;
+	}
+
+IL_002b:
+	{
+		// }
+		uint64_t L_5 = V_1;
+		return L_5;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::.ctor(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NearDeviceCriteria__ctor_m752F9685E9B0D6D8BE4909A2A7455862CFD86609 (NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * __this, intptr_t ___ahandle0, bool ___transfer1, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	bool V_0 = false;
+	{
+		// protected NearDeviceCriteria(IntPtr ahandle, bool transfer)
+		Object__ctor_m88880E0413421D13FD95325EDCE231707CE1F405(__this, /*hidden argument*/NULL);
+		// this.handle = ahandle;
+		intptr_t L_0 = ___ahandle0;
+		__this->set_handle_0((intptr_t)L_0);
+		// if (!transfer) Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_near_device_criteria_addref(ahandle);
+		bool L_1 = ___transfer1;
+		V_0 = (bool)((((int32_t)L_1) == ((int32_t)0))? 1 : 0);
+		bool L_2 = V_0;
+		if (!L_2)
+		{
+			goto IL_001e;
+		}
+	}
+	{
+		// if (!transfer) Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_near_device_criteria_addref(ahandle);
+		intptr_t L_3 = ___ahandle0;
+		int32_t L_4;
+		L_4 = NativeLibrary_ssc_near_device_criteria_addref_m6A7080BA980286800A4B1C6FB4291A06A3886FC4((intptr_t)L_3, /*hidden argument*/NULL);
+	}
+
+IL_001e:
+	{
+		// Microsoft.Azure.SpatialAnchors.ProjectedObjectCache.Add(this);
+		IL2CPP_RUNTIME_CLASS_INIT(ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		ProjectedObjectCache_Add_m3F46CE771938FC3A003F72EFF98F300B2F975187(__this, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NearDeviceCriteria__ctor_m1467161D95D81E88953700E35415ABF2F81C2EB2 (NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	{
+		// public NearDeviceCriteria()
+		Object__ctor_m88880E0413421D13FD95325EDCE231707CE1F405(__this, /*hidden argument*/NULL);
+		// Microsoft.Azure.SpatialAnchors.status resultStatus = (Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_near_device_criteria_create(out this.handle));
+		intptr_t* L_0 = __this->get_address_of_handle_0();
+		int32_t L_1;
+		L_1 = NativeLibrary_ssc_near_device_criteria_create_mE197F9DB9C7A59C12F21BB5AEE9CE4D20F0C579C((intptr_t*)L_0, /*hidden argument*/NULL);
+		V_0 = L_1;
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, resultStatus);
+		intptr_t L_2 = __this->get_handle_0();
+		int32_t L_3 = V_0;
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_2, L_3, /*hidden argument*/NULL);
+		// Microsoft.Azure.SpatialAnchors.ProjectedObjectCache.Add(this);
+		IL2CPP_RUNTIME_CLASS_INIT(ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		ProjectedObjectCache_Add_m3F46CE771938FC3A003F72EFF98F300B2F975187(__this, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::Finalize()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NearDeviceCriteria_Finalize_m32C776F68554E158136846E2EED3DDA897E1DCF5 (NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t * __last_unhandled_exception = 0;
+	il2cpp::utils::ExceptionSupportStack<int32_t, 1> __leave_targets;
+	{
+	}
+
+IL_0001:
+	try
+	{ // begin try (depth: 1)
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_near_device_criteria_release(this.handle));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_near_device_criteria_release_m4C87AF51BDF2B3EC82D498392E2A401D7FDAE5E3((intptr_t)L_1, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// this.handle = IntPtr.Zero;
+		__this->set_handle_0((intptr_t)(0));
+		IL2CPP_LEAVE(0x2E, FINALLY_0026);
+	} // end try (depth: 1)
+	catch(Il2CppExceptionWrapper& e)
+	{
+		__last_unhandled_exception = (Exception_t *)e.ex;
+		goto FINALLY_0026;
+	}
+
+FINALLY_0026:
+	{ // begin finally (depth: 1)
+		// }
+		Object_Finalize_mC59C83CF4F7707E425FFA6362931C25D4C36676A(__this, /*hidden argument*/NULL);
+		IL2CPP_END_FINALLY(38)
+	} // end finally (depth: 1)
+	IL2CPP_CLEANUP(38)
+	{
+		IL2CPP_RETHROW_IF_UNHANDLED(Exception_t *)
+		IL2CPP_JUMP_TBL(0x2E, IL_002e)
+	}
+
+IL_002e:
+	{
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::set_DistanceInMeters(System.Single)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NearDeviceCriteria_set_DistanceInMeters_mDCDCEF4486373DAF287F6EA120BA3732C71FD8CC (NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * __this, float ___value0, const RuntimeMethod* method)
+{
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_near_device_criteria_set_distance_in_meters(this.handle, value));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		float L_2 = ___value0;
+		int32_t L_3;
+		L_3 = NativeLibrary_ssc_near_device_criteria_set_distance_in_meters_mAE5DAEB8AF751435E0AB34E13E32A19966BE6C79((intptr_t)L_1, L_2, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_3, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::set_MaxResultCount(System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NearDeviceCriteria_set_MaxResultCount_m3F5962B0D007677A24EEB9C11C603096BF03FAE2 (NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * __this, int32_t ___value0, const RuntimeMethod* method)
+{
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_near_device_criteria_set_max_result_count(this.handle, value));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2 = ___value0;
+		int32_t L_3;
+		L_3 = NativeLibrary_ssc_near_device_criteria_set_max_result_count_m03F0C1AD4D29D716949FE74B93FEB8151A50789C((intptr_t)L_1, L_2, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_3, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.UInt64 Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::Microsoft.Azure.SpatialAnchors.ICachedObject.get_Cookie()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t NearDeviceCriteria_Microsoft_Azure_SpatialAnchors_ICachedObject_get_Cookie_mC01E5ED41C187857D592AC618F9B1C883626D2CC (NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * __this, const RuntimeMethod* method)
+{
+	{
+		// ulong ICachedObject.Cookie => ConvertHandleToCookie(this.handle);
+		intptr_t L_0 = __this->get_handle_0();
+		uint64_t L_1;
+		L_1 = NearDeviceCriteria_ConvertHandleToCookie_m5B008308B09D6299B86FF47BEEF89A8F18EAD1AD((intptr_t)L_0, /*hidden argument*/NULL);
+		return L_1;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.NearDeviceCriteria Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::GetOrCreateInstance(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * NearDeviceCriteria_GetOrCreateInstance_mEB93B4EB5CCDE5910A0C57A80411C6DB85228183 (intptr_t ___handle0, bool ___transfer1, const RuntimeMethod* method)
+{
+	{
+		// => GetOrCreateInstance(ConvertHandleToCookie(handle), transfer);
+		intptr_t L_0 = ___handle0;
+		uint64_t L_1;
+		L_1 = NearDeviceCriteria_ConvertHandleToCookie_m5B008308B09D6299B86FF47BEEF89A8F18EAD1AD((intptr_t)L_0, /*hidden argument*/NULL);
+		bool L_2 = ___transfer1;
+		NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * L_3;
+		L_3 = NearDeviceCriteria_GetOrCreateInstance_m9F8CE842E931FAD67DE56EF4DBDDB2922989034A(L_1, L_2, /*hidden argument*/NULL);
+		return L_3;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.NearDeviceCriteria Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::GetOrCreateInstance(System.UInt64,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * NearDeviceCriteria_GetOrCreateInstance_m9F8CE842E931FAD67DE56EF4DBDDB2922989034A (uint64_t ___cookie0, bool ___transfer1, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Func_2__ctor_mF78AC30D13AE05AA3A7198CE9FD575BA62429830_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProjectedObjectCache_GetOrCreate_TisNearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152_m31B58258F032282233490544EB5F4A5EF4860856_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass13_0_U3CGetOrCreateInstanceU3Eb__0_mF932CFE5DFC907F5B7CA0B36692A91363C8B4207_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6 * V_0 = NULL;
+	{
+		U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6 * L_0 = (U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6 *)il2cpp_codegen_object_new(U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6_il2cpp_TypeInfo_var);
+		U3CU3Ec__DisplayClass13_0__ctor_m26237F9921B747D4503FE971BD084447A94963F2(L_0, /*hidden argument*/NULL);
+		V_0 = L_0;
+		U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6 * L_1 = V_0;
+		uint64_t L_2 = ___cookie0;
+		NullCheck(L_1);
+		L_1->set_cookie_0(L_2);
+		U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6 * L_3 = V_0;
+		bool L_4 = ___transfer1;
+		NullCheck(L_3);
+		L_3->set_transfer_1(L_4);
+		// => Microsoft.Azure.SpatialAnchors.ProjectedObjectCache.GetOrCreate<Microsoft.Azure.SpatialAnchors.NearDeviceCriteria>(
+		//     cookie,
+		//     _ => new Microsoft.Azure.SpatialAnchors.NearDeviceCriteria(ConvertCookieToHandle(cookie), transfer: transfer));
+		U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6 * L_5 = V_0;
+		NullCheck(L_5);
+		uint64_t L_6 = L_5->get_cookie_0();
+		U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6 * L_7 = V_0;
+		Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9 * L_8 = (Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9 *)il2cpp_codegen_object_new(Func_2_t52653070CD186DEE090A7897A6F357FD55C70CB9_il2cpp_TypeInfo_var);
+		Func_2__ctor_mF78AC30D13AE05AA3A7198CE9FD575BA62429830(L_8, L_7, (intptr_t)((intptr_t)U3CU3Ec__DisplayClass13_0_U3CGetOrCreateInstanceU3Eb__0_mF932CFE5DFC907F5B7CA0B36692A91363C8B4207_RuntimeMethod_var), /*hidden argument*/Func_2__ctor_mF78AC30D13AE05AA3A7198CE9FD575BA62429830_RuntimeMethod_var);
+		IL2CPP_RUNTIME_CLASS_INIT(ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * L_9;
+		L_9 = ProjectedObjectCache_GetOrCreate_TisNearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152_m31B58258F032282233490544EB5F4A5EF4860856(L_6, L_8, /*hidden argument*/ProjectedObjectCache_GetOrCreate_TisNearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152_m31B58258F032282233490544EB5F4A5EF4860856_RuntimeMethod_var);
+		return L_9;
+	}
+}
+// System.UInt64 Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::ConvertHandleToCookie(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t NearDeviceCriteria_ConvertHandleToCookie_m5B008308B09D6299B86FF47BEEF89A8F18EAD1AD (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	bool V_0 = false;
+	uint64_t V_1 = 0;
+	{
+		// if (handle == IntPtr.Zero)
+		intptr_t L_0 = ___handle0;
+		bool L_1;
+		L_1 = IntPtr_op_Equality_mD94F3FE43A65684EFF984A7B95E70D2520C0AC73((intptr_t)L_0, (intptr_t)(0), /*hidden argument*/NULL);
+		V_0 = L_1;
+		bool L_2 = V_0;
+		if (!L_2)
+		{
+			goto IL_0021;
+		}
+	}
+	{
+		// throw new ArgumentException("Invalid handle.", nameof(handle));
+		ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00 * L_3 = (ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00 *)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00_il2cpp_TypeInfo_var)));
+		ArgumentException__ctor_m71044C2110E357B71A1C30D2561C3F861AF1DC0D(L_3, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral4FA4AF8CCEA6268C5E66D1C425E81865807A8330)), ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralFFE3A1B73CD7FC81540FBBE737435B0A887629D5)), /*hidden argument*/NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_3, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&NearDeviceCriteria_ConvertHandleToCookie_m5B008308B09D6299B86FF47BEEF89A8F18EAD1AD_RuntimeMethod_var)));
+	}
+
+IL_0021:
+	{
+		// return (ulong)handle.ToInt64();
+		int64_t L_4;
+		L_4 = IntPtr_ToInt64_m521F809F5D9ECAF93E808CFFFE45F67620C7879A((intptr_t*)(&___handle0), /*hidden argument*/NULL);
+		V_1 = L_4;
+		goto IL_002b;
+	}
+
+IL_002b:
+	{
+		// }
+		uint64_t L_5 = V_1;
+		return L_5;
+	}
+}
+// System.IntPtr Microsoft.Azure.SpatialAnchors.NearDeviceCriteria::ConvertCookieToHandle(System.UInt64)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t NearDeviceCriteria_ConvertCookieToHandle_mF9179E4D71061A751FD869862EB2AE929D463970 (uint64_t ___cookie0, const RuntimeMethod* method)
+{
+	{
+		// => new IntPtr((long)cookie);
+		uint64_t L_0 = ___cookie0;
+		intptr_t L_1;
+		memset((&L_1), 0, sizeof(L_1));
+		IntPtr__ctor_m2CDDF5A1715E7BCFDFB6823D7A18339BD8EB0E90((&L_1), L_0, /*hidden argument*/NULL);
+		return (intptr_t)L_1;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
 // System.Void Microsoft.Azure.SpatialAnchors.OnLogDebugDelegate::.ctor(System.Object,System.IntPtr)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void OnLogDebugDelegate__ctor_mCB96B023B95AA467AAC0A8B50101B03C1D31F6E6 (OnLogDebugDelegate_t41B5853FC61DC3A7F697D2C2EB4ACC3BCD53F3BB * __this, RuntimeObject * ___object0, intptr_t ___method1, const RuntimeMethod* method)
 {
@@ -12570,6 +15580,31 @@ IL_002e:
 		return;
 	}
 }
+// System.String Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs::get_Message()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* OnLogDebugEventArgs_get_Message_mBB6F097AE585337A4CF310950ECEF09DDCF06C47 (OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC * __this, const RuntimeMethod* method)
+{
+	String_t* V_0 = NULL;
+	String_t* V_1 = NULL;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_on_log_debug_event_args_get_message(this.handle, out result));
+		intptr_t L_0 = __this->get_handle_1();
+		intptr_t L_1 = __this->get_handle_1();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_on_log_debug_event_args_get_message_m129CEB187A373746176F5709E3B739BC91DEA0DF((intptr_t)L_1, (String_t**)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// return result;
+		String_t* L_3 = V_0;
+		V_1 = L_3;
+		goto IL_001e;
+	}
+
+IL_001e:
+	{
+		// }
+		String_t* L_4 = V_1;
+		return L_4;
+	}
+}
 // System.UInt64 Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs::Microsoft.Azure.SpatialAnchors.ICachedObject.get_Cookie()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t OnLogDebugEventArgs_Microsoft_Azure_SpatialAnchors_ICachedObject_get_Cookie_mC7212F2E1B43E685C00B2183CFA5CFC2791F2171 (OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC * __this, const RuntimeMethod* method)
 {
@@ -12693,6 +15728,285 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t OnLogDebugEventArgs_ConvertCookieToH
 		memset((&L_1), 0, sizeof(L_1));
 		IntPtr__ctor_m2CDDF5A1715E7BCFDFB6823D7A18339BD8EB0E90((&L_1), L_0, /*hidden argument*/NULL);
 		return (intptr_t)L_1;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void Microsoft.Azure.SpatialAnchors.PlatformLocationProvider::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlatformLocationProvider__ctor_m3C757F8B25D63259BABF394752AA8DDFC8D69FD0 (PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574 * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	{
+		// public PlatformLocationProvider()
+		Object__ctor_m88880E0413421D13FD95325EDCE231707CE1F405(__this, /*hidden argument*/NULL);
+		// Microsoft.Azure.SpatialAnchors.status resultStatus = (Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_platform_location_provider_create(out this.handle));
+		intptr_t* L_0 = __this->get_address_of_handle_0();
+		int32_t L_1;
+		L_1 = NativeLibrary_ssc_platform_location_provider_create_m303AE6B89C817C854D38CFDA870F5A729F1CD33A((intptr_t*)L_0, /*hidden argument*/NULL);
+		V_0 = L_1;
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, resultStatus);
+		intptr_t L_2 = __this->get_handle_0();
+		int32_t L_3 = V_0;
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_2, L_3, /*hidden argument*/NULL);
+		// Microsoft.Azure.SpatialAnchors.ProjectedObjectCache.Add(this);
+		IL2CPP_RUNTIME_CLASS_INIT(ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		ProjectedObjectCache_Add_m3F46CE771938FC3A003F72EFF98F300B2F975187(__this, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.PlatformLocationProvider::Finalize()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlatformLocationProvider_Finalize_mB3EBAAF53CD976BF11E58043F0D50536D1D40F09 (PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574 * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t * __last_unhandled_exception = 0;
+	il2cpp::utils::ExceptionSupportStack<int32_t, 1> __leave_targets;
+	{
+	}
+
+IL_0001:
+	try
+	{ // begin try (depth: 1)
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_platform_location_provider_release(this.handle));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_platform_location_provider_release_m555185448E24B8170CB8CFECC5A9B3A4C74F57ED((intptr_t)L_1, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// this.handle = IntPtr.Zero;
+		__this->set_handle_0((intptr_t)(0));
+		IL2CPP_LEAVE(0x2E, FINALLY_0026);
+	} // end try (depth: 1)
+	catch(Il2CppExceptionWrapper& e)
+	{
+		__last_unhandled_exception = (Exception_t *)e.ex;
+		goto FINALLY_0026;
+	}
+
+FINALLY_0026:
+	{ // begin finally (depth: 1)
+		// }
+		Object_Finalize_mC59C83CF4F7707E425FFA6362931C25D4C36676A(__this, /*hidden argument*/NULL);
+		IL2CPP_END_FINALLY(38)
+	} // end finally (depth: 1)
+	IL2CPP_CLEANUP(38)
+	{
+		IL2CPP_RETHROW_IF_UNHANDLED(Exception_t *)
+		IL2CPP_JUMP_TBL(0x2E, IL_002e)
+	}
+
+IL_002e:
+	{
+		// }
+		return;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.SensorCapabilities Microsoft.Azure.SpatialAnchors.PlatformLocationProvider::get_Sensors()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * PlatformLocationProvider_get_Sensors_m8CCC5611F99D6B8414DBDEF08D5FAC04F8262EF8 (PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574 * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	intptr_t V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * V_1 = NULL;
+	SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * V_2 = NULL;
+	SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * G_B3_0 = NULL;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_platform_location_provider_get_sensors(this.handle, out result_handle));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_platform_location_provider_get_sensors_m638E5C3751708B30C7B4FC805BDF522356D1AB32((intptr_t)L_1, (intptr_t*)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// result_object = (result_handle != IntPtr.Zero) ? Microsoft.Azure.SpatialAnchors.SensorCapabilities.GetOrCreateInstance(result_handle, transfer: true) : null;
+		intptr_t L_3 = V_0;
+		bool L_4;
+		L_4 = IntPtr_op_Inequality_m212AF0E66AA81FEDC982B1C8A44ADDA24B995EB8((intptr_t)L_3, (intptr_t)(0), /*hidden argument*/NULL);
+		if (L_4)
+		{
+			goto IL_002a;
+		}
+	}
+	{
+		G_B3_0 = ((SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 *)(NULL));
+		goto IL_0031;
+	}
+
+IL_002a:
+	{
+		intptr_t L_5 = V_0;
+		SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * L_6;
+		L_6 = SensorCapabilities_GetOrCreateInstance_mA006F366F816C3436674CF2C0E3B0AD5AFD99D23((intptr_t)L_5, (bool)1, /*hidden argument*/NULL);
+		G_B3_0 = L_6;
+	}
+
+IL_0031:
+	{
+		V_1 = G_B3_0;
+		// return result_object;
+		SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * L_7 = V_1;
+		V_2 = L_7;
+		goto IL_0036;
+	}
+
+IL_0036:
+	{
+		// }
+		SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * L_8 = V_2;
+		return L_8;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.GeoLocationStatusResult Microsoft.Azure.SpatialAnchors.PlatformLocationProvider::get_GeoLocationStatus()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t PlatformLocationProvider_get_GeoLocationStatus_m6A2CD695CC3E7493CAF05F51BFA79D633937EA36 (PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574 * __this, const RuntimeMethod* method)
+{
+	int32_t V_0 = 0;
+	int32_t V_1 = 0;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_platform_location_provider_get_geo_location_status(this.handle, out result));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_platform_location_provider_get_geo_location_status_m51065029A92CF1E610418401A89450AA8200E76C((intptr_t)L_1, (int32_t*)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// return result;
+		int32_t L_3 = V_0;
+		V_1 = L_3;
+		goto IL_001e;
+	}
+
+IL_001e:
+	{
+		// }
+		int32_t L_4 = V_1;
+		return L_4;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.WifiStatusResult Microsoft.Azure.SpatialAnchors.PlatformLocationProvider::get_WifiStatus()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t PlatformLocationProvider_get_WifiStatus_m8CFD52FA042C977D124563F971BAE5F27D4D6F17 (PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574 * __this, const RuntimeMethod* method)
+{
+	int32_t V_0 = 0;
+	int32_t V_1 = 0;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_platform_location_provider_get_wifi_status(this.handle, out result));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_platform_location_provider_get_wifi_status_m19F8C4F64EA96AB8C82E1429DFEF5F473D8A3143((intptr_t)L_1, (int32_t*)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// return result;
+		int32_t L_3 = V_0;
+		V_1 = L_3;
+		goto IL_001e;
+	}
+
+IL_001e:
+	{
+		// }
+		int32_t L_4 = V_1;
+		return L_4;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.BluetoothStatusResult Microsoft.Azure.SpatialAnchors.PlatformLocationProvider::get_BluetoothStatus()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t PlatformLocationProvider_get_BluetoothStatus_mD867C42DB31E753AA3CA2CB9AB93AD58344F74BB (PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574 * __this, const RuntimeMethod* method)
+{
+	int32_t V_0 = 0;
+	int32_t V_1 = 0;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_platform_location_provider_get_bluetooth_status(this.handle, out result));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_platform_location_provider_get_bluetooth_status_m830EA12381061A9FEE104542A2FC1D00AEABEB10((intptr_t)L_1, (int32_t*)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// return result;
+		int32_t L_3 = V_0;
+		V_1 = L_3;
+		goto IL_001e;
+	}
+
+IL_001e:
+	{
+		// }
+		int32_t L_4 = V_1;
+		return L_4;
+	}
+}
+// System.UInt64 Microsoft.Azure.SpatialAnchors.PlatformLocationProvider::Microsoft.Azure.SpatialAnchors.ICachedObject.get_Cookie()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t PlatformLocationProvider_Microsoft_Azure_SpatialAnchors_ICachedObject_get_Cookie_m457E207861669E4FBD48BEBD8DD1E540166E3BE8 (PlatformLocationProvider_t50159656164D3902D0F1DEFB516AD5F4CA33A574 * __this, const RuntimeMethod* method)
+{
+	{
+		// ulong ICachedObject.Cookie => ConvertHandleToCookie(this.handle);
+		intptr_t L_0 = __this->get_handle_0();
+		uint64_t L_1;
+		L_1 = PlatformLocationProvider_ConvertHandleToCookie_mB0370D0BB96E47C49043C023A5206CC2C4BF2AA3((intptr_t)L_0, /*hidden argument*/NULL);
+		return L_1;
+	}
+}
+// System.UInt64 Microsoft.Azure.SpatialAnchors.PlatformLocationProvider::ConvertHandleToCookie(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t PlatformLocationProvider_ConvertHandleToCookie_mB0370D0BB96E47C49043C023A5206CC2C4BF2AA3 (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	bool V_0 = false;
+	uint64_t V_1 = 0;
+	{
+		// if (handle == IntPtr.Zero)
+		intptr_t L_0 = ___handle0;
+		bool L_1;
+		L_1 = IntPtr_op_Equality_mD94F3FE43A65684EFF984A7B95E70D2520C0AC73((intptr_t)L_0, (intptr_t)(0), /*hidden argument*/NULL);
+		V_0 = L_1;
+		bool L_2 = V_0;
+		if (!L_2)
+		{
+			goto IL_0021;
+		}
+	}
+	{
+		// throw new ArgumentException("Invalid handle.", nameof(handle));
+		ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00 * L_3 = (ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00 *)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00_il2cpp_TypeInfo_var)));
+		ArgumentException__ctor_m71044C2110E357B71A1C30D2561C3F861AF1DC0D(L_3, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral4FA4AF8CCEA6268C5E66D1C425E81865807A8330)), ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralFFE3A1B73CD7FC81540FBBE737435B0A887629D5)), /*hidden argument*/NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_3, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&PlatformLocationProvider_ConvertHandleToCookie_mB0370D0BB96E47C49043C023A5206CC2C4BF2AA3_RuntimeMethod_var)));
+	}
+
+IL_0021:
+	{
+		// return (ulong)handle.ToInt64();
+		int64_t L_4;
+		L_4 = IntPtr_ToInt64_m521F809F5D9ECAF93E808CFFFE45F67620C7879A((intptr_t*)(&___handle0), /*hidden argument*/NULL);
+		V_1 = L_4;
+		goto IL_002b;
+	}
+
+IL_002b:
+	{
+		// }
+		uint64_t L_5 = V_1;
+		return L_5;
 	}
 }
 #ifdef __clang__
@@ -13359,6 +16673,339 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ProjectedObjectEventHandlerCache__cctor_
 		Dictionary_2__ctor_m576D0AA3BE951A9D600781445D600CDF963260B6(L_0, /*hidden argument*/Dictionary_2__ctor_m576D0AA3BE951A9D600781445D600CDF963260B6_RuntimeMethod_var);
 		((ProjectedObjectEventHandlerCache_tFC5FB656E9324D85557DC40A7B536C64E45131F9_StaticFields*)il2cpp_codegen_static_fields_for(ProjectedObjectEventHandlerCache_tFC5FB656E9324D85557DC40A7B536C64E45131F9_il2cpp_TypeInfo_var))->set_tracked_0(L_0);
 		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void Microsoft.Azure.SpatialAnchors.SensorCapabilities::.ctor(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SensorCapabilities__ctor_mB5BE06120E4DF70BB7780E51B5920240EF051D9C (SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * __this, intptr_t ___ahandle0, bool ___transfer1, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	bool V_0 = false;
+	{
+		// protected SensorCapabilities(IntPtr ahandle, bool transfer)
+		Object__ctor_m88880E0413421D13FD95325EDCE231707CE1F405(__this, /*hidden argument*/NULL);
+		// this.handle = ahandle;
+		intptr_t L_0 = ___ahandle0;
+		__this->set_handle_0((intptr_t)L_0);
+		// if (!transfer) Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_sensor_capabilities_addref(ahandle);
+		bool L_1 = ___transfer1;
+		V_0 = (bool)((((int32_t)L_1) == ((int32_t)0))? 1 : 0);
+		bool L_2 = V_0;
+		if (!L_2)
+		{
+			goto IL_001e;
+		}
+	}
+	{
+		// if (!transfer) Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_sensor_capabilities_addref(ahandle);
+		intptr_t L_3 = ___ahandle0;
+		int32_t L_4;
+		L_4 = NativeLibrary_ssc_sensor_capabilities_addref_m50BBB7BCE320767EBBC52B3D0BDAD10ED4CB077B((intptr_t)L_3, /*hidden argument*/NULL);
+	}
+
+IL_001e:
+	{
+		// Microsoft.Azure.SpatialAnchors.ProjectedObjectCache.Add(this);
+		IL2CPP_RUNTIME_CLASS_INIT(ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		ProjectedObjectCache_Add_m3F46CE771938FC3A003F72EFF98F300B2F975187(__this, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.SensorCapabilities::Finalize()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SensorCapabilities_Finalize_m96ED205D1F5D8F88A835E59CFA9400274D6E58E7 (SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * __this, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	Exception_t * __last_unhandled_exception = 0;
+	il2cpp::utils::ExceptionSupportStack<int32_t, 1> __leave_targets;
+	{
+	}
+
+IL_0001:
+	try
+	{ // begin try (depth: 1)
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_sensor_capabilities_release(this.handle));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_sensor_capabilities_release_m7ECA26C3FBAB299DE5D2166A73FB489198343B31((intptr_t)L_1, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// this.handle = IntPtr.Zero;
+		__this->set_handle_0((intptr_t)(0));
+		IL2CPP_LEAVE(0x2E, FINALLY_0026);
+	} // end try (depth: 1)
+	catch(Il2CppExceptionWrapper& e)
+	{
+		__last_unhandled_exception = (Exception_t *)e.ex;
+		goto FINALLY_0026;
+	}
+
+FINALLY_0026:
+	{ // begin finally (depth: 1)
+		// }
+		Object_Finalize_mC59C83CF4F7707E425FFA6362931C25D4C36676A(__this, /*hidden argument*/NULL);
+		IL2CPP_END_FINALLY(38)
+	} // end finally (depth: 1)
+	IL2CPP_CLEANUP(38)
+	{
+		IL2CPP_RETHROW_IF_UNHANDLED(Exception_t *)
+		IL2CPP_JUMP_TBL(0x2E, IL_002e)
+	}
+
+IL_002e:
+	{
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.SensorCapabilities::set_GeoLocationEnabled(System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SensorCapabilities_set_GeoLocationEnabled_m59B7200B95B0E70A353A7045168513EC838121D8 (SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * __this, bool ___value0, const RuntimeMethod* method)
+{
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_sensor_capabilities_set_geo_location_enabled(this.handle, value));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		bool L_2 = ___value0;
+		int32_t L_3;
+		L_3 = NativeLibrary_ssc_sensor_capabilities_set_geo_location_enabled_m1E757B9A3ADF65B43EEC6C92E2523627494E690C((intptr_t)L_1, L_2, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_3, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.SensorCapabilities::set_WifiEnabled(System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SensorCapabilities_set_WifiEnabled_mBC5398B7A15704AE068E982258F1070434CEEE7B (SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * __this, bool ___value0, const RuntimeMethod* method)
+{
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_sensor_capabilities_set_wifi_enabled(this.handle, value));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		bool L_2 = ___value0;
+		int32_t L_3;
+		L_3 = NativeLibrary_ssc_sensor_capabilities_set_wifi_enabled_m43F60DEDDA2889F0D62D23F52A68217769BD0E31((intptr_t)L_1, L_2, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_3, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.SensorCapabilities::set_BluetoothEnabled(System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SensorCapabilities_set_BluetoothEnabled_m97DB473157788CB6C57FDBC9D1F60BBCE27A3C81 (SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * __this, bool ___value0, const RuntimeMethod* method)
+{
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_sensor_capabilities_set_bluetooth_enabled(this.handle, value));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		bool L_2 = ___value0;
+		int32_t L_3;
+		L_3 = NativeLibrary_ssc_sensor_capabilities_set_bluetooth_enabled_m5A4471C253732C98580C326670D8E9F4375FAC3C((intptr_t)L_1, L_2, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_3, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.Void Microsoft.Azure.SpatialAnchors.SensorCapabilities::set_KnownBeaconProximityUuids(System.String[])
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SensorCapabilities_set_KnownBeaconProximityUuids_m629C094B6F71B209B8A025F0AB62835EC59D00E7 (SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * __this, StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___value0, const RuntimeMethod* method)
+{
+	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* G_B2_0 = NULL;
+	intptr_t G_B2_1;
+	memset((&G_B2_1), 0, sizeof(G_B2_1));
+	intptr_t G_B2_2;
+	memset((&G_B2_2), 0, sizeof(G_B2_2));
+	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* G_B1_0 = NULL;
+	intptr_t G_B1_1;
+	memset((&G_B1_1), 0, sizeof(G_B1_1));
+	intptr_t G_B1_2;
+	memset((&G_B1_2), 0, sizeof(G_B1_2));
+	int32_t G_B3_0 = 0;
+	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* G_B3_1 = NULL;
+	intptr_t G_B3_2;
+	memset((&G_B3_2), 0, sizeof(G_B3_2));
+	intptr_t G_B3_3;
+	memset((&G_B3_3), 0, sizeof(G_B3_3));
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_sensor_capabilities_set_known_beacon_proximity_uuids(this.handle, value, value?.Length ?? 0));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_2 = ___value0;
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_3 = ___value0;
+		G_B1_0 = L_2;
+		G_B1_1 = L_1;
+		G_B1_2 = L_0;
+		if (L_3)
+		{
+			G_B2_0 = L_2;
+			G_B2_1 = L_1;
+			G_B2_2 = L_0;
+			goto IL_0014;
+		}
+	}
+	{
+		G_B3_0 = 0;
+		G_B3_1 = G_B1_0;
+		G_B3_2 = G_B1_1;
+		G_B3_3 = G_B1_2;
+		goto IL_0017;
+	}
+
+IL_0014:
+	{
+		StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* L_4 = ___value0;
+		NullCheck(L_4);
+		G_B3_0 = ((int32_t)((int32_t)(((RuntimeArray*)L_4)->max_length)));
+		G_B3_1 = G_B2_0;
+		G_B3_2 = G_B2_1;
+		G_B3_3 = G_B2_2;
+	}
+
+IL_0017:
+	{
+		int32_t L_5;
+		L_5 = NativeLibrary_ssc_sensor_capabilities_set_known_beacon_proximity_uuids_mDB1E2FB17BE70139BAA67D1761FBC1A79A6312AF((intptr_t)G_B3_2, G_B3_1, G_B3_0, /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)G_B3_3, L_5, /*hidden argument*/NULL);
+		// }
+		return;
+	}
+}
+// System.UInt64 Microsoft.Azure.SpatialAnchors.SensorCapabilities::Microsoft.Azure.SpatialAnchors.ICachedObject.get_Cookie()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t SensorCapabilities_Microsoft_Azure_SpatialAnchors_ICachedObject_get_Cookie_m38736E1F907E9099CA34F8367132905B0B767B9C (SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * __this, const RuntimeMethod* method)
+{
+	{
+		// ulong ICachedObject.Cookie => ConvertHandleToCookie(this.handle);
+		intptr_t L_0 = __this->get_handle_0();
+		uint64_t L_1;
+		L_1 = SensorCapabilities_ConvertHandleToCookie_m57CD28E564C224C1AB557384BB09F9957DFBA6EE((intptr_t)L_0, /*hidden argument*/NULL);
+		return L_1;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.SensorCapabilities Microsoft.Azure.SpatialAnchors.SensorCapabilities::GetOrCreateInstance(System.IntPtr,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * SensorCapabilities_GetOrCreateInstance_mA006F366F816C3436674CF2C0E3B0AD5AFD99D23 (intptr_t ___handle0, bool ___transfer1, const RuntimeMethod* method)
+{
+	{
+		// => GetOrCreateInstance(ConvertHandleToCookie(handle), transfer);
+		intptr_t L_0 = ___handle0;
+		uint64_t L_1;
+		L_1 = SensorCapabilities_ConvertHandleToCookie_m57CD28E564C224C1AB557384BB09F9957DFBA6EE((intptr_t)L_0, /*hidden argument*/NULL);
+		bool L_2 = ___transfer1;
+		SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * L_3;
+		L_3 = SensorCapabilities_GetOrCreateInstance_m53BDC712117CB757454F09637900F5F0BFFB8EA4(L_1, L_2, /*hidden argument*/NULL);
+		return L_3;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.SensorCapabilities Microsoft.Azure.SpatialAnchors.SensorCapabilities::GetOrCreateInstance(System.UInt64,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * SensorCapabilities_GetOrCreateInstance_m53BDC712117CB757454F09637900F5F0BFFB8EA4 (uint64_t ___cookie0, bool ___transfer1, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Func_2__ctor_mE0B0428F617728986F7F17500279A933425FBDCD_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProjectedObjectCache_GetOrCreate_TisSensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51_m5162CEAC2545A48AA28423BBA4BEE1B53485E8E2_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass18_0_U3CGetOrCreateInstanceU3Eb__0_m77579BC641FCF83CBB559321B063DB487B43791C_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D * V_0 = NULL;
+	{
+		U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D * L_0 = (U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D *)il2cpp_codegen_object_new(U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D_il2cpp_TypeInfo_var);
+		U3CU3Ec__DisplayClass18_0__ctor_m1B169E965ADD6392DE7F4C383561112C66310E1A(L_0, /*hidden argument*/NULL);
+		V_0 = L_0;
+		U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D * L_1 = V_0;
+		uint64_t L_2 = ___cookie0;
+		NullCheck(L_1);
+		L_1->set_cookie_0(L_2);
+		U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D * L_3 = V_0;
+		bool L_4 = ___transfer1;
+		NullCheck(L_3);
+		L_3->set_transfer_1(L_4);
+		// => Microsoft.Azure.SpatialAnchors.ProjectedObjectCache.GetOrCreate<Microsoft.Azure.SpatialAnchors.SensorCapabilities>(
+		//     cookie,
+		//     _ => new Microsoft.Azure.SpatialAnchors.SensorCapabilities(ConvertCookieToHandle(cookie), transfer: transfer));
+		U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D * L_5 = V_0;
+		NullCheck(L_5);
+		uint64_t L_6 = L_5->get_cookie_0();
+		U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D * L_7 = V_0;
+		Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893 * L_8 = (Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893 *)il2cpp_codegen_object_new(Func_2_t9C245513BA2A8E75035F38A76D2741C260C01893_il2cpp_TypeInfo_var);
+		Func_2__ctor_mE0B0428F617728986F7F17500279A933425FBDCD(L_8, L_7, (intptr_t)((intptr_t)U3CU3Ec__DisplayClass18_0_U3CGetOrCreateInstanceU3Eb__0_m77579BC641FCF83CBB559321B063DB487B43791C_RuntimeMethod_var), /*hidden argument*/Func_2__ctor_mE0B0428F617728986F7F17500279A933425FBDCD_RuntimeMethod_var);
+		IL2CPP_RUNTIME_CLASS_INIT(ProjectedObjectCache_tEF5C04A47CCF29781FB621218A3A3EE42991B88B_il2cpp_TypeInfo_var);
+		SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * L_9;
+		L_9 = ProjectedObjectCache_GetOrCreate_TisSensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51_m5162CEAC2545A48AA28423BBA4BEE1B53485E8E2(L_6, L_8, /*hidden argument*/ProjectedObjectCache_GetOrCreate_TisSensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51_m5162CEAC2545A48AA28423BBA4BEE1B53485E8E2_RuntimeMethod_var);
+		return L_9;
+	}
+}
+// System.UInt64 Microsoft.Azure.SpatialAnchors.SensorCapabilities::ConvertHandleToCookie(System.IntPtr)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t SensorCapabilities_ConvertHandleToCookie_m57CD28E564C224C1AB557384BB09F9957DFBA6EE (intptr_t ___handle0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&IntPtr_t_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	bool V_0 = false;
+	uint64_t V_1 = 0;
+	{
+		// if (handle == IntPtr.Zero)
+		intptr_t L_0 = ___handle0;
+		bool L_1;
+		L_1 = IntPtr_op_Equality_mD94F3FE43A65684EFF984A7B95E70D2520C0AC73((intptr_t)L_0, (intptr_t)(0), /*hidden argument*/NULL);
+		V_0 = L_1;
+		bool L_2 = V_0;
+		if (!L_2)
+		{
+			goto IL_0021;
+		}
+	}
+	{
+		// throw new ArgumentException("Invalid handle.", nameof(handle));
+		ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00 * L_3 = (ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00 *)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&ArgumentException_t505FA8C11E883F2D96C797AD9D396490794DEE00_il2cpp_TypeInfo_var)));
+		ArgumentException__ctor_m71044C2110E357B71A1C30D2561C3F861AF1DC0D(L_3, ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteral4FA4AF8CCEA6268C5E66D1C425E81865807A8330)), ((String_t*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&_stringLiteralFFE3A1B73CD7FC81540FBBE737435B0A887629D5)), /*hidden argument*/NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_3, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&SensorCapabilities_ConvertHandleToCookie_m57CD28E564C224C1AB557384BB09F9957DFBA6EE_RuntimeMethod_var)));
+	}
+
+IL_0021:
+	{
+		// return (ulong)handle.ToInt64();
+		int64_t L_4;
+		L_4 = IntPtr_ToInt64_m521F809F5D9ECAF93E808CFFFE45F67620C7879A((intptr_t*)(&___handle0), /*hidden argument*/NULL);
+		V_1 = L_4;
+		goto IL_002b;
+	}
+
+IL_002b:
+	{
+		// }
+		uint64_t L_5 = V_1;
+		return L_5;
+	}
+}
+// System.IntPtr Microsoft.Azure.SpatialAnchors.SensorCapabilities::ConvertCookieToHandle(System.UInt64)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t SensorCapabilities_ConvertCookieToHandle_m408D5F6B4E6A33C9AEDAEFF2B45B91AFE524FAAF (uint64_t ___cookie0, const RuntimeMethod* method)
+{
+	{
+		// => new IntPtr((long)cookie);
+		uint64_t L_0 = ___cookie0;
+		intptr_t L_1;
+		memset((&L_1), 0, sizeof(L_1));
+		IntPtr__ctor_m2CDDF5A1715E7BCFDFB6823D7A18339BD8EB0E90((&L_1), L_0, /*hidden argument*/NULL);
+		return (intptr_t)L_1;
 	}
 }
 #ifdef __clang__
@@ -14218,6 +17865,31 @@ IL_002e:
 		return;
 	}
 }
+// System.String Microsoft.Azure.SpatialAnchors.SessionErrorEventArgs::get_ErrorMessage()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* SessionErrorEventArgs_get_ErrorMessage_m1AA2C0AF296505F991600D9EAB20BF16FE17819A (SessionErrorEventArgs_tBC6BD7D553FA7F076DDB179DBBC576D276D8482F * __this, const RuntimeMethod* method)
+{
+	String_t* V_0 = NULL;
+	String_t* V_1 = NULL;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_session_error_event_args_get_error_message(this.handle, out result));
+		intptr_t L_0 = __this->get_handle_1();
+		intptr_t L_1 = __this->get_handle_1();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_session_error_event_args_get_error_message_m26D3AC9C01DEF1376108E5F2E9E9E7D571B96812((intptr_t)L_1, (String_t**)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// return result;
+		String_t* L_3 = V_0;
+		V_1 = L_3;
+		goto IL_001e;
+	}
+
+IL_001e:
+	{
+		// }
+		String_t* L_4 = V_1;
+		return L_4;
+	}
+}
 // System.UInt64 Microsoft.Azure.SpatialAnchors.SessionErrorEventArgs::Microsoft.Azure.SpatialAnchors.ICachedObject.get_Cookie()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint64_t SessionErrorEventArgs_Microsoft_Azure_SpatialAnchors_ICachedObject_get_Cookie_mC3B02CEC61F14A755F82FD7BEC6088EE303FFB99 (SessionErrorEventArgs_tBC6BD7D553FA7F076DDB179DBBC576D276D8482F * __this, const RuntimeMethod* method)
 {
@@ -14449,6 +18121,31 @@ IL_002e:
 	{
 		// }
 		return;
+	}
+}
+// System.Single Microsoft.Azure.SpatialAnchors.SessionStatus::get_ReadyForCreateProgress()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR float SessionStatus_get_ReadyForCreateProgress_mC78670954D929F2EECE755D9929BBA342D87B0B7 (SessionStatus_t3ED9BC0613433CC7C311985ECC8288C9DC4230DF * __this, const RuntimeMethod* method)
+{
+	float V_0 = 0.0f;
+	float V_1 = 0.0f;
+	{
+		// Microsoft.Azure.SpatialAnchors.NativeLibraryHelpers.CheckStatus(this.handle, Microsoft.Azure.SpatialAnchors.NativeLibrary.ssc_session_status_get_ready_for_create_progress(this.handle, out result));
+		intptr_t L_0 = __this->get_handle_0();
+		intptr_t L_1 = __this->get_handle_0();
+		int32_t L_2;
+		L_2 = NativeLibrary_ssc_session_status_get_ready_for_create_progress_m43CECFFEA1285C44778EEC62317AA83A09C27771((intptr_t)L_1, (float*)(&V_0), /*hidden argument*/NULL);
+		NativeLibraryHelpers_CheckStatus_mCED8EAE60E5B2190E1BB7206B952B0E49149F030((intptr_t)L_0, L_2, /*hidden argument*/NULL);
+		// return result;
+		float L_3 = V_0;
+		V_1 = L_3;
+		goto IL_001e;
+	}
+
+IL_001e:
+	{
+		// }
+		float L_4 = V_1;
+		return L_4;
 	}
 }
 // System.Single Microsoft.Azure.SpatialAnchors.SessionStatus::get_RecommendedForCreateProgress()
@@ -15978,6 +19675,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UpdatedSensorFingerprintRequiredDelegate
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
 // System.Void Microsoft.Azure.SpatialAnchors.AnchorLocatedEventArgs/<>c__DisplayClass16_0::.ctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass16_0__ctor_m3D7A14B4B1FDA22E3E5F2F12EB7F76CE58978FA3 (U3CU3Ec__DisplayClass16_0_tAE15256A9685F843005C0C100540CB11C4D28D6B * __this, const RuntimeMethod* method)
 {
@@ -16916,6 +20621,42 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR LocateAnchorsCompletedEventArgs_tA2B0431641D3
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+// System.Void Microsoft.Azure.SpatialAnchors.NearDeviceCriteria/<>c__DisplayClass13_0::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass13_0__ctor_m26237F9921B747D4503FE971BD084447A94963F2 (U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6 * __this, const RuntimeMethod* method)
+{
+	{
+		Object__ctor_m88880E0413421D13FD95325EDCE231707CE1F405(__this, /*hidden argument*/NULL);
+		return;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.NearDeviceCriteria Microsoft.Azure.SpatialAnchors.NearDeviceCriteria/<>c__DisplayClass13_0::<GetOrCreateInstance>b__0(System.UInt64)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * U3CU3Ec__DisplayClass13_0_U3CGetOrCreateInstanceU3Eb__0_mF932CFE5DFC907F5B7CA0B36692A91363C8B4207 (U3CU3Ec__DisplayClass13_0_t0EAAAC226E76F15AEDC25AA24E075BB7456ED0C6 * __this, uint64_t ____0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		// _ => new Microsoft.Azure.SpatialAnchors.NearDeviceCriteria(ConvertCookieToHandle(cookie), transfer: transfer));
+		uint64_t L_0 = __this->get_cookie_0();
+		intptr_t L_1;
+		L_1 = NearDeviceCriteria_ConvertCookieToHandle_mF9179E4D71061A751FD869862EB2AE929D463970(L_0, /*hidden argument*/NULL);
+		bool L_2 = __this->get_transfer_1();
+		NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 * L_3 = (NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152 *)il2cpp_codegen_object_new(NearDeviceCriteria_t79F21F717F8C8025E6D1B502E45A93FD0A2AD152_il2cpp_TypeInfo_var);
+		NearDeviceCriteria__ctor_m752F9685E9B0D6D8BE4909A2A7455862CFD86609(L_3, (intptr_t)L_1, L_2, /*hidden argument*/NULL);
+		return L_3;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
 // System.Void Microsoft.Azure.SpatialAnchors.OnLogDebugEventArgs/<>c__DisplayClass8_0::.ctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass8_0__ctor_m2BD123DFF0B1B53CE6F187F11EE2B66A947C17D6 (U3CU3Ec__DisplayClass8_0_t94956790EC6A91BD09D913A0222A4296C90DA100 * __this, const RuntimeMethod* method)
 {
@@ -16941,6 +20682,42 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA
 		bool L_2 = __this->get_transfer_1();
 		OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC * L_3 = (OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC *)il2cpp_codegen_object_new(OnLogDebugEventArgs_t9FFD8A004D1D3216B46D51CA360730474AA4C3EC_il2cpp_TypeInfo_var);
 		OnLogDebugEventArgs__ctor_m5E9C80CEB6D82F6380568FD5E70FB47D2C0C0755(L_3, (intptr_t)L_1, L_2, /*hidden argument*/NULL);
+		return L_3;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void Microsoft.Azure.SpatialAnchors.SensorCapabilities/<>c__DisplayClass18_0::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CU3Ec__DisplayClass18_0__ctor_m1B169E965ADD6392DE7F4C383561112C66310E1A (U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D * __this, const RuntimeMethod* method)
+{
+	{
+		Object__ctor_m88880E0413421D13FD95325EDCE231707CE1F405(__this, /*hidden argument*/NULL);
+		return;
+	}
+}
+// Microsoft.Azure.SpatialAnchors.SensorCapabilities Microsoft.Azure.SpatialAnchors.SensorCapabilities/<>c__DisplayClass18_0::<GetOrCreateInstance>b__0(System.UInt64)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * U3CU3Ec__DisplayClass18_0_U3CGetOrCreateInstanceU3Eb__0_m77579BC641FCF83CBB559321B063DB487B43791C (U3CU3Ec__DisplayClass18_0_t481E63532E31D93E0B79D6A090CD2CC03B9A433D * __this, uint64_t ____0, const RuntimeMethod* method)
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		// _ => new Microsoft.Azure.SpatialAnchors.SensorCapabilities(ConvertCookieToHandle(cookie), transfer: transfer));
+		uint64_t L_0 = __this->get_cookie_0();
+		intptr_t L_1;
+		L_1 = SensorCapabilities_ConvertCookieToHandle_m408D5F6B4E6A33C9AEDAEFF2B45B91AFE524FAAF(L_0, /*hidden argument*/NULL);
+		bool L_2 = __this->get_transfer_1();
+		SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 * L_3 = (SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51 *)il2cpp_codegen_object_new(SensorCapabilities_t82EE1F5CF23C803DF144671EDA85B605C80B5C51_il2cpp_TypeInfo_var);
+		SensorCapabilities__ctor_mB5BE06120E4DF70BB7780E51B5920240EF051D9C(L_3, (intptr_t)L_1, L_2, /*hidden argument*/NULL);
 		return L_3;
 	}
 }
@@ -17175,5 +20952,13 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR StringComparer_t69EC059128AD0CAE2
 		IL2CPP_RUNTIME_CLASS_INIT(StringComparer_t69EC059128AD0CAE268CA1A1C33125DAC9D7F8D6_il2cpp_TypeInfo_var);
 		StringComparer_t69EC059128AD0CAE268CA1A1C33125DAC9D7F8D6 * L_0 = ((StringComparer_t69EC059128AD0CAE268CA1A1C33125DAC9D7F8D6_StaticFields*)il2cpp_codegen_static_fields_for(StringComparer_t69EC059128AD0CAE268CA1A1C33125DAC9D7F8D6_il2cpp_TypeInfo_var))->get__ordinal_2();
 		return L_0;
+	}
+}
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE* Array_Empty_TisRuntimeObject_m1FBC21243DF3542384C523801E8CA8A97606C747_gshared_inline (const RuntimeMethod* method)
+{
+	{
+		IL2CPP_RUNTIME_CLASS_INIT(IL2CPP_RGCTX_DATA(method->rgctx_data, 0));
+		ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE* L_0 = ((EmptyArray_1_tBF73225DFA890366D579424FE8F40073BF9FBAD4_StaticFields*)il2cpp_codegen_static_fields_for(IL2CPP_RGCTX_DATA(method->rgctx_data, 0)))->get_Value_0();
+		return (ObjectU5BU5D_tC1F4EE0DB0B7300255F5FD4AF64FE4C585CF5ADE*)L_0;
 	}
 }

@@ -1842,15 +1842,6 @@ IL_000a:
 		return L_2;
 	}
 }
-// System.Void UnityEngine.Input::set_simulateMouseWithTouches(System.Boolean)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Input_set_simulateMouseWithTouches_m4553A46549619C66FE85517D182DE8A07795D012 (bool ___value0, const RuntimeMethod* method)
-{
-	typedef void (*Input_set_simulateMouseWithTouches_m4553A46549619C66FE85517D182DE8A07795D012_ftn) (bool);
-	static Input_set_simulateMouseWithTouches_m4553A46549619C66FE85517D182DE8A07795D012_ftn _il2cpp_icall_func;
-	if (!_il2cpp_icall_func)
-	_il2cpp_icall_func = (Input_set_simulateMouseWithTouches_m4553A46549619C66FE85517D182DE8A07795D012_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Input::set_simulateMouseWithTouches(System.Boolean)");
-	_il2cpp_icall_func(___value0);
-}
 // UnityEngine.Vector3 UnityEngine.Input::get_mousePosition()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  Input_get_mousePosition_m79528BC2F30C57054641F709C855130AE586AC0E (const RuntimeMethod* method)
 {
