@@ -62,6 +62,7 @@
 		<type fullname="UnityEngine.AudioClip" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Assembly-CSharp">
+		<type fullname="HideMenuOnStart" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.AzureSpatialAnchors.DebugWindow" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.GettingStarted.ExplodeViewController" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.GettingStarted.PartAssemblyController" preserve="nothing"/>
@@ -74,6 +75,8 @@
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.PunPartAssemblyController" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.PunPlacementHintsController" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.TableAnchorAsParent" preserve="nothing"/>
+		<type fullname="MainMenu" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Examples.Demos.SolverTrackedTargetType" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.FrameVisual" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.GenericNetSync" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.GenericNetworkManager" preserve="nothing"/>
@@ -98,10 +101,6 @@
 		<type fullname="Microsoft.MixedReality.OpenXR.MotionControllerFeaturePlugin" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.OpenXR.Remoting.AppRemotingPlugin" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.OpenXR.Remoting.PlayModeRemotingPlugin" preserve="nothing"/>
-	</assembly>
-	<assembly fullname="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics">
-		<type fullname="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.HandPhysicsServiceProfile" preserve="nothing"/>
-		<type fullname="Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.JointKinematicBody" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Microsoft.MixedReality.Toolkit.Providers.OpenXR">
 		<type fullname="Microsoft.MixedReality.Toolkit.XRSDK.OpenXR.OpenXRCameraSettingsProfile" preserve="nothing"/>
@@ -158,9 +157,11 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.LoaderController" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.MinMaxScaleConstraint" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ObjectManipulator" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.PinchSlider" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.PressableButton" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.PressableButtonHoloLens2" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorLoadingBar" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorObjectDisplay" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorOrbsRotator" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.RotationAxisConstraint" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.SliderSounds" preserve="nothing"/>
@@ -175,6 +176,7 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.GridObjectCollection" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.Solvers.ConstantViewSize" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.Solvers.Follow" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.Solvers.HandConstraintPalmUp" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.Solvers.RadialView" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.Solvers.SolverHandler" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.Solvers.SurfaceMagnetism" preserve="nothing"/>
@@ -198,9 +200,9 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.Boundary.MixedRealityBoundaryVisualizationProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Diagnostics.MixedRealityDiagnosticsProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.BaseHandVisualizer" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Input.HandBounds" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerMappingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizationProfile" preserve="nothing"/>
-		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityEyeTrackingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityGesturesProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityHandTrackingProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Input.MixedRealityInputActionRulesProfile" preserve="nothing"/>

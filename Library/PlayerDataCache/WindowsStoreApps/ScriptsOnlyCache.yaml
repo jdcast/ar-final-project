@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - HideMenuOnStart
     - MRTK.Tutorials.AzureSpatialAnchors.DebugWindow
     - MRTK.Tutorials.GettingStarted.ExplodeViewController
     - MRTK.Tutorials.GettingStarted.PartAssemblyController
@@ -13,6 +14,8 @@ ScriptsOnlyBuild:
     - MRTK.Tutorials.MultiUserCapabilities.PunPartAssemblyController
     - MRTK.Tutorials.MultiUserCapabilities.PunPlacementHintsController
     - MRTK.Tutorials.MultiUserCapabilities.TableAnchorAsParent
+    - MainMenu
+    - Microsoft.MixedReality.Toolkit.Examples.Demos.SolverTrackedTargetType
     - MultiUserCapabilities.FrameVisual
     - MultiUserCapabilities.GenericNetSync
     - MultiUserCapabilities.GenericNetworkManager
@@ -38,16 +41,16 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.OpenXR.Remoting.AppRemotingPlugin
     - Microsoft.MixedReality.OpenXR.Remoting.PlayModeRemotingPlugin
     Microsoft.MixedReality.Toolkit.Editor.Inspectors.dll:
-    - Microsoft.MixedReality.Toolkit.Diagnostics.Editor.MixedRealityDiagnosticsSystemProfileInspector
+    - Microsoft.MixedReality.Toolkit.Boundary.Editor.MixedRealityBoundaryVisualizationProfileInspector
+    - Microsoft.MixedReality.Toolkit.Editor.MixedRealitySpeechCommandsProfileInspector
     - Microsoft.MixedReality.Toolkit.Editor.MixedRealityToolkitConfigurationProfileInspector
+    - Microsoft.MixedReality.Toolkit.Editor.SpatialAwareness.MixedRealitySpatialAwarenessMeshObserverProfileInspector
+    - Microsoft.MixedReality.Toolkit.Input.Editor.MixedRealityInputActionRulesInspector
+    - Microsoft.MixedReality.Toolkit.Input.Editor.MixedRealityInputActionsProfileInspector
+    - Microsoft.MixedReality.Toolkit.Input.Editor.MixedRealityInputSystemProfileInspector
     - Microsoft.MixedReality.Toolkit.SpatialAwareness.Editor.MixedRealitySpatialAwarenessSystemProfileInspector
     Microsoft.MixedReality.Toolkit.Editor.Utilities.dll:
     - Microsoft.MixedReality.Toolkit.Utilities.Editor.ProjectPreferences
-    Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.dll:
-    - Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.HandPhysicsServiceProfile
-    - Microsoft.MixedReality.Toolkit.Extensions.HandPhysics.JointKinematicBody
-    Microsoft.MixedReality.Toolkit.Providers.LeapMotion.dll:
-    - Microsoft.MixedReality.Toolkit.LeapMotion.Input.LeapMotionDeviceManagerProfile
     Microsoft.MixedReality.Toolkit.Providers.OpenXR.dll:
     - Microsoft.MixedReality.Toolkit.XRSDK.OpenXR.OpenXRCameraSettingsProfile
     Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality.Shared.dll:
@@ -103,9 +106,11 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.Toolkit.UI.LoaderController
     - Microsoft.MixedReality.Toolkit.UI.MinMaxScaleConstraint
     - Microsoft.MixedReality.Toolkit.UI.ObjectManipulator
+    - Microsoft.MixedReality.Toolkit.UI.PinchSlider
     - Microsoft.MixedReality.Toolkit.UI.PressableButton
     - Microsoft.MixedReality.Toolkit.UI.PressableButtonHoloLens2
     - Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorLoadingBar
+    - Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorObjectDisplay
     - Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorOrbsRotator
     - Microsoft.MixedReality.Toolkit.UI.RotationAxisConstraint
     - Microsoft.MixedReality.Toolkit.UI.SliderSounds
@@ -120,6 +125,7 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.Toolkit.Utilities.GridObjectCollection
     - Microsoft.MixedReality.Toolkit.Utilities.Solvers.ConstantViewSize
     - Microsoft.MixedReality.Toolkit.Utilities.Solvers.Follow
+    - Microsoft.MixedReality.Toolkit.Utilities.Solvers.HandConstraintPalmUp
     - Microsoft.MixedReality.Toolkit.Utilities.Solvers.RadialView
     - Microsoft.MixedReality.Toolkit.Utilities.Solvers.SolverHandler
     - Microsoft.MixedReality.Toolkit.Utilities.Solvers.SurfaceMagnetism
@@ -135,13 +141,15 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.Toolkit.Input.NearInteractionTouchable
     - Microsoft.MixedReality.Toolkit.Input.NearInteractionTouchableUnityUI
     - Microsoft.MixedReality.Toolkit.Input.Utilities.CanvasUtility
+    Microsoft.MixedReality.Toolkit.Tools.dll:
+    - Microsoft.MixedReality.Toolkit.Editor.MixedRealityToolboxWindow
     Microsoft.MixedReality.Toolkit.dll:
     - Microsoft.MixedReality.Toolkit.Boundary.MixedRealityBoundaryVisualizationProfile
     - Microsoft.MixedReality.Toolkit.Diagnostics.MixedRealityDiagnosticsProfile
     - Microsoft.MixedReality.Toolkit.Input.BaseHandVisualizer
+    - Microsoft.MixedReality.Toolkit.Input.HandBounds
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerMappingProfile
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizationProfile
-    - Microsoft.MixedReality.Toolkit.Input.MixedRealityEyeTrackingProfile
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityGesturesProfile
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityHandTrackingProfile
     - Microsoft.MixedReality.Toolkit.Input.MixedRealityInputActionRulesProfile
@@ -440,6 +448,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4526}
     - Class: 114
+      Script: {instanceID: 4582}
+    - Class: 114
       Script: {instanceID: 4604}
     - Class: 114
       Script: {instanceID: 4638}
@@ -501,6 +511,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 5604}
     - Class: 114
       Script: {instanceID: 5698}
+    - Class: 114
+      Script: {instanceID: 5730}
     - Class: 114
       Script: {instanceID: 5736}
     - Class: 114
@@ -687,6 +699,12 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9498}
     - Class: 114
       Script: {instanceID: 9650}
+    - Class: 114
+      Script: {instanceID: 50196}
+    - Class: 114
+      Script: {instanceID: 104916}
+    - Class: 114
+      Script: {instanceID: 129892}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -4880,6 +4898,102 @@ ScriptsOnlyBuild:
     assemblyName: AzureSpatialAnchors.SDK.Core.Runtime.dll
     namespaceName: Microsoft.Azure.SpatialAnchors.Unity
     className: CloudNativeAnchor
+  - hash:
+      serializedVersion: 2
+      Hash: 7916452f9ef9579fda1c2deeb7927800
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples
+    className: GrabTouchExample
+  - hash:
+      serializedVersion: 2
+      Hash: 4dcd2ab8949bcca6824b881ae8540a9f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos
+    className: TetheredPlacement
+  - hash:
+      serializedVersion: 2
+      Hash: ad3f9f8452334bb3ba24cc8186bf392d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos
+    className: ToggleBoundingBox
+  - hash:
+      serializedVersion: 2
+      Hash: 952dbaa980d059b2ea218cb83fdd4af1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos
+    className: DemoTouchButton
+  - hash:
+      serializedVersion: 2
+      Hash: b2334ca455980388969766602ba5e3c8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos
+    className: HandInteractionTouchRotate
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples
+    className: LeapMotionOrientationDisplay
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos
+    className: LeapCoreAssetsDetector
+  - hash:
+      serializedVersion: 2
+      Hash: a746e94923f1aa010f1644e15335df05
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos
+    className: SolverTrackedTargetType
+  - hash:
+      serializedVersion: 2
+      Hash: 0c39e303cbdaa7ca67a326c2dd70c0a2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos
+    className: HandInteractionTouch
+  - hash:
+      serializedVersion: 2
+      Hash: 12039e9598d3caa4b569278724bd9666
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples
+    className: RotateWithPan
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos
+    className: LaunchUri
+  - hash:
+      serializedVersion: 2
+      Hash: 553b1d2f7469d106263f68f9bc8f07a3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos
+    className: SystemKeyboardExample
+  - hash:
+      serializedVersion: 2
+      Hash: b883e44e7b968083b4872ee139f7276b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples
+    className: GestureTester
+  - hash:
+      serializedVersion: 2
+      Hash: c993e6b39d9667c29d35c5fdd98c6e4a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Microsoft.MixedReality.Toolkit.Examples.Demos
+    className: DebugTextOutput
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HideMenuOnStart
+  - hash:
+      serializedVersion: 2
+      Hash: 6416619eed09a173951b41f7f271cf16
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainMenu
   platform: 21
   scenePathNames:
   - Assets/Scenes/main.unity
