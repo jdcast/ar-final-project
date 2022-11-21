@@ -1,3 +1,4 @@
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace MultiUserCapabilities
 
         private int roomNumber = 1;
         private int userIdCount;
+
+        [SerializeField] private MeshSerializer meshSerializer = default;
 
         private void Awake()
         {
@@ -79,6 +82,8 @@ namespace MultiUserCapabilities
         {
             PhotonNetwork.ConnectUsingSettings();
             Lobby = this;
+            PhotonPeer.RegisterType(typeof(Mesh), 0, (SerializeMethod)MeshSerializer.MeshToByteArray, meshSerializer.ByteArrayToMesh);
+       
         }
 
         private void CreateRoom()

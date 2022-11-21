@@ -246,7 +246,7 @@ public class Mesh_Controller : MonoBehaviour, IOnEventCallback
         newMesh.vertices = newVertices;
         newMesh.triangles = newTriangles;
         return newMesh;
-    } 
+    }
 
     //Here are some helper functions which you should mind
     void RecalculateAllMeshes()
@@ -269,7 +269,7 @@ public class Mesh_Controller : MonoBehaviour, IOnEventCallback
         float distance = (point - center).magnitude;
         if (distance < 3)
         {
-            return point*((distance * distance)/9) + (center+new Vector3(0,1,0))* (1-((distance * distance) / 9));
+            return point * ((distance * distance) / 9) + (center + new Vector3(0, 1, 0)) * (1 - ((distance * distance) / 9));
         }
         else
         {
