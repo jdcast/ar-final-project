@@ -6902,6 +6902,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshParent: {fileID: 286346206}
+  editingMode: 0
+  audioData: {fileID: 0}
+  createAudio: {fileID: 0}
+  vertexPullPushScale: 0
 --- !u!4 &716868576
 Transform:
   m_ObjectHideFlags: 0
@@ -7822,7 +7826,8 @@ GameObject:
   - component: {fileID: 773902710}
   - component: {fileID: 773902709}
   - component: {fileID: 773902708}
-  m_Layer: 0
+  - component: {fileID: 773902711}
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7876,7 +7881,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5986e9a087358c3459dfc7914af66b79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7906,6 +7911,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773902706}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &773902711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773902706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7f1d332805e874ea525fb0d7138c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &774345448
 GameObject:
   m_ObjectHideFlags: 0
@@ -10783,7 +10800,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147483703
+    m_Bits: 2147483767
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -22307,15 +22324,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4726415193071488882, guid: 9f30094e8e6762f4ea336a02f1d53ecc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.49999994
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4726415193071488882, guid: 9f30094e8e6762f4ea336a02f1d53ecc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2649491
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4726415193071488882, guid: 9f30094e8e6762f4ea336a02f1d53ecc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.8548038
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4726415193071488882, guid: 9f30094e8e6762f4ea336a02f1d53ecc, type: 3}
       propertyPath: m_LocalRotation.w

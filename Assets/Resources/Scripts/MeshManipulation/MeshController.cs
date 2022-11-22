@@ -7,6 +7,12 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
+using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit;
+using UnityEngine.XR;
+using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
+using MultiUserCapabilities;
+using UnityEngine.SocialPlatforms;
 
 public class MeshController : MonoBehaviour, IOnEventCallback
 {
@@ -20,9 +26,40 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     public const byte ModifyVerticesNearPointEventCode = 1;
     public const byte AddNewMeshEventCode = 2;
     public const byte AddVertexEventCode = 3;
+    public const byte VertexPushLinearEventCode = 4;
 
     // mesh parent
     [SerializeField] private GameObject meshParent = default;
+
+    /// <summary>
+    /// Used to distinguish short taps and long taps
+    /// </summary>
+    private float[] _tappingTimer = { 0, 0 };
+
+    /// <summary>
+    /// Editing modes
+    /// </summary>
+    public enum EditingMode
+    {
+        VertexPull,
+        VertexPush,
+        Off
+    }
+
+    /// <summary>
+    /// Used to track hold editing mode
+    /// </summary>
+    public EditingMode editingMode;
+
+    // we have to apply audio sources for create/delete/moveStart/moveEnd events here because we will be disabling/enabling manipulation components depending on the
+    // mode we are in
+    // manipulation audio (i.e. rotation) is supplied by the manipulation component since it only applies in the mode when the manipulation component is enabled
+    [SerializeField] private AudioSource audioData;
+
+    [SerializeField] private AudioClip createAudio;
+
+    [SerializeField] private float vertexPullPushScale = 0;
+
 
     //Unity functions
     void Start()
@@ -39,91 +76,187 @@ public class MeshController : MonoBehaviour, IOnEventCallback
             childMeshColliders.Add(child.GetComponent<MeshCollider>());
         }
     }
+
+    /// <summary>
+    /// Process short taps by user
+    /// </summary>
     void Update()
     {
-        if (Input.GetKey("q"))
+        //if (Input.GetKey("q"))
+        //{
+        //    Mesh newMesh;
+        //    int xSize = 10;
+        //    int ySize = 10;
+        //    newMesh = new Mesh();
+        //    newMesh.name = "Procedural Grid";
+
+        //    Vector3[] vertices = new Vector3[(xSize + 1) * (ySize + 1)];
+        //    for (int i = 0, y = 0; y <= ySize; y++)
+        //    {
+        //        for (int x = 0; x <= xSize; x++, i++)
+        //        {
+        //            vertices[i] = new Vector3(x, y);
+        //        }
+        //    }
+        //    newMesh.vertices = vertices;
+
+        //    int[] triangles = new int[xSize * ySize * 6];
+        //    for (int ti = 0, vi = 0, y = 0; y < ySize; y++, vi++)
+        //    {
+        //        for (int x = 0; x < xSize; x++, ti += 6, vi++)
+        //        {
+        //            triangles[ti] = vi;
+        //            triangles[ti + 3] = triangles[ti + 2] = vi + 1;
+        //            triangles[ti + 4] = triangles[ti + 1] = vi + xSize + 1;
+        //            triangles[ti + 5] = vi + xSize + 2;
+        //        }
+        //    }
+
+        //    newMesh.triangles = triangles;
+
+        //    addNewMeshEvent(newMesh);
+        //}
+        //if (Input.GetKeyDown("v"))//(Input.GetMouseButtonDown(3))
+        //{
+        //    if (!(Camera.main is null))
+        //    {
+        //        RaycastHit hit;
+        //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        //        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        //        {
+        //            Vector3 hitPoint = hit.point;
+        //            modifyVerticesNearPointEvent(hitPoint);
+        //        }
+        //    }
+        //}
+        //if (Input.GetMouseButtonDown(4))
+        //{
+        //    if (!(Camera.main is null))
+        //    {
+        //        RaycastHit hit;
+        //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        //        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        //        {
+        //            MeshCollider meshCollider = hit.collider as MeshCollider;
+        //            if (meshCollider == null || meshCollider.sharedMesh == null)
+        //                return;
+
+        //            Vector3 offset = new Vector3(0, 1, 0);
+        //            Vector3 addedVertex = hit.point + offset;
+        //            int hitObjectID = hit.transform.gameObject.GetInstanceID();
+        //            int childIndex = 0;
+
+        //            for (int i = 0; i < meshParent.transform.childCount; i++)
+        //            {
+        //                GameObject child = meshParent.transform.GetChild(i).gameObject;
+        //                if (child.GetInstanceID() == hitObjectID)
+        //                {
+        //                    childIndex = i;
+        //                    break;
+        //                }
+        //            }
+
+        //            float[] content = { childIndex, addedVertex.x, addedVertex.y, addedVertex.z, hit.triangleIndex };
+        //            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        //            PhotonNetwork.RaiseEvent(AddVertexEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+        //        }
+        //    }
+        //}
+
+        // detect air taps and then do operations based on current editing mode
+        if (editingMode != EditingMode.Off)
         {
-            Mesh newMesh;
-            int xSize = 10;
-            int ySize = 10;
-            newMesh = new Mesh();
-            newMesh.name = "Procedural Grid";
-
-            Vector3[] vertices = new Vector3[(xSize + 1) * (ySize + 1)];
-            for (int i = 0, y = 0; y <= ySize; y++)
+            //Check for any air taps from either hand
+            for (int i = 0; i < 2; i++)
             {
-                for (int x = 0; x <= xSize; x++, i++)
+                //List<InputDevice> devices = new List<InputDevice>();
+                //InputDevices.GetDevicesWithCharacteristics(UnityEngine.XR.InputDeviceCharacteristics.Left, devices);
+                //Debug.Log(devices.Count);
+                //if (devices[0].TryGetFeatureValue(CommonUsages.primaryButton, out bool isTapping))
+                InputDevice device = InputDevices.GetDeviceAtXRNode((i == 0) ? XRNode.RightHand : XRNode.LeftHand);
+                if (device.TryGetFeatureValue(CommonUsages.primaryButton, out bool isTapping))
                 {
-                    vertices[i] = new Vector3(x, y);
-                }
-            }
-            newMesh.vertices = vertices;
-
-            int[] triangles = new int[xSize * ySize * 6];
-            for (int ti = 0, vi = 0, y = 0; y < ySize; y++, vi++)
-            {
-                for (int x = 0; x < xSize; x++, ti += 6, vi++)
-                {
-                    triangles[ti] = vi;
-                    triangles[ti + 3] = triangles[ti + 2] = vi + 1;
-                    triangles[ti + 4] = triangles[ti + 1] = vi + xSize + 1;
-                    triangles[ti + 5] = vi + xSize + 2;
-                }
-            }
-
-            newMesh.triangles = triangles;
-
-            addNewMeshEvent(newMesh);
-        }
-        if (Input.GetMouseButtonDown(3))
-        {
-            if (!(Camera.main is null))
-            {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-                {
-                    Vector3 hitPoint = hit.point;
-                    modifyVerticesNearPointEvent(hitPoint);
-                }
-            }
-        }
-        if (Input.GetMouseButtonDown(4))
-        {
-            if (!(Camera.main is null))
-            {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-                {
-                    MeshCollider meshCollider = hit.collider as MeshCollider;
-                    if (meshCollider == null || meshCollider.sharedMesh == null)
-                        return;
-
-                    Vector3 offset = new Vector3(0, 1, 0);
-                    Vector3 addedVertex = hit.point + offset;
-                    int hitObjectID = hit.transform.gameObject.GetInstanceID();
-                    int childIndex = 0;
-
-                    for (int i = 0; i < meshParent.transform.childCount; i++)
+                    Debug.Log("here");
+                    if (!isTapping)
                     {
-                        GameObject child = meshParent.transform.GetChild(i).gameObject;
-                        if (child.GetInstanceID() == hitObjectID)
+                        //Stopped Tapping or wasn't tapping
+                        if (0f < _tappingTimer[i] && _tappingTimer[i] < 1f)
                         {
-                            childIndex = i;
-                            break;
+                            //User has been tapping for less than 1 sec. Get hand-ray's end position and call ShortTap
+                            foreach (var source in CoreServices.InputSystem.DetectedInputSources)
+                            {
+                                // Ignore anything that is not a hand because we want articulated hands
+                                if (source.SourceType == Microsoft.MixedReality.Toolkit.Input.InputSourceType.Hand)
+                                {
+                                    foreach (var p in source.Pointers)
+                                    {
+                                        if (p is IMixedRealityNearPointer)// && editingMode != EditingMode.Delete) // we want to be able to use direct touch to delete game objects
+                                        {
+                                            // Ignore near pointers, we only want the rays
+                                            //Debug.Log("Near Pointer");
+                                            continue;
+                                        }
+                                        if (p.Result != null)
+                                        {
+                                            Debug.Log("Tap");
+                                            var startPoint = p.Position;
+                                            var endPoint = p.Result.Details.Point;
+                                            var hitObject = p.Result.Details.Object;
+
+                                            //Debug.Log($"{isRouteParentTTPOn}");
+                                            //Debug.Log($"{hitObject.gameObject.tag}");
+
+                                            // we need the surface normal of the spatial mesh we want to place the hold on
+                                            // we allow hits on route parents so that we can do nothing when selecting them in short taps
+                                            LayerMask mask = LayerMask.GetMask("Mesh");
+                                            if (Physics.Raycast(startPoint, endPoint - startPoint, out var hit, Mathf.Infinity, mask)) // check if successful before calling ShortTap
+                                            {
+                                                GameObject hitGO = hit.collider.gameObject;
+                                                ShortTap(hit.point, hit.normal, hitGO);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        _tappingTimer[i] = 0;
+                    }
+                    else
+                    {
+                        _tappingTimer[i] += Time.deltaTime;
+                        if (_tappingTimer[i] >= 2f)
+                        {
+                            _tappingTimer[i] = -float.MaxValue; // reset the timer, to avoid retriggering if user is still holding tap
                         }
                     }
-
-                    float[] content = { childIndex, addedVertex.x, addedVertex.y, addedVertex.z, hit.triangleIndex };
-                    RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-                    PhotonNetwork.RaiseEvent(AddVertexEventCode, content, raiseEventOptions, SendOptions.SendReliable);
                 }
             }
         }
     }
+
+    // <ShortTap>
+    /// <summary>
+    /// Called when a user is air tapping for a short time.
+    /// </summary>
+    /// <param name="handPosition">Location where tap was registered</param>
+    private async void ShortTap(Vector3 hitPoint, Vector3 surfaceNormal, GameObject hitGO)
+    {
+        if (hitGO == null)
+        {
+            return;
+        }
+
+        if (editingMode == EditingMode.VertexPush)
+        {
+            audioData.PlayOneShot(createAudio);
+
+            VertexPushLinearEvent(hitPoint, surfaceNormal);
+        }
+    }
+    // </ShortTap>
+
     private void OnEnable()
     {
         PhotonNetwork.AddCallbackTarget(this);
@@ -146,6 +279,10 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         if (eventCode == AddVertexEventCode)
         {
             addVertexToMeshResponse(photonEvent.CustomData);
+        }
+        if (eventCode == VertexPushLinearEventCode)
+        {
+            VertexPushLinearResponse(photonEvent.CustomData, PullNearHitpoint);
         }
     }
 
@@ -193,11 +330,48 @@ public class MeshController : MonoBehaviour, IOnEventCallback
             Vector3[] changedVertices = currMesh.vertices;
             for (int v = 0; v < currMesh.vertices.Length; v++)
             {
-               // Debug.Log("Before");
-                //Debug.Log(changedVertices[v]);
                 changedVertices[v] = f(changedVertices[v], hitPoint);
-                //Debug.Log("After");
-                //Debug.Log(changedVertices[v]);
+            }
+            childMeshs[i].vertices = changedVertices;
+            RecalculateMesh(i);
+        }
+    }
+
+    private void VertexPushLinearEvent(Vector3 point, Vector3 surfaceNormal)
+    {
+        //Vector3 content = point;
+        string content = point.ToString() + surfaceNormal.ToString();
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(VertexPushLinearEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+    //f is a function of the form (current vertex position, response point) -> new vertex position
+    private void VertexPushLinearResponse(object photonData, Func<Vector3, Vector3, Vector3, Vector3> f)
+    {
+        string data = (string)photonData;
+        string[] newData = data.Split(',');
+
+        // fill in hitPoint and surfaceNormal
+        Vector3 hitPoint = Vector3.zero;
+        Vector3 surfaceNormal = Vector3.zero;
+        for (int i = 0; i < newData.Length - 3; i++)
+        {
+            hitPoint[i] = float.Parse(newData[i]);
+        }
+        for (int i = 3; i < newData.Length; i++)
+        {
+            surfaceNormal[i] = float.Parse(newData[i]);
+        }
+
+        Debug.Log($"hitPoint: {hitPoint}");
+
+        //iterate through all child meshes
+        for (int i = 0; i < children.Count; i++)
+        {
+            Mesh currMesh = childMeshs[i];
+            Vector3[] changedVertices = currMesh.vertices;
+            for (int v = 0; v < currMesh.vertices.Length; v++)
+            {
+                changedVertices[v] = f(changedVertices[v], hitPoint, surfaceNormal);
             }
             childMeshs[i].vertices = changedVertices;
             RecalculateMesh(i);
@@ -288,6 +462,27 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         else
         {
             return point;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="point"></param>
+    /// <param name="center"></param>
+    /// <returns></returns>
+    private Vector3 PullNearHitpoint(Vector3 vertex, Vector3 hitPoint, Vector3 surfaceNormal)
+    {
+        float distance = (vertex - hitPoint).magnitude;
+
+        if (distance < 1.5)//3)
+        {
+            Vector3 newV = vertex * ((distance * distance) / 9) + (hitPoint + vertexPullPushScale*surfaceNormal) * (1 - ((distance * distance) / 9));
+            return newV;
+        }
+        else
+        {
+            return vertex;
         }
     }
 

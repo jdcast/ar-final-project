@@ -71,6 +71,7 @@
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\HandInteractionTouch.cs" />
     <Compile Include="Assets\Resources\Scripts\ScrollHoldMenuInit.cs" />
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\HoldData.cs" />
+    <Compile Include="Assets\Resources\Scripts\MeshManipulation\MeshSerializer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Resources\Scripts\WorldLocking\SpacePinASAInit.cs" />
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\HoldInit.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\MRTK.Tutorials.MultiUserCapabilities\Scripts\OwnershipHandler.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\LeapMotionOrientationDisplay.cs" />
     <Compile Include="Assets\Resources\Scripts\RouteManipulator.cs" />
+    <Compile Include="Assets\Resources\Scripts\MeshManipulation\MeshController.cs" />
     <Compile Include="Assets\Resources\Scripts\MainMenu.cs" />
     <Compile Include="Assets\MRTK.Tutorials.MultiUserCapabilities\Scripts\TableAnchor.cs" />
     <Compile Include="Assets\Resources\TEMP\movement.cs" />
@@ -149,8 +151,6 @@
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\OnRouteParentHover.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\HandInteractionTouchRotate.cs" />
     <Compile Include="Assets\MRTK.Tutorials.GettingStarted\Scripts\DirectionalIndicatorController.cs" />
-    <Compile Include="Assets\Resources\Scripts\MeshManipulation\MeshSerializer.cs" />
-    <Compile Include="Assets\Resources\Scripts\MeshManipulation\MeshController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
