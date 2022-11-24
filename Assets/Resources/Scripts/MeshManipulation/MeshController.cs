@@ -13,6 +13,7 @@ using UnityEngine.XR;
 using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
 using MultiUserCapabilities;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.UIElements;
 
 public class MeshController : MonoBehaviour, IOnEventCallback
 {
@@ -71,9 +72,12 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         for (int i = 0; i < meshParent.transform.childCount; i++)
         {
             GameObject child = meshParent.transform.GetChild(i).gameObject;
-            children.Add(child);
-            childMeshs.Add(child.GetComponent<MeshFilter>().mesh);
-            childMeshColliders.Add(child.GetComponent<MeshCollider>());
+            if (child.activeSelf == true) // disabled game objects in scene will get counted otherwise, which we don't want
+            {
+                children.Add(child);
+                childMeshs.Add(child.GetComponent<MeshFilter>().mesh);
+                childMeshColliders.Add(child.GetComponent<MeshCollider>());
+            }
         }
     }
 
@@ -178,7 +182,6 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                 InputDevice device = InputDevices.GetDeviceAtXRNode((i == 0) ? XRNode.RightHand : XRNode.LeftHand);
                 if (device.TryGetFeatureValue(CommonUsages.primaryButton, out bool isTapping))
                 {
-                    Debug.Log("here");
                     if (!isTapping)
                     {
                         //Stopped Tapping or wasn't tapping
@@ -200,7 +203,6 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                                         }
                                         if (p.Result != null)
                                         {
-                                            Debug.Log("Tap");
                                             var startPoint = p.Position;
                                             var endPoint = p.Result.Details.Point;
                                             var hitObject = p.Result.Details.Object;
@@ -213,8 +215,11 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                                             LayerMask mask = LayerMask.GetMask("Mesh");
                                             if (Physics.Raycast(startPoint, endPoint - startPoint, out var hit, Mathf.Infinity, mask)) // check if successful before calling ShortTap
                                             {
+                                                //Vector3 hitPoint = new Vector3(0.01f, 0.0f, 0.01f);
+                                                //Vector3 hitNormal = new Vector3(0.0f, 1.0f, 0.0f);
                                                 GameObject hitGO = hit.collider.gameObject;
                                                 ShortTap(hit.point, hit.normal, hitGO);
+                                                //ShortTap(hitPoint, hitNormal, hitGO);
                                             }
                                         }
                                     }
@@ -245,6 +250,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     {
         if (hitGO == null)
         {
+            Debug.Log("Null GO");
             return;
         }
 
@@ -252,6 +258,8 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         {
             audioData.PlayOneShot(createAudio);
 
+            Debug.Log($"hitPoint: {hitPoint}");
+            Debug.Log($"surfaceNormal: {surfaceNormal}");
             VertexPushLinearEvent(hitPoint, surfaceNormal);
         }
     }
@@ -321,7 +329,6 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     {
         Vector3 data = (Vector3)photonData;
         Vector3 hitPoint = data;
-        Debug.Log($"hitPoint: {hitPoint}");
 
         //iterate through all child meshes
         for (int i = 0; i < children.Count; i++)
@@ -340,7 +347,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     private void VertexPushLinearEvent(Vector3 point, Vector3 surfaceNormal)
     {
         //Vector3 content = point;
-        string content = point.ToString() + surfaceNormal.ToString();
+        string content = point.ToString() + "," + surfaceNormal.ToString();
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
         PhotonNetwork.RaiseEvent(VertexPushLinearEventCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
@@ -348,6 +355,9 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     private void VertexPushLinearResponse(object photonData, Func<Vector3, Vector3, Vector3, Vector3> f)
     {
         string data = (string)photonData;
+        data = data.Replace("(", "");
+        data = data.Replace(")", "");
+ 
         string[] newData = data.Split(',');
 
         // fill in hitPoint and surfaceNormal
@@ -359,19 +369,31 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         }
         for (int i = 3; i < newData.Length; i++)
         {
-            surfaceNormal[i] = float.Parse(newData[i]);
+            surfaceNormal[i - 3] = float.Parse(newData[i]);
         }
 
-        Debug.Log($"hitPoint: {hitPoint}");
+        Matrix4x4 localToWorld = GameObject.Find("Plane").transform.localToWorldMatrix;
+        Matrix4x4 worldToLocal = GameObject.Find("Plane").transform.worldToLocalMatrix;
 
         //iterate through all child meshes
         for (int i = 0; i < children.Count; i++)
         {
             Mesh currMesh = childMeshs[i];
             Vector3[] changedVertices = currMesh.vertices;
-            for (int v = 0; v < currMesh.vertices.Length; v++)
+            for (int j = 0; j < currMesh.vertices.Length; j++)
             {
-                changedVertices[v] = f(changedVertices[v], hitPoint, surfaceNormal);
+                //Debug.Log($"{currMesh.vertices[j].x.ToString("F32")}, {currMesh.vertices[j].y.ToString("F32")}, {currMesh.vertices[j].z.ToString("F32")}");
+
+                Vector3 worldV = localToWorld.MultiplyPoint3x4(currMesh.vertices[j]);//0.1f * currMesh.vertices[j];
+                //Debug.Log($"{worldV.x}, {worldV.y}, {worldV.z}");
+                
+                Vector3 newWorldV = f(worldV, hitPoint, surfaceNormal);
+                //Debug.Log($"{newWorldV.x}, {newWorldV.y}, {newWorldV.z}");
+
+                Vector3 newLocalV = worldToLocal.MultiplyPoint3x4(newWorldV);//10.0f * newWorldV;
+                //Debug.Log($"{newLocalV.x.ToString("F32")}, {newLocalV.y.ToString("F32")}, {newLocalV.z.ToString("F32")}");
+
+                changedVertices[j] = newLocalV;//f(changedVertices[v], hitPoint, surfaceNormal);
             }
             childMeshs[i].vertices = changedVertices;
             RecalculateMesh(i);
@@ -473,9 +495,10 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     /// <returns></returns>
     private Vector3 PullNearHitpoint(Vector3 vertex, Vector3 hitPoint, Vector3 surfaceNormal)
     {
+        //Debug.Log($"{vertex.x}, {vertex.y}, {vertex.y}");
         float distance = (vertex - hitPoint).magnitude;
 
-        if (distance < 1.5)//3)
+        if (distance < 0.25)//3)
         {
             Vector3 newV = vertex * ((distance * distance) / 9) + (hitPoint + vertexPullPushScale*surfaceNormal) * (1 - ((distance * distance) / 9));
             return newV;

@@ -364,6 +364,7 @@
     <ClCompile Include="Source\il2cppOutput\Il2CppCCWs150.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppCCWs151.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppCCWs152.cpp"></ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Il2CppCCWs153.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppCCWs16.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppCCWs17.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppCCWs18.cpp"></ClCompile>

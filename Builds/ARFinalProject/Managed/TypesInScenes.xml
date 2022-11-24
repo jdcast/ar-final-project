@@ -36,6 +36,7 @@
 		<type fullname="UnityEngine.Rigidbody" preserve="nothing"/>
 		<type fullname="UnityEngine.Collider" preserve="nothing"/>
 		<type fullname="UnityEngine.CharacterController" preserve="nothing"/>
+		<type fullname="UnityEngine.MeshCollider" preserve="nothing"/>
 		<type fullname="UnityEngine.CapsuleCollider" preserve="nothing"/>
 		<type fullname="UnityEngine.BoxCollider" preserve="nothing"/>
 		<type fullname="UnityEngine.SphereCollider" preserve="nothing"/>
@@ -69,13 +70,15 @@
 		<type fullname="MRTK.Tutorials.GettingStarted.PlacementHintsController" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.GenericNetSync" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.OwnershipHandler" preserve="nothing"/>
-		<type fullname="MRTK.Tutorials.MultiUserCapabilities.PhotonRoom" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.PhotonUser" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.PunExplodeViewController" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.PunPartAssemblyController" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.PunPlacementHintsController" preserve="nothing"/>
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.TableAnchorAsParent" preserve="nothing"/>
 		<type fullname="MainMenu" preserve="nothing"/>
+		<type fullname="MeshController" preserve="nothing"/>
+		<type fullname="MeshSerializer" preserve="nothing"/>
+		<type fullname="Mesh_Controller" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Examples.Demos.SolverTrackedTargetType" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.FrameVisual" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.GenericNetSync" preserve="nothing"/>
@@ -157,11 +160,9 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.LoaderController" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.MinMaxScaleConstraint" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ObjectManipulator" preserve="nothing"/>
-		<type fullname="Microsoft.MixedReality.Toolkit.UI.PinchSlider" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.PressableButton" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.PressableButtonHoloLens2" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorLoadingBar" preserve="nothing"/>
-		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorObjectDisplay" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorOrbsRotator" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.RotationAxisConstraint" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.SliderSounds" preserve="nothing"/>
