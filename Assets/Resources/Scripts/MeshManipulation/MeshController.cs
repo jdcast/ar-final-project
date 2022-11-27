@@ -187,18 +187,21 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                         //Stopped Tapping or wasn't tapping
                         if (0f < _tappingTimer[i] && _tappingTimer[i] < 1f)
                         {
+                            Debug.Log("Short Tap");
                             //User has been tapping for less than 1 sec. Get hand-ray's end position and call ShortTap
                             foreach (var source in CoreServices.InputSystem.DetectedInputSources)
                             {
+                                Debug.Log("Detected Input Sources");
                                 // Ignore anything that is not a hand because we want articulated hands
                                 if (source.SourceType == Microsoft.MixedReality.Toolkit.Input.InputSourceType.Hand)
                                 {
+                                    Debug.Log("Hand Detected");
                                     foreach (var p in source.Pointers)
                                     {
                                         if (p is IMixedRealityNearPointer)// && editingMode != EditingMode.Delete) // we want to be able to use direct touch to delete game objects
                                         {
                                             // Ignore near pointers, we only want the rays
-                                            //Debug.Log("Near Pointer");
+                                            //debug.log("near pointer");
                                             continue;
                                         }
                                         if (p.Result != null)
@@ -208,7 +211,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                                             var hitObject = p.Result.Details.Object;
 
                                             //Debug.Log($"{isRouteParentTTPOn}");
-                                            //Debug.Log($"{hitObject.gameObject.tag}");
+                                            Debug.Log($"{hitObject.gameObject.tag}");
 
                                             // we need the surface normal of the spatial mesh we want to place the hold on
                                             // we allow hits on route parents so that we can do nothing when selecting them in short taps
@@ -218,6 +221,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                                                 //Vector3 hitPoint = new Vector3(0.01f, 0.0f, 0.01f);
                                                 //Vector3 hitNormal = new Vector3(0.0f, 1.0f, 0.0f);
                                                 GameObject hitGO = hit.collider.gameObject;
+                                                Debug.Log($"iIt Point {hit.point}");
                                                 ShortTap(hit.point, hit.normal, hitGO);
                                                 //ShortTap(hitPoint, hitNormal, hitGO);
                                             }
@@ -347,31 +351,36 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     private void VertexPushLinearEvent(Vector3 point, Vector3 surfaceNormal)
     {
         //Vector3 content = point;
-        string content = point.ToString() + "," + surfaceNormal.ToString();
+        //string content = point.ToString() + "," + surfaceNormal.ToString();
+        Vector3[] content = { point, surfaceNormal };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
         PhotonNetwork.RaiseEvent(VertexPushLinearEventCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
     //f is a function of the form (current vertex position, response point) -> new vertex position
     private void VertexPushLinearResponse(object photonData, Func<Vector3, Vector3, Vector3, Vector3> f)
     {
-        string data = (string)photonData;
-        data = data.Replace("(", "");
-        data = data.Replace(")", "");
- 
-        string[] newData = data.Split(',');
+        //string data = (string)photonData;
+        //data = data.Replace("(", "");
+        //data = data.Replace(")", "");
+
+        //string[] newData = data.Split(',');
+
+
 
         // fill in hitPoint and surfaceNormal
         Vector3 hitPoint = Vector3.zero;
         Vector3 surfaceNormal = Vector3.zero;
-        for (int i = 0; i < newData.Length - 3; i++)
-        {
-            hitPoint[i] = float.Parse(newData[i]);
-        }
-        for (int i = 3; i < newData.Length; i++)
-        {
-            surfaceNormal[i - 3] = float.Parse(newData[i]);
-        }
+        //for (int i = 0; i < newData.Length - 3; i++)
+        //{
+        //    hitPoint[i] = float.Parse(newData[i]);
+        //}
+        //for (int i = 3; i < newData.Length; i++)
+        //{
+        //    surfaceNormal[i - 3] = float.Parse(newData[i]);
+        //}
 
+        hitPoint = ((Vector3[])photonData)[0];
+        surfaceNormal = ((Vector3[])photonData)[1];
         Matrix4x4 localToWorld = GameObject.Find("Plane").transform.localToWorldMatrix;
         Matrix4x4 worldToLocal = GameObject.Find("Plane").transform.worldToLocalMatrix;
 
@@ -385,8 +394,8 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                 //Debug.Log($"{currMesh.vertices[j].x.ToString("F32")}, {currMesh.vertices[j].y.ToString("F32")}, {currMesh.vertices[j].z.ToString("F32")}");
 
                 Vector3 worldV = localToWorld.MultiplyPoint3x4(currMesh.vertices[j]);//0.1f * currMesh.vertices[j];
-                //Debug.Log($"{worldV.x}, {worldV.y}, {worldV.z}");
-                
+                                                                                     //Debug.Log($"{worldV.x}, {worldV.y}, {worldV.z}");
+
                 Vector3 newWorldV = f(worldV, hitPoint, surfaceNormal);
                 //Debug.Log($"{newWorldV.x}, {newWorldV.y}, {newWorldV.z}");
 
@@ -471,7 +480,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     private Vector3 riseNearCenter(Vector3 point, Vector3 center)
     {
         float distance = (point - center).magnitude;
-        
+
         if (distance < 1.5)//3)
         {
             Vector3 newV = point * ((distance * distance) / 9) + (center + new Vector3(0, 1, 0)) * (1 - ((distance * distance) / 9));
@@ -500,7 +509,8 @@ public class MeshController : MonoBehaviour, IOnEventCallback
 
         if (distance < 0.25)//3)
         {
-            Vector3 newV = vertex * ((distance * distance) / 9) + (hitPoint + vertexPullPushScale*surfaceNormal) * (1 - ((distance * distance) / 9));
+            //Vector3 newV = vertex * ((distance * distance) / 9) + (hitPoint + vertexPullPushScale*surfaceNormal) * (1 - ((distance * distance) / 9));
+            Vector3 newV = vertex + (vertexPullPushScale * surfaceNormal) * (1.0f - ((distance * distance) / 0.0625f));
             return newV;
         }
         else
