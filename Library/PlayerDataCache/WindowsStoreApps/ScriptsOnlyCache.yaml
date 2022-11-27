@@ -16,11 +16,11 @@ ScriptsOnlyBuild:
     - MainMenu
     - MeshController
     - MeshSerializer
-    - Mesh_Controller
     - Microsoft.MixedReality.Toolkit.Examples.Demos.SolverTrackedTargetType
     - MultiUserCapabilities.FrameVisual
     - MultiUserCapabilities.GenericNetSync
     - MultiUserCapabilities.GenericNetworkManager
+    - MultiUserCapabilities.OwnershipHandler
     - MultiUserCapabilities.PhotonLobby
     - MultiUserCapabilities.PhotonRoom
     - MultiUserCapabilities.PhotonUser
@@ -467,6 +467,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4952}
     - Class: 114
+      Script: {instanceID: 4954}
+    - Class: 114
       Script: {instanceID: 5012}
     - Class: 114
       Script: {instanceID: 5016}
@@ -697,15 +699,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9582}
     - Class: 114
-      Script: {instanceID: 9640}
-    - Class: 114
       Script: {instanceID: 9738}
     - Class: 114
-      Script: {instanceID: 43748}
+      Script: {instanceID: 50338}
     - Class: 114
-      Script: {instanceID: 50346}
-    - Class: 114
-      Script: {instanceID: 50360}
+      Script: {instanceID: 50352}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120

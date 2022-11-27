@@ -471,8 +471,10 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     }
     void RecalculateMesh(int i)
     {
+        DestroyImmediate(meshParent.transform.GetChild(i).GetComponent<MeshCollider>());
         meshParent.transform.GetChild(i).gameObject.GetComponent<MeshFilter>().sharedMesh = childMeshs[i];
-        meshParent.transform.GetChild(i).gameObject.GetComponent<MeshCollider>().sharedMesh = childMeshs[i];
+        meshParent.transform.GetChild(i).gameObject.AddComponent<MeshCollider>(); //.sharedMesh = childMeshs[i];
+        meshParent.transform.GetChild(i).gameObject.GetComponent<MeshCollider>().sharedMesh = meshParent.transform.GetChild(i).gameObject.GetComponent<MeshFilter>().mesh;//childMeshs[i];
         meshParent.transform.GetChild(i).gameObject.GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
     }
 

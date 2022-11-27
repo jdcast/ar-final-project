@@ -78,11 +78,11 @@
 		<type fullname="MainMenu" preserve="nothing"/>
 		<type fullname="MeshController" preserve="nothing"/>
 		<type fullname="MeshSerializer" preserve="nothing"/>
-		<type fullname="Mesh_Controller" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Examples.Demos.SolverTrackedTargetType" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.FrameVisual" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.GenericNetSync" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.GenericNetworkManager" preserve="nothing"/>
+		<type fullname="MultiUserCapabilities.OwnershipHandler" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.PhotonLobby" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.PhotonRoom" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.PhotonUser" preserve="nothing"/>
