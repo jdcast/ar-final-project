@@ -471,9 +471,12 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     }
     void RecalculateMesh(int i)
     {
-        meshParent.transform.GetChild(i).gameObject.AddComponent<MeshFilter>().sharedMesh = childMeshs[i];
-        meshParent.transform.GetChild(i).gameObject.AddComponent<MeshCollider>().sharedMesh = childMeshs[i];
-        meshParent.transform.GetChild(i).gameObject.GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
+        //meshParent.transform.GetChild(i).gameObject.GetComponent<MeshFilter>().sharedMesh = childMeshs[i];
+        //meshParent.transform.GetChild(i).gameObject.GetComponent<MeshCollider>().sharedMesh = childMeshs[i];
+        //meshParent.transform.GetChild(i).gameObject.GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
+        children[i].GetComponent<MeshFilter>().sharedMesh = childMeshs[i];
+        children[i].GetComponent<MeshCollider>().sharedMesh = childMeshs[i];
+        children[i].GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
     }
 
     //Here are some helper functions which you should NOT mind
