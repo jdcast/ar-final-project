@@ -211,19 +211,16 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                                             var hitObject = p.Result.Details.Object;
 
                                             //Debug.Log($"{isRouteParentTTPOn}");
-                                            Debug.Log($"{hitObject.gameObject.tag}");
+                                            //Debug.Log($"{hitObject.gameObject.tag}");
 
                                             // we need the surface normal of the spatial mesh we want to place the hold on
                                             // we allow hits on route parents so that we can do nothing when selecting them in short taps
                                             LayerMask mask = LayerMask.GetMask("Mesh");
                                             if (Physics.Raycast(startPoint, endPoint - startPoint, out var hit, Mathf.Infinity, mask)) // check if successful before calling ShortTap
                                             {
-                                                //Vector3 hitPoint = new Vector3(0.01f, 0.0f, 0.01f);
-                                                //Vector3 hitNormal = new Vector3(0.0f, 1.0f, 0.0f);
                                                 GameObject hitGO = hit.collider.gameObject;
                                                 Debug.Log($"iIt Point {hit.point}");
                                                 ShortTap(hit.point, hit.normal, hitGO);
-                                                //ShortTap(hitPoint, hitNormal, hitGO);
                                             }
                                         }
                                     }
@@ -350,8 +347,6 @@ public class MeshController : MonoBehaviour, IOnEventCallback
 
     private void VertexPushLinearEvent(Vector3 point, Vector3 surfaceNormal)
     {
-        //Vector3 content = point;
-        //string content = point.ToString() + "," + surfaceNormal.ToString();
         Vector3[] content = { point, surfaceNormal };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
         PhotonNetwork.RaiseEvent(VertexPushLinearEventCode, content, raiseEventOptions, SendOptions.SendReliable);
@@ -359,25 +354,9 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     //f is a function of the form (current vertex position, response point) -> new vertex position
     private void VertexPushLinearResponse(object photonData, Func<Vector3, Vector3, Vector3, Vector3> f)
     {
-        //string data = (string)photonData;
-        //data = data.Replace("(", "");
-        //data = data.Replace(")", "");
-
-        //string[] newData = data.Split(',');
-
-
-
         // fill in hitPoint and surfaceNormal
         Vector3 hitPoint = Vector3.zero;
         Vector3 surfaceNormal = Vector3.zero;
-        //for (int i = 0; i < newData.Length - 3; i++)
-        //{
-        //    hitPoint[i] = float.Parse(newData[i]);
-        //}
-        //for (int i = 3; i < newData.Length; i++)
-        //{
-        //    surfaceNormal[i - 3] = float.Parse(newData[i]);
-        //}
 
         hitPoint = ((Vector3[])photonData)[0];
         surfaceNormal = ((Vector3[])photonData)[1];
@@ -393,16 +372,16 @@ public class MeshController : MonoBehaviour, IOnEventCallback
             {
                 //Debug.Log($"{currMesh.vertices[j].x.ToString("F32")}, {currMesh.vertices[j].y.ToString("F32")}, {currMesh.vertices[j].z.ToString("F32")}");
 
-                Vector3 worldV = localToWorld.MultiplyPoint3x4(currMesh.vertices[j]);//0.1f * currMesh.vertices[j];
-                                                                                     //Debug.Log($"{worldV.x}, {worldV.y}, {worldV.z}");
+                Vector3 worldV = localToWorld.MultiplyPoint3x4(currMesh.vertices[j]);
+                //Debug.Log($"{worldV.x}, {worldV.y}, {worldV.z}");
 
                 Vector3 newWorldV = f(worldV, hitPoint, surfaceNormal);
                 //Debug.Log($"{newWorldV.x}, {newWorldV.y}, {newWorldV.z}");
 
-                Vector3 newLocalV = worldToLocal.MultiplyPoint3x4(newWorldV);//10.0f * newWorldV;
+                Vector3 newLocalV = worldToLocal.MultiplyPoint3x4(newWorldV);
                 //Debug.Log($"{newLocalV.x.ToString("F32")}, {newLocalV.y.ToString("F32")}, {newLocalV.z.ToString("F32")}");
 
-                changedVertices[j] = newLocalV;//f(changedVertices[v], hitPoint, surfaceNormal);
+                changedVertices[j] = newLocalV;
             }
             childMeshs[i].vertices = changedVertices;
             RecalculateMesh(i);
@@ -471,9 +450,6 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     }
     void RecalculateMesh(int i)
     {
-        //meshParent.transform.GetChild(i).gameObject.GetComponent<MeshFilter>().sharedMesh = childMeshs[i];
-        //meshParent.transform.GetChild(i).gameObject.GetComponent<MeshCollider>().sharedMesh = childMeshs[i];
-        //meshParent.transform.GetChild(i).gameObject.GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
         children[i].GetComponent<MeshFilter>().sharedMesh = childMeshs[i];
         children[i].GetComponent<MeshCollider>().sharedMesh = childMeshs[i];
         children[i].GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
@@ -512,7 +488,6 @@ public class MeshController : MonoBehaviour, IOnEventCallback
 
         if (distance < 0.25)//3)
         {
-            //Vector3 newV = vertex * ((distance * distance) / 9) + (hitPoint + vertexPullPushScale*surfaceNormal) * (1 - ((distance * distance) / 9));
             Vector3 newV = vertex + (vertexPullPushScale * surfaceNormal) * (1.0f - ((distance * distance) / 0.0625f));
             return newV;
         }
