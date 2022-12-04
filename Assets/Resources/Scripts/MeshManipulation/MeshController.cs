@@ -1,4 +1,26 @@
-using ExitGames.Client.Photon;
+    private void draw2DShapeEvent(vector3[] points)
+    {
+        vector3 content = points;
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(GenerateFlatMeshEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+
+    private void draw2DShapeResponse(object photonData)
+    {
+        vector3[] content = (vector3[])photonData;
+        Mesh mesh = GenerateMeshFrom3DPoints(content);
+        GameObject child = new GameObject();
+        child.AddComponent<MeshFilter>();
+        child.AddComponent<MeshCollider>();
+        child.AddComponent<MeshRenderer>();
+        child.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+        child.transform.parent = meshParent.transform;
+        child.name = children.Count.ToString();
+
+        children.Add(child);
+        childMeshs.Add(mesh);
+        RecalculateAllMeshes();
+    }using ExitGames.Client.Photon;
 using Photon.Realtime;
 using Photon.Pun;
 using System.Collections;
@@ -28,6 +50,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     public const byte AddNewMeshEventCode = 2;
     public const byte AddVertexEventCode = 3;
     public const byte VertexPushLinearEventCode = 4;
+    public const byte GenerateFlatMeshEventCode = 5;
 
     // mesh parent
     [SerializeField] private GameObject meshParent = default;
@@ -443,6 +466,30 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         newMesh.vertices = newVertices;
         newMesh.triangles = newTriangles;
         return newMesh;
+    }
+
+    private void draw2DShapeEvent(vector3[] points)
+    {
+        vector3 content = points;
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(GenerateFlatMeshEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+
+    private void draw2DShapeResponse(object photonData)
+    {
+        vector3[] content = (vector3[])photonData;
+        Mesh mesh = GenerateMeshFrom3DPoints(content);
+        GameObject child = new GameObject();
+        child.AddComponent<MeshFilter>();
+        child.AddComponent<MeshCollider>();
+        child.AddComponent<MeshRenderer>();
+        child.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+        child.transform.parent = meshParent.transform;
+        child.name = children.Count.ToString();
+
+        children.Add(child);
+        childMeshs.Add(mesh);
+        RecalculateAllMeshes();
     }
 
     //Here are some helper functions which you should mind
