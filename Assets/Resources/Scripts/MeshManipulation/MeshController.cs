@@ -37,20 +37,20 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     /// </summary>
     private float[] _tappingTimer = { 0, 0 };
 
-    /// <summary>
-    /// Editing modes
-    /// </summary>
-    public enum EditingMode
-    {
-        VertexPull,
-        VertexPush,
-        Off
-    }
+    ///// <summary>
+    ///// Editing modes
+    ///// </summary>
+    //public enum EditingMode
+    //{
+    //    VertexPull,
+    //    VertexPush,
+    //    Off
+    //}
 
-    /// <summary>
-    /// Used to track hold editing mode
-    /// </summary>
-    public EditingMode editingMode;
+    ///// <summary>
+    ///// Used to track hold editing mode
+    ///// </summary>
+    //public EditingMode editingMode;
 
     // we have to apply audio sources for create/delete/moveStart/moveEnd events here because we will be disabling/enabling manipulation components depending on the
     // mode we are in
@@ -59,8 +59,11 @@ public class MeshController : MonoBehaviour, IOnEventCallback
 
     [SerializeField] private AudioClip createAudio;
 
-    [SerializeField] private float vertexPullPushScale = 0;
+    //[SerializeField] private float vertexPullPushScale = 0;
 
+    [SerializeField] public float effectScale = 0;
+
+    [SerializeField] public MainMenu mainMenu = default;
 
     //Unity functions
     void Start()
@@ -170,7 +173,9 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         //}
 
         // detect air taps and then do operations based on current editing mode
-        if (editingMode != EditingMode.Off)
+        if (mainMenu.mode == MainMenu.Mode.Sculpt || mainMenu.mode == MainMenu.Mode.Sculpt_Push_Linear 
+            || mainMenu.mode == MainMenu.Mode.Sculpt_Push_Gaussian || mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Linear 
+            || mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Gaussian)
         {
             //Check for any air taps from either hand
             for (int i = 0; i < 2; i++)
@@ -255,7 +260,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
             return;
         }
 
-        if (editingMode == EditingMode.VertexPush)
+        if (mainMenu.mode == MainMenu.Mode.Sculpt_Push_Linear)//(editingMode == EditingMode.VertexPush)
         {
             audioData.PlayOneShot(createAudio);
 
@@ -360,8 +365,8 @@ public class MeshController : MonoBehaviour, IOnEventCallback
 
         hitPoint = ((Vector3[])photonData)[0];
         surfaceNormal = ((Vector3[])photonData)[1];
-        Matrix4x4 localToWorld = GameObject.Find("Plane").transform.localToWorldMatrix;
-        Matrix4x4 worldToLocal = GameObject.Find("Plane").transform.worldToLocalMatrix;
+        Matrix4x4 localToWorld = GameObject.Find("Cube (1)").transform.localToWorldMatrix;
+        Matrix4x4 worldToLocal = GameObject.Find("Cube (1)").transform.worldToLocalMatrix;
 
         //iterate through all child meshes
         for (int i = 0; i < children.Count; i++)
@@ -488,7 +493,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
 
         if (distance < 0.25)//3)
         {
-            Vector3 newV = vertex + (vertexPullPushScale * surfaceNormal) * (1.0f - ((distance * distance) / 0.0625f));
+            Vector3 newV = vertex + (effectScale * surfaceNormal) * (1.0f - ((distance * distance) / 0.0625f));
             return newV;
         }
         else
@@ -496,5 +501,4 @@ public class MeshController : MonoBehaviour, IOnEventCallback
             return vertex;
         }
     }
-
 }

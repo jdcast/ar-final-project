@@ -160,6 +160,7 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.LoaderController" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.MinMaxScaleConstraint" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ObjectManipulator" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.PinchSlider" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.PressableButton" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.PressableButtonHoloLens2" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorLoadingBar" preserve="nothing"/>
