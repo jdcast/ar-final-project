@@ -1,26 +1,4 @@
-    private void draw2DShapeEvent(vector3[] points)
-    {
-        vector3 content = points;
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(GenerateFlatMeshEventCode, content, raiseEventOptions, SendOptions.SendReliable);
-    }
-
-    private void draw2DShapeResponse(object photonData)
-    {
-        vector3[] content = (vector3[])photonData;
-        Mesh mesh = GenerateMeshFrom3DPoints(content);
-        GameObject child = new GameObject();
-        child.AddComponent<MeshFilter>();
-        child.AddComponent<MeshCollider>();
-        child.AddComponent<MeshRenderer>();
-        child.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
-        child.transform.parent = meshParent.transform;
-        child.name = children.Count.ToString();
-
-        children.Add(child);
-        childMeshs.Add(mesh);
-        RecalculateAllMeshes();
-    }using ExitGames.Client.Photon;
+using ExitGames.Client.Photon;
 using Photon.Realtime;
 using Photon.Pun;
 using System.Collections;
@@ -36,6 +14,7 @@ using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
 using MultiUserCapabilities;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
+//using System.Numerics;
 
 public class MeshController : MonoBehaviour, IOnEventCallback
 {
@@ -468,30 +447,6 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         return newMesh;
     }
 
-    private void draw2DShapeEvent(vector3[] points)
-    {
-        vector3 content = points;
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(GenerateFlatMeshEventCode, content, raiseEventOptions, SendOptions.SendReliable);
-    }
-
-    private void draw2DShapeResponse(object photonData)
-    {
-        vector3[] content = (vector3[])photonData;
-        Mesh mesh = GenerateMeshFrom3DPoints(content);
-        GameObject child = new GameObject();
-        child.AddComponent<MeshFilter>();
-        child.AddComponent<MeshCollider>();
-        child.AddComponent<MeshRenderer>();
-        child.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
-        child.transform.parent = meshParent.transform;
-        child.name = children.Count.ToString();
-
-        children.Add(child);
-        childMeshs.Add(mesh);
-        RecalculateAllMeshes();
-    }
-
     //Here are some helper functions which you should mind
     void RecalculateAllMeshes()
     {
@@ -547,5 +502,29 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         {
             return vertex;
         }
+    }
+
+    private void Draw2DShapeEvent(Vector3[] points)
+    {
+        Vector3[] content = points;
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        PhotonNetwork.RaiseEvent(GenerateFlatMeshEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+    }
+
+    private void Draw2DShapeResponse(object photonData)
+    {
+        Vector3[] content = (Vector3[])photonData;
+        Mesh mesh = Drawing2D.GenerateMeshFrom3DPoints(content);
+        GameObject child = new GameObject();
+        child.AddComponent<MeshFilter>();
+        child.AddComponent<MeshCollider>();
+        child.AddComponent<MeshRenderer>();
+        child.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+        child.transform.parent = meshParent.transform;
+        child.name = children.Count.ToString();
+
+        children.Add(child);
+        childMeshs.Add(mesh);
+        RecalculateAllMeshes();
     }
 }

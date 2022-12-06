@@ -88,9 +88,13 @@
 		<type fullname="MultiUserCapabilities.PhotonUser" preserve="nothing"/>
 		<type fullname="OwnershipHandler" preserve="nothing"/>
 		<type fullname="Resources.Scripts.WorldLocking.Startup" preserve="nothing"/>
+		<type fullname="Scripts.ScrollRouteMenuPopulator" preserve="nothing"/>
 		<type fullname="Scripts.WorldLocking.ActionPublish" preserve="nothing"/>
 		<type fullname="Scripts.WorldLocking.SpacePinASAInit" preserve="nothing"/>
 		<type fullname="Scripts.WorldLocking.SpacePinBinder" preserve="nothing"/>
+		<type fullname="ScrollHoldMenuHideShow" preserve="nothing"/>
+		<type fullname="ScrollHoldMenuInit" preserve="nothing"/>
+		<type fullname="ScrollRouteMenuInit" preserve="nothing"/>
 		<type fullname="SharedCursorFocus" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="AzureSpatialAnchors.SDK.Core.Runtime">
@@ -158,6 +162,7 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.Interactable" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.InteractableToggleCollection" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.LoaderController" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.ManipulationHandler" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.MinMaxScaleConstraint" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ObjectManipulator" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.PinchSlider" preserve="nothing"/>
@@ -166,6 +171,7 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorLoadingBar" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorOrbsRotator" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.RotationAxisConstraint" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.ScrollingObjectCollection" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.SliderSounds" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.SpeechConfirmationTooltip" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.States" preserve="nothing"/>
@@ -225,6 +231,7 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.BezierDataProvider" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.BezierInertia" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.CameraEventRouter" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.ClippingBox" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.HoverLight" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.MaintainBorderLightWidth" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.MixedRealityLineRenderer" preserve="nothing"/>
@@ -320,6 +327,7 @@
 		<type fullname="UnityEngine.UI.GraphicRaycaster" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.GridLayoutGroup" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.Image" preserve="nothing"/>
+		<type fullname="UnityEngine.UI.InputField" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.RectMask2D" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.ScrollRect" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.Scrollbar" preserve="nothing"/>

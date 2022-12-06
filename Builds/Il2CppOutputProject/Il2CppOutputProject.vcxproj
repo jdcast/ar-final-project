@@ -561,6 +561,7 @@
     <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions188.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions189.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions19.cpp"></ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions190.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions2.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions20.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Il2CppGenericComDefinitions21.cpp"></ClCompile>
