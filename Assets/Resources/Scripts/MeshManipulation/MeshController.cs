@@ -14,6 +14,7 @@ using Microsoft.MixedReality.Toolkit.Utilities.Solvers;
 using MultiUserCapabilities;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
+using System.Net;
 //using System.Numerics;
 
 public class MeshController : MonoBehaviour, IOnEventCallback
@@ -39,33 +40,14 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     /// </summary>
     private float[] _tappingTimer = { 0, 0 };
 
-    ///// <summary>
-    ///// Editing modes
-    ///// </summary>
-    //public enum EditingMode
-    //{
-    //    VertexPull,
-    //    VertexPush,
-    //    Off
-    //}
-
-    ///// <summary>
-    ///// Used to track hold editing mode
-    ///// </summary>
-    //public EditingMode editingMode;
-
     // we have to apply audio sources for create/delete/moveStart/moveEnd events here because we will be disabling/enabling manipulation components depending on the
     // mode we are in
     // manipulation audio (i.e. rotation) is supplied by the manipulation component since it only applies in the mode when the manipulation component is enabled
     [SerializeField] private AudioSource audioData;
-
     [SerializeField] private AudioClip createAudio;
-
-    //[SerializeField] private float vertexPullPushScale = 0;
-
     [SerializeField] public float effectScale = 0;
-
     [SerializeField] public MainMenu mainMenu = default;
+    [SerializeField] private SketchController sketchController = default; 
 
     //Unity functions
     void Start()
@@ -177,15 +159,11 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         // detect air taps and then do operations based on current editing mode
         if (mainMenu.mode == MainMenu.Mode.Sculpt || mainMenu.mode == MainMenu.Mode.Sculpt_Push_Linear 
             || mainMenu.mode == MainMenu.Mode.Sculpt_Push_Gaussian || mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Linear 
-            || mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Gaussian)
+            || mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Gaussian || mainMenu.mode == MainMenu.Mode.Sketch_Draw)
         {
             //Check for any air taps from either hand
             for (int i = 0; i < 2; i++)
             {
-                //List<InputDevice> devices = new List<InputDevice>();
-                //InputDevices.GetDevicesWithCharacteristics(UnityEngine.XR.InputDeviceCharacteristics.Left, devices);
-                //Debug.Log(devices.Count);
-                //if (devices[0].TryGetFeatureValue(CommonUsages.primaryButton, out bool isTapping))
                 InputDevice device = InputDevices.GetDeviceAtXRNode((i == 0) ? XRNode.RightHand : XRNode.LeftHand);
                 if (device.TryGetFeatureValue(CommonUsages.primaryButton, out bool isTapping))
                 {
@@ -226,7 +204,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                                             if (Physics.Raycast(startPoint, endPoint - startPoint, out var hit, Mathf.Infinity, mask)) // check if successful before calling ShortTap
                                             {
                                                 GameObject hitGO = hit.collider.gameObject;
-                                                Debug.Log($"iIt Point {hit.point}");
+                                                //Debug.Log($"iIt Point {hit.point}");
                                                 ShortTap(hit.point, hit.normal, hitGO);
                                             }
                                         }
@@ -258,7 +236,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     {
         if (hitGO == null)
         {
-            Debug.Log("Null GO");
+            //Debug.Log("Null GO");
             return;
         }
 
@@ -266,9 +244,12 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         {
             audioData.PlayOneShot(createAudio);
 
-            Debug.Log($"hitPoint: {hitPoint}");
-            Debug.Log($"surfaceNormal: {surfaceNormal}");
+            //Debug.Log($"hitPoint: {hitPoint}");
+            //Debug.Log($"surfaceNormal: {surfaceNormal}");
             VertexPushLinearEvent(hitPoint, surfaceNormal);
+        } else if (mainMenu.mode == MainMenu.Mode.Sketch_Draw && hitGO.tag == "Whiteboard")
+        {
+            sketchController.AddPoint(hitPoint);
         }
     }
     // </ShortTap>

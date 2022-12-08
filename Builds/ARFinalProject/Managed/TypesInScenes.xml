@@ -96,6 +96,7 @@
 		<type fullname="ScrollHoldMenuInit" preserve="nothing"/>
 		<type fullname="ScrollRouteMenuInit" preserve="nothing"/>
 		<type fullname="SharedCursorFocus" preserve="nothing"/>
+		<type fullname="SketchController" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="AzureSpatialAnchors.SDK.Core.Runtime">
 		<type fullname="Microsoft.Azure.SpatialAnchors.Unity.SpatialAnchorConfig" preserve="nothing"/>
@@ -169,6 +170,7 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.PressableButton" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.PressableButtonHoloLens2" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorLoadingBar" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorObjectDisplay" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorOrbsRotator" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.RotationAxisConstraint" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ScrollingObjectCollection" preserve="nothing"/>

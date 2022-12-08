@@ -2122,12 +2122,12 @@ static const Il2CppTokenRangePair s_rgctxIndices[2] =
 };
 static const Il2CppRGCTXDefinition s_rgctxValues[6] = 
 {
-	{ (Il2CppRGCTXDataType)3, 38094 },
-	{ (Il2CppRGCTXDataType)3, 38095 },
-	{ (Il2CppRGCTXDataType)2, 221 },
-	{ (Il2CppRGCTXDataType)2, 346 },
-	{ (Il2CppRGCTXDataType)3, 38102 },
-	{ (Il2CppRGCTXDataType)3, 38103 },
+	{ (Il2CppRGCTXDataType)3, 38108 },
+	{ (Il2CppRGCTXDataType)3, 38109 },
+	{ (Il2CppRGCTXDataType)2, 223 },
+	{ (Il2CppRGCTXDataType)2, 348 },
+	{ (Il2CppRGCTXDataType)3, 38116 },
+	{ (Il2CppRGCTXDataType)3, 38117 },
 };
 extern const CustomAttributesCacheGenerator g_PhotonRealtime_AttributeGenerators[];
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_PhotonRealtime_CodeGenModule;

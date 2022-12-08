@@ -991,13 +991,13 @@ static const Il2CppTokenRangePair s_rgctxIndices[2] =
 };
 static const Il2CppRGCTXDefinition s_rgctxValues[7] = 
 {
-	{ (Il2CppRGCTXDataType)2, 1496 },
+	{ (Il2CppRGCTXDataType)2, 1501 },
 	{ (Il2CppRGCTXDataType)3, 296 },
 	{ (Il2CppRGCTXDataType)3, 297 },
-	{ (Il2CppRGCTXDataType)2, 11145 },
-	{ (Il2CppRGCTXDataType)3, 48546 },
-	{ (Il2CppRGCTXDataType)3, 38124 },
-	{ (Il2CppRGCTXDataType)3, 48551 },
+	{ (Il2CppRGCTXDataType)2, 11160 },
+	{ (Il2CppRGCTXDataType)3, 48560 },
+	{ (Il2CppRGCTXDataType)3, 38138 },
+	{ (Il2CppRGCTXDataType)3, 48565 },
 };
 extern const CustomAttributesCacheGenerator g_Microsoft_MixedReality_WorldLocking_ASA_AttributeGenerators[];
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_Microsoft_MixedReality_WorldLocking_ASA_CodeGenModule;

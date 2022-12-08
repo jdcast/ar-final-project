@@ -24,6 +24,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject sculptEffectSlider = default;
     [SerializeField] GameObject sculptScaleSlider = default;
     [SerializeField] MeshController meshController = default;
+    [SerializeField] GameObject whiteboard = default;
+    [SerializeField] SketchController sketchController = default;
 
     private bool sketchMenuIsActive = false;
     private bool sculptMenuIsActive = false;
@@ -82,6 +84,12 @@ public class MainMenu : MonoBehaviour
 
             sketchScaleSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sketchScaleSliderVal * sketchSculptScale}";
             sketchEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sketchScaleSliderVal * sketchEffectSliderVal}";
+
+            whiteboard.SetActive(true);
+            sketchController.StartSketch();
+        } else
+        {
+            whiteboard.SetActive(false);
         }
     }
 
@@ -215,6 +223,7 @@ public class MainMenu : MonoBehaviour
         sketchMenuIsActive = false;
         sketchMenu.SetActive(sketchMenuIsActive);
         sketchMenuSliders.SetActive(sketchMenuIsActive);
+        whiteboard.SetActive(false);
     }
 
     public void HideSculptMenu()

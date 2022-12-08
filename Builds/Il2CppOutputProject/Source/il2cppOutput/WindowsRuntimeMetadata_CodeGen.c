@@ -83,7 +83,7 @@ extern void IAsyncInfo_Close_mD8F3D2C7103B340A9FF16F58333E33643F552635 (void);
 // 0x0000003B Windows.Foundation.AsyncOperationCompletedHandler`1<TResult> Windows.Foundation.IAsyncOperation`1::get_Completed()
 // 0x0000003C TResult Windows.Foundation.IAsyncOperation`1::GetResults()
 // 0x0000003D System.Void Windows.Foundation.IClosable::Close()
-extern void IClosable_Close_m39D5256F4888029EB959CFA74DD76EB47B570871 (void);
+extern void IClosable_Close_m7DE2119A960C4E3898E6E5D03245D047BF113999 (void);
 // 0x0000003E Windows.Foundation.PropertyType Windows.Foundation.IPropertyValue::get_Type()
 extern void IPropertyValue_get_Type_m2BC440F5119A133BE4DD895657519ADAA3B34272 (void);
 // 0x0000003F System.Boolean Windows.Foundation.IPropertyValue::get_IsNumericScalar()
@@ -1051,11 +1051,11 @@ extern void PropertyChangedEventHandler_Invoke_m29A9173001968B28431AA21F2C7CF79F
 // 0x000002F0 Windows.UI.Xaml.Interop.IBindableIterator Windows.UI.Xaml.Interop.IBindableIterable::First()
 extern void IBindableIterable_First_m91EC6ED0173145266318FDB7F9074798CD766BD7 (void);
 // 0x000002F1 System.Object Windows.UI.Xaml.Interop.IBindableIterator::get_Current()
-extern void IBindableIterator_get_Current_m925423E867873FA1E4ED0804031A06C0852D7A54 (void);
+extern void IBindableIterator_get_Current_m53A4B6F2DECC874908CA9335785007A39D6FC93E (void);
 // 0x000002F2 System.Boolean Windows.UI.Xaml.Interop.IBindableIterator::get_HasCurrent()
-extern void IBindableIterator_get_HasCurrent_m4DAEC47CD0F9FD8C8102793367E1977C7F759FFA (void);
+extern void IBindableIterator_get_HasCurrent_m4FD33F7F3A504A8F4A4C7DE3965342B19EA3A974 (void);
 // 0x000002F3 System.Boolean Windows.UI.Xaml.Interop.IBindableIterator::MoveNext()
-extern void IBindableIterator_MoveNext_m4FB28C3D3863BB69F92027EE724CA8BE91833706 (void);
+extern void IBindableIterator_MoveNext_mA70DABC057BE3ED9199D4E0E6FEBDF6ED3570A75 (void);
 // 0x000002F4 System.Object Windows.UI.Xaml.Interop.IBindableVector::GetAt(System.UInt32)
 extern void IBindableVector_GetAt_m33D2170810828C01473D9BDC22745A0354FA4FED (void);
 // 0x000002F5 System.UInt32 Windows.UI.Xaml.Interop.IBindableVector::get_Size()
@@ -1144,7 +1144,7 @@ static Il2CppMethodPointer s_methodPointers[768] =
 	NULL,
 	NULL,
 	NULL,
-	IClosable_Close_m39D5256F4888029EB959CFA74DD76EB47B570871,
+	IClosable_Close_m7DE2119A960C4E3898E6E5D03245D047BF113999,
 	IPropertyValue_get_Type_m2BC440F5119A133BE4DD895657519ADAA3B34272,
 	IPropertyValue_get_IsNumericScalar_mC8DE97926668A5F2EA3F4A9B128E966CBC7B0D60,
 	IPropertyValue_GetUInt8_m25D96C5F9AC133BF7B682C59FE83EE05A0075B05,
@@ -1836,9 +1836,9 @@ static Il2CppMethodPointer s_methodPointers[768] =
 	PropertyChangedEventHandler__ctor_m8F87EA6305A644C8B0F6F6614E3E43AF83E6EEA5,
 	PropertyChangedEventHandler_Invoke_m29A9173001968B28431AA21F2C7CF79FDA81A9FC,
 	IBindableIterable_First_m91EC6ED0173145266318FDB7F9074798CD766BD7,
-	IBindableIterator_get_Current_m925423E867873FA1E4ED0804031A06C0852D7A54,
-	IBindableIterator_get_HasCurrent_m4DAEC47CD0F9FD8C8102793367E1977C7F759FFA,
-	IBindableIterator_MoveNext_m4FB28C3D3863BB69F92027EE724CA8BE91833706,
+	IBindableIterator_get_Current_m53A4B6F2DECC874908CA9335785007A39D6FC93E,
+	IBindableIterator_get_HasCurrent_m4FD33F7F3A504A8F4A4C7DE3965342B19EA3A974,
+	IBindableIterator_MoveNext_mA70DABC057BE3ED9199D4E0E6FEBDF6ED3570A75,
 	IBindableVector_GetAt_m33D2170810828C01473D9BDC22745A0354FA4FED,
 	IBindableVector_get_Size_m45347BCD42A1FE180ED2B377BB9C88C7B50CD7D9,
 	IBindableVector_GetView_m9736FE93BC8979E0CBF8ED26090D1FE54C2E1A38,
