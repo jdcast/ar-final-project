@@ -7,9 +7,15 @@ using UnityEngine;
 
 public class SketchController : MonoBehaviour
 {
-    public List<GameObject> points;
+    private List<GameObject> points;
 
     [SerializeField] GameObject sketchPoint = default;
+    [SerializeField] GameObject whiteboard = default;
+
+    private void Start()
+    {
+        points = new List<GameObject>();
+    }
 
     public void AddPoint(Vector3 point)
     {
@@ -17,22 +23,38 @@ public class SketchController : MonoBehaviour
 
         if (point != null)
         {
-            GameObject pointGO = PhotonNetwork.Instantiate(sketchPoint.name, point, Quaternion.identity);
-            gameObject.transform.localScale = Vector3.one;// * 0.05f;
-            gameObject.transform.position = point;
-            points.Append(pointGO);
+            //GameObject go = PhotonNetwork.Instantiate(sketchPoint.name, point, Quaternion.identity);
+            GameObject go = Instantiate(sketchPoint, point, Quaternion.identity);
+            go.transform.localScale = Vector3.one * 0.005f;
+            go.transform.position = point;
+            go.transform.parent = whiteboard.transform;
+            points.Add(go);
         }
     }
 
     public void StartSketch()
     {
-        PhotonView pv = gameObject.GetPhotonView();
-        pv.RPC("PunRPC_RemoveAllSketchPoints", RpcTarget.All);
+        RemoveAllSketchPoints();
+        //PhotonView pv = gameObject.GetPhotonView();
+        //pv.RPC("PunRPC_RemoveAllSketchPoints", RpcTarget.All);
+    }
+
+    private void RemoveAllSketchPoints()
+    {
+        Debug.Log(points.Count);
+        for (int i = 0; i < points.Count; i++)
+        {
+            GameObject pointGO = points[i];
+            Destroy(pointGO);
+        }
+
+        points = new List<GameObject>();
     }
 
     [PunRPC]
     private void PunRPC_RemoveAllSketchPoints()
     {
+        Debug.Log(points.Count);
         for (int i = 0; i < points.Count; i++)
         {
             GameObject pointGO = points[i];

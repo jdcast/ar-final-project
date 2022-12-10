@@ -65,6 +65,7 @@
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
+    <Compile Include="Assets\Resources\Scripts\MeshManipulation\SketchController.cs" />
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\GlobalHoldParent.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\TetheredPlacement.cs" />
     <Compile Include="Assets\MRTK.Tutorials.AzureSpatialAnchors\Scripts\AnchorFeedbackScript.cs" />
@@ -152,7 +153,7 @@
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\OnRouteParentHover.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\HandInteractionTouchRotate.cs" />
     <Compile Include="Assets\MRTK.Tutorials.GettingStarted\Scripts\DirectionalIndicatorController.cs" />
-    <Compile Include="Assets\Resources\Scripts\MeshManipulation\SketchController.cs" />
+    <Compile Include="Assets\Resources\Scripts\MeshManipulation\SketchPointInit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

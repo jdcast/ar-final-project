@@ -868,7 +868,6 @@ IL2CPP_EXTERN_C String_t* _stringLiteral0B57016ABCCDD4420D0788C052A5F86985CC2EE1
 IL2CPP_EXTERN_C String_t* _stringLiteral149EF56B67E47253B7FEC5071127F11A900D6E2D;
 IL2CPP_EXTERN_C String_t* _stringLiteral1B610611D3BE45C25E5133155F9D83AF5F3832ED;
 IL2CPP_EXTERN_C String_t* _stringLiteral31246242368EAEFA9259FC304EA30A03DC509BBF;
-IL2CPP_EXTERN_C String_t* _stringLiteral3D44B3BA133976483D40A0818DA23D7C7AB00787;
 IL2CPP_EXTERN_C String_t* _stringLiteral4271856DCCC5D223049DA2ECF725D8116D215FC2;
 IL2CPP_EXTERN_C String_t* _stringLiteral5156CBC5F0FE0A18610192F5971A0735CFF6F4F3;
 IL2CPP_EXTERN_C String_t* _stringLiteral5C37E59C8762E6FF3B80D44FB26DA7DB4A1AAE3B;
@@ -18775,6 +18774,8 @@ public:
 	List_1_t6D0A10F47F3440798295D2FFFC6D016477AF38E5 * ___points_4;
 	// UnityEngine.GameObject SketchController::sketchPoint
 	GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * ___sketchPoint_5;
+	// UnityEngine.GameObject SketchController::whiteboard
+	GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * ___whiteboard_6;
 
 public:
 	inline static int32_t get_offset_of_points_4() { return static_cast<int32_t>(offsetof(SketchController_t49F14FA2BACDCC5DDC640F9B2B1C13BF9345D25D, ___points_4)); }
@@ -18793,6 +18794,15 @@ public:
 	{
 		___sketchPoint_5 = value;
 		Il2CppCodeGenWriteBarrier((void**)(&___sketchPoint_5), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_whiteboard_6() { return static_cast<int32_t>(offsetof(SketchController_t49F14FA2BACDCC5DDC640F9B2B1C13BF9345D25D, ___whiteboard_6)); }
+	inline GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * get_whiteboard_6() const { return ___whiteboard_6; }
+	inline GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 ** get_address_of_whiteboard_6() { return &___whiteboard_6; }
+	inline void set_whiteboard_6(GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * value)
+	{
+		___whiteboard_6 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___whiteboard_6), (void*)value);
 	}
 };
 
@@ -24708,8 +24718,6 @@ inline void AsyncVoidMethodBuilder_AwaitUnsafeOnCompleted_TisTaskAwaiter_t3780D3
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Object_op_Equality_mEE9EC7EB5C7DC3E95B94AB904E1986FC4D566D54 (Object_tF2F3778131EFF286AF62B7B013A170F95A91571A * ___x0, Object_tF2F3778131EFF286AF62B7B013A170F95A91571A * ___y1, const RuntimeMethod* method);
 // System.Void MeshController::VertexPushLinearEvent(UnityEngine.Vector3,UnityEngine.Vector3)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MeshController_VertexPushLinearEvent_mC0EED9BD11D10EC50850EB97E29C315207129F1E (MeshController_t3F06CB9367FF6E0904BDB10E1F42B4F6AB70EDE4 * __this, Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  ___point0, Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  ___surfaceNormal1, const RuntimeMethod* method);
-// System.String UnityEngine.GameObject::get_tag()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* GameObject_get_tag_mC21F33D368C18A631040F2887036C678B96ABC33 (GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * __this, const RuntimeMethod* method);
 // System.Void SketchController::AddPoint(UnityEngine.Vector3)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SketchController_AddPoint_mFE283753E9D35BBC52F31B4DE17A88DE7B661E0C (SketchController_t49F14FA2BACDCC5DDC640F9B2B1C13BF9345D25D * __this, Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  ___point0, const RuntimeMethod* method);
 // System.String Photon.Realtime.Player::get_NickName()
@@ -28593,7 +28601,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CShortTapU3Ed__17_MoveNext_m57935606E1
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tF2F3778131EFF286AF62B7B013A170F95A91571A_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral3D44B3BA133976483D40A0818DA23D7C7AB00787);
 		s_Il2CppMethodInitialized = true;
 	}
 	int32_t V_0 = 0;
@@ -28603,7 +28610,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CShortTapU3Ed__17_MoveNext_m57935606E1
 	Exception_t * V_4 = NULL;
 	il2cpp::utils::ExceptionSupportStack<RuntimeObject*, 1> __active_exceptions;
 	il2cpp::utils::ExceptionSupportStack<int32_t, 3> __leave_targets;
-	int32_t G_B8_0 = 0;
 	{
 		int32_t L_0 = __this->get_U3CU3E1__state_0();
 		V_0 = L_0;
@@ -28629,7 +28635,7 @@ IL_0007:
 IL_0018:
 		{
 			// return;
-			goto IL_00d1;
+			goto IL_00b9;
 		}
 
 IL_001e:
@@ -28665,64 +28671,39 @@ IL_0035:
 			Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  L_14 = __this->get_surfaceNormal_3();
 			NullCheck(L_12);
 			MeshController_VertexPushLinearEvent_mC0EED9BD11D10EC50850EB97E29C315207129F1E(L_12, L_13, L_14, /*hidden argument*/NULL);
-			goto IL_00b5;
+			goto IL_009d;
 		}
 
 IL_006d:
 		{
-			// } else if (mainMenu.mode == MainMenu.Mode.Sketch_Draw && hitGO.tag == "Whiteboard")
+			// } else if (mainMenu.mode == MainMenu.Mode.Sketch_Draw)
 			MeshController_t3F06CB9367FF6E0904BDB10E1F42B4F6AB70EDE4 * L_15 = __this->get_U3CU3E4__this_5();
 			NullCheck(L_15);
 			MainMenu_tEB11F5A993C42E93B585FBB65C9E92EC91C5707C * L_16 = L_15->get_mainMenu_17();
 			NullCheck(L_16);
 			int32_t L_17 = L_16->get_mode_33();
-			if ((!(((uint32_t)L_17) == ((uint32_t)1))))
+			V_3 = (bool)((((int32_t)L_17) == ((int32_t)1))? 1 : 0);
+			bool L_18 = V_3;
+			if (!L_18)
 			{
-				goto IL_0097;
+				goto IL_009d;
 			}
 		}
 
-IL_0080:
-		{
-			GameObject_tC000A2E1A7CF1E10FD7BA08863287C072207C319 * L_18 = __this->get_hitGO_4();
-			NullCheck(L_18);
-			String_t* L_19;
-			L_19 = GameObject_get_tag_mC21F33D368C18A631040F2887036C678B96ABC33(L_18, /*hidden argument*/NULL);
-			bool L_20;
-			L_20 = String_op_Equality_m2B91EE68355F142F67095973D32EB5828B7B73CB(L_19, _stringLiteral3D44B3BA133976483D40A0818DA23D7C7AB00787, /*hidden argument*/NULL);
-			G_B8_0 = ((int32_t)(L_20));
-			goto IL_0098;
-		}
-
-IL_0097:
-		{
-			G_B8_0 = 0;
-		}
-
-IL_0098:
-		{
-			V_3 = (bool)G_B8_0;
-			bool L_21 = V_3;
-			if (!L_21)
-			{
-				goto IL_00b5;
-			}
-		}
-
-IL_009c:
+IL_0084:
 		{
 			// sketchController.AddPoint(hitPoint);
-			MeshController_t3F06CB9367FF6E0904BDB10E1F42B4F6AB70EDE4 * L_22 = __this->get_U3CU3E4__this_5();
-			NullCheck(L_22);
-			SketchController_t49F14FA2BACDCC5DDC640F9B2B1C13BF9345D25D * L_23 = L_22->get_sketchController_18();
-			Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  L_24 = __this->get_hitPoint_2();
-			NullCheck(L_23);
-			SketchController_AddPoint_mFE283753E9D35BBC52F31B4DE17A88DE7B661E0C(L_23, L_24, /*hidden argument*/NULL);
+			MeshController_t3F06CB9367FF6E0904BDB10E1F42B4F6AB70EDE4 * L_19 = __this->get_U3CU3E4__this_5();
+			NullCheck(L_19);
+			SketchController_t49F14FA2BACDCC5DDC640F9B2B1C13BF9345D25D * L_20 = L_19->get_sketchController_18();
+			Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  L_21 = __this->get_hitPoint_2();
+			NullCheck(L_20);
+			SketchController_AddPoint_mFE283753E9D35BBC52F31B4DE17A88DE7B661E0C(L_20, L_21, /*hidden argument*/NULL);
 		}
 
-IL_00b5:
+IL_009d:
 		{
-			goto IL_00d1;
+			goto IL_00b9;
 		}
 	} // end try (depth: 1)
 	catch(Il2CppExceptionWrapper& e)
@@ -28730,31 +28711,31 @@ IL_00b5:
 		if(il2cpp_codegen_class_is_assignable_from (((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&Exception_t_il2cpp_TypeInfo_var)), il2cpp_codegen_object_class(e.ex)))
 		{
 			IL2CPP_PUSH_ACTIVE_EXCEPTION(e.ex);
-			goto CATCH_00b7;
+			goto CATCH_009f;
 		}
 		throw e;
 	}
 
-CATCH_00b7:
+CATCH_009f:
 	{ // begin catch(System.Exception)
 		V_4 = ((Exception_t *)IL2CPP_GET_ACTIVE_EXCEPTION(Exception_t *));
 		__this->set_U3CU3E1__state_0(((int32_t)-2));
-		AsyncVoidMethodBuilder_tA31C888168B27AABF7B0D9E7DF720547D4892DE6 * L_25 = __this->get_address_of_U3CU3Et__builder_1();
-		Exception_t * L_26 = V_4;
-		AsyncVoidMethodBuilder_SetException_m16372173CEA3031B4CB9B8D15DA97C457F835155((AsyncVoidMethodBuilder_tA31C888168B27AABF7B0D9E7DF720547D4892DE6 *)L_25, L_26, /*hidden argument*/NULL);
+		AsyncVoidMethodBuilder_tA31C888168B27AABF7B0D9E7DF720547D4892DE6 * L_22 = __this->get_address_of_U3CU3Et__builder_1();
+		Exception_t * L_23 = V_4;
+		AsyncVoidMethodBuilder_SetException_m16372173CEA3031B4CB9B8D15DA97C457F835155((AsyncVoidMethodBuilder_tA31C888168B27AABF7B0D9E7DF720547D4892DE6 *)L_22, L_23, /*hidden argument*/NULL);
 		IL2CPP_POP_ACTIVE_EXCEPTION();
-		goto IL_00e5;
+		goto IL_00cd;
 	} // end catch (depth: 1)
 
-IL_00d1:
+IL_00b9:
 	{
 		// }
 		__this->set_U3CU3E1__state_0(((int32_t)-2));
-		AsyncVoidMethodBuilder_tA31C888168B27AABF7B0D9E7DF720547D4892DE6 * L_27 = __this->get_address_of_U3CU3Et__builder_1();
-		AsyncVoidMethodBuilder_SetResult_m901385B56EBE93E472A77EA48F61E4F498F3E00E((AsyncVoidMethodBuilder_tA31C888168B27AABF7B0D9E7DF720547D4892DE6 *)L_27, /*hidden argument*/NULL);
+		AsyncVoidMethodBuilder_tA31C888168B27AABF7B0D9E7DF720547D4892DE6 * L_24 = __this->get_address_of_U3CU3Et__builder_1();
+		AsyncVoidMethodBuilder_SetResult_m901385B56EBE93E472A77EA48F61E4F498F3E00E((AsyncVoidMethodBuilder_tA31C888168B27AABF7B0D9E7DF720547D4892DE6 *)L_24, /*hidden argument*/NULL);
 	}
 
-IL_00e5:
+IL_00cd:
 	{
 		return;
 	}

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5492535684617352551}
   - component: {fileID: 4487511168438298703}
-  - component: {fileID: 6204712016133531779}
   m_Layer: 0
   m_Name: SketchController
   m_TagString: Untagged
@@ -44,27 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9075582ca9fe0489cbaf89965438f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: []
   sketchPoint: {fileID: 7239355103284139170, guid: 3da6fa43190952546a86e71cc11a3550, type: 3}
---- !u!114 &6204712016133531779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5492535684617352550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
+  whiteboard: {fileID: 0}

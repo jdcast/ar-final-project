@@ -1313,6 +1313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a228a961600eb594eb54a7fd345a36ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1507200101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7050513426094259712, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+  m_PrefabInstance: {fileID: 9033906769605427095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1638109547
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,7 +2133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5200253425672771434, guid: 70dc8fe75f74b754b9799fdeb97f0d31, type: 3}
       propertyPath: m_Name
-      value: MixedRealityToolkit (Inactive)
+      value: MixedRealityToolkit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70dc8fe75f74b754b9799fdeb97f0d31, type: 3}
@@ -2139,6 +2144,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4487511168438298703, guid: 1b0704522cab829479f45f77c8740804, type: 3}
+      propertyPath: whiteboard
+      value: 
+      objectReference: {fileID: 1507200101}
     - target: {fileID: 5492535684617352550, guid: 1b0704522cab829479f45f77c8740804, type: 3}
       propertyPath: m_Name
       value: SketchController
@@ -2191,7 +2200,8 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6204712016133531779, guid: 1b0704522cab829479f45f77c8740804, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1b0704522cab829479f45f77c8740804, type: 3}
 --- !u!1001 &6411779856635374173
 PrefabInstance:
@@ -2247,6 +2257,10 @@ PrefabInstance:
     - target: {fileID: 6411779855525154378, guid: b2c057b668c83a145b73d60e9e766ca2, type: 3}
       propertyPath: m_Name
       value: WLT_Adjustment
+      objectReference: {fileID: 0}
+    - target: {fileID: 6411779855710979886, guid: b2c057b668c83a145b73d60e9e766ca2, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2147483895
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2c057b668c83a145b73d60e9e766ca2, type: 3}
@@ -2314,9 +2328,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7050513426094259712, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050513426094259712, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050513426094259717, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7050513427090101977, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050513427090101977, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050513427090101979, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: ShowTetherWhenManipulating
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050513427090101981, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050513427090101983, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9033906768328245271, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
       propertyPath: whiteboard
@@ -2386,5 +2428,37 @@ PrefabInstance:
       propertyPath: onHandActivate.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 8300000, guid: 82bb32b8900f55c488f190d835ffcd99, type: 3}
+    - target: {fileID: 9033906769501052042, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033906769501052042, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033906769501052042, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1952464768}
+    - target: {fileID: 9033906769501052042, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033906769501052042, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: ToggleSketchDraw
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033906769501052042, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033906769501052042, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033906769501052042, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}

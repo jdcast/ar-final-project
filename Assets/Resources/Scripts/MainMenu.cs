@@ -136,6 +136,17 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
+    /// Toggle drawing
+    /// </summary>
+    public void ToggleSketchDraw()
+    {
+        if (mode != Mode.Sketch_Draw)
+        {
+            mode = Mode.Sketch_Draw;
+        }
+    }
+
+    /// <summary>
     /// Hide/show sculptSubmenuPush menu
     /// </summary>
     public void ToggleSculptSubmenuPush()

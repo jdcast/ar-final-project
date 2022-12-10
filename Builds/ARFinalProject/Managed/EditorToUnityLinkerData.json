@@ -877,6 +877,13 @@
             "usedInScenes": []
         },
         {
+            "managedAssemblyName": "Assembly-CSharp.dll",
+            "nativeClass": "",
+            "fullManagedTypeName": "SketchPointInit",
+            "moduleName": "",
+            "usedInScenes": []
+        },
+        {
             "managedAssemblyName": "AzureSpatialAnchors.SDK.Core.Runtime.dll",
             "nativeClass": "",
             "fullManagedTypeName": "Microsoft.Azure.SpatialAnchors.Unity.SpatialAnchorConfig",
@@ -1314,13 +1321,6 @@
             "managedAssemblyName": "Microsoft.MixedReality.Toolkit.SDK.dll",
             "nativeClass": "",
             "fullManagedTypeName": "Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorLoadingBar",
-            "moduleName": "",
-            "usedInScenes": []
-        },
-        {
-            "managedAssemblyName": "Microsoft.MixedReality.Toolkit.SDK.dll",
-            "nativeClass": "",
-            "fullManagedTypeName": "Microsoft.MixedReality.Toolkit.UI.ProgressIndicatorObjectDisplay",
             "moduleName": "",
             "usedInScenes": []
         },

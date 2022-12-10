@@ -200,7 +200,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
 
                                             // we need the surface normal of the spatial mesh we want to place the hold on
                                             // we allow hits on route parents so that we can do nothing when selecting them in short taps
-                                            LayerMask mask = LayerMask.GetMask("Mesh");
+                                            LayerMask mask = LayerMask.GetMask("Mesh", "Whiteboard");
                                             if (Physics.Raycast(startPoint, endPoint - startPoint, out var hit, Mathf.Infinity, mask)) // check if successful before calling ShortTap
                                             {
                                                 GameObject hitGO = hit.collider.gameObject;
@@ -247,7 +247,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
             //Debug.Log($"hitPoint: {hitPoint}");
             //Debug.Log($"surfaceNormal: {surfaceNormal}");
             VertexPushLinearEvent(hitPoint, surfaceNormal);
-        } else if (mainMenu.mode == MainMenu.Mode.Sketch_Draw && hitGO.tag == "Whiteboard")
+        } else if (mainMenu.mode == MainMenu.Mode.Sketch_Draw)
         {
             sketchController.AddPoint(hitPoint);
         }
