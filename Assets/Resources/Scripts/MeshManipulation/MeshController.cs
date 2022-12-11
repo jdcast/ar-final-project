@@ -15,10 +15,13 @@ using MultiUserCapabilities;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 using System.Net;
+using UnityEngine.InputSystem.HID;
 //using System.Numerics;
 
 public class MeshController : MonoBehaviour, IOnEventCallback
 {
+    public GameObject loadedMesh = default;
+
     //These fields will probably be removed soon. Since all meshes are children of the Mesh Holder,
     //we already have an ordering for all the meshes as prescribed by the hierchy.
     private List<GameObject> children;
@@ -32,9 +35,6 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     public const byte VertexPushLinearEventCode = 4;
     public const byte GenerateFlatMeshEventCode = 5;
 
-    // mesh parent
-    [SerializeField] private GameObject meshParent = default;
-
     /// <summary>
     /// Used to distinguish short taps and long taps
     /// </summary>
@@ -47,7 +47,13 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     [SerializeField] private AudioClip createAudio;
     [SerializeField] public float effectScale = 0;
     [SerializeField] public MainMenu mainMenu = default;
-    [SerializeField] private SketchController sketchController = default; 
+    [SerializeField] private SketchController sketchController = default;
+    [SerializeField] public GameObject defaultMesh = default;
+    [SerializeField] private GameObject defaultGameObject = default;
+    [SerializeField] private GameObject spawnPoint = default;
+    [SerializeField] private GameObject meshParent = default;
+    [SerializeField] private Material spawnShaderMaterial = default;
+    [SerializeField] private Material defaultMaterial = default;
 
     //Unity functions
     void Start()
@@ -283,7 +289,6 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         }
     }
 
-
     //Here are networking functions 
     private void addNewMeshEvent(Mesh mesh)
     {
@@ -295,13 +300,34 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     {
         Mesh data = (Mesh)photonData;
         GameObject child = new GameObject();
-        child.AddComponent<MeshFilter>();
+
+        // add necessary components
+        MeshFilter mFilter = child.AddComponent<MeshFilter>();
+        mFilter.mesh = data;
         child.AddComponent<MeshCollider>();
         child.AddComponent<MeshRenderer>();
-        child.GetComponent<MeshRenderer>().material.color = new Color(1, 1, 1, 1);
+
+        // wire up animator
+        Animator animator = child.AddComponent<Animator>();
+        animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+        animator.updateMode = AnimatorUpdateMode.Normal;
+        var runtimeAnimatorController = (RuntimeAnimatorController)UnityEngine.Resources.Load("AlphaCutoff");
+        animator.runtimeAnimatorController = runtimeAnimatorController;
+
+        // reparent, scale, position
         child.transform.parent = meshParent.transform;
+        child.transform.position = spawnPoint.transform.position;
+        child.transform.localScale = Vector3.one; //* 0.5f;
         child.name = children.Count.ToString();
 
+        // put in correct layer for raycasting
+        int LayerMesh = LayerMask.NameToLayer("Mesh");
+        child.layer = LayerMesh;
+
+        // start animator and remove spawn material after some time
+        StartCoroutine(ChangeSpawnShader(child));
+
+        // track the new mesh
         children.Add(child);
         childMeshs.Add(data);
         RecalculateAllMeshes();
@@ -507,5 +533,45 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         children.Add(child);
         childMeshs.Add(mesh);
         RecalculateAllMeshes();
+    }
+
+    /// <summary>
+    /// Loads the mesh currently stored in loadedMesh.  loadedMesh is set by MainMenu.
+    /// </summary>
+    public void LoadMesh()
+    {
+        if (mainMenu.mode == MainMenu.Mode.Select_Load_Default || mainMenu.mode == MainMenu.Mode.Select_Load_Saved)
+        {
+            addNewMeshEvent(loadedMesh.GetComponent<MeshFilter>().mesh);
+        }
+    }
+
+    /// <summary>
+    /// Run spawn material for a few seconds before changing the material to the default material
+    /// </summary>
+    /// <param name="go"></param>
+    /// <returns></returns>
+    IEnumerator ChangeSpawnShader(GameObject go)
+    {
+        MeshRenderer renderer = go.GetComponent<MeshRenderer>();
+        renderer.material = spawnShaderMaterial;
+        Animator animator = go.GetComponent<Animator>();
+
+        // starthalf way through animation sequence, which better looks like "coalescing" instead of "dissolving"
+        animator.Play("AlphaCutoff", -1, 0.5f); 
+
+        float runTime = 1.5f;
+        float dt = 0.01f;
+
+        while (runTime > 0.0f)
+        {
+            runTime -= dt;
+
+            // wait time before next loop
+            yield return new WaitForSeconds(dt);
+        }
+
+        Destroy(go.GetComponent<Animator>());
+        renderer.material = defaultMaterial;
     }
 }

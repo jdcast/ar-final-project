@@ -1554,6 +1554,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 9171563604629916211, guid: d779dd72e10429540a83ca7fe1572374, type: 3}
+      propertyPath: onHandDeactivate.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171563604629916211, guid: d779dd72e10429540a83ca7fe1572374, type: 3}
+      propertyPath: onFirstHandDetected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171563604629916211, guid: d779dd72e10429540a83ca7fe1572374, type: 3}
+      propertyPath: onFirstHandDetected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 716868575}
+    - target: {fileID: 9171563604629916211, guid: d779dd72e10429540a83ca7fe1572374, type: 3}
+      propertyPath: onFirstHandDetected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171563604629916211, guid: d779dd72e10429540a83ca7fe1572374, type: 3}
+      propertyPath: onFirstHandDetected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MeshController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 9171563604629916222, guid: d779dd72e10429540a83ca7fe1572374, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -1596,6 +1616,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9171563604629916222, guid: d779dd72e10429540a83ca7fe1572374, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171563604954109221, guid: d779dd72e10429540a83ca7fe1572374, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1917,9 +1941,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 286346206}
     - target: {fileID: 1793322021406470176, guid: 852befee8ce749849bb6d7d819cafca5, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1840351359}
+    - target: {fileID: 1793322021406470176, guid: 852befee8ce749849bb6d7d819cafca5, type: 3}
+      propertyPath: defaultMesh
+      value: 
+      objectReference: {fileID: 642409601530427218, guid: 5695a45d1e924fa4e892546839d04ed5, type: 3}
+    - target: {fileID: 1793322021406470176, guid: 852befee8ce749849bb6d7d819cafca5, type: 3}
+      propertyPath: defaultMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: c676d877ef241ab4686e2f237b1e2f13, type: 2}
+    - target: {fileID: 1793322021406470176, guid: 852befee8ce749849bb6d7d819cafca5, type: 3}
       propertyPath: sketchController
       value: 
       objectReference: {fileID: 1237919487}
+    - target: {fileID: 1793322021406470176, guid: 852befee8ce749849bb6d7d819cafca5, type: 3}
+      propertyPath: defaultGameObject
+      value: 
+      objectReference: {fileID: 642409601530427218, guid: e65f2815d33203a499927c9bb592d8f4, type: 3}
+    - target: {fileID: 1793322021406470176, guid: 852befee8ce749849bb6d7d819cafca5, type: 3}
+      propertyPath: spawnShaderMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: ccceae2262b67864a933effc38b0dc81, type: 2}
     - target: {fileID: 1793322021406470177, guid: 852befee8ce749849bb6d7d819cafca5, type: 3}
       propertyPath: m_Name
       value: MeshController
@@ -2133,7 +2177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5200253425672771434, guid: 70dc8fe75f74b754b9799fdeb97f0d31, type: 3}
       propertyPath: m_Name
-      value: MixedRealityToolkit
+      value: MixedRealityToolkit (Inactive)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70dc8fe75f74b754b9799fdeb97f0d31, type: 3}
@@ -2315,6 +2359,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8208917641599877758, guid: 3afe689252ef4e1478db504877536286, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8208917641599877759, guid: 3afe689252ef4e1478db504877536286, type: 3}
       propertyPath: m_Name
       value: MeshSerializer
@@ -2328,6 +2376,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2682573699193136350, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7050513426094259712, guid: 828aa849cc5493142aed4f139edf1a20, type: 3}
       propertyPath: m_Layer
       value: 7

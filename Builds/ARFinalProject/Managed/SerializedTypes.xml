@@ -23,8 +23,8 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.SceneSystem.RuntimeRenderSettings" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.SceneSystem.RuntimeLightingSettings" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.SceneSystem.RuntimeSunlightSettings" preserve="nothing" serialized="true"/>
-		<type fullname="Microsoft.MixedReality.Toolkit.Input.KeywordAndResponse" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.Editor.InspectorPropertySetting" preserve="nothing" serialized="true"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Input.KeywordAndResponse" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Physics.GazeStabilizer" preserve="nothing" serialized="true"/>
 	</assembly>
 	<assembly fullname="Microsoft.MixedReality.Toolkit.Services.InputSimulation">
@@ -66,10 +66,10 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.Easing" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.InteractableProfileItem" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.InteractableEvent" preserve="nothing" serialized="true"/>
-		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.ObjectCollectionNode" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ManipulationEvent" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.SliderAxis" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.SliderEvent" preserve="nothing" serialized="true"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Utilities.ObjectCollectionNode" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.PanUnityEvent" preserve="nothing" serialized="true"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.UI.ScrollingObjectCollection/ScrollEvent" preserve="nothing" serialized="true"/>
 	</assembly>
@@ -83,19 +83,19 @@
 		<type fullname="UnityEngine.UI.FontData" preserve="nothing" serialized="true"/>
 		<type fullname="UnityEngine.EventSystems.EventTrigger/Entry" preserve="nothing" serialized="true"/>
 		<type fullname="UnityEngine.EventSystems.EventTrigger/TriggerEvent" preserve="nothing" serialized="true"/>
-		<type fullname="UnityEngine.UI.Toggle/ToggleEvent" preserve="nothing" serialized="true"/>
 		<type fullname="UnityEngine.UI.Button/ButtonClickedEvent" preserve="nothing" serialized="true"/>
-		<type fullname="UnityEngine.UI.Scrollbar/ScrollEvent" preserve="nothing" serialized="true"/>
-		<type fullname="UnityEngine.UI.ScrollRect/ScrollRectEvent" preserve="nothing" serialized="true"/>
 		<type fullname="UnityEngine.UI.InputField/SubmitEvent" preserve="nothing" serialized="true"/>
 		<type fullname="UnityEngine.UI.InputField/OnChangeEvent" preserve="nothing" serialized="true"/>
+		<type fullname="UnityEngine.UI.Toggle/ToggleEvent" preserve="nothing" serialized="true"/>
+		<type fullname="UnityEngine.UI.Scrollbar/ScrollEvent" preserve="nothing" serialized="true"/>
+		<type fullname="UnityEngine.UI.ScrollRect/ScrollRectEvent" preserve="nothing" serialized="true"/>
 	</assembly>
 	<assembly fullname="UnityEngine.CoreModule">
 		<type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true"/>
+		<type fullname="UnityEngine.RectOffset" preserve="nothing" serialized="true"/>
 		<type fullname="UnityEngine.Events.UnityEvent" preserve="nothing" serialized="true"/>
 		<type fullname="UnityEngine.Events.PersistentListenerMode" preserve="nothing" serialized="true"/>
 		<type fullname="UnityEngine.Events.ArgumentCache" preserve="nothing" serialized="true"/>
-		<type fullname="UnityEngine.RectOffset" preserve="nothing" serialized="true"/>
 	</assembly>
 	<assembly fullname="Microsoft.MixedReality.WorldLocking.Core">
 		<type fullname="Microsoft.MixedReality.WorldLocking.Core.SharedManagerSettings" preserve="nothing" serialized="true"/>

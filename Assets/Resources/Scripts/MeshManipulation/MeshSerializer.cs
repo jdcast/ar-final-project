@@ -69,7 +69,7 @@ class SerializableMeshInfo
             uv[i * 2] = m.uv[i].x;
             uv[i * 2 + 1] = m.uv[i].y;
         }
-        uv2 = new float[m.uv2.Length]; // uv2
+        uv2 = new float[m.uv2.Length * 2]; // uv2
         for (int i = 0; i < m.uv2.Length; i++)
         {
             uv[i * 2] = m.uv2[i].x;

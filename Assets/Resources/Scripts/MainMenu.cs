@@ -26,6 +26,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] MeshController meshController = default;
     [SerializeField] GameObject whiteboard = default;
     [SerializeField] SketchController sketchController = default;
+    [SerializeField] GameObject selectSubmenuLoad = default;
 
     private bool sketchMenuIsActive = false;
     private bool sculptMenuIsActive = false;
@@ -33,7 +34,8 @@ public class MainMenu : MonoBehaviour
     private bool debugWindowIsActive = false;
     private bool sculptSubmenuPushIsActive = false;
     private bool sculptSubmenuPullIsActive = false;
-    
+    private bool selectSubmenuLoadIsActive = false;
+
     private float sketchEffectSliderVal = 0f;
     private float sketchScaleSliderVal = 0f;
     private float sculptEffectSliderVal = 0f;
@@ -55,7 +57,9 @@ public class MainMenu : MonoBehaviour
         Select,
         Select_Move,
         Select_Save,
-        Select_Load
+        Select_Load,
+        Select_Load_Default,
+        Select_Load_Saved
     }
 
     public Mode mode = default;
@@ -132,6 +136,9 @@ public class MainMenu : MonoBehaviour
 
             HideSketchMenu();
             HideSculptMenu();
+        } else
+        {
+            HideSelectSubmenuLoad();
         }
     }
 
@@ -211,6 +218,38 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
+    /// Toggle submenu under select menu
+    /// </summary>
+    public void ToggleSelectSubmenuLoad()
+    {
+        selectSubmenuLoadIsActive = !selectSubmenuLoadIsActive;
+        selectSubmenuLoad.SetActive(selectSubmenuLoadIsActive);
+
+        if (selectSubmenuLoadIsActive)
+        {
+            mode = Mode.Select_Load;
+        }
+    }
+
+    /// <summary>
+    /// Toggle submode under selectSubmenuLoad menu
+    /// </summary>
+    public void ToggleSelectSubmenuLoadDefault()
+    {
+        mode = Mode.Select_Load_Default;
+
+        meshController.loadedMesh = meshController.defaultMesh;
+    }
+
+    /// <summary>
+    /// Toggle submode under selectSubmenuLoad menu
+    /// </summary>
+    public void ToggleSelectSubmenuLoadSaved()
+    {
+        mode = Mode.Select_Load_Saved;
+    }
+
+    /// <summary>
     /// Hide/show debug window
     /// </summary>
     public void ToggleDebugWindow()
@@ -240,6 +279,8 @@ public class MainMenu : MonoBehaviour
     public void HideSculptMenu()
     {
         sculptMenuIsActive = false;
+        sculptSubmenuPushIsActive = false;
+        sculptSubmenuPullIsActive = false;
         sculptMenu.SetActive(sculptMenuIsActive);
         sculptMenuSliders.SetActive(sculptMenuIsActive);
         sculptSubmenuPull.SetActive(sculptMenuIsActive);
@@ -249,7 +290,9 @@ public class MainMenu : MonoBehaviour
     public void HideSelectMenu()
     {
         selectMenuIsActive = false;
+        selectSubmenuLoadIsActive = false;
         selectMenu.SetActive(selectMenuIsActive);
+        selectSubmenuLoad.SetActive(selectSubmenuLoadIsActive);
     }
 
     public void HideSculptSubmenuPush()
@@ -279,6 +322,12 @@ public class MainMenu : MonoBehaviour
         sketchMenuSliders.SetActive(false);
     }
 
+    public void HideSelectSubmenuLoad()
+    {
+        selectSubmenuLoadIsActive = false;
+        selectSubmenuLoad.SetActive(false);
+    }
+
     public void HideMainMenu()
     {
         mainMenu.SetActive(false);
@@ -291,6 +340,7 @@ public class MainMenu : MonoBehaviour
         HideCloseButton();
         HideSketchMenuSliders();
         HideSculptMenuSliders();
+        HideSelectSubmenuLoad();
     }
 
     public void SketchEffectSliderChanged(SliderEventData eventData)
