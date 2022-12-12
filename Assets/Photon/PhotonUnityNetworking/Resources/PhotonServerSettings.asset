@@ -63,6 +63,10 @@ MonoBehaviour:
   - PunRPC_SetUserIconColor
   - PunRPC_UpdateScrollRouteMenu
   - PunRPC_RemoveAllSketchPoints
+  - GetMesh
+  - PunRPC_CreateMesh
+  - PunRPC_EmptyCloseScrollMeshMenu
+  - PunRPC_GetMeshList
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

@@ -107,7 +107,6 @@
     <Compile Include="Assets\MRTK.Tutorials.GettingStarted\Scripts\PlacementHintsController.cs" />
     <Compile Include="Assets\Resources\Scripts\MeshManipulation\SketchPointInit.cs" />
     <Compile Include="Assets\Resources\Scripts\WorldLocking\Startup.cs" />
-    <Compile Include="Assets\Resources\Scripts\TCPClient.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Resources\Scripts\WorldLocking\SpacePinPublisherASA.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\RotateWithPan.cs" />
@@ -154,6 +153,9 @@
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\OnRouteParentHover.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\HandInteractionTouchRotate.cs" />
     <Compile Include="Assets\MRTK.Tutorials.GettingStarted\Scripts\DirectionalIndicatorController.cs" />
+    <Compile Include="Assets\Resources\Scripts\TCPClient.cs" />
+    <Compile Include="Assets\Resources\Scripts\MeshManipulation\MeshSaverLoader.cs" />
+    <Compile Include="Assets\Resources\Scripts\Pointer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

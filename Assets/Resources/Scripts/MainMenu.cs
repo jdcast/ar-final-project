@@ -21,8 +21,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject debugWindow = default;
     [SerializeField] GameObject sketchEffectSlider = default;
     [SerializeField] GameObject sketchScaleSlider = default;
+    [SerializeField] GameObject sketchRadiusSlider = default;
     [SerializeField] GameObject sculptEffectSlider = default;
     [SerializeField] GameObject sculptScaleSlider = default;
+    [SerializeField] GameObject sculptRadiusSlider = default;
     [SerializeField] MeshController meshController = default;
     [SerializeField] GameObject whiteboard = default;
     [SerializeField] SketchController sketchController = default;
@@ -36,10 +38,15 @@ public class MainMenu : MonoBehaviour
     private bool sculptSubmenuPullIsActive = false;
     private bool selectSubmenuLoadIsActive = false;
 
-    private float sketchEffectSliderVal = 0f;
-    private float sketchScaleSliderVal = 0f;
-    private float sculptEffectSliderVal = 0f;
-    private float sculptScaleSliderVal = 0f;
+    private float sketchEffectSliderVal = 0.5f;
+    private float sketchScaleSliderVal = 0.5f;
+    private float sculptEffectSliderVal = 0.5f;
+    private float sculptScaleSliderVal = 0.5f;
+    private float sketchRadiusSliderVal = 0.5f;
+    private float sculptRadiusSliderVal = 0.5f;
+    private float min_radius = 0.05f;
+    private float max_radius = 3.0f;
+
     [SerializeField] private float sketchSculptScale = 10f;
 
     public enum Mode
@@ -87,7 +94,8 @@ public class MainMenu : MonoBehaviour
             HideSelectMenu();
 
             sketchScaleSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sketchScaleSliderVal * sketchSculptScale}";
-            sketchEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sketchScaleSliderVal * sketchEffectSliderVal}";
+            sketchEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sketchSculptScale * sketchEffectSliderVal * sketchScaleSliderVal}";
+            sketchRadiusSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sketchRadiusSliderVal * (max_radius - min_radius) + min_radius}";
 
             whiteboard.SetActive(true);
             sketchController.StartSketch();
@@ -114,7 +122,8 @@ public class MainMenu : MonoBehaviour
             HideSelectMenu();
 
             sculptScaleSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sculptScaleSliderVal * sketchSculptScale}";
-            sculptEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sculptScaleSliderVal * sculptEffectSliderVal}";
+            sculptEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sketchSculptScale * sculptEffectSliderVal * sculptScaleSliderVal}";
+            sculptRadiusSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sculptRadiusSliderVal * (max_radius - min_radius) + min_radius}";
         } else
         {
             sculptSubmenuPush.SetActive(sculptMenuIsActive);
@@ -250,6 +259,26 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
+    /// Toggle submode under select menu
+    /// </summary>
+    public void ToggleSelectMove()
+    {
+        mode = Mode.Select_Move;
+
+        HideSelectSubmenuLoad();
+    }
+
+    /// <summary>
+    /// Toggle submode under select menu
+    /// </summary>
+    public void ToggleSelectSave()
+    {
+        mode = Mode.Select_Save;
+
+        HideSelectSubmenuLoad();
+    }
+
+    /// <summary>
     /// Hide/show debug window
     /// </summary>
     public void ToggleDebugWindow()
@@ -360,6 +389,15 @@ public class MainMenu : MonoBehaviour
         sketchEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = "Value: " + newEffectScale.ToString();
     }
 
+    public void SketchRadiusSliderChanged(SliderEventData eventData)
+    {
+        sketchRadiusSliderVal = eventData.NewValue;
+        //float newRadiusScale = sketchSculptScale * sketchRadiusSliderVal * sketchRadiusSliderVal;
+        float newRadiusScale = sketchRadiusSliderVal * (max_radius - min_radius) + min_radius;
+        sketchRadiusSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = "Value: " + newRadiusScale.ToString();
+        meshController.effectRadius = newRadiusScale;
+    }
+
     public void SculptEffectSliderChanged(SliderEventData eventData)
     {
         sculptEffectSliderVal = eventData.NewValue;
@@ -375,5 +413,14 @@ public class MainMenu : MonoBehaviour
         sculptScaleSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = "Value: " + (sketchSculptScale * eventData.NewValue).ToString();
         meshController.effectScale = newEffectScale;
         sculptEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = "Value: " + newEffectScale.ToString();
+    }
+
+    public void SculptRadiusSliderChanged(SliderEventData eventData)
+    {
+        sculptRadiusSliderVal = eventData.NewValue;
+        //float newRadiusScale = sketchSculptScale * sketchRadiusSliderVal * sketchRadiusSliderVal;
+        float newRadiusScale = sculptRadiusSliderVal * (max_radius - min_radius) + min_radius;
+        sculptRadiusSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = "Value: " + newRadiusScale.ToString();
+        meshController.effectRadius = newRadiusScale;
     }
 }

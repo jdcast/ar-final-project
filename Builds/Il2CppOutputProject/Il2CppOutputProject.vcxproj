@@ -191,6 +191,7 @@
     <ClCompile Include="Source\il2cppOutput\Assembly-CSharp.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Assembly-CSharp1.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Assembly-CSharp2.cpp"></ClCompile>
+    <ClCompile Include="Source\il2cppOutput\Assembly-CSharp3.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\Assembly-CSharp_Attr.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\AzureSpatialAnchors.SDK.Core.Runtime.cpp"></ClCompile>
     <ClCompile Include="Source\il2cppOutput\AzureSpatialAnchors.SDK.Core.Runtime_Attr.cpp"></ClCompile>

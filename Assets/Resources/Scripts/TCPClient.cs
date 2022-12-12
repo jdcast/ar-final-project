@@ -19,7 +19,7 @@ namespace Scripts
         [SerializeField] private string port = "8081";
 
         // route manipulator for instantiating retrieved hold routes
-        [SerializeField] private RouteManipulator routeManipulator = default;
+        //[SerializeField] private RouteManipulator routeManipulator = default;
 
 #if !UNITY_EDITOR
     private bool _useUWP = true;
@@ -126,7 +126,7 @@ namespace Scripts
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
-        public async Task SendFile(string filename = "")
+        public async Task SendFile(string filename = "", string serializedMesh = "")
         {
             try
             {
@@ -162,30 +162,16 @@ namespace Scripts
                 //Debug.Log("sending file contents...");
 
                 // send file contents
-                string path = Path.Combine(Application.persistentDataPath, filename);
-                using (TextReader sr = File.OpenText(path))
-                {
-                    string s = "";
-                    while ((s = sr.ReadLine()) != null)
-                    {
-                        // send line of file to server
-                        //Debug.Log($"Tx: {s}");
-                        writer.Write(s + "\n");
+                writer.Write(serializedMesh);
 
-                        // get receipt confirmation
-                        response = new char[BUFFER_SIZE]; // reset buffer so we don't accrue/read garabage accidentally for different size buffers
-                        await reader.ReadAsync(response, 0, BUFFER_SIZE);
-                        responseStr = new string(response);
-                        responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
-                        if (responseStr.Length <= 0 || !responseStr.Equals("ready")) { return; }
+                // get receipt confirmation
+                response = new char[BUFFER_SIZE]; // reset buffer so we don't accrue/read garabage accidentally for different size buffers
+                await reader.ReadAsync(response, 0, BUFFER_SIZE);
+                responseStr = new string(response);
+                responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
+                if (responseStr.Length <= 0 || !responseStr.Equals("ready")) { return; }
 
-                        //Debug.Log($"response: {responseStr}");
-                    }
-
-                    // signal done to server
-                    //Debug.Log("Tx: Finished");
-                    writer.Write("done");
-                }
+                writer.Write("done");
             }
             catch (Exception e)
             {
@@ -242,6 +228,44 @@ namespace Scripts
         /// Retrieves the saved route from the server
         /// TODO: maybe use serialization/deserialization and/or JSON?
         /// </summary>
+        public async Task<string> GetMesh(string mesh)
+        {
+            // list of hold names and their respective transforms
+            string mesh_file;
+
+            // notify server of endpoint
+            writer.Write("sendFile");
+
+            // get receipt
+            char[] response = new char[BUFFER_SIZE];
+            await reader.ReadAsync(response, 0, BUFFER_SIZE);
+            string responseStr = new string(response);
+            responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
+            if (responseStr.Length <= 0 || !responseStr.Equals("ready")) { return null; }
+
+            // notify server of route to retrieve
+            string filename = mesh + ".txt";
+            writer.Write(filename);
+
+            // get file line-by-line
+            //while (true)
+            //{
+            response = new char[BUFFER_SIZE]; // reset buffer so we don't accrue/read garabage accidentally for different size buffers
+            await reader.ReadAsync(response, 0, BUFFER_SIZE);
+            responseStr = new string(response);
+            responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
+            if (responseStr.Length <= 0 || responseStr.Equals("done")) { return null; }
+
+            // semi-colon delimited string with position and rotation comma-delimited of form:
+            // "holdname;transform.position;transform.rotation"
+            mesh_file = responseStr.ToString();
+
+            writer.Write("done");
+            //}
+
+            return mesh_file;
+        }
+
         public async Task<(List<string> holds, List<Vector3> positions, List<Quaternion> rotations)> GetRoute(string route)
         {
             // list of hold names and their respective transforms
@@ -303,6 +327,39 @@ namespace Scripts
         /// Gets list of routes stored on server
         /// </summary>
         /// <returns></returns>
+        public async Task<List<string>> GetMeshList()
+        {
+            List<string> meshList = new List<string>();
+
+            // notify server of endpoint
+            writer.Write("listFiles");
+
+            // get list of filenames
+            while (true)
+            {
+                char[] response = new char[BUFFER_SIZE];
+                await reader.ReadAsync(response, 0, BUFFER_SIZE);
+                string responseStr = new string(response);
+                responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
+                if (responseStr.Length <= 0 || responseStr.Equals("done")) { break; }
+
+                // trim file extension, i.e. .txt
+                responseStr = Path.GetFileNameWithoutExtension(responseStr);
+                meshList.Add(responseStr);
+
+                // send ready signal to server to get next file (if there is one)
+                writer.Write("ready");
+            }
+
+            //// print what we got
+            //for (int i = 0; i < routeList.Count; i++)
+            //{
+            //    Debug.Log($"retreived route: {routeList[i]}");
+            //}
+
+            return meshList;
+        }
+
         public async Task<List<string>> GetRouteList()
         {
             List<string> routeList = new List<string>();

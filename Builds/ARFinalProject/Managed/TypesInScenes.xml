@@ -77,18 +77,20 @@
 		<type fullname="MRTK.Tutorials.MultiUserCapabilities.TableAnchorAsParent" preserve="nothing"/>
 		<type fullname="MainMenu" preserve="nothing"/>
 		<type fullname="MeshController" preserve="nothing"/>
+		<type fullname="MeshSaverLoader" preserve="nothing"/>
 		<type fullname="MeshSerializer" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Examples.Demos.SolverTrackedTargetType" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.FrameVisual" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.GenericNetSync" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.GenericNetworkManager" preserve="nothing"/>
-		<type fullname="MultiUserCapabilities.OwnershipHandler" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.PhotonLobby" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.PhotonRoom" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.PhotonUser" preserve="nothing"/>
 		<type fullname="OwnershipHandler" preserve="nothing"/>
+		<type fullname="Pointer" preserve="nothing"/>
 		<type fullname="Resources.Scripts.WorldLocking.Startup" preserve="nothing"/>
 		<type fullname="Scripts.ScrollRouteMenuPopulator" preserve="nothing"/>
+		<type fullname="Scripts.TCPClient" preserve="nothing"/>
 		<type fullname="Scripts.WorldLocking.ActionPublish" preserve="nothing"/>
 		<type fullname="Scripts.WorldLocking.SpacePinASAInit" preserve="nothing"/>
 		<type fullname="Scripts.WorldLocking.SpacePinBinder" preserve="nothing"/>
@@ -227,6 +229,7 @@
 		<type fullname="Microsoft.MixedReality.Toolkit.MixedRealityToolkit" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.MixedRealityToolkitConfigurationProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.Physics.DistorterGravity" preserve="nothing"/>
+		<type fullname="Microsoft.MixedReality.Toolkit.Rendering.MaterialInstance" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.SceneSystem.MixedRealitySceneSystemProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.SpatialAwareness.MixedRealitySpatialAwarenessMeshObserverProfile" preserve="nothing"/>
 		<type fullname="Microsoft.MixedReality.Toolkit.SpatialAwareness.MixedRealitySpatialAwarenessSystemProfile" preserve="nothing"/>

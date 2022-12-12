@@ -15,18 +15,20 @@ ScriptsOnlyBuild:
     - MRTK.Tutorials.MultiUserCapabilities.TableAnchorAsParent
     - MainMenu
     - MeshController
+    - MeshSaverLoader
     - MeshSerializer
     - Microsoft.MixedReality.Toolkit.Examples.Demos.SolverTrackedTargetType
     - MultiUserCapabilities.FrameVisual
     - MultiUserCapabilities.GenericNetSync
     - MultiUserCapabilities.GenericNetworkManager
-    - MultiUserCapabilities.OwnershipHandler
     - MultiUserCapabilities.PhotonLobby
     - MultiUserCapabilities.PhotonRoom
     - MultiUserCapabilities.PhotonUser
     - OwnershipHandler
+    - Pointer
     - Resources.Scripts.WorldLocking.Startup
     - Scripts.ScrollRouteMenuPopulator
+    - Scripts.TCPClient
     - Scripts.WorldLocking.ActionPublish
     - Scripts.WorldLocking.SpacePinASAInit
     - Scripts.WorldLocking.SpacePinBinder
@@ -141,8 +143,6 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.Toolkit.Input.NearInteractionTouchable
     - Microsoft.MixedReality.Toolkit.Input.NearInteractionTouchableUnityUI
     - Microsoft.MixedReality.Toolkit.Input.Utilities.CanvasUtility
-    Microsoft.MixedReality.Toolkit.Tools.dll:
-    - Microsoft.MixedReality.Toolkit.Editor.MixedRealityToolboxWindow
     Microsoft.MixedReality.Toolkit.dll:
     - Microsoft.MixedReality.Toolkit.Boundary.MixedRealityBoundaryVisualizationProfile
     - Microsoft.MixedReality.Toolkit.Diagnostics.MixedRealityDiagnosticsProfile
@@ -164,6 +164,7 @@ ScriptsOnlyBuild:
     - Microsoft.MixedReality.Toolkit.MixedRealityToolkit
     - Microsoft.MixedReality.Toolkit.MixedRealityToolkitConfigurationProfile
     - Microsoft.MixedReality.Toolkit.Physics.DistorterGravity
+    - Microsoft.MixedReality.Toolkit.Rendering.MaterialInstance
     - Microsoft.MixedReality.Toolkit.SceneSystem.MixedRealitySceneSystemProfile
     - Microsoft.MixedReality.Toolkit.SpatialAwareness.MixedRealitySpatialAwarenessMeshObserverProfile
     - Microsoft.MixedReality.Toolkit.SpatialAwareness.MixedRealitySpatialAwarenessSystemProfile
@@ -249,13 +250,6 @@ ScriptsOnlyBuild:
     - UnityEngine.XR.OpenXR.Features.Interactions.ValveIndexControllerProfile
     - UnityEngine.XR.OpenXR.OpenXRLoader
     - UnityEngine.XR.OpenXR.OpenXRSettings
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -413,6 +407,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3342}
     - Class: 114
+      Script: {instanceID: 3372}
+    - Class: 114
       Script: {instanceID: 3392}
     - Class: 114
       Script: {instanceID: 3438}
@@ -498,8 +494,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4940}
     - Class: 114
       Script: {instanceID: 4954}
-    - Class: 114
-      Script: {instanceID: 4956}
     - Class: 114
       Script: {instanceID: 5014}
     - Class: 114
@@ -743,9 +737,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9744}
     - Class: 114
-      Script: {instanceID: 54408}
+      Script: {instanceID: 55018}
     - Class: 114
-      Script: {instanceID: 54422}
+      Script: {instanceID: 55032}
+    - Class: 114
+      Script: {instanceID: 174830}
+    - Class: 114
+      Script: {instanceID: 175032}
+    - Class: 114
+      Script: {instanceID: 660658}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -3417,12 +3417,6 @@ ScriptsOnlyBuild:
     className: TeleportSystemManager
   - hash:
       serializedVersion: 2
-      Hash: 27a8a51474249d296ebcfb4131366706
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Scripts
-    className: TCPClient
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Microsoft.MixedReality.WorldLocking.Core.dll
     namespaceName: Microsoft.MixedReality.WorldLocking.Core
@@ -3633,13 +3627,13 @@ ScriptsOnlyBuild:
     className: RoomListView
   - hash:
       serializedVersion: 2
-      Hash: 0bfe24fafc7dd8f80f267a1ef4038d72
+      Hash: fe9e7f0e3424f7cb97d5f8cfad5caf14
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MeshController
   - hash:
       serializedVersion: 2
-      Hash: 481879d926a304cbba3703540ab7b599
+      Hash: 7c5a0d9764f89c65e3467fcee0736eda
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainMenu
@@ -5077,6 +5071,24 @@ ScriptsOnlyBuild:
     assemblyName: AzureSpatialAnchors.SDK.Core.Runtime.dll
     namespaceName: Microsoft.Azure.SpatialAnchors.Unity
     className: CloudNativeAnchor
+  - hash:
+      serializedVersion: 2
+      Hash: 89d40fd6b453b1a6b48293d4129df972
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Scripts
+    className: TCPClient
+  - hash:
+      serializedVersion: 2
+      Hash: 5b6704066878434d315d5dcbfb5dabb5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MeshSaverLoader
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Pointer
   platform: 21
   scenePathNames:
   - Assets/Scenes/main.unity
