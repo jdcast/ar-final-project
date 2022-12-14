@@ -16,12 +16,13 @@ using UnityEngine.SocialPlatforms;
 using UnityEngine.UIElements;
 using System.Net;
 using UnityEngine.InputSystem.HID;
+using Microsoft.MixedReality.Toolkit.UI;
 //using System.Numerics;
 
 public class MeshController : MonoBehaviour, IOnEventCallback
 {
-    public GameObject loadedMesh = default;
-    
+    public Mesh loadedMesh = default;
+
     private bool canSpawn = true;
 
     //These fields will probably be removed soon. Since all meshes are children of the Mesh Holder,
@@ -56,13 +57,15 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     [SerializeField] public float effectRadius = 0.05f;
     [SerializeField] public MainMenu mainMenu = default;
     [SerializeField] private SketchController sketchController = default;
-    [SerializeField] public GameObject defaultMesh = default;
-    [SerializeField] private GameObject defaultGameObject = default;
+    //[SerializeField] public GameObject defaultMesh = default;
+    [SerializeField] public GameObject defaultGameObject = default;
     [SerializeField] private GameObject spawnPoint = default;
     [SerializeField] private GameObject meshParent = default;
     [SerializeField] private Material spawnShaderMaterial = default;
     [SerializeField] private Material defaultMaterial = default;
     [SerializeField] private GameObject pointerPrefab = default;
+    [SerializeField] public MeshSaverLoader MeshSaveLoad = default;
+    //[SerializeField] public GameObject parentPrefab = default;
 
     //Unity functions
     void Start()
@@ -70,6 +73,8 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         children = new List<GameObject>();
         childMeshs = new List<Mesh>();
         childMeshColliders = new List<MeshCollider>();
+        effectScale = mainMenu.sketchScaleSliderVal * mainMenu.sketchSculptScale;
+        effectRadius = mainMenu.sketchRadiusSliderVal * (mainMenu.max_radius - mainMenu.min_radius) + mainMenu.min_radius;
 
         for (int i = 0; i < meshParent.transform.childCount; i++)
         {
@@ -92,7 +97,8 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         if (mainMenu.mode == MainMenu.Mode.Sculpt || mainMenu.mode == MainMenu.Mode.Sculpt_Push_Linear 
             || mainMenu.mode == MainMenu.Mode.Sculpt_Push_Gaussian || mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Linear 
             || mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Gaussian || mainMenu.mode == MainMenu.Mode.Sketch_Draw 
-            || mainMenu.mode == MainMenu.Mode.Select_Move)
+            || mainMenu.mode == MainMenu.Mode.Select_Move || mainMenu.mode == MainMenu.Mode.Select_Save 
+            || mainMenu.mode == MainMenu.Mode.Select_Load_Saved)
         {
             //Check for any air taps from either hand
             for (int i = 0; i < 2; i++)
@@ -138,7 +144,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                                             {
                                                 GameObject hitGO = hit.collider.gameObject;
                                                 //Debug.Log($"iIt Point {hit.point}");
-                                                ShortTap(hit.point, hit.normal, hitGO);
+                                                ShortTap(hit.point, endPoint, hit.normal, hitGO);
                                             }
                                         }
                                     }
@@ -179,13 +185,20 @@ public class MeshController : MonoBehaviour, IOnEventCallback
                                                 LayerMask mask = LayerMask.GetMask("Mesh", "Whiteboard", "Spatial Awareness");
                                                 if (Physics.Raycast(startPoint, endPoint - startPoint, out var hit, Mathf.Infinity, mask)) // get normal at surface hit
                                                 {
-                                                    Quaternion normalOrientation = Quaternion.LookRotation(Vector3.up, hit.normal);
+                                                    if (!(hit.collider.gameObject.layer == LayerMask.NameToLayer("Mesh") && mainMenu.mode == MainMenu.Mode.Select_Move))
+                                                    {
+                                                        Quaternion orientation = Quaternion.identity;
+                                                        if (Vector3.Dot(Vector3.up, hit.normal) < 0)
+                                                        {
+                                                            orientation = Quaternion.LookRotation(Vector3.up, hit.normal);
+                                                        }
 
-                                                    //Quaternion orientationTowardsHead = Quaternion.LookRotation(handPosition - headPosition, Vector3.up);
-                                                    GameObject go = PhotonNetwork.Instantiate(pointerPrefab.name, endPoint, normalOrientation);
-                                                    go.transform.localScale = Vector3.one * 0.1f;
+                                                        //Quaternion orientationTowardsHead = Quaternion.LookRotation(handPosition - headPosition, Vector3.up);
+                                                        GameObject go = PhotonNetwork.Instantiate(pointerPrefab.name, endPoint, orientation);
+                                                        //go.transform.localScale = Vector3.one * 0.1f;
 
-                                                    StartCoroutine(DestroyObjectDelayed(go, 5f));
+                                                        StartCoroutine(DestroyObjectDelayed(go, 5f));
+                                                    }
                                                 }  
                                             }
                                         }
@@ -206,7 +219,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     /// Called when a user is air tapping for a short time.
     /// </summary>
     /// <param name="handPosition">Location where tap was registered</param>
-    private async void ShortTap(Vector3 hitPoint, Vector3 surfaceNormal, GameObject hitGO)
+    private async void ShortTap(Vector3 hitPoint,Vector3 endpoint, Vector3 surfaceNormal, GameObject hitGO)
     {
         if (hitGO == null)
         {
@@ -216,30 +229,38 @@ public class MeshController : MonoBehaviour, IOnEventCallback
 
         Matrix4x4 localToWorld = hitGO.transform.localToWorldMatrix;
         Matrix4x4 worldToLocal = hitGO.transform.worldToLocalMatrix;
-
+        Debug.Log($"Mode: {mainMenu.mode}");
         if (mainMenu.mode == MainMenu.Mode.Sculpt_Push_Linear)//(editingMode == EditingMode.VertexPush)
         {
             audioData.PlayOneShot(createAudio);
-            VertexPushLinearEvent(localToWorld, worldToLocal, hitPoint, surfaceNormal);
+            VertexPushLinearEvent(localToWorld, worldToLocal, hitPoint, surfaceNormal,hitGO.name);
         }
         else if (mainMenu.mode == MainMenu.Mode.Sculpt_Push_Gaussian)//(editingMode == EditingMode.VertexPush)
         {
             audioData.PlayOneShot(createAudio);
-            VertexPushGaussianEvent(localToWorld, worldToLocal, hitPoint, surfaceNormal);
+            VertexPushGaussianEvent(localToWorld, worldToLocal, hitPoint, surfaceNormal, hitGO.name);
         }
         else if (mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Linear)//(editingMode == EditingMode.VertexPush)
         {
             audioData.PlayOneShot(createAudio);
-            VertexPullLinearEvent(localToWorld, worldToLocal, hitPoint, surfaceNormal);
+            VertexPullLinearEvent(localToWorld, worldToLocal, hitPoint, surfaceNormal, hitGO.name);
         }
         else if (mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Gaussian)//(editingMode == EditingMode.VertexPush)
         {
             audioData.PlayOneShot(createAudio);
-            VertexPullGaussianEvent(localToWorld, worldToLocal, hitPoint, surfaceNormal);
+            VertexPullGaussianEvent(localToWorld, worldToLocal, hitPoint, surfaceNormal, hitGO.name);
         }
         else if (mainMenu.mode == MainMenu.Mode.Sketch_Draw)
         {
             sketchController.AddPoint(hitPoint);
+        }
+        else if (mainMenu.mode == MainMenu.Mode.Select_Save)
+        {
+            MeshSaveLoad.saver_initialize(hitPoint, endpoint, hitGO);
+        }
+        else if (mainMenu.mode == MainMenu.Mode.Select_Load_Saved)
+        {
+            MeshSaveLoad.LoadStart();
         }
     }
     // </ShortTap>
@@ -259,29 +280,29 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         {
             addNewMeshResponse(photonEvent.CustomData);
         }
-        if (eventCode == ModifyVerticesNearPointEventCode)
-        {
-            modifyVerticesNearPointResponse(photonEvent.CustomData, riseNearCenter);
-        }
+        //if (eventCode == ModifyVerticesNearPointEventCode)
+        //{
+        //    modifyVerticesNearPointResponse(photonEvent.CustomData, riseNearCenter);
+        //}
         if (eventCode == AddVertexEventCode)
         {
             addVertexToMeshResponse(photonEvent.CustomData);
         }
         if (eventCode == VertexPushLinearEventCode)
         {
-            VertexManipulatorResponse(photonEvent.CustomData, PullLinearNearHitpoint);
+            VertexManipulatorResponse(photonEvent.CustomData, LinearNearHitpoint);
         }
         if (eventCode == VertexPushGaussianEventCode)
         {
-            VertexManipulatorResponse(photonEvent.CustomData, PullGaussianNearHitpoint);
+            VertexManipulatorResponse(photonEvent.CustomData, GaussianNearHitpoint);
         }
         if (eventCode == VertexPullLinearEventCode)
         {
-            VertexManipulatorResponse(photonEvent.CustomData, PullLinearNearHitpoint);
+            VertexManipulatorResponse(photonEvent.CustomData, LinearNearHitpoint);
         }
         if (eventCode == VertexPullGaussianEventCode)
         {
-            VertexManipulatorResponse(photonEvent.CustomData, PullGaussianNearHitpoint);
+            VertexManipulatorResponse(photonEvent.CustomData, GaussianNearHitpoint);
         }
     }
 
@@ -301,23 +322,86 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     // </destroyObjectDelayed>
 
     //Here are networking functions 
-    public void addNewMeshEvent(Mesh mesh, Vector3 spawnPosition)
-    {
-        object[] content = { (object)mesh, (object)spawnPosition };
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(AddNewMeshEventCode, content, raiseEventOptions, SendOptions.SendReliable);
-    }
-    public void addNewMeshResponse(object photonData)
-    {
-        Mesh data = (Mesh)((object[])photonData)[0];
-        Vector3 spawnPosition = (Vector3)((object[])photonData)[1];
-        GameObject child = new GameObject();
+    //public void addNewMeshEvent(Mesh mesh, Vector3 spawnPosition)
+    //{
+    //    object[] content = { (object)mesh, (object)spawnPosition };
+    //    RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+    //    PhotonNetwork.RaiseEvent(AddNewMeshEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+    //}
+    //public void addNewMeshResponse(object photonData)
+    //{
+    //    Mesh data = (Mesh)((object[])photonData)[0];
+    //    Vector3 spawnPosition = (Vector3)((object[])photonData)[1];
 
-        // add necessary components
-        MeshFilter mFilter = child.AddComponent<MeshFilter>();
-        mFilter.mesh = data;
-        child.AddComponent<MeshCollider>();
-        child.AddComponent<MeshRenderer>();
+    //    GameObject child = PhotonNetwork.Instantiate(parentPrefab.name, spawnPosition + meshParent.transform.position,Quaternion.identity);
+    //    Debug.Log($"child view id{child.GetPhotonView().ViewID}");
+
+    //    GameObject child2 = PhotonNetwork.Instantiate("Cube", Vector3.zero, Quaternion.identity);
+
+    //    Debug.Log($"child2 view id{child2.GetPhotonView().ViewID}");
+    //    child2.transform.parent = meshParent.transform;
+
+    //    Debug.Log($"child2 view id{child2.GetPhotonView().ViewID}");
+
+    //    //GameObject child = new GameObject();
+
+    //    // add necessary components
+    //    //MeshFilter mFilter = child.AddComponent<MeshFilter>();
+    //    MeshFilter mFilter = child.GetComponent<MeshFilter>();
+    //    MeshCollider mCollider = child.GetComponent<MeshCollider>();
+
+    //    mFilter.mesh = data;
+    //    mCollider.sharedMesh = data;
+    //    //child.AddComponent<MeshCollider>();
+    //    //child.AddComponent<MeshRenderer>();
+
+    //    //parent.AddComponent<ObjectManipulator>();
+    //    //parent.AddComponent<OwnershipHandler>();
+    //    //parent.AddComponent<NearInteractionGrabbable>();
+    //    //PhotonView ph = child.AddComponent<PhotonView>();
+    //    //PhotonNetwork.AllocateViewID(ph);
+    //    //PhotonTransformView ptv = child.AddComponent<PhotonTransformView>();
+
+    //    //ph.ObservedComponents.Add(ptv);
+
+    //    // wire up animator
+    //    Animator animator = child.AddComponent<Animator>();
+    //    animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+    //    animator.updateMode = AnimatorUpdateMode.Normal;
+    //    var runtimeAnimatorController = (RuntimeAnimatorController)UnityEngine.Resources.Load("AlphaCutoff");
+    //    animator.runtimeAnimatorController = runtimeAnimatorController;
+
+    //    // reparent, scale, position
+    //    child.transform.parent = meshParent.transform;
+    //    child.transform.position = spawnPosition + meshParent.transform.position;
+    //    child.transform.localScale = Vector3.one; //* 0.5f;
+    //    child.name = children.Count.ToString();
+
+    //    //child.transform.parent = parent.transform;
+    //    //child.transform.localPosition = Vector3.zero;
+    //    //child.transform.localScale = Vector3.one; //* 0.5f;
+    //    //child.name = children.Count.ToString();
+
+    //    // put in correct layer for raycasting
+    //    int LayerMesh = LayerMask.NameToLayer("Mesh");
+    //    child.layer = LayerMesh;
+
+    //    // start animator and remove spawn material after some time
+    //    StartCoroutine(ChangeSpawnShader(child));
+
+    //    // track the new mesh
+    //    children.Add(child);
+    //    childMeshs.Add(data);
+    //    RecalculateAllMeshes();
+    //}
+
+    private void WireSpawnedMesh(GameObject child, Mesh mesh, Vector3 spawnPosition)
+    {
+        MeshFilter mFilter = child.GetComponent<MeshFilter>();
+        MeshCollider mCollider = child.GetComponent<MeshCollider>();
+
+        mFilter.mesh = mesh;
+        //mCollider.sharedMesh = mesh;
 
         // wire up animator
         Animator animator = child.AddComponent<Animator>();
@@ -327,7 +411,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         animator.runtimeAnimatorController = runtimeAnimatorController;
 
         // reparent, scale, position
-        child.transform.parent = meshParent.transform;
+        child.transform.SetParent(meshParent.transform, true);
         child.transform.position = spawnPosition + meshParent.transform.position;
         child.transform.localScale = Vector3.one; //* 0.5f;
         child.name = children.Count.ToString();
@@ -341,103 +425,226 @@ public class MeshController : MonoBehaviour, IOnEventCallback
 
         // track the new mesh
         children.Add(child);
-        childMeshs.Add(data);
+        childMeshs.Add(mesh);
         RecalculateAllMeshes();
     }
 
-    private void modifyVerticesNearPointEvent(Vector3 point)
+    public void addNewMeshEvent(Mesh mesh, Vector3 spawnPosition)
     {
-        Vector3 content = point;
-        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        PhotonNetwork.RaiseEvent(ModifyVerticesNearPointEventCode, content, raiseEventOptions, SendOptions.SendReliable);
-    }
-    //f is a function of the form (current vertex position, response point) -> new vertex position
-    private void modifyVerticesNearPointResponse(object photonData, Func<Vector3, Vector3, Vector3> f)
-    {
-        Vector3 data = (Vector3)photonData;
-        Vector3 hitPoint = data;
+        GameObject child = PhotonNetwork.InstantiateRoomObject(defaultGameObject.name, spawnPosition, Quaternion.identity);
+        PhotonView pv = child.GetComponent<PhotonView>();
 
-        //iterate through all child meshes
-        for (int i = 0; i < children.Count; i++)
+        Mesh mesh2 = new Mesh();
+        mesh2.vertices = mesh.vertices;
+        mesh2.triangles = mesh.triangles;
+        mesh2.normals = mesh.normals;
+        mesh2.uv = mesh.uv;
+        mesh2.uv2 = mesh.uv2;
+
+        WireSpawnedMesh(child, mesh2, spawnPosition);
+
+        object[] data = new object[]
         {
-            Mesh currMesh = childMeshs[i];
-            Vector3[] changedVertices = currMesh.vertices;
-            for (int v = 0; v < currMesh.vertices.Length; v++)
-            {
-                changedVertices[v] = f(changedVertices[v], hitPoint);
-            }
-            childMeshs[i].vertices = changedVertices;
-            RecalculateMesh(i);
+                child.transform.position, child.transform.rotation, pv.ViewID, (object)mesh
+        };
+
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions
+        {
+            Receivers = ReceiverGroup.Others,
+            CachingOption = EventCaching.AddToRoomCache
+        };
+
+        SendOptions sendOptions = new SendOptions
+        {
+            Reliability = true
+        };
+
+        PhotonNetwork.RaiseEvent(AddNewMeshEventCode, data, raiseEventOptions, sendOptions);
+    }
+
+    public void addNewMeshResponse(object photonData)
+    {
+        object[] data = (object[])photonData;
+        Vector3 spawnPosition = (Vector3)data[0];
+        Quaternion spawnRotation = (Quaternion)data[1];
+        int viewId = (int)data[2];
+        Mesh mesh = (Mesh)data[3];
+
+        GameObject child = PhotonView.Find(viewId).gameObject;
+
+        WireSpawnedMesh(child, mesh, spawnPosition);
+    }
+
+    public void ToggleManipulability(bool _enable)
+    {
+
+        foreach (GameObject child in children)
+        {
+            child.GetComponent<ObjectManipulator>().enabled = _enable;
+            child.GetComponent<NearInteractionGrabbable>().enabled = _enable;
         }
     }
 
-    private void VertexPushLinearEvent(Matrix4x4 localToWorld, Matrix4x4 worldToLocal, Vector3 point, Vector3 surfaceNormal)
+    //private void modifyVerticesNearPointEvent(Vector3 point)
+    //{
+    //    Vector3 content = point;
+    //    RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+    //    PhotonNetwork.RaiseEvent(ModifyVerticesNearPointEventCode, content, raiseEventOptions, SendOptions.SendReliable);
+    //}
+    ////f is a function of the form (current vertex position, response point) -> new vertex position
+    //private void modifyVerticesNearPointResponse(object photonData, Func<Vector3, Vector3, Vector3> f)
+    //{
+    //    Vector3 data = (Vector3)photonData;
+    //    Vector3 hitPoint = data;
+
+    //    //iterate through all child meshes
+    //    for (int i = 0; i < children.Count; i++)
+    //    {
+    //        Mesh currMesh = childMeshs[i];
+    //        Vector3[] changedVertices = currMesh.vertices;
+    //        for (int v = 0; v < currMesh.vertices.Length; v++)
+    //        {
+    //            changedVertices[v] = f(changedVertices[v], hitPoint);
+    //        }
+    //        childMeshs[i].vertices = changedVertices;
+    //        RecalculateMesh(i);
+    //    }
+    //}
+
+    private void VertexPushLinearEvent(Matrix4x4 localToWorld, Matrix4x4 worldToLocal, Vector3 point, Vector3 surfaceNormal, string name)
     {
-        object[] content = { (object)point, (object)(-1 * surfaceNormal), (object)localToWorld, (object)worldToLocal };
+        float[] local2world = new float[16];
+        float[] world2local = new float[16];
+        float[] manipulation_params = new float[] { effectRadius, effectScale };
+
+        for (int i = 0; i < 16; i++)
+        {
+            local2world[i] = localToWorld[i / 4, i % 4];
+        }
+        for (int i = 0; i < 16; i++)
+        {
+            world2local[i] = worldToLocal[i / 4, i % 4];
+        }
+        object[] content = { (object)point, (object)(-1 * surfaceNormal), (object)local2world, (object)world2local,(object)name, (object)manipulation_params };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
         PhotonNetwork.RaiseEvent(VertexPushLinearEventCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
-    private void VertexPushGaussianEvent(Matrix4x4 localToWorld, Matrix4x4 worldToLocal, Vector3 point, Vector3 surfaceNormal)
+    private void VertexPushGaussianEvent(Matrix4x4 localToWorld, Matrix4x4 worldToLocal, Vector3 point, Vector3 surfaceNormal, string name)
     {
-        object[] content = { (object)point, (object)(-1 * surfaceNormal), (object)localToWorld, (object)worldToLocal };
+        float[] local2world = new float[16];
+        float[] world2local = new float[16];
+        float[] manipulation_params = new float[] { effectRadius, effectScale };
+
+        for (int i = 0; i < 16; i++)
+        {
+            local2world[i] = localToWorld[i / 4, i % 4];
+        }
+        for (int i = 0; i < 16; i++)
+        {
+            world2local[i] = worldToLocal[i / 4, i % 4];
+        }
+        object[] content = { (object)point, (object)(-1 * surfaceNormal), (object)local2world, (object)world2local, (object)name, (object)manipulation_params };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
         PhotonNetwork.RaiseEvent(VertexPushGaussianEventCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
-    private void VertexPullLinearEvent(Matrix4x4 localToWorld, Matrix4x4 worldToLocal, Vector3 point, Vector3 surfaceNormal)
+    private void VertexPullLinearEvent(Matrix4x4 localToWorld, Matrix4x4 worldToLocal, Vector3 point, Vector3 surfaceNormal,string name)
     {
-        object[] content = { (object)point, (object)(surfaceNormal), (object)localToWorld, (object)worldToLocal };
+        float[] local2world = new float[16];
+        float[] world2local = new float[16];
+        float[] manipulation_params = new float[] { effectRadius, effectScale };
+
+        for (int i = 0; i < 16; i++)
+        {
+            local2world[i] = localToWorld[i / 4, i % 4];
+        }
+        for (int i = 0; i < 16; i++)
+        {
+            world2local[i] = worldToLocal[i / 4, i % 4];
+        }
+        object[] content = { (object)point, (object)(surfaceNormal), (object)local2world, (object)world2local, (object)name, (object)manipulation_params };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
         PhotonNetwork.RaiseEvent(VertexPullLinearEventCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
-    private void VertexPullGaussianEvent(Matrix4x4 localToWorld, Matrix4x4 worldToLocal, Vector3 point, Vector3 surfaceNormal)
+    private void VertexPullGaussianEvent(Matrix4x4 localToWorld, Matrix4x4 worldToLocal, Vector3 point, Vector3 surfaceNormal, string name)
     {
-        object[] content = { (object)point, (object)(surfaceNormal), (object)localToWorld, (object)worldToLocal };
+        float[] local2world = new float[16];
+        float[] world2local = new float[16];
+        float[] manipulation_params = new float[] { effectRadius, effectScale };
+        for (int i = 0; i < 16; i++)
+        {
+            local2world[i] = localToWorld[i / 4,i % 4];
+        }
+        for (int i = 0; i < 16; i++)
+        {
+            world2local[i] = worldToLocal[i / 4,i % 4];
+        }
+
+        object[] content = { (object)point, (object)(surfaceNormal), (object)local2world, (object)world2local, (object)name,(object)manipulation_params };
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
         PhotonNetwork.RaiseEvent(VertexPullGaussianEventCode, content, raiseEventOptions, SendOptions.SendReliable);
     }
 
     //f is a function of the form (current vertex position, response point) -> new vertex position
-    private void VertexManipulatorResponse(object photonData, Func<Vector3, Vector3, Vector3, Vector3> f)
+    private void VertexManipulatorResponse(object photonData, Func<Vector3, Vector3, Vector3, float[], Vector3> f)
     {
         // fill in hitPoint and surfaceNormal
         //GameObject hitGO = default;
         Matrix4x4 localToWorld = default;
         Matrix4x4 worldToLocal = default;
+        float[] world2local = new float[16];
+        float[] local2world = new float[16];
         Vector3 hitPoint = Vector3.zero;
         Vector3 surfaceNormal = Vector3.zero;
 
         hitPoint = (Vector3)((object[])photonData)[0];
         surfaceNormal = (Vector3)((object[])photonData)[1];
-        localToWorld = (Matrix4x4)((object[])photonData)[2];
-        worldToLocal = (Matrix4x4)((object[])photonData)[3];
+        local2world = (float[])((object[])photonData)[2];
+        world2local = (float[])((object[])photonData)[3];
+        string name = (string)((object[])photonData)[4];
+        float[] manipulation_params = (float[])((object[])photonData)[5];
 
+        for (int i = 0; i < 16; i++)
+        {
+            localToWorld[i / 4,i % 4] = local2world[i];
+        }
+        for (int i = 0; i < 16; i++)
+        {
+            worldToLocal[i / 4,i % 4] = world2local[i];
+        }
         //Matrix4x4 localToWorld = hitGO.transform.localToWorldMatrix;
         //Matrix4x4 worldToLocal = hitGO.transform.worldToLocalMatrix;
 
+        Debug.Log($"name: {name}");
         //iterate through all child meshes
         for (int i = 0; i < children.Count; i++)
         {
-            Mesh currMesh = childMeshs[i];
-            Vector3[] changedVertices = currMesh.vertices;
-            for (int j = 0; j < currMesh.vertices.Length; j++)
+            Debug.Log($"i: {i}");
+            Debug.Log(i.ToString() == name);
+
+            if (i.ToString() == name)
             {
-                //Debug.Log($"{currMesh.vertices[j].x.ToString("F32")}, {currMesh.vertices[j].y.ToString("F32")}, {currMesh.vertices[j].z.ToString("F32")}");
+                Mesh currMesh = childMeshs[i];
+                Vector3[] changedVertices = currMesh.vertices;
+                for (int j = 0; j < currMesh.vertices.Length; j++)
+                {
+                    //Debug.Log($"{currMesh.vertices[j].x.ToString("F32")}, {currMesh.vertices[j].y.ToString("F32")}, {currMesh.vertices[j].z.ToString("F32")}");
 
-                Vector3 worldV = localToWorld.MultiplyPoint3x4(currMesh.vertices[j]);
-                //Debug.Log($"{worldV.x}, {worldV.y}, {worldV.z}");
+                    Vector3 worldV = localToWorld.MultiplyPoint3x4(currMesh.vertices[j]);
+                    //Debug.Log($"{worldV.x}, {worldV.y}, {worldV.z}");
 
-                Vector3 newWorldV = f(worldV, hitPoint, surfaceNormal);
-                //Debug.Log($"{newWorldV.x}, {newWorldV.y}, {newWorldV.z}");
+                    Vector3 newWorldV = f(worldV, hitPoint, surfaceNormal,manipulation_params);
+                    //Debug.Log($"{newWorldV.x}, {newWorldV.y}, {newWorldV.z}");
 
-                Vector3 newLocalV = worldToLocal.MultiplyPoint3x4(newWorldV);
-                //Debug.Log($"{newLocalV.x.ToString("F32")}, {newLocalV.y.ToString("F32")}, {newLocalV.z.ToString("F32")}");
+                    Vector3 newLocalV = worldToLocal.MultiplyPoint3x4(newWorldV);
+                    //Debug.Log($"{newLocalV.x.ToString("F32")}, {newLocalV.y.ToString("F32")}, {newLocalV.z.ToString("F32")}");
 
-                changedVertices[j] = newLocalV;
+                    changedVertices[j] = newLocalV;
+                }
+                childMeshs[i].vertices = changedVertices;
+                RecalculateMesh(i);
             }
-            childMeshs[i].vertices = changedVertices;
-            RecalculateMesh(i);
         }
     }
 
@@ -503,45 +710,49 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     }
     void RecalculateMesh(int i)
     {
-        children[i].GetComponent<MeshFilter>().sharedMesh = childMeshs[i];
+        children[i].GetComponent<MeshFilter>().mesh = childMeshs[i];
         children[i].GetComponent<MeshCollider>().sharedMesh = childMeshs[i];
-        children[i].GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
+        children[i].GetComponent<MeshFilter>().mesh.RecalculateNormals();
+        //children[i].GetComponent<MeshFilter>().sharedMesh = childMeshs[i];
+        //children[i].GetComponent<MeshCollider>().sharedMesh = childMeshs[i];
+        //children[i].GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
     }
 
     //Here are some helper functions which you should NOT mind
-    private Vector3 riseNearCenter(Vector3 point, Vector3 center)
-    {
-        float distance = (point - center).magnitude;
+    //private Vector3 riseNearCenter(Vector3 point, Vector3 center)
+    //{
+    //    float distance = (point - center).magnitude;
 
-        if (distance < effectRadius)//1.5)//3)
-        {
-            Vector3 newV = point * ((distance * distance) / 9) + (center + new Vector3(0, 1, 0)) * (1 - ((distance * distance) / 9));
-            Debug.Log($"center: {center}");
-            Debug.Log($"distance: {distance}");
-            Debug.Log($"oldV: {point}");
-            Debug.Log($"newV: {newV}");
-            return newV;
-        }
-        else
-        {
-            return point;
-        }
-    }
+    //    if (distance < effectRadius)//1.5)//3)
+    //    {
+    //        Vector3 newV = point * ((distance * distance) / 9) + (center + new Vector3(0, 1, 0)) * (1 - ((distance * distance) / 9));
+    //        Debug.Log($"center: {center}");
+    //        Debug.Log($"distance: {distance}");
+    //        Debug.Log($"oldV: {point}");
+    //        Debug.Log($"newV: {newV}");
+    //        return newV;
+    //    }
+    //    else
+    //    {
+    //        return point;
+    //    }
+    //}
 
     /// <summary>
-    /// Linear pull to deform vertices near hitpoint on mesh
+    /// Linear deform vertices near hitpoint on mesh
     /// </summary>
     /// <param name="point"></param>
     /// <param name="center"></param>
     /// <returns></returns>
-    private Vector3 PullLinearNearHitpoint(Vector3 vertex, Vector3 hitPoint, Vector3 surfaceNormal)
+    private Vector3 LinearNearHitpoint(Vector3 vertex, Vector3 hitPoint, Vector3 surfaceNormal,float[] mani_params)
     {
         //Debug.Log($"{vertex.x}, {vertex.y}, {vertex.y}");
         float distance = (vertex - hitPoint).magnitude;
-
-        if (distance < effectRadius)//0.25)//3)
+        float _effectRadius = mani_params[0];
+        float _effectScale = mani_params[1];
+        if (distance < _effectRadius)//0.25)//3)
         {
-            Vector3 newV = vertex + (effectScale * surfaceNormal) * (1.0f - (distance / effectRadius));
+            Vector3 newV = vertex + (_effectScale * surfaceNormal) * (1.0f - (distance / _effectRadius));
             return newV;
         }
         else
@@ -551,21 +762,22 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     }
 
     /// <summary>
-    /// Gaussian pull to deform vertices near hitpoint on mesh
+    /// Gaussian deform vertices near hitpoint on mesh
     /// </summary>
     /// <param name="vertex"></param>
     /// <param name="hitPoint"></param>
     /// <param name="surfaceNormal"></param>
     /// <returns></returns>
-    private Vector3 PullGaussianNearHitpoint(Vector3 vertex, Vector3 hitPoint, Vector3 surfaceNormal)
+    private Vector3 GaussianNearHitpoint(Vector3 vertex, Vector3 hitPoint, Vector3 surfaceNormal, float[] mani_params)
     {
         //Debug.Log($"{vertex.x}, {vertex.y}, {vertex.y}");
         float distance = (vertex - hitPoint).magnitude;
-
-        if (distance < effectRadius)//0.25)//3)
+        float _effectRadius = mani_params[0];
+        float _effectScale = mani_params[1];
+        if (distance < _effectRadius)//0.25)//3)
         {
-            float b = (distance * distance) / (2.0f * (effectRadius * effectRadius / 4.0f));
-            Vector3 newV = vertex + (effectScale * surfaceNormal) * (float)Math.Exp(-b);
+            float b = (distance * distance) / (2.0f * (_effectRadius * _effectRadius / 4.0f));
+            Vector3 newV = vertex + (_effectScale * surfaceNormal) * (float)Math.Exp(-b);
             return newV;
         }
         else
@@ -610,6 +822,13 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         canSpawn = true;
     }
 
+    [PunRPC]
+    private void PunRPC_LoadMesh(object mesh,Vector3 spawnPosition)
+    {
+        //Vector3 spawnPosition = spawnPoint.transform.position;
+        addNewMeshEvent((Mesh)mesh, spawnPosition - meshParent.transform.position);
+    }
+
     /// <summary>
     /// There is typically delay in between when addNewMeshEvent is called and when it is recieved which causes the position of 
     /// tracked hand's spawnpoint to change.
@@ -622,8 +841,10 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         yield return new WaitForSeconds(time);
 
         // Code to execute after the delay
-        Vector3 spawnPosition = spawnPoint.transform.position;
-        addNewMeshEvent(loadedMesh.GetComponent<MeshFilter>().mesh, spawnPosition - meshParent.transform.position);
+        //Vector3 spawnPosition = spawnPoint.transform.position;
+        //addNewMeshEvent(loadedMesh, spawnPosition - meshParent.transform.position);
+        PhotonView pv = gameObject.GetPhotonView();
+        pv.RPC("PunRPC_LoadMesh", RpcTarget.MasterClient,(object)loadedMesh, spawnPoint.transform.position);
     }
 
     /// <summary>

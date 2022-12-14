@@ -28,7 +28,7 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: us
+  DevRegion: eu
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
@@ -67,6 +67,7 @@ MonoBehaviour:
   - PunRPC_CreateMesh
   - PunRPC_EmptyCloseScrollMeshMenu
   - PunRPC_GetMeshList
+  - PunRPC_LoadMesh
   DisableAutoOpenWizard: 1
   ShowSettings: 1
-  DevRegionSetOnce: 0
+  DevRegionSetOnce: 1

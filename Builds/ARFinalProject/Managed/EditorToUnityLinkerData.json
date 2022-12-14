@@ -781,6 +781,13 @@
         {
             "managedAssemblyName": "Assembly-CSharp.dll",
             "nativeClass": "",
+            "fullManagedTypeName": "MultiUserCapabilities.OwnershipHandler",
+            "moduleName": "",
+            "usedInScenes": []
+        },
+        {
+            "managedAssemblyName": "Assembly-CSharp.dll",
+            "nativeClass": "",
             "fullManagedTypeName": "MultiUserCapabilities.PhotonLobby",
             "moduleName": "",
             "usedInScenes": []

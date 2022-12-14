@@ -79,6 +79,7 @@
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\SystemKeyboardExample.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\ToggleBoundingBox.cs" />
     <Compile Include="Assets\MRTK.Tutorials.MultiUserCapabilities\Scripts\PhotonLobby.cs" />
+    <Compile Include="Assets\Resources\Scripts\TCPClient.cs" />
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\SharedCursorFocus.cs" />
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\OnHoldHover.cs" />
     <Compile Include="Assets\MRTK.Tutorials.AzureSpatialAnchors\Scripts\AnchorModuleScript.cs" />
@@ -107,6 +108,8 @@
     <Compile Include="Assets\MRTK.Tutorials.GettingStarted\Scripts\PlacementHintsController.cs" />
     <Compile Include="Assets\Resources\Scripts\MeshManipulation\SketchPointInit.cs" />
     <Compile Include="Assets\Resources\Scripts\WorldLocking\Startup.cs" />
+    <Compile Include="Assets\Resources\Scripts\MeshManipulation\MeshSaverLoader.cs" />
+    <Compile Include="Assets\Resources\Scripts\Pointer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Resources\Scripts\WorldLocking\SpacePinPublisherASA.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\RotateWithPan.cs" />
@@ -153,9 +156,6 @@
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\OnRouteParentHover.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\HandInteractionTouchRotate.cs" />
     <Compile Include="Assets\MRTK.Tutorials.GettingStarted\Scripts\DirectionalIndicatorController.cs" />
-    <Compile Include="Assets\Resources\Scripts\TCPClient.cs" />
-    <Compile Include="Assets\Resources\Scripts\MeshManipulation\MeshSaverLoader.cs" />
-    <Compile Include="Assets\Resources\Scripts\Pointer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -164,6 +164,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />
     <None Include="Assets\MRTK\Shaders\InstancedColored.shader" />
+    <None Include="Assets\MRTK\Shaders\MixedRealityTextMeshProSprite.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\MRTK\Shaders\ChannelPacker.shader" />
     <None Include="Assets\MRTK.Tutorials.MultiUserCapabilities\Version.txt" />

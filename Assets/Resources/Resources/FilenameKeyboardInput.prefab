@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 3415121053340963286}
   - component: {fileID: 3415121053340963285}
   - component: {fileID: 3415121053340963284}
-  - component: {fileID: 9043743786943296237}
   m_Layer: 5
   m_Name: FilenameKeyboardInput
   m_TagString: Untagged
@@ -160,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackedTargetType: 0
-  trackedHandness: 3
+  trackedHandedness: 3
   trackedHandJoint: 2
   transformOverride: {fileID: 0}
   additionalOffset: {x: 0, y: 0, z: 0}
@@ -210,24 +209,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualizationObject: {fileID: 0}
   interactableObject: {fileID: 0}
+  buttonBehavior: 0
   autoFollowAtDistance: 0
   autoFollowDistance: 2
   autoFollowTransformTarget: {fileID: 0}
   autoFollowTriggered:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &9043743786943296237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3415121053340963309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01e308811d97af9438c52576033d9b87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3415121054453097288
 GameObject:
   m_ObjectHideFlags: 0

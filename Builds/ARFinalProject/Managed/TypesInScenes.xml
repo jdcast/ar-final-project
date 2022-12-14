@@ -83,6 +83,7 @@
 		<type fullname="MultiUserCapabilities.FrameVisual" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.GenericNetSync" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.GenericNetworkManager" preserve="nothing"/>
+		<type fullname="MultiUserCapabilities.OwnershipHandler" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.PhotonLobby" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.PhotonRoom" preserve="nothing"/>
 		<type fullname="MultiUserCapabilities.PhotonUser" preserve="nothing"/>

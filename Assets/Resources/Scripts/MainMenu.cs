@@ -26,6 +26,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject sculptScaleSlider = default;
     [SerializeField] GameObject sculptRadiusSlider = default;
     [SerializeField] MeshController meshController = default;
+    [SerializeField] MeshSaverLoader meshSaverLoader = default;
     [SerializeField] GameObject whiteboard = default;
     [SerializeField] SketchController sketchController = default;
     [SerializeField] GameObject selectSubmenuLoad = default;
@@ -38,16 +39,16 @@ public class MainMenu : MonoBehaviour
     private bool sculptSubmenuPullIsActive = false;
     private bool selectSubmenuLoadIsActive = false;
 
-    private float sketchEffectSliderVal = 0.5f;
-    private float sketchScaleSliderVal = 0.5f;
-    private float sculptEffectSliderVal = 0.5f;
-    private float sculptScaleSliderVal = 0.5f;
-    private float sketchRadiusSliderVal = 0.5f;
-    private float sculptRadiusSliderVal = 0.5f;
-    private float min_radius = 0.05f;
-    private float max_radius = 3.0f;
+    public float sketchEffectSliderVal = 0.5f;
+    public float sketchScaleSliderVal = 0.5f;
+    public float sculptEffectSliderVal = 0.5f;
+    public float sculptScaleSliderVal = 0.5f;
+    public float sketchRadiusSliderVal = 0.5f;
+    public float sculptRadiusSliderVal = 0.5f;
+    public float min_radius = 0.005f;
+    public float max_radius = 0.3f;
 
-    [SerializeField] private float sketchSculptScale = 10f;
+    [SerializeField] public float sketchSculptScale = 10f;
 
     public enum Mode
     {
@@ -85,6 +86,7 @@ public class MainMenu : MonoBehaviour
         sketchMenuIsActive = !sketchMenuIsActive;
         sketchMenu.SetActive(sketchMenuIsActive);
         sketchMenuSliders.SetActive(sketchMenuIsActive);
+        meshController.ToggleManipulability(false);
 
         if (sketchMenuIsActive)
         {
@@ -113,6 +115,8 @@ public class MainMenu : MonoBehaviour
         sculptMenuIsActive = !sculptMenuIsActive;
         sculptMenu.SetActive(sculptMenuIsActive);
         sculptMenuSliders.SetActive(sculptMenuIsActive);
+        meshController.ToggleManipulability(false);
+        meshSaverLoader.keyboardInputContainer.SetActive(false);
 
         if (sculptMenuIsActive)
         {
@@ -138,6 +142,8 @@ public class MainMenu : MonoBehaviour
     {
         selectMenuIsActive = !selectMenuIsActive;
         selectMenu.SetActive(selectMenuIsActive);
+        meshController.ToggleManipulability(false);
+        meshSaverLoader.keyboardInputContainer.SetActive(false);
 
         if (selectMenuIsActive)
         {
@@ -156,6 +162,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleSketchDraw()
     {
+        meshSaverLoader.keyboardInputContainer.SetActive(false);
         if (mode != Mode.Sketch_Draw)
         {
             mode = Mode.Sketch_Draw;
@@ -231,6 +238,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleSelectSubmenuLoad()
     {
+        meshSaverLoader.keyboardInputContainer.SetActive(false);
         selectSubmenuLoadIsActive = !selectSubmenuLoadIsActive;
         selectSubmenuLoad.SetActive(selectSubmenuLoadIsActive);
 
@@ -245,17 +253,23 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleSelectSubmenuLoadDefault()
     {
+        meshSaverLoader.keyboardInputContainer.SetActive(false);
+        meshController.ToggleManipulability(false);
         mode = Mode.Select_Load_Default;
 
-        meshController.loadedMesh = meshController.defaultMesh;
+        meshController.loadedMesh = meshController.defaultGameObject.GetComponent<MeshFilter>().mesh;
     }
+
 
     /// <summary>
     /// Toggle submode under selectSubmenuLoad menu
     /// </summary>
     public void ToggleSelectSubmenuLoadSaved()
     {
+        meshSaverLoader.keyboardInputContainer.SetActive(false);
+        meshController.ToggleManipulability(false);
         mode = Mode.Select_Load_Saved;
+        meshSaverLoader.LoadStart();
     }
 
     /// <summary>
@@ -263,6 +277,8 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleSelectMove()
     {
+        meshController.ToggleManipulability(true);
+        meshSaverLoader.keyboardInputContainer.SetActive(false);
         mode = Mode.Select_Move;
 
         HideSelectSubmenuLoad();
@@ -273,6 +289,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleSelectSave()
     {
+        meshController.ToggleManipulability(false);
         mode = Mode.Select_Save;
 
         HideSelectSubmenuLoad();
@@ -283,6 +300,8 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleDebugWindow()
     {
+        meshController.ToggleManipulability(false);
+        meshSaverLoader.keyboardInputContainer.SetActive(false);
         debugWindowIsActive = !debugWindowIsActive;
         debugWindow.SetActive(debugWindowIsActive);
         //CoreServices.DiagnosticsSystem.ShowDiagnostics = debugWindowIsActive;

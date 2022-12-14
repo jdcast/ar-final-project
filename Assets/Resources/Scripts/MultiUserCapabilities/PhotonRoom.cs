@@ -25,7 +25,7 @@ namespace MultiUserCapabilities
         [SerializeField] private GameObject roomStatusDisplay = default;
         [SerializeField] private UnityEvent JoinedRoomEvent;
         [SerializeField] private Scripts.WorldLocking.SpacePinBinder spacePinBinder = default;
-        //[SerializeField] private GameObject TCPClient = default;
+        [SerializeField] private GameObject TCPClient = default;
 
         /// <summary>
         /// Progress indicator object for publisher status
@@ -241,7 +241,7 @@ namespace MultiUserCapabilities
             // connect to the TCP server if the old master client left and this is the new master client
             if (PhotonNetwork.IsMasterClient)
             {
-                //TCPClient.GetComponent<TCPClient>().Connect();
+               TCPClient.GetComponent<TCPClient>().Connect();
             }
         }
         public override void OnCreatedRoom()
@@ -251,7 +251,7 @@ namespace MultiUserCapabilities
             this.roomStatusDisplay.GetComponent<TextMeshPro>().text = $"Room Status: {this.roomStatus}";
 
             // connect to TCP server for later save/recall of data e.g. hold configurations
-            //TCPClient.GetComponent<TCPClient>().Connect();
+            TCPClient.GetComponent<TCPClient>().Connect();
         }
 
         public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)

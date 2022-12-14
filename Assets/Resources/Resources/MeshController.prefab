@@ -53,13 +53,13 @@ MonoBehaviour:
   effectRadius: 0.05
   mainMenu: {fileID: 0}
   sketchController: {fileID: 0}
-  defaultMesh: {fileID: 642409601530427218, guid: 5695a45d1e924fa4e892546839d04ed5, type: 3}
   defaultGameObject: {fileID: 642409601530427218, guid: e65f2815d33203a499927c9bb592d8f4, type: 3}
   spawnPoint: {fileID: 0}
   meshParent: {fileID: 0}
   spawnShaderMaterial: {fileID: 0}
   defaultMaterial: {fileID: 0}
-  pointerPrefab: {fileID: 0}
+  pointerPrefab: {fileID: 7427103364801571112, guid: a9dc704c924a8f040a6f6693a6d7232e, type: 3}
+  MeshSaveLoad: {fileID: 0}
 --- !u!82 &1793322021406470174
 AudioSource:
   m_ObjectHideFlags: 0
