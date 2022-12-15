@@ -1,0 +1,8 @@
+GpuStats.dll
+CoarseRelocUW.dll
+AzureSpatialAnchors.dll
+openxr_loader.dll
+FrozenWorldPlugin.dll
+PlaneFinding.dll
+
+MicStreamSelector.dll

@@ -29,7 +29,7 @@ using Scripts;
     [SerializeField] private MeshController meshController = default;
     private bool showScrollMeshMenu = false;
     public GameObject tapSphere;
-    private string SerializedMesh = null;
+    private string[] SerializedMesh = null;
     private bool showKeyboard = false;
 
     // room property key to access routes on server
@@ -57,13 +57,7 @@ using Scripts;
 
         gameObject.transform.localScale = Vector3.one * 0.05f;
         StartCoroutine(DestroyObjectDelayed(gameObject, .2f));
-        byte[] buffer = MeshSerializer.MeshToByteArray(hitGO.GetComponent<MeshFilter>().mesh);
-        SerializedMesh = System.Text.Encoding.UTF8.GetString(buffer, 0, buffer.Length);
-        Debug.Log($"Mesh length: {hitGO.GetComponent<MeshFilter>().mesh.vertices.Length}");
-        //Debug.Log($"Shared Mesh length: {hitGO.GetComponent<MeshFilter>().sharedMesh.vertices.Length}");
-        Debug.Log($"Serialized Mesh length: {SerializedMesh.Length}");
-        //SerializedMesh = MeshSerializer.MeshToByteArray(hitGO.GetComponent<MeshFilter>().sharedMesh).ToString();
-        //Debug.Log($"Serialized Mesh length: {SerializedMesh.Length}");
+        SerializedMesh = MeshSerializer.MeshToString(hitGO.GetComponent<MeshFilter>().mesh);
         ToggleKeyboardInput();
     }
 
@@ -85,7 +79,7 @@ using Scripts;
     }
 
     [PunRPC]
-    public async void PunRPC_CreateMesh(string filename, string SerializedMesh)
+    public async void PunRPC_CreateMesh(string filename, string[] SerializedMesh)
     {
         await tcpClient.SendFile(filename: filename, serializedMesh: SerializedMesh);
     }
@@ -158,8 +152,12 @@ using Scripts;
     private async void GetMesh(string mesh)
     {
         // list of hold names and their respective transforms
-        string mesh_file = await tcpClient.GetMesh(mesh);
-
+        Mesh mesh_file = (Mesh)MeshSerializer.StringToMesh(await tcpClient.GetMesh(mesh));
+        Debug.Log($"mesh_file length: {mesh_file.vertices.Length}");
+        Debug.Log($"mesh_file length: {mesh_file.uv.Length}");
+        Debug.Log($"mesh_file length: {mesh_file.uv2.Length}");
+        Debug.Log($"mesh_file length: {mesh_file.triangles.Length}");
+        Debug.Log($"mesh_file length: {mesh_file.normals.Length}");
         InstantiateMesh(mesh_file);
     }
 
@@ -193,11 +191,9 @@ using Scripts;
         }
     }
 
-    public void InstantiateMesh(string mesh_file)
+    public void InstantiateMesh(Mesh mesh_file)
     {
-        Mesh mesh = (Mesh)(meshSerializer.ByteArrayToMesh(Encoding.UTF8.GetBytes(mesh_file)));
-        meshController.loadedMesh = mesh;
-
+        meshController.loadedMesh = mesh_file;
     }
 
     public void ToggleKeyboardInput()
@@ -220,6 +216,14 @@ using Scripts;
     private void PunRPC_EmptyCloseScrollMeshMenu()
     {
         EmptyCloseScrollMeshMenu();
+    }
+
+    public void CloseScrollMenu()
+    {
+        if (showScrollMeshMenu)
+        {
+            EmptyCloseScrollMeshMenu();
+        }
     }
 
     private void EmptyCloseScrollMeshMenu()

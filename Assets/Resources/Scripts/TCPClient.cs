@@ -4,11 +4,13 @@
 /// 3. https://stackoverflow.com/questions/56194446/send-big-file-over-socket
 /// 4. https://nikhilroxtomar.medium.com/file-transfer-using-tcp-socket-in-python3-idiot-developer-c5cf3899819c
 
+using Microsoft.MixedReality.Toolkit.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Scripts
 {
@@ -35,7 +37,7 @@ namespace Scripts
         private StreamWriter writer;
         private StreamReader reader;
 
-        private int BUFFER_SIZE = 1024;
+        private int BUFFER_SIZE = 102400;
 
         public void Connect()
         {
@@ -126,7 +128,7 @@ namespace Scripts
         /// </summary>
         /// <param name="filename"></param>
         /// <returns></returns>
-        public async Task SendFile(string filename = "", string serializedMesh = "")
+        public async Task SendFile(string filename = "", string[] serializedMesh = null)
         {
             try
             {
@@ -162,7 +164,11 @@ namespace Scripts
                 //Debug.Log("sending file contents...");
 
                 // send file contents
-                writer.Write(serializedMesh);
+                string data = string.Join(";", serializedMesh);
+
+                // send line of file to server
+                //Debug.Log($"Tx: {s}");
+                writer.Write(data + "\0");
 
                 // get receipt confirmation
                 response = new char[BUFFER_SIZE]; // reset buffer so we don't accrue/read garabage accidentally for different size buffers
@@ -171,23 +177,25 @@ namespace Scripts
                 responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
                 if (responseStr.Length <= 0 || !responseStr.Equals("ready")) { return; }
 
+                // signal done to server
+                //Debug.Log("Tx: Finished");
                 writer.Write("done");
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e.ToString());
-            }
+                            }
+                            catch (Exception e)
+                {
+                    Debug.Log(e.ToString());
+                }
         }
 
         public void CloseConnection()
-        {
+{
 #if UNITY_EDITOR
-            stream.Close();
-            client.Close();
-            writer.Close();
-            reader.Close();
+    stream.Close();
+    client.Close();
+    writer.Close();
+    reader.Close();
 
-            stream = null;
+    stream = null;
 #else
         socket.Dispose();
         writer.Dispose();
@@ -195,23 +203,23 @@ namespace Scripts
 
         socket = null;
 #endif
-            writer = null;
-            reader = null;
-        }
+    writer = null;
+    reader = null;
+}
 
-        /// <summary>
-        /// Perform cleanup
-        /// NOTE: OnApplicationFocus used because OnDestroy are not reliabe on HL2 headset and also because OnApplicatoinQuit and OnDisable don't appear to
-        /// be called when the app is exited by user on HL2.  Also, not clear if this function is called on app crashes.  However, OnApplicationFocus gets
-        /// called if click out of play screen in Unity Play mode, which is annoying.  So we use OnDestroy when running on Unity Play mode.
-        /// https://stackoverflow.com/questions/28647118/detect-application-quit-with-unity
-        /// </summary>
+/// <summary>
+/// Perform cleanup
+/// NOTE: OnApplicationFocus used because OnDestroy are not reliabe on HL2 headset and also because OnApplicatoinQuit and OnDisable don't appear to
+/// be called when the app is exited by user on HL2.  Also, not clear if this function is called on app crashes.  However, OnApplicationFocus gets
+/// called if click out of play screen in Unity Play mode, which is annoying.  So we use OnDestroy when running on Unity Play mode.
+/// https://stackoverflow.com/questions/28647118/detect-application-quit-with-unity
+/// </summary>
 #if UNITY_EDITOR
-        private void OnDestroy()
-        {
-            writer.Write("closeSock");
-            CloseConnection();
-        }
+private void OnDestroy()
+{
+    writer.Write("closeSock");
+    CloseConnection();
+}
 #else
     void OnApplicationFocus(bool focus)
     {
@@ -224,173 +232,188 @@ namespace Scripts
     }
 #endif
 
-        /// <summary>
-        /// Retrieves the saved route from the server
-        /// TODO: maybe use serialization/deserialization and/or JSON?
-        /// </summary>
-        public async Task<string> GetMesh(string mesh)
-        {
-            // list of hold names and their respective transforms
-            string mesh_file;
+/// <summary>
+/// Retrieves the saved route from the server
+/// TODO: maybe use serialization/deserialization and/or JSON?
+/// </summary>
+public async Task<String[]> GetMesh(string mesh)
+{
+    // list of hold names and their respective transforms
+    string[] mesh_file = new String[5];
 
-            // notify server of endpoint
-            writer.Write("sendFile");
+    // notify server of endpoint
+    writer.Write("sendFile");
 
-            // get receipt
-            char[] response = new char[BUFFER_SIZE];
-            await reader.ReadAsync(response, 0, BUFFER_SIZE);
-            string responseStr = new string(response);
-            responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
-            if (responseStr.Length <= 0 || !responseStr.Equals("ready")) { return null; }
+    // get receipt
+    char[] response = new char[BUFFER_SIZE];
+    await reader.ReadAsync(response, 0, BUFFER_SIZE);
+    string responseStr = new string(response);
+    responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
+    if (responseStr.Length <= 0 || !responseStr.Equals("ready")) { return mesh_file; }
 
-            // notify server of route to retrieve
-            string filename = mesh + ".txt";
-            writer.Write(filename);
+    // notify server of route to retrieve
+    string filename = mesh + ".txt";
+    writer.Write(filename);
 
-            // get file line-by-line
-            //while (true)
-            //{
-            response = new char[BUFFER_SIZE]; // reset buffer so we don't accrue/read garabage accidentally for different size buffers
-            await reader.ReadAsync(response, 0, BUFFER_SIZE);
-            responseStr = new string(response);
-            responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
-            if (responseStr.Length <= 0 || responseStr.Equals("done")) { return null; }
+    // get file line-by-line
+    while (true)
+    {
+        response = new char[BUFFER_SIZE]; // reset buffer so we don't accrue/read garabage accidentally for different size buffers
+        await reader.ReadAsync(response, 0, BUFFER_SIZE);
+        responseStr = new string(response);
+        responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
+        if (responseStr.Length <= 0 || responseStr.Equals("done")) { break; }
 
-            // semi-colon delimited string with position and rotation comma-delimited of form:
-            // "holdname;transform.position;transform.rotation"
-            mesh_file = responseStr.ToString();
+        // semi-colon delimited string with position and rotation comma-delimited of form:
+        // "holdname;transform.position;transform.rotation"
+        mesh_file = responseStr.Split(';');
+        
 
-            writer.Write("done");
-            //}
-
-            return mesh_file;
-        }
-
-        public async Task<(List<string> holds, List<Vector3> positions, List<Quaternion> rotations)> GetRoute(string route)
-        {
-            // list of hold names and their respective transforms
-            List<string> holds = new List<string>();
-            List<Vector3> positions = new List<Vector3>();
-            List<Quaternion> rotations = new List<Quaternion>();
-
-            // notify server of endpoint
-            writer.Write("sendFile");
-
-            // get receipt
-            char[] response = new char[BUFFER_SIZE];
-            await reader.ReadAsync(response, 0, BUFFER_SIZE);
-            string responseStr = new string(response);
-            responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
-            if (responseStr.Length <= 0 || !responseStr.Equals("ready")) { return (holds, positions, rotations); }
-
-            // notify server of route to retrieve
-            string filename = route + ".txt";
-            writer.Write(filename);
-
-            // get file line-by-line
-            while (true)
-            {
-                response = new char[BUFFER_SIZE]; // reset buffer so we don't accrue/read garabage accidentally for different size buffers
-                await reader.ReadAsync(response, 0, BUFFER_SIZE);
-                responseStr = new string(response);
-                responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
-                if (responseStr.Length <= 0 || responseStr.Equals("done")) { break; }
-
-                // semi-colon delimited string with position and rotation comma-delimited of form:
-                // "holdname;transform.position;transform.rotation"
-                String[] holdInfo = responseStr.Split(';');
+        Debug.Log($"GetMesh: mesh_file length: {mesh_file.Length}");
+                Debug.Log($"GetMesh: mesh_file length: {mesh_file[0].Length}");
+                Debug.Log($"GetMesh: mesh_file length: {mesh_file[1].Length}");
+                Debug.Log($"GetMesh: mesh_file length: {mesh_file[2].Length}");
+                Debug.Log($"GetMesh: mesh_file length: {mesh_file[3].Length}");
+                Debug.Log($"GetMesh: mesh_file length: {mesh_file[4].Length}");
 
                 // collect hold name
-                holds.Add(holdInfo[0]);
-
-                // collect position
-                string[] positionStr = holdInfo[1].Split(',');
-                Vector3 position = new Vector3(float.Parse(positionStr[0].Trim()), float.Parse(positionStr[1].Trim()), float.Parse(positionStr[2].Trim()));
-                positions.Add(position);
-
-                // collect rotation
-                string[] rotationStr = holdInfo[2].Split(',');
-                Quaternion rotation = new Quaternion(float.Parse(rotationStr[0].Trim()),
-                    float.Parse(rotationStr[1].Trim()),
-                    float.Parse(rotationStr[2].Trim()),
-                    float.Parse(rotationStr[3].Trim()));
-                rotations.Add(rotation);
-
+                //mesh_file[0] = (holdInfo[0]);
+                //mesh_file[1] = (holdInfo[1]);
+                //mesh_file[2] = (holdInfo[2]);
+                //mesh_file[3] = (holdInfo[3]);
+                //mesh_file[4] = (holdInfo[4]);
                 // send ready signal to server to get next line of file (if there is one)
                 writer.Write("ready");
-            }
+    }
 
-            return (holds, positions, rotations);
-        }
+    return mesh_file;
+}
 
-        /// <summary>
-        /// Gets list of routes stored on server
-        /// </summary>
-        /// <returns></returns>
-        public async Task<List<string>> GetMeshList()
-        {
-            List<string> meshList = new List<string>();
+public async Task<(List<string> holds, List<Vector3> positions, List<Quaternion> rotations)> GetRoute(string route)
+{
+    // list of hold names and their respective transforms
+    List<string> holds = new List<string>();
+    List<Vector3> positions = new List<Vector3>();
+    List<Quaternion> rotations = new List<Quaternion>();
 
-            // notify server of endpoint
-            writer.Write("listFiles");
+    // notify server of endpoint
+    writer.Write("sendFile");
 
-            // get list of filenames
-            while (true)
-            {
-                char[] response = new char[BUFFER_SIZE];
-                await reader.ReadAsync(response, 0, BUFFER_SIZE);
-                string responseStr = new string(response);
-                responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
-                if (responseStr.Length <= 0 || responseStr.Equals("done")) { break; }
+    // get receipt
+    char[] response = new char[BUFFER_SIZE];
+    await reader.ReadAsync(response, 0, BUFFER_SIZE);
+    string responseStr = new string(response);
+    responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
+    if (responseStr.Length <= 0 || !responseStr.Equals("ready")) { return (holds, positions, rotations); }
 
-                // trim file extension, i.e. .txt
-                responseStr = Path.GetFileNameWithoutExtension(responseStr);
-                meshList.Add(responseStr);
+    // notify server of route to retrieve
+    string filename = route + ".txt";
+    writer.Write(filename);
 
-                // send ready signal to server to get next file (if there is one)
-                writer.Write("ready");
-            }
+    // get file line-by-line
+    while (true)
+    {
+        response = new char[BUFFER_SIZE]; // reset buffer so we don't accrue/read garabage accidentally for different size buffers
+        await reader.ReadAsync(response, 0, BUFFER_SIZE);
+        responseStr = new string(response);
+        responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
+        if (responseStr.Length <= 0 || responseStr.Equals("done")) { break; }
 
-            //// print what we got
-            //for (int i = 0; i < routeList.Count; i++)
-            //{
-            //    Debug.Log($"retreived route: {routeList[i]}");
-            //}
+        // semi-colon delimited string with position and rotation comma-delimited of form:
+        // "holdname;transform.position;transform.rotation"
+        String[] holdInfo = responseStr.Split(';');
 
-            return meshList;
-        }
+        // collect hold name
+        holds.Add(holdInfo[0]);
 
-        public async Task<List<string>> GetRouteList()
-        {
-            List<string> routeList = new List<string>();
+        // collect position
+        string[] positionStr = holdInfo[1].Split(',');
+        Vector3 position = new Vector3(float.Parse(positionStr[0].Trim()), float.Parse(positionStr[1].Trim()), float.Parse(positionStr[2].Trim()));
+        positions.Add(position);
 
-            // notify server of endpoint
-            writer.Write("listFiles");
+        // collect rotation
+        string[] rotationStr = holdInfo[2].Split(',');
+        Quaternion rotation = new Quaternion(float.Parse(rotationStr[0].Trim()),
+            float.Parse(rotationStr[1].Trim()),
+            float.Parse(rotationStr[2].Trim()),
+            float.Parse(rotationStr[3].Trim()));
+        rotations.Add(rotation);
 
-            // get list of filenames
-            while (true)
-            {
-                char[] response = new char[BUFFER_SIZE];
-                await reader.ReadAsync(response, 0, BUFFER_SIZE);
-                string responseStr = new string(response);
-                responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
-                if (responseStr.Length <= 0 || responseStr.Equals("done")) { break; }
+        // send ready signal to server to get next line of file (if there is one)
+        writer.Write("ready");
+    }
 
-                // trim file extension, i.e. .txt
-                responseStr = Path.GetFileNameWithoutExtension(responseStr);
-                routeList.Add(responseStr);
+    return (holds, positions, rotations);
+}
 
-                // send ready signal to server to get next file (if there is one)
-                writer.Write("ready");
-            }
+/// <summary>
+/// Gets list of routes stored on server
+/// </summary>
+/// <returns></returns>
+public async Task<List<string>> GetMeshList()
+{
+    List<string> meshList = new List<string>();
 
-            //// print what we got
-            //for (int i = 0; i < routeList.Count; i++)
-            //{
-            //    Debug.Log($"retreived route: {routeList[i]}");
-            //}
+    // notify server of endpoint
+    writer.Write("listFiles");
 
-            return routeList;
-        }
+    // get list of filenames
+    while (true)
+    {
+        char[] response = new char[BUFFER_SIZE];
+        await reader.ReadAsync(response, 0, BUFFER_SIZE);
+        string responseStr = new string(response);
+        responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
+        if (responseStr.Length <= 0 || responseStr.Equals("done")) { break; }
+
+        // trim file extension, i.e. .txt
+        responseStr = Path.GetFileNameWithoutExtension(responseStr);
+        meshList.Add(responseStr);
+
+        // send ready signal to server to get next file (if there is one)
+        writer.Write("ready");
+    }
+
+    //// print what we got
+    //for (int i = 0; i < routeList.Count; i++)
+    //{
+    //    Debug.Log($"retreived route: {routeList[i]}");
+    //}
+
+    return meshList;
+}
+
+public async Task<List<string>> GetRouteList()
+{
+    List<string> routeList = new List<string>();
+
+    // notify server of endpoint
+    writer.Write("listFiles");
+
+    // get list of filenames
+    while (true)
+    {
+        char[] response = new char[BUFFER_SIZE];
+        await reader.ReadAsync(response, 0, BUFFER_SIZE);
+        string responseStr = new string(response);
+        responseStr = responseStr.Trim(new Char[] { '\0' }); // trim any empty bytes in the buffer
+        if (responseStr.Length <= 0 || responseStr.Equals("done")) { break; }
+
+        // trim file extension, i.e. .txt
+        responseStr = Path.GetFileNameWithoutExtension(responseStr);
+        routeList.Add(responseStr);
+
+        // send ready signal to server to get next file (if there is one)
+        writer.Write("ready");
+    }
+
+    //// print what we got
+    //for (int i = 0; i < routeList.Count; i++)
+    //{
+    //    Debug.Log($"retreived route: {routeList[i]}");
+    //}
+
+    return routeList;
+}
     }
 }

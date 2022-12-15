@@ -17,6 +17,7 @@ using UnityEngine.UIElements;
 using System.Net;
 using UnityEngine.InputSystem.HID;
 using Microsoft.MixedReality.Toolkit.UI;
+using drawing;
 //using System.Numerics;
 
 public class MeshController : MonoBehaviour, IOnEventCallback
@@ -24,6 +25,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     public Mesh loadedMesh = default;
 
     private bool canSpawn = true;
+    private Mesh mesh2D = default;
 
     //These fields will probably be removed soon. Since all meshes are children of the Mesh Holder,
     //we already have an ordering for all the meshes as prescribed by the hierchy.
@@ -52,20 +54,22 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     [SerializeField] private AudioSource audioData;
     [SerializeField] private AudioClip createAudio;
     [SerializeField] private AudioClip spawnAudio;
+    [SerializeField] private AudioClip deleteAudio;
     [SerializeField] private AudioClip pointerAudio;
-    [SerializeField] public float effectScale = 0;
+    [SerializeField] public float effectScale = 0.0f;
     [SerializeField] public float effectRadius = 0.05f;
+    [SerializeField] public float effectExtrude = 0.0f;
     [SerializeField] public MainMenu mainMenu = default;
     [SerializeField] private SketchController sketchController = default;
-    //[SerializeField] public GameObject defaultMesh = default;
     [SerializeField] public GameObject defaultGameObject = default;
     [SerializeField] private GameObject spawnPoint = default;
-    [SerializeField] private GameObject meshParent = default;
+    [SerializeField] public GameObject meshParent = default;
     [SerializeField] private Material spawnShaderMaterial = default;
     [SerializeField] private Material defaultMaterial = default;
     [SerializeField] private GameObject pointerPrefab = default;
     [SerializeField] public MeshSaverLoader MeshSaveLoad = default;
-    //[SerializeField] public GameObject parentPrefab = default;
+    [SerializeField] public GameObject sketchObject = default;
+    [SerializeField] private GameObject whiteboard = default;
 
     //Unity functions
     void Start()
@@ -98,7 +102,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
             || mainMenu.mode == MainMenu.Mode.Sculpt_Push_Gaussian || mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Linear 
             || mainMenu.mode == MainMenu.Mode.Sculpt_Pull_Gaussian || mainMenu.mode == MainMenu.Mode.Sketch_Draw 
             || mainMenu.mode == MainMenu.Mode.Select_Move || mainMenu.mode == MainMenu.Mode.Select_Save 
-            || mainMenu.mode == MainMenu.Mode.Select_Load_Saved)
+            || mainMenu.mode == MainMenu.Mode.Select_Load_Saved || mainMenu.mode == MainMenu.Mode.Select_Delete)
         {
             //Check for any air taps from either hand
             for (int i = 0; i < 2; i++)
@@ -252,7 +256,8 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         }
         else if (mainMenu.mode == MainMenu.Mode.Sketch_Draw)
         {
-            sketchController.AddPoint(hitPoint);
+            surfaceNormal = Vector3.back;
+            sketchController.AddPoint(hitPoint + 0.01f * surfaceNormal, surfaceNormal);
         }
         else if (mainMenu.mode == MainMenu.Mode.Select_Save)
         {
@@ -261,6 +266,12 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         else if (mainMenu.mode == MainMenu.Mode.Select_Load_Saved)
         {
             MeshSaveLoad.LoadStart();
+        }
+        else if (mainMenu.mode == MainMenu.Mode.Select_Delete && hitGO.layer == LayerMask.NameToLayer("Mesh"))
+        {
+            audioData.PlayOneShot(deleteAudio);
+            PhotonView pv = gameObject.GetComponent<PhotonView>();
+            pv.RPC("PunRPC_DeleteGO", RpcTarget.All, hitGO.name);
         }
     }
     // </ShortTap>
@@ -306,6 +317,57 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         }
     }
 
+    /// <summary>
+    /// Remove child game object across all clients
+    /// </summary>
+    /// <param name="name"></param>
+    [PunRPC]
+    private void PunRPC_DeleteGO(string name)
+    {
+        int location = children.Count; // failsafe idx in case we don't find the child
+        for (int i = 0; i < children.Count; i++)
+        {
+            Debug.Log(children[i].name == name);
+            Debug.Log(children[i].name);
+            if (children[i].name == name)
+            {
+                location = i;
+                break;
+            }
+        }
+
+        Debug.Log($"Location: {location}");
+        Debug.Log($"children.Count: {children.Count}");
+        if (location < children.Count) // we found a valid object
+        {
+            audioData.PlayOneShot(deleteAudio);
+            if (PhotonNetwork.IsMasterClient) // only call on one client
+            {
+                Debug.Log("isMaster");
+                children[location].GetPhotonView().RequestOwnership();
+                GameObject child = children[location];
+                StartCoroutine(DestroyObjectDelayed(child, 0.5f));
+
+            }
+
+            Debug.Log(children[location].name);
+            Debug.Log(children[location]);
+          
+            childMeshs.RemoveAt(location);
+            children.RemoveAt(location);
+
+            Debug.Log($"children.Count: {children.Count}");
+
+            for (int i = 0; i < children.Count; i++)
+            {
+                if (i >= location)
+                {
+                    children[i].name = i.ToString();
+                }
+            }
+        }
+    }
+
     // <destroyObjectDelayed>
     /// <summary>
     /// Destroy object.
@@ -317,92 +379,19 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     private IEnumerator DestroyObjectDelayed(GameObject gameObject, float time)
     {
         yield return new WaitForSeconds(time);
+        Debug.Log("DestroyObjectDelayed");
         PhotonNetwork.Destroy(gameObject);
     }
     // </destroyObjectDelayed>
 
-    //Here are networking functions 
-    //public void addNewMeshEvent(Mesh mesh, Vector3 spawnPosition)
-    //{
-    //    object[] content = { (object)mesh, (object)spawnPosition };
-    //    RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-    //    PhotonNetwork.RaiseEvent(AddNewMeshEventCode, content, raiseEventOptions, SendOptions.SendReliable);
-    //}
-    //public void addNewMeshResponse(object photonData)
-    //{
-    //    Mesh data = (Mesh)((object[])photonData)[0];
-    //    Vector3 spawnPosition = (Vector3)((object[])photonData)[1];
-
-    //    GameObject child = PhotonNetwork.Instantiate(parentPrefab.name, spawnPosition + meshParent.transform.position,Quaternion.identity);
-    //    Debug.Log($"child view id{child.GetPhotonView().ViewID}");
-
-    //    GameObject child2 = PhotonNetwork.Instantiate("Cube", Vector3.zero, Quaternion.identity);
-
-    //    Debug.Log($"child2 view id{child2.GetPhotonView().ViewID}");
-    //    child2.transform.parent = meshParent.transform;
-
-    //    Debug.Log($"child2 view id{child2.GetPhotonView().ViewID}");
-
-    //    //GameObject child = new GameObject();
-
-    //    // add necessary components
-    //    //MeshFilter mFilter = child.AddComponent<MeshFilter>();
-    //    MeshFilter mFilter = child.GetComponent<MeshFilter>();
-    //    MeshCollider mCollider = child.GetComponent<MeshCollider>();
-
-    //    mFilter.mesh = data;
-    //    mCollider.sharedMesh = data;
-    //    //child.AddComponent<MeshCollider>();
-    //    //child.AddComponent<MeshRenderer>();
-
-    //    //parent.AddComponent<ObjectManipulator>();
-    //    //parent.AddComponent<OwnershipHandler>();
-    //    //parent.AddComponent<NearInteractionGrabbable>();
-    //    //PhotonView ph = child.AddComponent<PhotonView>();
-    //    //PhotonNetwork.AllocateViewID(ph);
-    //    //PhotonTransformView ptv = child.AddComponent<PhotonTransformView>();
-
-    //    //ph.ObservedComponents.Add(ptv);
-
-    //    // wire up animator
-    //    Animator animator = child.AddComponent<Animator>();
-    //    animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
-    //    animator.updateMode = AnimatorUpdateMode.Normal;
-    //    var runtimeAnimatorController = (RuntimeAnimatorController)UnityEngine.Resources.Load("AlphaCutoff");
-    //    animator.runtimeAnimatorController = runtimeAnimatorController;
-
-    //    // reparent, scale, position
-    //    child.transform.parent = meshParent.transform;
-    //    child.transform.position = spawnPosition + meshParent.transform.position;
-    //    child.transform.localScale = Vector3.one; //* 0.5f;
-    //    child.name = children.Count.ToString();
-
-    //    //child.transform.parent = parent.transform;
-    //    //child.transform.localPosition = Vector3.zero;
-    //    //child.transform.localScale = Vector3.one; //* 0.5f;
-    //    //child.name = children.Count.ToString();
-
-    //    // put in correct layer for raycasting
-    //    int LayerMesh = LayerMask.NameToLayer("Mesh");
-    //    child.layer = LayerMesh;
-
-    //    // start animator and remove spawn material after some time
-    //    StartCoroutine(ChangeSpawnShader(child));
-
-    //    // track the new mesh
-    //    children.Add(child);
-    //    childMeshs.Add(data);
-    //    RecalculateAllMeshes();
-    //}
-
-    private void WireSpawnedMesh(GameObject child, Mesh mesh, Vector3 spawnPosition)
+    private void WireSpawnedMesh(GameObject child, Mesh mesh, Vector3 spawnPosition, Vector3 localScale)
     {
         MeshFilter mFilter = child.GetComponent<MeshFilter>();
         MeshCollider mCollider = child.GetComponent<MeshCollider>();
 
         mFilter.mesh = mesh;
         //mCollider.sharedMesh = mesh;
-
+        
         // wire up animator
         Animator animator = child.AddComponent<Animator>();
         animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
@@ -412,8 +401,8 @@ public class MeshController : MonoBehaviour, IOnEventCallback
 
         // reparent, scale, position
         child.transform.SetParent(meshParent.transform, true);
-        child.transform.position = spawnPosition + meshParent.transform.position;
-        child.transform.localScale = Vector3.one; //* 0.5f;
+        child.transform.position = spawnPosition;
+        child.transform.localScale = localScale;
         child.name = children.Count.ToString();
 
         // put in correct layer for raycasting
@@ -423,13 +412,16 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         // start animator and remove spawn material after some time
         StartCoroutine(ChangeSpawnShader(child));
 
+        Debug.Log($"wire spawn: first vertex: {mesh.vertices[0]}");
+        Debug.Log($"wire spawn: last vertex: {mesh.vertices[mesh.vertices.Length - 1]}");
+
         // track the new mesh
         children.Add(child);
         childMeshs.Add(mesh);
         RecalculateAllMeshes();
     }
 
-    public void addNewMeshEvent(Mesh mesh, Vector3 spawnPosition)
+    public void addNewMeshEvent(Mesh mesh, Vector3 spawnPosition, Vector3 localScale)
     {
         GameObject child = PhotonNetwork.InstantiateRoomObject(defaultGameObject.name, spawnPosition, Quaternion.identity);
         PhotonView pv = child.GetComponent<PhotonView>();
@@ -441,11 +433,18 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         mesh2.uv = mesh.uv;
         mesh2.uv2 = mesh.uv2;
 
-        WireSpawnedMesh(child, mesh2, spawnPosition);
+        Debug.Log($"pre tesselation on master: # verts: {mesh2.vertexCount}");
+
+        Vector3 ide(Vector3 vec) { return vec; }
+        mesh2 = DynamicMeshTessellation.MeshDeformationWithAutomaticTessellation(mesh2, ide);
+
+        Debug.Log($"post tesselation on master: # verts: {mesh2.vertexCount}");
+
+        WireSpawnedMesh(child, mesh2, spawnPosition, localScale);
 
         object[] data = new object[]
         {
-                child.transform.position, child.transform.rotation, pv.ViewID, (object)mesh
+                child.transform.position, child.transform.rotation, pv.ViewID, (object)mesh, localScale
         };
 
         RaiseEventOptions raiseEventOptions = new RaiseEventOptions
@@ -459,6 +458,9 @@ public class MeshController : MonoBehaviour, IOnEventCallback
             Reliability = true
         };
 
+        Debug.Log($"first vertex: {mesh2.vertices[0]}");
+        Debug.Log($"last vertex: {mesh2.vertices[mesh2.vertices.Length - 1]}");
+
         PhotonNetwork.RaiseEvent(AddNewMeshEventCode, data, raiseEventOptions, sendOptions);
     }
 
@@ -469,10 +471,20 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         Quaternion spawnRotation = (Quaternion)data[1];
         int viewId = (int)data[2];
         Mesh mesh = (Mesh)data[3];
+        Vector3 localScale = (Vector3)data[4];
+
+        Debug.Log($"pre tesselation on client: # verts: {mesh.vertexCount}");
+
+        Vector3 ide(Vector3 vec) { return vec; }
+        Mesh mesh2 = DynamicMeshTessellation.MeshDeformationWithAutomaticTessellation(mesh, ide);
+
+        Debug.Log($"post tesselation on client: # verts: {mesh2.vertexCount}");
 
         GameObject child = PhotonView.Find(viewId).gameObject;
 
-        WireSpawnedMesh(child, mesh, spawnPosition);
+        Debug.Log("client wiring spawned mesh");
+
+        WireSpawnedMesh(child, mesh2, spawnPosition, localScale);
     }
 
     public void ToggleManipulability(bool _enable)
@@ -484,32 +496,6 @@ public class MeshController : MonoBehaviour, IOnEventCallback
             child.GetComponent<NearInteractionGrabbable>().enabled = _enable;
         }
     }
-
-    //private void modifyVerticesNearPointEvent(Vector3 point)
-    //{
-    //    Vector3 content = point;
-    //    RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-    //    PhotonNetwork.RaiseEvent(ModifyVerticesNearPointEventCode, content, raiseEventOptions, SendOptions.SendReliable);
-    //}
-    ////f is a function of the form (current vertex position, response point) -> new vertex position
-    //private void modifyVerticesNearPointResponse(object photonData, Func<Vector3, Vector3, Vector3> f)
-    //{
-    //    Vector3 data = (Vector3)photonData;
-    //    Vector3 hitPoint = data;
-
-    //    //iterate through all child meshes
-    //    for (int i = 0; i < children.Count; i++)
-    //    {
-    //        Mesh currMesh = childMeshs[i];
-    //        Vector3[] changedVertices = currMesh.vertices;
-    //        for (int v = 0; v < currMesh.vertices.Length; v++)
-    //        {
-    //            changedVertices[v] = f(changedVertices[v], hitPoint);
-    //        }
-    //        childMeshs[i].vertices = changedVertices;
-    //        RecalculateMesh(i);
-    //    }
-    //}
 
     private void VertexPushLinearEvent(Matrix4x4 localToWorld, Matrix4x4 worldToLocal, Vector3 point, Vector3 surfaceNormal, string name)
     {
@@ -626,23 +612,12 @@ public class MeshController : MonoBehaviour, IOnEventCallback
             if (i.ToString() == name)
             {
                 Mesh currMesh = childMeshs[i];
-                Vector3[] changedVertices = currMesh.vertices;
-                for (int j = 0; j < currMesh.vertices.Length; j++)
+                childMeshs[i] = DynamicMeshTessellation.MeshDeformationWithAutomaticTessellation(currMesh, deformer);
+                Vector3 deformer(Vector3 curr_V)
                 {
-                    //Debug.Log($"{currMesh.vertices[j].x.ToString("F32")}, {currMesh.vertices[j].y.ToString("F32")}, {currMesh.vertices[j].z.ToString("F32")}");
-
-                    Vector3 worldV = localToWorld.MultiplyPoint3x4(currMesh.vertices[j]);
-                    //Debug.Log($"{worldV.x}, {worldV.y}, {worldV.z}");
-
-                    Vector3 newWorldV = f(worldV, hitPoint, surfaceNormal,manipulation_params);
-                    //Debug.Log($"{newWorldV.x}, {newWorldV.y}, {newWorldV.z}");
-
-                    Vector3 newLocalV = worldToLocal.MultiplyPoint3x4(newWorldV);
-                    //Debug.Log($"{newLocalV.x.ToString("F32")}, {newLocalV.y.ToString("F32")}, {newLocalV.z.ToString("F32")}");
-
-                    changedVertices[j] = newLocalV;
+                    return worldToLocal.MultiplyPoint3x4(f(localToWorld.MultiplyPoint3x4(curr_V), hitPoint, surfaceNormal, manipulation_params));
                 }
-                childMeshs[i].vertices = changedVertices;
+
                 RecalculateMesh(i);
             }
         }
@@ -710,33 +685,13 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     }
     void RecalculateMesh(int i)
     {
-        children[i].GetComponent<MeshFilter>().mesh = childMeshs[i];
+        children[i].GetComponent<MeshFilter>().sharedMesh = childMeshs[i];
         children[i].GetComponent<MeshCollider>().sharedMesh = childMeshs[i];
-        children[i].GetComponent<MeshFilter>().mesh.RecalculateNormals();
+        children[i].GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
         //children[i].GetComponent<MeshFilter>().sharedMesh = childMeshs[i];
         //children[i].GetComponent<MeshCollider>().sharedMesh = childMeshs[i];
         //children[i].GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
     }
-
-    //Here are some helper functions which you should NOT mind
-    //private Vector3 riseNearCenter(Vector3 point, Vector3 center)
-    //{
-    //    float distance = (point - center).magnitude;
-
-    //    if (distance < effectRadius)//1.5)//3)
-    //    {
-    //        Vector3 newV = point * ((distance * distance) / 9) + (center + new Vector3(0, 1, 0)) * (1 - ((distance * distance) / 9));
-    //        Debug.Log($"center: {center}");
-    //        Debug.Log($"distance: {distance}");
-    //        Debug.Log($"oldV: {point}");
-    //        Debug.Log($"newV: {newV}");
-    //        return newV;
-    //    }
-    //    else
-    //    {
-    //        return point;
-    //    }
-    //}
 
     /// <summary>
     /// Linear deform vertices near hitpoint on mesh
@@ -810,6 +765,101 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         RecalculateAllMeshes();
     }
 
+    public void Draw2DShape(Vector3[] points)
+    {
+        Mesh mesh = Drawing2D.GenerateMeshFrom3DPoints(points);
+
+        mesh2D = new Mesh();
+        mesh2D.vertices = mesh.vertices;
+        mesh2D.triangles = mesh.triangles;
+        mesh2D.normals = mesh.normals;
+        mesh2D.uv = mesh.uv;
+        mesh2D.uv2 = mesh.uv2;
+        mesh2D.RecalculateNormals();
+
+        sketchObject = new GameObject();
+        MeshFilter mFilter = sketchObject.AddComponent<MeshFilter>();
+        MeshCollider mCollider = sketchObject.AddComponent<MeshCollider>();
+        MeshRenderer mRenderer = sketchObject.AddComponent<MeshRenderer>();
+        mRenderer.material.color = new Color(1, 0, 0, 1);
+
+        //sketchObject.transform.localScale = Vector3.one * 2f;
+        sketchObject.transform.SetParent(whiteboard.transform, true);
+        //sketchObject.transform.position = whiteboard.transform.position -
+        //    Vector3.forward * (whiteboard.transform.position.z + 0.01f) -
+        //    mesh.vertices[mesh.vertices.Length - 1];
+        //sketchObject.transform.localToWorldMatrix.MultiplyPoint3x4(mesh.vertices[mesh.vertices.Length - 1]);
+
+        sketchObject.transform.localPosition = Vector3.zero;
+        sketchObject.transform.localScale = Vector3.one;
+        sketchObject.transform.localRotation = Quaternion.identity;
+
+        //sketchObject.transform.position = mesh.vertices[mesh.vertices.Length - 1];
+        //sketchObject.transform.localScale = whiteboard.transform.localScale;//Vector3.one;
+        //sketchObject.name = children.Count.ToString();
+
+        // Culling occurs for 2D meshe facing us, so we generate a 3D mesh with zero thickness to have two faces.  This way we can see it.
+        mesh = Drawing2D.ExtrudeMeshFrom2D(mesh2D, 0.0f * Vector3.back);
+        mesh.RecalculateNormals();
+        
+        mFilter.mesh = mesh;
+        mCollider.sharedMesh = mesh;
+
+        //Instantiate(defaultGameObject, sketchObject.transform.position, Quaternion.identity);
+
+        //children.Add(child);
+        //childMeshs.Add(mesh);
+        //RecalculateAllMeshes();
+
+        //GameObject temp = Instantiate(defaultGameObject, sketchObject.transform.position, Quaternion.identity);
+        //temp.transform.localScale = Vector3.one * 0.1f;
+    }
+
+    public void Update2DMesh()
+    {
+        //Mesh mesh = sketchObject.GetComponent<MeshFilter>().mesh;
+        //Mesh mesh = Drawing2D.ExtrudeMeshFrom2D(mesh2D, effectExtrude * sketchController.surfaceNormal_) ;
+        Mesh mesh = Drawing2D.ExtrudeMeshFrom2D(mesh2D, effectExtrude * Vector3.back);
+        sketchObject.GetComponent<MeshFilter>().mesh = mesh;
+        sketchObject.GetComponent<MeshCollider>().sharedMesh = mesh;
+    }
+
+    public void ExtractExtrudedMeshForInstatiation()
+    {
+        Debug.Log("ExtractExtrudedMeshForInstatiation");
+
+        //GameObject go = children[children.Count - 1];
+        Mesh mesh = sketchObject.GetComponent<MeshFilter>().mesh;
+
+        Debug.Log($"before: {childMeshs.Count}");
+        Debug.Log($"before: {children.Count}");
+
+        //childMeshs.RemoveAt(childMeshs.Count - 1);
+        //children.RemoveAt(children.Count - 1);
+
+        Debug.Log($"after: {childMeshs.Count}");
+        Debug.Log($"after: {children.Count}");
+
+        Vector3 pos = mesh.vertices[mesh.vertices.Length - 1];//sketchObject.transform.position;
+        //Matrix4x4 wl2wp = meshParent.transform.worldToLocalMatrix;
+        //Matrix4x4 wb2wl = sketchObject.transform.localToWorldMatrix;
+
+        pos = sketchObject.transform.position - meshParent.transform.position;
+        Vector3 localScale = sketchObject.transform.localScale;
+
+        Debug.Log($"localScale: {sketchObject.transform.localScale}");
+
+        Debug.Log($"pos: {pos}");
+
+        Destroy(sketchObject);
+
+        //addNewMeshEvent(mesh, pos);
+        PhotonView pv = gameObject.GetPhotonView();
+        pv.RPC("PunRPC_LoadMesh", RpcTarget.MasterClient, (object)mesh, pos, localScale);
+
+        Debug.Log("after addNewMeshEvent");
+    }
+
     /// <summary>
     /// We don't want continuous spawning so we throttle the spawn rate
     /// </summary>
@@ -823,10 +873,10 @@ public class MeshController : MonoBehaviour, IOnEventCallback
     }
 
     [PunRPC]
-    private void PunRPC_LoadMesh(object mesh,Vector3 spawnPosition)
+    private void PunRPC_LoadMesh(object mesh, Vector3 spawnPosition, Vector3 localScale)
     {
         //Vector3 spawnPosition = spawnPoint.transform.position;
-        addNewMeshEvent((Mesh)mesh, spawnPosition - meshParent.transform.position);
+        addNewMeshEvent((Mesh)mesh, spawnPosition, localScale);
     }
 
     /// <summary>
@@ -844,7 +894,7 @@ public class MeshController : MonoBehaviour, IOnEventCallback
         //Vector3 spawnPosition = spawnPoint.transform.position;
         //addNewMeshEvent(loadedMesh, spawnPosition - meshParent.transform.position);
         PhotonView pv = gameObject.GetPhotonView();
-        pv.RPC("PunRPC_LoadMesh", RpcTarget.MasterClient,(object)loadedMesh, spawnPoint.transform.position);
+        pv.RPC("PunRPC_LoadMesh", RpcTarget.MasterClient, (object)loadedMesh, spawnPoint.transform.position, Vector3.one);
     }
 
     /// <summary>

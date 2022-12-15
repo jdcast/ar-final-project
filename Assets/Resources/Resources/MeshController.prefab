@@ -48,9 +48,11 @@ MonoBehaviour:
   audioData: {fileID: 1793322021406470174}
   createAudio: {fileID: 8300000, guid: a16c53885bdbc54469088880ea44a9fd, type: 3}
   spawnAudio: {fileID: 8300000, guid: 2193e9060a088b24f97f48d1e1a4a862, type: 3}
+  deleteAudio: {fileID: 8300000, guid: 23a78d131feb8774ebe5dd1ea221933e, type: 3}
   pointerAudio: {fileID: 8300000, guid: 170429180f309a940b54c1001e94e54c, type: 3}
   effectScale: 0
   effectRadius: 0.05
+  effectExtrude: 0
   mainMenu: {fileID: 0}
   sketchController: {fileID: 0}
   defaultGameObject: {fileID: 642409601530427218, guid: e65f2815d33203a499927c9bb592d8f4, type: 3}
@@ -60,6 +62,8 @@ MonoBehaviour:
   defaultMaterial: {fileID: 0}
   pointerPrefab: {fileID: 7427103364801571112, guid: a9dc704c924a8f040a6f6693a6d7232e, type: 3}
   MeshSaveLoad: {fileID: 0}
+  sketchObject: {fileID: 0}
+  whiteboard: {fileID: 0}
 --- !u!82 &1793322021406470174
 AudioSource:
   m_ObjectHideFlags: 0

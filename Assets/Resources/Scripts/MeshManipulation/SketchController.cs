@@ -11,13 +11,14 @@ public class SketchController : MonoBehaviour
 
     [SerializeField] GameObject sketchPoint = default;
     [SerializeField] GameObject whiteboard = default;
-
+    [SerializeField] public Vector3 surfaceNormal_ = Vector3.one;
+    
     private void Start()
     {
         points = new List<GameObject>();
     }
 
-    public void AddPoint(Vector3 point)
+    public void AddPoint(Vector3 point,Vector3 surfaceNormal)
     {
         Debug.Log("AddPoint");
 
@@ -27,8 +28,9 @@ public class SketchController : MonoBehaviour
             GameObject go = Instantiate(sketchPoint, point, Quaternion.identity);
             go.transform.localScale = Vector3.one * 0.005f;
             go.transform.position = point;
-            go.transform.parent = whiteboard.transform;
+            go.transform.SetParent(whiteboard.transform,true);
             points.Add(go);
+            surfaceNormal_ = surfaceNormal;
         }
     }
 
@@ -39,7 +41,20 @@ public class SketchController : MonoBehaviour
         //pv.RPC("PunRPC_RemoveAllSketchPoints", RpcTarget.All);
     }
 
-    private void RemoveAllSketchPoints()
+    public Vector3[] GetPoints()
+    {
+        Vector3[] vert_pts = new Vector3[points.Count];
+        if (points.Count != 0)
+        {
+            for (int i = 0; i < points.Count; ++i)
+            {
+                vert_pts[i] = (points[i].transform.localPosition);
+            }
+        }
+        return vert_pts;
+    }
+
+    public void RemoveAllSketchPoints()
     {
         Debug.Log(points.Count);
         for (int i = 0; i < points.Count; i++)

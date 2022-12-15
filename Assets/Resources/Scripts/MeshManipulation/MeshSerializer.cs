@@ -6,6 +6,7 @@ using ExitGames.Client.Photon;
 using Photon.Realtime;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System;
 
 public class MeshSerializer : MonoBehaviourPunCallbacks
 {
@@ -20,6 +21,32 @@ public class MeshSerializer : MonoBehaviourPunCallbacks
             return ms.ToArray();
         }
     }
+
+    public static string[] MeshToString(object mesh)
+    {
+        string[] data = new string[5];
+        SerializableMeshInfo serializableMesh = new SerializableMeshInfo((Mesh)mesh);
+        data[0] = string.Join(",", serializableMesh.vertices);
+        data[1] = string.Join(",", serializableMesh.triangles);
+        data[2] = string.Join(",", serializableMesh.uv);
+        data[3] = string.Join(",", serializableMesh.uv2);
+        data[4] = string.Join(",", serializableMesh.normals);
+        return data;
+    }
+
+    public static Mesh StringToMesh(string[] data)
+    {
+        Mesh mesh = new Mesh();
+        SerializableMeshInfo serializableMesh = new SerializableMeshInfo(mesh);
+        serializableMesh.vertices = Array.ConvertAll(data[0].Split(','), float.Parse);
+        serializableMesh.triangles = Array.ConvertAll(data[1].Split(','), int.Parse);
+        serializableMesh.uv = Array.ConvertAll(data[2].Split(','), float.Parse);
+        serializableMesh.uv2 = Array.ConvertAll(data[3].Split(','), float.Parse);
+        serializableMesh.normals = Array.ConvertAll(data[4].Split(','), float.Parse);
+        return serializableMesh.GetMesh();
+    }
+
+
 
     // Convert a byte array to a mesh
     public object ByteArrayToMesh(byte[] arrBytes)

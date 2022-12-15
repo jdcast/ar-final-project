@@ -75,12 +75,12 @@ struct Func_2_tEE0B8A4A8105D5AA3534F2D0C4B428045CA296F1;
 struct Func_2_tEF9C6F030A39D90D2C3B088C2885BA1DF171A272;
 // System.Func`2<System.Threading.Tasks.Task`1<System.Threading.Tasks.Task>,System.Threading.Tasks.Task`1<System.Net.IPAddress[]>>
 struct Func_2_t7F1A3C6C7962946F7157B160B2EFB65EE2AAF2B8;
+// System.Func`2<System.Threading.Tasks.Task`1<System.Threading.Tasks.Task>,System.Threading.Tasks.Task`1<System.String[]>>
+struct Func_2_tD6A0EC613C3BE7C360DC94227B4525DD6B670887;
 // System.Func`2<System.Threading.Tasks.Task`1<System.Threading.Tasks.Task>,System.Threading.Tasks.Task`1<Microsoft.MixedReality.WorldLocking.Core.AnchorManagerARF>>
 struct Func_2_t269EB395AF9902FA91C85CEB12D3BF19B3F7008B;
 // System.Func`2<System.Threading.Tasks.Task`1<System.Threading.Tasks.Task>,System.Threading.Tasks.Task`1<Microsoft.MixedReality.WorldLocking.Core.AnchorManagerXR>>
 struct Func_2_tD6E53BC0F56EC9CDB1D086A56E78567F4D856415;
-// System.Func`2<System.Threading.Tasks.Task`1<System.Threading.Tasks.Task>,System.Threading.Tasks.Task`1<Microsoft.MixedReality.Toolkit.WindowsDevicePortal.ApplicationInfo>>
-struct Func_2_t932D6C6279050FC00E5A91FFCB51E2438965F4B7;
 // Windows.Foundation.IAsyncOperationWithProgress`2<Windows.Storage.Streams.IBuffer,System.UInt32>
 struct IAsyncOperationWithProgress_2_tB72FC848D7866662845F94C01350F153153F6A93;
 // Windows.Foundation.IAsyncOperationWithProgress`2<System.UInt32,System.UInt32>
@@ -143,12 +143,12 @@ struct TaskFactory_1_t24824C666A75E5C8BF1E87AABAE1801F04F084A2;
 struct TaskFactory_1_t11C6470C2FADA26AA5936A409CFB70ABCC0ED5FD;
 // System.Threading.Tasks.TaskFactory`1<System.Net.IPAddress[]>
 struct TaskFactory_1_t3D5120AC6C8EFAA404C741B04CA39A0262261715;
+// System.Threading.Tasks.TaskFactory`1<System.String[]>
+struct TaskFactory_1_tCCBC5EBEC2D5C751DEDEFF77E47524A4E170C593;
 // System.Threading.Tasks.TaskFactory`1<Microsoft.MixedReality.WorldLocking.Core.AnchorManagerARF>
 struct TaskFactory_1_tFD0F3B493C5F5E631DCAEF642C01D5902189ADC8;
 // System.Threading.Tasks.TaskFactory`1<Microsoft.MixedReality.WorldLocking.Core.AnchorManagerXR>
 struct TaskFactory_1_t53466FD189E9BF9E367AD2ACE30E78D6AEA8E6A1;
-// System.Threading.Tasks.TaskFactory`1<Microsoft.MixedReality.Toolkit.WindowsDevicePortal.ApplicationInfo>
-struct TaskFactory_1_tFAFD7BF14E3F34BDE7AB86EBB3A623E66CA8ED85;
 // System.Threading.Tasks.TaskToAsyncInfoAdapter`4<Windows.Foundation.AsyncOperationCompletedHandler`1<System.Boolean>,System.VoidReferenceTypeParameter,System.Boolean,System.VoidValueTypeParameter>
 struct TaskToAsyncInfoAdapter_4_tCDD3CA6237DC287032EEC5407E2EF45E92381DBB;
 // System.Threading.Tasks.TaskToAsyncInfoAdapter`4<Windows.Foundation.AsyncOperationWithProgressCompletedHandler`2<Windows.Storage.Streams.IBuffer,System.UInt32>,Windows.Foundation.AsyncOperationProgressHandler`2<Windows.Storage.Streams.IBuffer,System.UInt32>,Windows.Storage.Streams.IBuffer,System.UInt32>
@@ -197,6 +197,8 @@ struct LayoutRebuilderU5BU5D_t86DB6C6BBFDB37723EB9108339D367ED328263CF;
 struct NCommandU5BU5D_t18C2DC58754D65A45A05D48FA2866316FF101C1E;
 // System.Diagnostics.StackTrace[]
 struct StackTraceU5BU5D_t4AD999C288CB6D1F38A299D12B1598D606588971;
+// System.String[]
+struct StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A;
 // UnityEngine.Transform[]
 struct TransformU5BU5D_t7821C0520CC567C0A069329C01AE9C058C7E3F1D;
 // UnityEngine.InputSystem.InputSystem/State[]
@@ -205,8 +207,6 @@ struct StateU5BU5D_t7ED482A01F1FF2C0F2EE4659C3D1DA0F75CACADA;
 struct AnchorManagerARF_t8AC0C4631B6E98D557A6CFF87CCDC9A161894123;
 // Microsoft.MixedReality.WorldLocking.Core.AnchorManagerXR
 struct AnchorManagerXR_t622B5D869D8D4C33D4230599CF7527109D61381F;
-// Microsoft.MixedReality.Toolkit.WindowsDevicePortal.ApplicationInfo
-struct ApplicationInfo_t1CA32BDFE3CA0B6C52D851D69CE641A61E2FDF63;
 // System.Net.BufferOffsetSize
 struct BufferOffsetSize_tF2771CD84FA1EB3961DB41CF866EDE296987572F;
 // System.Threading.CancellationTokenSource
@@ -2935,6 +2935,53 @@ public:
 };
 
 
+// System.Threading.Tasks.Task`1<System.String[]>
+struct Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09  : public Task_t804B25CFE3FC13AAEE16C8FA3BF52513F2A8DB60
+{
+public:
+	// TResult System.Threading.Tasks.Task`1::m_result
+	StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* ___m_result_40;
+
+public:
+	inline static int32_t get_offset_of_m_result_40() { return static_cast<int32_t>(offsetof(Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09, ___m_result_40)); }
+	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* get_m_result_40() const { return ___m_result_40; }
+	inline StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A** get_address_of_m_result_40() { return &___m_result_40; }
+	inline void set_m_result_40(StringU5BU5D_tACEBFEDE350025B554CD507C9AE8FFE49359549A* value)
+	{
+		___m_result_40 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___m_result_40), (void*)value);
+	}
+};
+
+struct Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09_StaticFields
+{
+public:
+	// System.Threading.Tasks.TaskFactory`1<TResult> System.Threading.Tasks.Task`1::s_Factory
+	TaskFactory_1_tCCBC5EBEC2D5C751DEDEFF77E47524A4E170C593 * ___s_Factory_41;
+	// System.Func`2<System.Threading.Tasks.Task`1<System.Threading.Tasks.Task>,System.Threading.Tasks.Task`1<TResult>> System.Threading.Tasks.Task`1::TaskWhenAnyCast
+	Func_2_tD6A0EC613C3BE7C360DC94227B4525DD6B670887 * ___TaskWhenAnyCast_42;
+
+public:
+	inline static int32_t get_offset_of_s_Factory_41() { return static_cast<int32_t>(offsetof(Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09_StaticFields, ___s_Factory_41)); }
+	inline TaskFactory_1_tCCBC5EBEC2D5C751DEDEFF77E47524A4E170C593 * get_s_Factory_41() const { return ___s_Factory_41; }
+	inline TaskFactory_1_tCCBC5EBEC2D5C751DEDEFF77E47524A4E170C593 ** get_address_of_s_Factory_41() { return &___s_Factory_41; }
+	inline void set_s_Factory_41(TaskFactory_1_tCCBC5EBEC2D5C751DEDEFF77E47524A4E170C593 * value)
+	{
+		___s_Factory_41 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___s_Factory_41), (void*)value);
+	}
+
+	inline static int32_t get_offset_of_TaskWhenAnyCast_42() { return static_cast<int32_t>(offsetof(Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09_StaticFields, ___TaskWhenAnyCast_42)); }
+	inline Func_2_tD6A0EC613C3BE7C360DC94227B4525DD6B670887 * get_TaskWhenAnyCast_42() const { return ___TaskWhenAnyCast_42; }
+	inline Func_2_tD6A0EC613C3BE7C360DC94227B4525DD6B670887 ** get_address_of_TaskWhenAnyCast_42() { return &___TaskWhenAnyCast_42; }
+	inline void set_TaskWhenAnyCast_42(Func_2_tD6A0EC613C3BE7C360DC94227B4525DD6B670887 * value)
+	{
+		___TaskWhenAnyCast_42 = value;
+		Il2CppCodeGenWriteBarrier((void**)(&___TaskWhenAnyCast_42), (void*)value);
+	}
+};
+
+
 // System.Threading.Tasks.Task`1<Microsoft.MixedReality.WorldLocking.Core.AnchorManagerARF>
 struct Task_1_t5C4585D155F0F2690CC3F477147930DDE89E81C6  : public Task_t804B25CFE3FC13AAEE16C8FA3BF52513F2A8DB60
 {
@@ -3022,53 +3069,6 @@ public:
 	inline Func_2_tD6E53BC0F56EC9CDB1D086A56E78567F4D856415 * get_TaskWhenAnyCast_42() const { return ___TaskWhenAnyCast_42; }
 	inline Func_2_tD6E53BC0F56EC9CDB1D086A56E78567F4D856415 ** get_address_of_TaskWhenAnyCast_42() { return &___TaskWhenAnyCast_42; }
 	inline void set_TaskWhenAnyCast_42(Func_2_tD6E53BC0F56EC9CDB1D086A56E78567F4D856415 * value)
-	{
-		___TaskWhenAnyCast_42 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___TaskWhenAnyCast_42), (void*)value);
-	}
-};
-
-
-// System.Threading.Tasks.Task`1<Microsoft.MixedReality.Toolkit.WindowsDevicePortal.ApplicationInfo>
-struct Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19  : public Task_t804B25CFE3FC13AAEE16C8FA3BF52513F2A8DB60
-{
-public:
-	// TResult System.Threading.Tasks.Task`1::m_result
-	ApplicationInfo_t1CA32BDFE3CA0B6C52D851D69CE641A61E2FDF63 * ___m_result_40;
-
-public:
-	inline static int32_t get_offset_of_m_result_40() { return static_cast<int32_t>(offsetof(Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19, ___m_result_40)); }
-	inline ApplicationInfo_t1CA32BDFE3CA0B6C52D851D69CE641A61E2FDF63 * get_m_result_40() const { return ___m_result_40; }
-	inline ApplicationInfo_t1CA32BDFE3CA0B6C52D851D69CE641A61E2FDF63 ** get_address_of_m_result_40() { return &___m_result_40; }
-	inline void set_m_result_40(ApplicationInfo_t1CA32BDFE3CA0B6C52D851D69CE641A61E2FDF63 * value)
-	{
-		___m_result_40 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___m_result_40), (void*)value);
-	}
-};
-
-struct Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19_StaticFields
-{
-public:
-	// System.Threading.Tasks.TaskFactory`1<TResult> System.Threading.Tasks.Task`1::s_Factory
-	TaskFactory_1_tFAFD7BF14E3F34BDE7AB86EBB3A623E66CA8ED85 * ___s_Factory_41;
-	// System.Func`2<System.Threading.Tasks.Task`1<System.Threading.Tasks.Task>,System.Threading.Tasks.Task`1<TResult>> System.Threading.Tasks.Task`1::TaskWhenAnyCast
-	Func_2_t932D6C6279050FC00E5A91FFCB51E2438965F4B7 * ___TaskWhenAnyCast_42;
-
-public:
-	inline static int32_t get_offset_of_s_Factory_41() { return static_cast<int32_t>(offsetof(Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19_StaticFields, ___s_Factory_41)); }
-	inline TaskFactory_1_tFAFD7BF14E3F34BDE7AB86EBB3A623E66CA8ED85 * get_s_Factory_41() const { return ___s_Factory_41; }
-	inline TaskFactory_1_tFAFD7BF14E3F34BDE7AB86EBB3A623E66CA8ED85 ** get_address_of_s_Factory_41() { return &___s_Factory_41; }
-	inline void set_s_Factory_41(TaskFactory_1_tFAFD7BF14E3F34BDE7AB86EBB3A623E66CA8ED85 * value)
-	{
-		___s_Factory_41 = value;
-		Il2CppCodeGenWriteBarrier((void**)(&___s_Factory_41), (void*)value);
-	}
-
-	inline static int32_t get_offset_of_TaskWhenAnyCast_42() { return static_cast<int32_t>(offsetof(Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19_StaticFields, ___TaskWhenAnyCast_42)); }
-	inline Func_2_t932D6C6279050FC00E5A91FFCB51E2438965F4B7 * get_TaskWhenAnyCast_42() const { return ___TaskWhenAnyCast_42; }
-	inline Func_2_t932D6C6279050FC00E5A91FFCB51E2438965F4B7 ** get_address_of_TaskWhenAnyCast_42() { return &___TaskWhenAnyCast_42; }
-	inline void set_TaskWhenAnyCast_42(Func_2_t932D6C6279050FC00E5A91FFCB51E2438965F4B7 * value)
 	{
 		___TaskWhenAnyCast_42 = value;
 		Il2CppCodeGenWriteBarrier((void**)(&___TaskWhenAnyCast_42), (void*)value);
@@ -8387,6 +8387,101 @@ IL2CPP_EXTERN_C Il2CppIUnknown* CreateComCallableWrapperFor_Task_1_tEDC3DA47649D
 	return static_cast<Il2CppIManagedObjectHolder*>(new(memory) Task_1_tEDC3DA47649D027A4932A825FE5C3908514B70EC_ComCallableWrapper(obj));
 }
 
+// COM Callable Wrapper for System.Threading.Tasks.Task`1<System.String[]>
+struct Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09_ComCallableWrapper IL2CPP_FINAL : il2cpp::vm::CachedCCWBase<Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09_ComCallableWrapper>, IClosable_t30CA7D2BE598B3BD6AA57CE9DF977DB51540B953
+{
+	inline Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09_ComCallableWrapper(RuntimeObject* obj) : il2cpp::vm::CachedCCWBase<Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09_ComCallableWrapper>(obj) {}
+
+	virtual il2cpp_hresult_t STDCALL QueryInterface(const Il2CppGuid& iid, void** object) IL2CPP_OVERRIDE
+	{
+		if (::memcmp(&iid, &Il2CppIUnknown::IID, sizeof(Il2CppGuid)) == 0
+		 || ::memcmp(&iid, &Il2CppIInspectable::IID, sizeof(Il2CppGuid)) == 0
+		 || ::memcmp(&iid, &Il2CppIAgileObject::IID, sizeof(Il2CppGuid)) == 0)
+		{
+			*object = GetIdentity();
+			AddRefImpl();
+			return IL2CPP_S_OK;
+		}
+
+		if (::memcmp(&iid, &Il2CppIManagedObjectHolder::IID, sizeof(Il2CppGuid)) == 0)
+		{
+			*object = static_cast<Il2CppIManagedObjectHolder*>(this);
+			AddRefImpl();
+			return IL2CPP_S_OK;
+		}
+
+		if (::memcmp(&iid, &IClosable_t30CA7D2BE598B3BD6AA57CE9DF977DB51540B953::IID, sizeof(Il2CppGuid)) == 0)
+		{
+			*object = static_cast<IClosable_t30CA7D2BE598B3BD6AA57CE9DF977DB51540B953*>(this);
+			AddRefImpl();
+			return IL2CPP_S_OK;
+		}
+
+		if (::memcmp(&iid, &Il2CppIMarshal::IID, sizeof(Il2CppGuid)) == 0)
+		{
+			*object = static_cast<Il2CppIMarshal*>(this);
+			AddRefImpl();
+			return IL2CPP_S_OK;
+		}
+
+		if (::memcmp(&iid, &Il2CppIWeakReferenceSource::IID, sizeof(Il2CppGuid)) == 0)
+		{
+			*object = static_cast<Il2CppIWeakReferenceSource*>(this);
+			AddRefImpl();
+			return IL2CPP_S_OK;
+		}
+
+		*object = NULL;
+		return IL2CPP_E_NOINTERFACE;
+	}
+
+	virtual uint32_t STDCALL AddRef() IL2CPP_OVERRIDE
+	{
+		return AddRefImpl();
+	}
+
+	virtual uint32_t STDCALL Release() IL2CPP_OVERRIDE
+	{
+		return ReleaseImpl();
+	}
+
+	virtual il2cpp_hresult_t STDCALL GetIids(uint32_t* iidCount, Il2CppGuid** iids) IL2CPP_OVERRIDE
+	{
+		Il2CppGuid* interfaceIds = il2cpp_codegen_marshal_allocate_array<Il2CppGuid>(1);
+		interfaceIds[0] = IClosable_t30CA7D2BE598B3BD6AA57CE9DF977DB51540B953::IID;
+
+		*iidCount = 1;
+		*iids = interfaceIds;
+		return IL2CPP_S_OK;
+	}
+
+	virtual il2cpp_hresult_t STDCALL GetRuntimeClassName(Il2CppHString* className) IL2CPP_OVERRIDE
+	{
+		return GetRuntimeClassNameImpl(className);
+	}
+
+	virtual il2cpp_hresult_t STDCALL GetTrustLevel(int32_t* trustLevel) IL2CPP_OVERRIDE
+	{
+		return ComObjectBase::GetTrustLevel(trustLevel);
+	}
+
+	virtual il2cpp_hresult_t STDCALL IClosable_Close_m7DE2119A960C4E3898E6E5D03245D047BF113999() IL2CPP_OVERRIDE
+	{
+		return IClosable_Close_m7DE2119A960C4E3898E6E5D03245D047BF113999_ComCallableWrapperProjectedMethod(GetManagedObjectInline());
+	}
+};
+
+IL2CPP_EXTERN_C Il2CppIUnknown* CreateComCallableWrapperFor_Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09(RuntimeObject* obj)
+{
+	void* memory = il2cpp::utils::Memory::Malloc(sizeof(Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09_ComCallableWrapper));
+	if (memory == NULL)
+	{
+		il2cpp_codegen_raise_out_of_memory_exception();
+	}
+
+	return static_cast<Il2CppIManagedObjectHolder*>(new(memory) Task_1_t4B41EF9300C021C2C695B94DCDEAB2F597FA2F09_ComCallableWrapper(obj));
+}
+
 // COM Callable Wrapper for System.Threading.Tasks.Task`1<Microsoft.MixedReality.WorldLocking.Core.AnchorManagerARF>
 struct Task_1_t5C4585D155F0F2690CC3F477147930DDE89E81C6_ComCallableWrapper IL2CPP_FINAL : il2cpp::vm::CachedCCWBase<Task_1_t5C4585D155F0F2690CC3F477147930DDE89E81C6_ComCallableWrapper>, IClosable_t30CA7D2BE598B3BD6AA57CE9DF977DB51540B953
 {
@@ -8575,99 +8670,4 @@ IL2CPP_EXTERN_C Il2CppIUnknown* CreateComCallableWrapperFor_Task_1_t0613128EC4BF
 	}
 
 	return static_cast<Il2CppIManagedObjectHolder*>(new(memory) Task_1_t0613128EC4BFDD4718122BF03BA1A187FA135512_ComCallableWrapper(obj));
-}
-
-// COM Callable Wrapper for System.Threading.Tasks.Task`1<Microsoft.MixedReality.Toolkit.WindowsDevicePortal.ApplicationInfo>
-struct Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19_ComCallableWrapper IL2CPP_FINAL : il2cpp::vm::CachedCCWBase<Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19_ComCallableWrapper>, IClosable_t30CA7D2BE598B3BD6AA57CE9DF977DB51540B953
-{
-	inline Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19_ComCallableWrapper(RuntimeObject* obj) : il2cpp::vm::CachedCCWBase<Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19_ComCallableWrapper>(obj) {}
-
-	virtual il2cpp_hresult_t STDCALL QueryInterface(const Il2CppGuid& iid, void** object) IL2CPP_OVERRIDE
-	{
-		if (::memcmp(&iid, &Il2CppIUnknown::IID, sizeof(Il2CppGuid)) == 0
-		 || ::memcmp(&iid, &Il2CppIInspectable::IID, sizeof(Il2CppGuid)) == 0
-		 || ::memcmp(&iid, &Il2CppIAgileObject::IID, sizeof(Il2CppGuid)) == 0)
-		{
-			*object = GetIdentity();
-			AddRefImpl();
-			return IL2CPP_S_OK;
-		}
-
-		if (::memcmp(&iid, &Il2CppIManagedObjectHolder::IID, sizeof(Il2CppGuid)) == 0)
-		{
-			*object = static_cast<Il2CppIManagedObjectHolder*>(this);
-			AddRefImpl();
-			return IL2CPP_S_OK;
-		}
-
-		if (::memcmp(&iid, &IClosable_t30CA7D2BE598B3BD6AA57CE9DF977DB51540B953::IID, sizeof(Il2CppGuid)) == 0)
-		{
-			*object = static_cast<IClosable_t30CA7D2BE598B3BD6AA57CE9DF977DB51540B953*>(this);
-			AddRefImpl();
-			return IL2CPP_S_OK;
-		}
-
-		if (::memcmp(&iid, &Il2CppIMarshal::IID, sizeof(Il2CppGuid)) == 0)
-		{
-			*object = static_cast<Il2CppIMarshal*>(this);
-			AddRefImpl();
-			return IL2CPP_S_OK;
-		}
-
-		if (::memcmp(&iid, &Il2CppIWeakReferenceSource::IID, sizeof(Il2CppGuid)) == 0)
-		{
-			*object = static_cast<Il2CppIWeakReferenceSource*>(this);
-			AddRefImpl();
-			return IL2CPP_S_OK;
-		}
-
-		*object = NULL;
-		return IL2CPP_E_NOINTERFACE;
-	}
-
-	virtual uint32_t STDCALL AddRef() IL2CPP_OVERRIDE
-	{
-		return AddRefImpl();
-	}
-
-	virtual uint32_t STDCALL Release() IL2CPP_OVERRIDE
-	{
-		return ReleaseImpl();
-	}
-
-	virtual il2cpp_hresult_t STDCALL GetIids(uint32_t* iidCount, Il2CppGuid** iids) IL2CPP_OVERRIDE
-	{
-		Il2CppGuid* interfaceIds = il2cpp_codegen_marshal_allocate_array<Il2CppGuid>(1);
-		interfaceIds[0] = IClosable_t30CA7D2BE598B3BD6AA57CE9DF977DB51540B953::IID;
-
-		*iidCount = 1;
-		*iids = interfaceIds;
-		return IL2CPP_S_OK;
-	}
-
-	virtual il2cpp_hresult_t STDCALL GetRuntimeClassName(Il2CppHString* className) IL2CPP_OVERRIDE
-	{
-		return GetRuntimeClassNameImpl(className);
-	}
-
-	virtual il2cpp_hresult_t STDCALL GetTrustLevel(int32_t* trustLevel) IL2CPP_OVERRIDE
-	{
-		return ComObjectBase::GetTrustLevel(trustLevel);
-	}
-
-	virtual il2cpp_hresult_t STDCALL IClosable_Close_m7DE2119A960C4E3898E6E5D03245D047BF113999() IL2CPP_OVERRIDE
-	{
-		return IClosable_Close_m7DE2119A960C4E3898E6E5D03245D047BF113999_ComCallableWrapperProjectedMethod(GetManagedObjectInline());
-	}
-};
-
-IL2CPP_EXTERN_C Il2CppIUnknown* CreateComCallableWrapperFor_Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19(RuntimeObject* obj)
-{
-	void* memory = il2cpp::utils::Memory::Malloc(sizeof(Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19_ComCallableWrapper));
-	if (memory == NULL)
-	{
-		il2cpp_codegen_raise_out_of_memory_exception();
-	}
-
-	return static_cast<Il2CppIManagedObjectHolder*>(new(memory) Task_1_t2572897E9CCF9AEC9712677B7B03C04CC0361E19_ComCallableWrapper(obj));
 }

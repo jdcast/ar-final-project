@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using drawing;
+using Microsoft.MixedReality.Toolkit.Utilities.Editor;
 
 public class MainMenu : MonoBehaviour
 {
@@ -21,7 +23,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject debugWindow = default;
     [SerializeField] GameObject sketchEffectSlider = default;
     [SerializeField] GameObject sketchScaleSlider = default;
-    [SerializeField] GameObject sketchRadiusSlider = default;
     [SerializeField] GameObject sculptEffectSlider = default;
     [SerializeField] GameObject sculptScaleSlider = default;
     [SerializeField] GameObject sculptRadiusSlider = default;
@@ -38,8 +39,10 @@ public class MainMenu : MonoBehaviour
     private bool sculptSubmenuPushIsActive = false;
     private bool sculptSubmenuPullIsActive = false;
     private bool selectSubmenuLoadIsActive = false;
+    private bool enableExtrude = false;
+    private bool extrudeComplete = true;
 
-    public float sketchEffectSliderVal = 0.5f;
+    public float sketchEffectSliderVal = 0.0f;
     public float sketchScaleSliderVal = 0.5f;
     public float sculptEffectSliderVal = 0.5f;
     public float sculptScaleSliderVal = 0.5f;
@@ -67,7 +70,8 @@ public class MainMenu : MonoBehaviour
         Select_Save,
         Select_Load,
         Select_Load_Default,
-        Select_Load_Saved
+        Select_Load_Saved,
+        Select_Delete
     }
 
     public Mode mode = default;
@@ -76,6 +80,7 @@ public class MainMenu : MonoBehaviour
     {
         //CoreServices.DiagnosticsSystem.ShowDiagnostics = debugWindowIsActive;
         //CoreServices.DiagnosticsSystem.ShowProfiler = false;
+        meshController.effectExtrude = sketchScaleSliderVal * sketchEffectSliderVal;
     }
 
     /// <summary>
@@ -83,10 +88,12 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleSketchMenu()
     {
+        enableExtrude = false;
         sketchMenuIsActive = !sketchMenuIsActive;
         sketchMenu.SetActive(sketchMenuIsActive);
-        sketchMenuSliders.SetActive(sketchMenuIsActive);
+        
         meshController.ToggleManipulability(false);
+        meshSaverLoader.CloseScrollMenu();
 
         if (sketchMenuIsActive)
         {
@@ -97,7 +104,6 @@ public class MainMenu : MonoBehaviour
 
             sketchScaleSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sketchScaleSliderVal * sketchSculptScale}";
             sketchEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sketchSculptScale * sketchEffectSliderVal * sketchScaleSliderVal}";
-            sketchRadiusSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {sketchRadiusSliderVal * (max_radius - min_radius) + min_radius}";
 
             whiteboard.SetActive(true);
             sketchController.StartSketch();
@@ -112,6 +118,8 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleSculptMenu()
     {
+        enableExtrude = false;
+        meshSaverLoader.CloseScrollMenu();
         sculptMenuIsActive = !sculptMenuIsActive;
         sculptMenu.SetActive(sculptMenuIsActive);
         sculptMenuSliders.SetActive(sculptMenuIsActive);
@@ -140,6 +148,8 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleSelectMenu()
     {
+        enableExtrude = false;
+        meshSaverLoader.CloseScrollMenu();
         selectMenuIsActive = !selectMenuIsActive;
         selectMenu.SetActive(selectMenuIsActive);
         meshController.ToggleManipulability(false);
@@ -162,10 +172,51 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleSketchDraw()
     {
+        if (extrudeComplete) {
+            enableExtrude = false;
+            meshSaverLoader.CloseScrollMenu();
+            meshSaverLoader.keyboardInputContainer.SetActive(false);
+            if (mode != Mode.Sketch_Draw)
+            {
+                mode = Mode.Sketch_Draw;
+                enableExtrude = true;
+            }
+        }
+    }
+
+    public void ToggleSketchExtrude()
+    {
+        meshSaverLoader.CloseScrollMenu();
         meshSaverLoader.keyboardInputContainer.SetActive(false);
-        if (mode != Mode.Sketch_Draw)
+      
+        if (mode != Mode.Sketch_Extrude)
         {
-            mode = Mode.Sketch_Draw;
+            extrudeComplete = false;
+
+            sketchMenuSliders.SetActive(true);
+
+            Vector3[] pts = sketchController.GetPoints();
+
+            sketchController.RemoveAllSketchPoints();
+            
+            mode = Mode.Sketch_Extrude;
+
+            if (pts.Length >= 3)
+            {
+                enableExtrude = true;
+                meshController.Draw2DShape(pts);
+            }
+            //Mesh mesh = Drawing2D.GenerateMeshFrom3DPoints(pts);
+            //GameObject planemesh = new GameObject();
+            //MeshFilter mf = planemesh.AddComponent<MeshFilter>();
+            //mf.mesh = mesh;
+            //MeshCollider mc = planemesh.AddComponent<MeshCollider>();
+            //mc.sharedMesh = mesh;
+            //MeshRenderer mr = planemesh.AddComponent<MeshRenderer>();
+            //mr.material.color = Color.white;
+            //planemesh.transform.position = pts[pts.Length-1];
+            //planemesh.transform.SetParent(MeshParent.transform, true);
+            //planemesh.transform.localScale = Vector3.one;
         }
     }
 
@@ -241,6 +292,7 @@ public class MainMenu : MonoBehaviour
         meshSaverLoader.keyboardInputContainer.SetActive(false);
         selectSubmenuLoadIsActive = !selectSubmenuLoadIsActive;
         selectSubmenuLoad.SetActive(selectSubmenuLoadIsActive);
+        meshSaverLoader.CloseScrollMenu();
 
         if (selectSubmenuLoadIsActive)
         {
@@ -256,7 +308,7 @@ public class MainMenu : MonoBehaviour
         meshSaverLoader.keyboardInputContainer.SetActive(false);
         meshController.ToggleManipulability(false);
         mode = Mode.Select_Load_Default;
-
+        meshSaverLoader.CloseScrollMenu();
         meshController.loadedMesh = meshController.defaultGameObject.GetComponent<MeshFilter>().mesh;
     }
 
@@ -277,6 +329,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void ToggleSelectMove()
     {
+        meshSaverLoader.CloseScrollMenu();
         meshController.ToggleManipulability(true);
         meshSaverLoader.keyboardInputContainer.SetActive(false);
         mode = Mode.Select_Move;
@@ -296,10 +349,22 @@ public class MainMenu : MonoBehaviour
     }
 
     /// <summary>
+    /// Toggle submode under select menu
+    /// </summary>
+    public void ToggleSelectDelete()
+    {
+        meshController.ToggleManipulability(false);
+        mode = Mode.Select_Delete;
+
+        HideSelectSubmenuLoad();
+    }
+
+    /// <summary>
     /// Hide/show debug window
     /// </summary>
     public void ToggleDebugWindow()
     {
+        meshSaverLoader.CloseScrollMenu();
         meshController.ToggleManipulability(false);
         meshSaverLoader.keyboardInputContainer.SetActive(false);
         debugWindowIsActive = !debugWindowIsActive;
@@ -318,6 +383,7 @@ public class MainMenu : MonoBehaviour
 
     public void HideSketchMenu()
     {
+        enableExtrude = false;
         sketchMenuIsActive = false;
         sketchMenu.SetActive(sketchMenuIsActive);
         sketchMenuSliders.SetActive(sketchMenuIsActive);
@@ -378,6 +444,8 @@ public class MainMenu : MonoBehaviour
 
     public void HideMainMenu()
     {
+        enableExtrude = false;
+        meshSaverLoader.CloseScrollMenu();
         mainMenu.SetActive(false);
 
         HideSketchMenu();
@@ -396,7 +464,11 @@ public class MainMenu : MonoBehaviour
         sketchEffectSliderVal = eventData.NewValue;
         float newEffectScale = sketchSculptScale * sketchEffectSliderVal * sketchScaleSliderVal;
         sketchEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = "Value: " + newEffectScale.ToString();
-        meshController.effectScale = newEffectScale;
+        meshController.effectExtrude = newEffectScale;
+        if (enableExtrude)
+        {
+            meshController.Update2DMesh();
+        }
     }
 
     public void SketchScaleSliderChanged(SliderEventData eventData)
@@ -404,17 +476,12 @@ public class MainMenu : MonoBehaviour
         sketchScaleSliderVal = eventData.NewValue;
         float newEffectScale = sketchSculptScale * sketchEffectSliderVal * sketchScaleSliderVal;
         sketchScaleSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = "Value: " + (sketchSculptScale * eventData.NewValue).ToString();
-        meshController.effectScale = newEffectScale;
+        meshController.effectExtrude = newEffectScale;
         sketchEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = "Value: " + newEffectScale.ToString();
-    }
-
-    public void SketchRadiusSliderChanged(SliderEventData eventData)
-    {
-        sketchRadiusSliderVal = eventData.NewValue;
-        //float newRadiusScale = sketchSculptScale * sketchRadiusSliderVal * sketchRadiusSliderVal;
-        float newRadiusScale = sketchRadiusSliderVal * (max_radius - min_radius) + min_radius;
-        sketchRadiusSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = "Value: " + newRadiusScale.ToString();
-        meshController.effectRadius = newRadiusScale;
+        if (enableExtrude)
+        {
+            meshController.Update2DMesh();
+        }
     }
 
     public void SculptEffectSliderChanged(SliderEventData eventData)
@@ -441,5 +508,37 @@ public class MainMenu : MonoBehaviour
         float newRadiusScale = sculptRadiusSliderVal * (max_radius - min_radius) + min_radius;
         sculptRadiusSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = "Value: " + newRadiusScale.ToString();
         meshController.effectRadius = newRadiusScale;
+    }
+
+    public void SketchExtrudeDone()
+    {
+        if (mode == Mode.Sketch_Extrude)
+        {
+            sketchScaleSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {0.5f}";
+            sketchEffectSlider.transform.Find("Value").GetComponent<TextMeshPro>().text = $"Value: {0.0f}";
+            //Vector3 position = sketchScaleSlider.transform.position;
+            //position.x = -0.1255f;
+            //position.y = 0f;
+            //osition.z = 0.0f;
+            Vector3 position = new Vector3(-0.1255f, 0f, 0f);
+            sketchScaleSlider.transform.GetChild(2).localPosition = position;
+
+            //Vector3 SliderPos = sketchEffectSlider.transform.position;
+            //SliderPos.x = 0.0f;
+            //SliderPos.y = 0.0f;
+            //SliderPos.z = 0.0f;
+            sketchEffectSlider.transform.GetChild(2).localPosition = Vector3.zero;
+            extrudeComplete = true;
+    
+            GameObject extrudedMesh = whiteboard.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject;
+            //Vector3 localPos = extrudedMesh.transform.position - whiteboard.transform.position;
+            extrudedMesh.transform.SetParent(meshController.meshParent.transform, true);
+            //extrudedMesh.transform.localPosition = localPos;
+            whiteboard.SetActive(false);
+
+            HideMainMenu();
+
+            meshController.ExtractExtrudedMeshForInstatiation();
+        }
     }
 }

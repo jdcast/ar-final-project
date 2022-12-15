@@ -68,6 +68,7 @@ MonoBehaviour:
   - PunRPC_EmptyCloseScrollMeshMenu
   - PunRPC_GetMeshList
   - PunRPC_LoadMesh
+  - PunRPC_DeleteGO
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

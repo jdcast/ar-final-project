@@ -69,6 +69,7 @@
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\GlobalHoldParent.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\TetheredPlacement.cs" />
     <Compile Include="Assets\MRTK.Tutorials.AzureSpatialAnchors\Scripts\AnchorFeedbackScript.cs" />
+    <Compile Include="Assets\Resources\Scripts\MeshGeneration\DynamicMeshTessellation.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\HandInteractionTouch.cs" />
     <Compile Include="Assets\Resources\Scripts\ScrollHoldMenuInit.cs" />
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\HoldData.cs" />
@@ -130,7 +131,7 @@
     <Compile Include="Assets\Resources\Scripts\MultiUserCapabilities\GlobalRouteParent.cs" />
     <Compile Include="Assets\Resources\Scripts\MenuHideShow.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
-    <Compile Include="Assets\Resources\Scripts\MeshManipulation\Drawing2D.cs" />
+    <Compile Include="Assets\Resources\Scripts\MeshGeneration\Drawing2D.cs" />
     <Compile Include="Assets\MRTK.Tutorials.MultiUserCapabilities\Scripts\PunPlacementHintsController.cs" />
     <Compile Include="Assets\Samples\Mixed Reality Toolkit Examples\2.8.0\Demos - HandTracking\Scripts\LaunchUri.cs" />
     <Compile Include="Assets\Resources\Scripts\CustomTag.cs" />
