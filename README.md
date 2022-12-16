@@ -1,4 +1,4 @@
-# CreatAR
+# CreatAR: Collaborative Environment for AR Creation
 ## Augmented Reality Final Project
 AR Final Project
 
