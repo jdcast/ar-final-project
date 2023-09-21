@@ -2,7 +2,8 @@
 ## Augmented Reality Final Project
 AR Final Project
 
-[![Demo Full](https://user-images.githubusercontent.com/2231240/208175894-da900e44-f09a-482a-84a1-aca17d9b5b9a.PNG)](https://drive.google.com/file/d/1BBRPIaMxvhcgZx93SlIhC8-UfwbTPvBf/view?usp=share_link)
+Click below to watch a demo:
+[![Watch the video](https://user-images.githubusercontent.com/2231240/208175894-da900e44-f09a-482a-84a1-aca17d9b5b9a.PNG)](https://youtu.be/tVarOaIJhiM?si=M4vy4K1f7g-wnfC2)
 
 [Poster](https://github.com/jdcast/ar-final-project/files/10248592/Poster.pdf)
 
